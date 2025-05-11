@@ -19,12 +19,11 @@ class ThreeJSAnimation extends Component {
       init();
 
       function init() {
-        const MODEL_PATH =
-          "public/models/myModel.glb";
-        const backgroundColor = 0x0a192f;
+        //const MODEL_PATH = "models/a_windy_day.glb";
+        const MODEL_PATH = "models/windy-day/model.gltf";
+
         // Init the scene
         scene = new THREE.Scene();
-        scene.background = new THREE.Color(backgroundColor);
         scene.fog = null;
 
         // Init the renderer
@@ -32,7 +31,7 @@ class ThreeJSAnimation extends Component {
           alpha: true
         });
         renderer.shadowMap.enabled = true;
-        renderer.setSize(0.35 * window.innerWidth, 0.35 * window.innerHeight);
+        renderer.setSize(0.8 * window.innerWidth, 0.8 * window.innerHeight);
         var container = document.getElementById("rafsan-model");
         container.appendChild(renderer.domElement);
 
@@ -60,78 +59,37 @@ class ThreeJSAnimation extends Component {
             model = gltf.scene;
             let fileAnimations = gltf.animations;
 
-            model.traverse(o => {
-              if (o.isMesh) {
-                o.castShadow = true;
-                o.receiveShadow = true;
-                // Leave material alone if your globe uses textures
-              }
-            });
+          model.traverse(o => {
+            if (o.isMesh) {
+              o.castShadow = true;
+              o.receiveShadow = true;
+            }
+          });
 
-            model.scale.set(3, 3, 3);      // adjust as needed
-            model.position.y = 0;          // adjust if it's off-center
-            scene.add(model);
-            
-            scene.add(model);
-            mixer = new THREE.AnimationMixer(model);
-            let idleAnim = THREE.AnimationClip.findByName(
-              fileAnimations,
-              "idle"
-            );
-            idleAnim.tracks.splice(3, 3);
-            idleAnim.tracks.splice(9, 3);
-            idle = mixer.clipAction(idleAnim);
-            idle.play();
-          },
-          undefined,
-          function (error) {
-            console.error(error);
+          model.scale.set(3, 3, 3);
+          model.position.y = 0;
+          scene.add(model);
+
+          mixer = new THREE.AnimationMixer(model);
+
+          console.log("Animations:", fileAnimations.map(a => a.name));
+
+          // Try to find 'idle' animation, otherwise use the first one
+          let idleAnim = THREE.AnimationClip.findByName(fileAnimations, "idle");
+          if (idleAnim) {
+            mixer.clipAction(idleAnim).play();
+          } else {
+            // If no "idle" animation name exists, just play the first available
+            mixer.clipAction(fileAnimations[0]).play();
           }
-        );
-
-
-        // Add lights
-        let hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.61);
-        hemiLight.position.set(0, 50, 0);
-        // Add hemisphere light to scene
-        scene.add(hemiLight);
-
-        let d = 8.25;
-        let dirLight = new THREE.DirectionalLight(0xffffff, 0.54);
-        dirLight.position.set(-8, 12, 8);
-        dirLight.castShadow = true;
-        dirLight.shadow.mapSize = new THREE.Vector2(1024, 1024);
-        dirLight.shadow.camera.near = 0.1;
-        dirLight.shadow.camera.far = 1500;
-        dirLight.shadow.camera.left = d * -1;
-        dirLight.shadow.camera.right = d;
-        dirLight.shadow.camera.top = d;
-        dirLight.shadow.camera.bottom = d * -1;
-        // Add directional Light to scene
-        scene.add(dirLight);
-
-        // Floor
-        let floorGeometry = new THREE.PlaneGeometry(5000, 5000, 1, 1);
-        let floorMaterial = new THREE.MeshPhongMaterial({
-          color: 0x0a192f,
-          shininess: 0
-        });
-
-        let floor = new THREE.Mesh(floorGeometry, floorMaterial);
-        floor.rotation.x = -0.5 * Math.PI; // This is 90 degrees by the way
-        floor.receiveShadow = true;
-        floor.position.y = -11;
-        scene.add(floor);
-
-        let geometry = new THREE.SphereGeometry(16, 46, 46);
-        let material = new THREE.MeshBasicMaterial({
-          color: 0x64ffda
-        });
-        let sphere = new THREE.Mesh(geometry, material);
-        sphere.position.z = -30;
-        sphere.position.y = -2.5;
-        sphere.position.x = -0.25;
-        scene.add(sphere);
+          const action = mixer.clipAction(idleAnim || fileAnimations[0]);
+          action.play();
+        },
+        undefined,
+        function (error) {
+          console.error(error);
+        }
+      );
       }
 
       function update() {
