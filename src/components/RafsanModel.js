@@ -20,7 +20,7 @@ class ThreeJSAnimation extends Component {
 
       function init() {
         //const MODEL_PATH = "models/a_windy_day.glb";
-        const MODEL_PATH = "models/windy-day/model.gltf";
+        const MODEL_PATH = "models/a_windy_day/scene.gltf";
 
         // Init the scene
         scene = new THREE.Scene();
@@ -31,22 +31,22 @@ class ThreeJSAnimation extends Component {
           alpha: true
         });
         renderer.shadowMap.enabled = true;
-        renderer.setSize(0.8 * window.innerWidth, 0.8 * window.innerHeight);
+        renderer.setSize(1 * window.innerWidth, 1 * window.innerHeight);
         var container = document.getElementById("rafsan-model");
         container.appendChild(renderer.domElement);
 
         // Add a camera
         camera = new THREE.PerspectiveCamera(
-          65,
+          25,
           window.innerWidth / window.innerHeight,
-          0.1,
-          1000
+          0.5,
+          100
         );
         camera.position.z = 30;
         camera.position.x = 0;
         camera.position.y = -3;
 
-        const stacy_mtl = new THREE.MeshPhongMaterial({
+        const globe_mtl = new THREE.MeshPhongMaterial({
           color: 0xccd6f6,
           skinning: true
         });
@@ -63,6 +63,7 @@ class ThreeJSAnimation extends Component {
             if (o.isMesh) {
               o.castShadow = true;
               o.receiveShadow = true;
+              o.material = globe_mtl;
             }
           });
 
@@ -75,14 +76,14 @@ class ThreeJSAnimation extends Component {
           console.log("Animations:", fileAnimations.map(a => a.name));
 
           // Try to find 'idle' animation, otherwise use the first one
-          let idleAnim = THREE.AnimationClip.findByName(fileAnimations, "idle");
-          if (idleAnim) {
-            mixer.clipAction(idleAnim).play();
+          let idle = THREE.AnimationClip.findByName(fileAnimations, "idle");
+          if (idle) {
+            mixer.clipAction(idle).play();
           } else {
             // If no "idle" animation name exists, just play the first available
             mixer.clipAction(fileAnimations[0]).play();
           }
-          const action = mixer.clipAction(idleAnim || fileAnimations[0]);
+          const action = mixer.clipAction(idle || fileAnimations[0]);
           action.play();
         },
         undefined,
