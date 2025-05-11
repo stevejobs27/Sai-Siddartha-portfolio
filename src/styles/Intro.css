@@ -9,6 +9,14 @@
   min-height: 100vh;
 }
 
+#globe-model {
+  width: unset;
+  height: 60vh; /* or try 80vh or 60vh for tighter layout */
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
 .Typist {
   color: var(--lightest-slate);
   text-align: center;
