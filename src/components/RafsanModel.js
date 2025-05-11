@@ -20,7 +20,7 @@ class ThreeJSAnimation extends Component {
 
       function init() {
         const MODEL_PATH =
-          "https://s3-us-west-2.amazonaws.com/s.cdpn.io/1376484/stacy_lightweight.glb";
+          "public/models/myModel.glb";
         const backgroundColor = 0x0a192f;
         // Init the scene
         scene = new THREE.Scene();
@@ -57,7 +57,6 @@ class ThreeJSAnimation extends Component {
         loader.load(
           MODEL_PATH,
           function (gltf) {
-            // A lot is going to happen here
             model = gltf.scene;
             let fileAnimations = gltf.animations;
 
@@ -65,21 +64,14 @@ class ThreeJSAnimation extends Component {
               if (o.isMesh) {
                 o.castShadow = true;
                 o.receiveShadow = true;
-                o.material = stacy_mtl;
-              }
-              // Reference the neck and waist bones
-              if (o.isBone && o.name === "mixamorigNeck") {
-                neck = o;
-              }
-              if (o.isBone && o.name === "mixamorigSpine") {
-                waist = o;
+                // Leave material alone if your globe uses textures
               }
             });
 
-            // Set the models initial scale
-            model.scale.set(15, 15, 15);
-            model.position.y = -23;
-
+            model.scale.set(3, 3, 3);      // adjust as needed
+            model.position.y = 0;          // adjust if it's off-center
+            scene.add(model);
+            
             scene.add(model);
             mixer = new THREE.AnimationMixer(model);
             let idleAnim = THREE.AnimationClip.findByName(
@@ -91,11 +83,12 @@ class ThreeJSAnimation extends Component {
             idle = mixer.clipAction(idleAnim);
             idle.play();
           },
-          undefined, // We don't need this function
+          undefined,
           function (error) {
             console.error(error);
           }
         );
+
 
         // Add lights
         let hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.61);
