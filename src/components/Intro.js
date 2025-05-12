@@ -6,7 +6,7 @@ import "react-typist/dist/Typist.css";
 import EmailRoundedIcon from "@material-ui/icons/EmailRounded";
 import FadeInSection from "./FadeInSection";
 import FractalTree from "./FractalTree";
-import GlobeModel from "./GlobeModel";
+
 
 class Intro extends React.Component {
   constructor() {
@@ -27,7 +27,6 @@ class Intro extends React.Component {
     return (
       <div id="intro">
         <FractalTree></FractalTree>
-        <GlobeModel></GlobeModel>
         <Typist avgTypingDelay={120}>
           <span className="intro-title">
             {"hi, "}
