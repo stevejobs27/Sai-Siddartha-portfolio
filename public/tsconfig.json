@@ -1,0 +1,6 @@
+{
+  "compilerOptions": {
+    "types": ["react", "react-dom", "three"]
+  },
+  "include": ["src", "src/types"]  // or just ["./"]
+}
