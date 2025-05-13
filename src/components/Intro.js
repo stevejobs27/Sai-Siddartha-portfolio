@@ -35,9 +35,10 @@ class Intro extends React.Component {
           </span>
         </Typist>
         <FadeInSection>
-          <div className="intro-subtitle">I like to clean and build stuff with data.</div>
-          <div className="intro-desc">
-            I'm an aspiring Data Analyst based in Toronto, Canada. Passionate about using data to drive business decisions and innovation. Eager to leverage my skills in leading industries to create meaningful impact.
+          <div className="intro-subtitle">I like to clean and build stuff with data</div>
+          <div className="intro-desc">I'm an aspiring Data Analyst based in Toronto, Canada. 
+            Passionate about using data to drive business decisions and innovation. 
+            Eager to leverage my skills in leading industries to create meaningful impact.
           </div>
           <a
             href="mailto:rafsanahmed2828@gmail.com"

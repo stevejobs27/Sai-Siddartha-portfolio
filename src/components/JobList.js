@@ -162,8 +162,8 @@ const JobList = () => {
           <ul className="job-description">
             {experienceItems[key]["desc"].map(function (descItem, i) {
               return (
-                <FadeInSection delay={`${i + 1}00ms`}>
-                  <li key={i}>{descItem}</li>
+                <FadeInSection key={i} delay={`${i + 1}00ms`}>
+                  <li>{descItem}</li>
                 </FadeInSection>
               );
             })}
