@@ -35,11 +35,11 @@
 
 | Color          | Hex                                                                |
 | -------------- | ------------------------------------------------------------------ |
-| Purple         | ![#10041f](https://via.placeholder.com/10/10041f?text=+) `#10041f` |
-| Light Purple   | ![#0c0514](https://via.placeholder.com/10/0c0514?text=+) `#0c0514` |
-| Lightest Purple| ![#170925](https://via.placeholder.com/10/170925?text=+) `#170925` |
-| Slate          | ![#8892b0](https://via.placeholder.com/10/8892b0?text=+) `#8892b0` |
-| Light Slate    | ![#a8b2d1](https://via.placeholder.com/10/a8b2d1?text=+) `#a8b2d1` |
-| Lightest Slate | ![#ccd6f6](https://via.placeholder.com/10/ccd6f6?text=+) `#ccd6f6` |
-| White          | ![#e6f1ff](https://via.placeholder.com/10/e6f1ff?text=+) `#e6f1ff` |
-| Green          | ![#7187e9](https://via.placeholder.com/10/7187e9?text=+) `#7187e9` |
+| Purple         | ![#10041f](https://placehold.co/100x25/10041f/ffffff?text=%2310041f) |
+| Light Purple   | ![#0c0514](https://placehold.co/100x25/0c0514/ffffff?text=%230c0514) |
+| Lightest Purple| ![#170925](https://placehold.co/100x25/170925/ffffff?text=%23170925) |
+| Slate          | ![#8892b0](https://placehold.co/100x25/8892b0/000000?text=%238892b0) |
+| Light Slate    | ![#a8b2d1](https://placehold.co/100x25/a8b2d1/000000?text=%23a8b2d1) |
+| Lightest Slate | ![#ccd6f6](https://placehold.co/100x25/ccd6f6/000000?text=%23ccd6f6) |
+| White          | ![#e6f1ff](https://placehold.co/100x25/e6f1ff/000000?text=%23e6f1ff) |
+| Green          | ![#7187e9](https://placehold.co/100x25/7187e9/ffffff?text=%237187e9) |
