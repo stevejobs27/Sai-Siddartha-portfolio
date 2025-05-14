@@ -27,7 +27,7 @@ html {
 }
 
 .App {
-  font-family: "NTR";
+  font-family: Inter, sans sans-serif;
   background: var(--linear-gradient);
   display: flex;
   margin: auto;
@@ -86,9 +86,9 @@ a {
 }
 
 .section-title {
-  font-family: "NTR", sans-serif;
+  font-family: Inter, sans sans-serif;
   color: var(--lightest-slate);
-  font-size: 46px;
+  font-size: 36px;
   font-weight: bold;
 }
 

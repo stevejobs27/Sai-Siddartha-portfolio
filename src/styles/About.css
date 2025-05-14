@@ -6,7 +6,7 @@
 }
 
 .about-description ul {
-  padding-top: 20px;
+  padding-top: 18px;
   list-style-type: none;
   display: grid;
   grid-template-columns: repeat(2, minmax(150px, 10px));
@@ -15,7 +15,7 @@
 .about-description li {
   position: relative;
   padding-left: 20px;
-  font-size: 18px;
+  font-size: 16px;
   color: var(--slate);
 }
 
@@ -32,17 +32,18 @@
 }
 
 .about-description {
-  font-family: "NTR", sans-serif;
+  font-family: Inter, sans-serif;
   color: var(--slate);
   max-width: 600px;
-  font-size: 22px;
+  font-size: 17px;
   text-align: justify;
+  line-height: 1.7;
   margin: 0;
 }
 
 .about-description a,
 .about-description b {
-  font-size: 21px;
+  font-size: 18px;
   font-weight: bold;
 }
 
@@ -78,13 +79,13 @@
   }
 
   .about-description {
-    font-size: 18px;
+    font-size: 16px;
     text-align: justify;
   }
 
   .about-description a,
   .about-description b {
-    font-size: 17px;
+    font-size: 16px;
   }
 
   .about-image img {

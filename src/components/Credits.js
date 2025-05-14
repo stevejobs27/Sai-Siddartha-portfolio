@@ -21,8 +21,11 @@ class Credits extends React.Component {
       <FadeInSection>
         <div id="credits">
           <div className="ending-credits">
-            <div>Built by Rafsan Ahmed. </div>
-            <div>Design inspired by Gazi Jarin. </div>
+            <a href="https://github.com/rafsanahmed28/rafsan"
+               target="_blank"
+               rel="noopener noreferrer">
+                Designed & Built by Rafsan Ahmed
+              </a>
           </div>
         </div>
       </FadeInSection>

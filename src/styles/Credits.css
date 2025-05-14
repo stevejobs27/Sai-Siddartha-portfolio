@@ -5,10 +5,16 @@
 }
 
 .ending-credits {
-  font-family: "NTR", sans-serif;
-  color: var(--slate);
+  font-family: Inter, sans-serif;
+  color: var(--green-bright);
   text-align: center;
   width: 100%;
   font-size: 16px;
   padding-bottom: 40px;
+}
+
+.ending-credits a {
+  color: var(--green-bright) !important;
+  text-decoration: underline;
+  font-family: inherit;
 }
