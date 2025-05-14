@@ -28,7 +28,7 @@ html {
 
 .App {
   font-family: "NTR";
-  background-color: var(--navy);
+  background: var(--linear-gradient);
   display: flex;
   margin: auto;
 }
@@ -53,7 +53,7 @@ a {
 }
 
 ::selection {
-  background: var(--lightest-navy); /* WebKit/Blink Browsers */
+  background: var(--light-grey); /* WebKit/Blink Browsers */
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -82,7 +82,7 @@ a {
   margin-top: 39px;
   height: 1px;
   margin-left: 20px;
-  background-color: var(--lightest-navy);
+  background-color: var(--light-grey);
 }
 
 .section-title {

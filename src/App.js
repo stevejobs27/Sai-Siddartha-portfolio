@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Intro from "./components/Intro";
 import Experience from "./components/Experience";
 import About from "./components/About";
@@ -11,16 +11,18 @@ import "./styles/Global.css";
 import 'rsuite/styles/index.less';
 
 function App() {
+  const [showStars, setShowStars] = useState(true);
+
   return (
     <div className="App">
-      <StarsCanvas/>
-      <NavBar></NavBar>
+      {showStars && <StarsCanvas />}
+      <NavBar showStars={showStars} setShowStars={setShowStars} />
       <div id="content">
-        <Intro></Intro>
-        <About></About>
-        <Experience></Experience>
-        <Projects></Projects>
-        <Credits></Credits>
+        <Intro />
+        <About />
+        <Experience />
+        <Projects />
+        <Credits />
       </div>
     </div>
   );

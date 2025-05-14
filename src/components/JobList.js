@@ -90,15 +90,6 @@ const JobList = () => {
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi."
       ]
     },
-    IBM: {
-      jobTitle: "Associate Engineer @",
-      duration: "MAY 2020 - APR 2021",
-      desc: [
-        "Developed a responsive React web page (the new Story Details) from scratch, both on client and server side, for an app with massive scale (2 billion daily requests).",
-        "Iteratively built web experiences for 80 million users across high-traffic pages.",
-        "Collaborated with senior engineers and product management following best practices for the full software development life cycle, including coding standards, code reviews, source control management, build processes, testing, and operations."
-      ]
-    },
     "Innovation Boost Zone": {
       jobTitle: "Project Lead @",
       duration: "SEP 2022 - DEC 2023",

@@ -1,8 +1,10 @@
 .navbar {
-    background-color: var(--navy);
-    color: var(--lightest-slate);
-    font-family: 'NTR';
-    font-weight: bold;
+    background-color: rgba(8, 8, 18, 0.4);
+    box-shadow: 0 1px 6px rgb(24, 24, 32);
+    font-family: Inter, sans-serif;
+    line-height: 2;
+    font-size: 1rem;
+    backdrop-filter: blur(24px);
   }
 
   .navbar-light .navbar-brand  {

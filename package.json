@@ -4,7 +4,8 @@
   "author": "Rafsan Ahmed <rafsanahmed2828@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rafsanahmed28/rafsan"},
+    "url": "https://github.com/rafsanahmed28/rafsan"
+  },
   "version": "1.0.0",
   "license": "MIT",
   "private": true,
@@ -53,14 +54,12 @@
     ]
   },
   "devDependencies": {
-    "@types/node": "^20",
     "@types/react": "^18",
     "@types/three": "^0.176.0",
     "eslint": "^8",
     "eslint-config-react-app": "^7.0.1",
     "gh-pages": "^3.1.0",
-    "typescript": "^5",
-    "webpack-cli": "^6.0.1"
+    "typescript": "^5"
   },
   "homepage": "https://rafsanahmed.com"
 }
