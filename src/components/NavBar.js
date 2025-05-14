@@ -8,14 +8,60 @@ import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import StarIcon from "@material-ui/icons/Star";
 import "../styles/NavBar.css";
+import logo from "../assets/logo.png";
 
 class NavBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      show: true,
+      lastScrollY: window.scrollY
+    };
+    this.handleScroll = this.handleScroll.bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener("scroll", this.handleScroll);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.handleScroll);
+  }
+
+  handleScroll() {
+    const { lastScrollY } = this.state;
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY > lastScrollY && currentScrollY > 60) {
+      // Scrolling down
+      this.setState({ show: false, lastScrollY: currentScrollY });
+    } else {
+      // Scrolling up
+      this.setState({ show: true, lastScrollY: currentScrollY });
+    }
+  }
+
   render() {
     const { showStars, setShowStars } = this.props;
+    const { show } = this.state;
     return (
-      <Navbar fixed="top" className="bg-body-tertiary">
+      <Navbar
+        fixed="top"
+        className={`bg-body-tertiary navbar-animated${show ? " navbar-visible" : " navbar-hidden"}`}
+        style={{
+          transition: "transform 0.3s cubic-bezier(0.4,0,0.2,1)",
+          zIndex: 1000
+        }}
+      >
         <Container>
-          <Navbar.Brand href="#">RA</Navbar.Brand>
+          <Navbar.Brand href="Home">
+            <img
+              src={logo}
+              alt="Rafsan Ahmed Logo"
+              className="logo-animated"
+              style={{ height: "40px", width: "auto"}}
+            />
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
