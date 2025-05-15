@@ -1,5 +1,5 @@
 .navbar {
-    background-color: rgba(20, 20, 43, 0.8);
+    background-color: rgba(14, 25, 45, 0.1);
     box-shadow: 0 1px 6px rgb(24, 24, 32);
     font-family: Inter, sans-serif;
     font-weight: 800;
@@ -8,7 +8,19 @@
     backdrop-filter: blur(24px);
   }
 
-  .navbar-animated.navbar-hidden {
+  /* Remove shadow and increase padding when at top */
+/* NavBar.css */
+.navbar-animated {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.24);
+  padding: 0px, 10px;
+  transition: box-shadow 0.3s, padding 0.3s;
+}
+
+.navbar-at-top {
+  box-shadow: none !important;
+  padding: 20px 20px !important;
+}
+.navbar-animated.navbar-hidden {
   transform: translateY(-100%);
 }
 .navbar-animated.navbar-visible {
@@ -27,7 +39,7 @@
     color: var(--green-bright) !important;
   }
 
-  .logo-animated {
+.logo-animated {
   transition: 
     box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
     transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);

@@ -6,7 +6,7 @@ import BorderColorIcon from "@material-ui/icons/BorderColor";
 import EmailRoundedIcon from "@material-ui/icons/EmailRounded";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import GitHubIcon from "@material-ui/icons/GitHub";
-import StarIcon from "@material-ui/icons/Star";
+import { ReactComponent as AutoFixHighSVG } from "../assets/auto_fix_high.svg";
 import "../styles/NavBar.css";
 import logo from "../assets/logo.png";
 
@@ -15,7 +15,8 @@ class NavBar extends React.Component {
     super(props);
     this.state = {
       show: true,
-      lastScrollY: window.scrollY
+      lastScrollY: window.scrollY,
+      atTop: window.scrollY === 0
     };
     this.handleScroll = this.handleScroll.bind(this);
   }
@@ -32,24 +33,27 @@ class NavBar extends React.Component {
     const { lastScrollY } = this.state;
     const currentScrollY = window.scrollY;
 
+    // Track if at top
+    const atTop = currentScrollY === 0;
+
     if (currentScrollY > lastScrollY && currentScrollY > 60) {
       // Scrolling down
-      this.setState({ show: false, lastScrollY: currentScrollY });
+      this.setState({ show: false, lastScrollY: currentScrollY, atTop });
     } else {
-      // Scrolling up
-      this.setState({ show: true, lastScrollY: currentScrollY });
+      // Scrolling up or at top
+      this.setState({ show: true, lastScrollY: currentScrollY, atTop });
     }
   }
 
   render() {
     const { showStars, setShowStars } = this.props;
-    const { show } = this.state;
+    const { show, atTop } = this.state;
     return (
       <Navbar
         fixed="top"
-        className={`bg-body-tertiary navbar-animated${show ? " navbar-visible" : " navbar-hidden"}`}
+        className={`bg-body-tertiary navbar-animated${show ? " navbar-visible" : " navbar-hidden"}${atTop ? " navbar-at-top" : ""}`}
         style={{
-          transition: "transform 0.3s cubic-bezier(0.4,0,0.2,1)",
+          transition: "transform 0.3s cubic-bezier(0.4,0,0.2,1), padding 0.3s, box-shadow 0.3s",
           zIndex: 1000
         }}
       >
@@ -59,7 +63,7 @@ class NavBar extends React.Component {
               src={logo}
               alt="Rafsan Ahmed Logo"
               className="logo-animated"
-              style={{ height: "40px", width: "auto"}}
+              style={{ height: "36px", width: "auto" }}
             />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -95,9 +99,9 @@ class NavBar extends React.Component {
                 }}
                 title={showStars ? "Disable Stars" : "Enable Stars"}
               >
-                <StarIcon
+                <AutoFixHighSVG
                   style={{
-                    color: showStars ? "#7187e9" : "#ffffff",
+                    color: showStars ? "#26E2A9" : "#ffffff",
                     fontSize: 24,
                     transition: "color 0.3s"
                   }}

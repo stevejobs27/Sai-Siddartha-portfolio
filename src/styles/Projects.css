@@ -25,7 +25,8 @@ min-height: 50vh;
   position: relative;
   height: 100%;
   padding: 2rem 1.75rem;
-  background: var(--light-navy);
+  background: var(--linear-gradient);
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
   border-radius: 16px;
 }
 
