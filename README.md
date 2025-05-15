@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://img.icons8.com/color/48/000000/magritte.png"/>
+  <img src="https://raw.githubusercontent.com/rafsanahmed28/Rafsan/4ecb991d9d0ff37917bafa061d62b11c52f1365a/public/logo.svg", height = 75px, width=auto/>
 </p>
 <h1 align="center">
   rafsanahmed.com - v1
