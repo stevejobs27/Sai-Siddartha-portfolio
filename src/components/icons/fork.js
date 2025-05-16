@@ -5,6 +5,8 @@ const IconFork = () => (
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
+    width="1.25em"
+    height="1.25em"
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"

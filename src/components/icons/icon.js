@@ -1,30 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  IconAppStore,
-  IconBookmark,
-  IconCodepen,
-  IconExternal,
-  IconFolder,
-  IconFork,
-  IconGitHub,
-  IconInstagram,
-  IconLinkedin,
-  IconLoader,
-  IconLogo,
-  IconPlayStore,
-  IconStar,
-  IconTwitter,
-} from '@components/icons';
+import IconExternal from './external';
+import IconFolder from './folder';
+import IconFork from './fork';
+import IconGitHub from './github';
+import IconLinkedin from './linkedin';
+import IconLogo from './logo';
+import IconMedium from './medium';
+import IconStar from './star';
 
 const Icon = ({ name }) => {
   switch (name) {
-    case 'AppStore':
-      return <IconAppStore />;
-    case 'Bookmark':
-      return <IconBookmark />;
-    case 'Codepen':
-      return <IconCodepen />;
     case 'External':
       return <IconExternal />;
     case 'Folder':
@@ -33,20 +19,14 @@ const Icon = ({ name }) => {
       return <IconFork />;
     case 'GitHub':
       return <IconGitHub />;
-    case 'Instagram':
-      return <IconInstagram />;
     case 'Linkedin':
       return <IconLinkedin />;
-    case 'Loader':
-      return <IconLoader />;
     case 'Logo':
       return <IconLogo />;
-    case 'PlayStore':
-      return <IconPlayStore />;
+    case 'Medium':
+      return <IconMedium />;
     case 'Star':
       return <IconStar />;
-    case 'Twitter':
-      return <IconTwitter />;
     default:
       return <IconExternal />;
   }

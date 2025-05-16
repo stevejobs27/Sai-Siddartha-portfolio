@@ -26,6 +26,124 @@ html {
   visibility: visible;
 }
 
+#projects {
+  padding: 60px 0;
+}
+
+.numbered-heading {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: var(--green-bright);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 40px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.project-card {
+  background: var(--navy);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px -15px var(--navy-shadow);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+
+.project-card:hover {
+  box-shadow: 0 20px 40px -10px var(--navy-shadow);
+}
+
+.project-content {
+  padding: 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-overline {
+  color: var(--green-bright);
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.project-title {
+  font-size: 1.4rem;
+  margin: 0 0 12px 0;
+}
+
+.project-title a {
+  color: var(--lightest-slate);
+  text-decoration: none;
+}
+
+.project-description {
+  color: var(--light-slate);
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
+
+.project-tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 16px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.project-tech-list li {
+  font-size: 0.95rem;
+  color: var(--green-bright);
+  background: rgba(100,255,218,0.07);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.project-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.github-icon,
+.open-icon {
+  color: #fff;
+  transition: color 0.3s;
+  font-size: 1.2em;
+}
+
+.github-icon:hover,
+.open-icon:hover,
+.github-icon:focus,
+.open-icon:focus {
+  color: var(--green-bright);
+}
+
+.project-image {
+  width: 100%;
+  overflow: hidden;
+  background: var(--navy-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
 .App {
   font-family: Inter, sans sans-serif;
   background: var(--linear-gradient);

@@ -21,18 +21,17 @@ min-height: 50vh;
   cursor: default;
   display: flex;
   flex-direction: column;
-  /* align-items: flex-start; */
   position: relative;
   height: 100%;
   padding: 2rem 1.75rem;
-  background-color: var(---navy);
+  background-color: var(--navy);
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
   border-radius: 16px;
 }
 
 .projects-card:hover {
   transform: translateY(-7px);
-  background-color: var(--lightest-navy);
+  background-color: var(--navy);
 }
 
 .card-header {
@@ -47,15 +46,22 @@ min-height: 50vh;
   color: var(--green-bright);
 }
 
-.github-icon {
-  margin-top: 6px;
-}
-.github-icon:hover {
-  color: var(--green-bright);
+.external-links a svg {
+  color: #fff;
+  stroke: currentColor;
+  transition: color 0.3s;
 }
 
+/* On hover: icons use currentColor (set by parent or theme) */
+.external-links a:hover svg,
+.external-links a:focus svg {
+  color: var(--green-bright); /* or any color you want for hover */
+}
+
+
+
 .open-icon {
-  margin-left: 10px;
+  margin-left: 12px;
 }
 
 .card-title {
@@ -96,7 +102,8 @@ min-height: 50vh;
 }
 
 .carousel img {
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center;
   height: 100%;
   opacity: 0.5;
 }

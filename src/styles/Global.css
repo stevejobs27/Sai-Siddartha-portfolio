@@ -1,6 +1,6 @@
 :root {
   --purple: #1c0a29;
-  --linear-gradient: linear-gradient(to bottom,#1c0a29 0%,#0E192D 18%,#0E192D 100%);
+  --linear-gradient: linear-gradient(to bottom,#1c0a29 0%,#0E192D 18%,#1c0a29 40%, #0E192D 75%,#1c0a29 100%);
   --navy: #0E192D;
   --light-grey: #1e4855; /* lightest-purple */
   --navy-shadow: rgba(26, 55, 100, 0.7);

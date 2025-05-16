@@ -2,11 +2,7 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import BorderColorIcon from "@material-ui/icons/BorderColor";
-import EmailRoundedIcon from "@material-ui/icons/EmailRounded";
-import LinkedInIcon from "@material-ui/icons/LinkedIn";
-import GitHubIcon from "@material-ui/icons/GitHub";
-import { ReactComponent as AutoFixHighSVG } from "../assets/auto_fix_high.svg";
+import Icon from './icons/icon';
 import "../styles/NavBar.css";
 import logo from "../assets/logo.png";
 
@@ -62,8 +58,9 @@ class NavBar extends React.Component {
             <img
               src={logo}
               alt="Rafsan Ahmed Logo"
-              className="logo-animated"
-              style={{ height: "36px", width: "auto" }}
+              title="Logo"
+              className="logo"
+              style={{ height: "28px", width: "auto" }}
             />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -75,20 +72,18 @@ class NavBar extends React.Component {
               <Nav.Link href="#projects">Projects</Nav.Link>
             </Nav>
             <Nav className="ml-auto" style={{ alignItems: "center" }}>
-              <Nav.Link href="mailto:rafsanahmed2828@gmail.com">
-                <EmailRoundedIcon style={{ fontSize: 20 }} />
+              <Nav.Link href="https://github.com/rafsanahmed28" title="GitHub" target="_blank">
+                <Icon name="GitHub" />
               </Nav.Link>
-              <Nav.Link href="https://github.com/rafsanahmed28" target="_blank">
-                <GitHubIcon style={{ fontSize: 19 }} />
+              <Nav.Link href="https://www.linkedin.com/in/rafsanahmed28/" title="LinkedIn" target="_blank">
+                <Icon name="Linkedin" />
               </Nav.Link>
-              <Nav.Link href="https://www.linkedin.com/in/rafsanahmed28/" target="_blank">
-                <LinkedInIcon style={{ fontSize: 21 }} />
-              </Nav.Link>
-              <Nav.Link href="https://medium.com/@rafsanahmed2828" target="_blank">
-                <BorderColorIcon style={{ fontSize: 20 }} />
+              <Nav.Link href="https://medium.com/@rafsanahmed2828" title="Medium" target="_blank">
+                <Icon name="Medium" />
               </Nav.Link>
               <Nav.Link
                 onClick={() => setShowStars((prev) => !prev)}
+                className={showStars ? "star-active" : ""}
                 style={{
                   cursor: "pointer",
                   display: "flex",
@@ -97,15 +92,9 @@ class NavBar extends React.Component {
                   background: "none",
                   border: "none",
                 }}
-                title={showStars ? "Disable Stars" : "Enable Stars"}
+                title={showStars ? "Background Off" : "Background On"}
               >
-                <AutoFixHighSVG
-                  style={{
-                    color: showStars ? "#26E2A9" : "#ffffff",
-                    fontSize: 24,
-                    transition: "color 0.3s"
-                  }}
-                />
+                <Icon name="Star"/>
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>

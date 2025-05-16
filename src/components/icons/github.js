@@ -6,6 +6,8 @@ const IconGitHub = () => (
     role="img"
     viewBox="0 0 24 24"
     fill="none"
+    width="1.25em"
+    height="1.25em"
     stroke="currentColor"
     strokeWidth="2"
     strokeLinecap="round"

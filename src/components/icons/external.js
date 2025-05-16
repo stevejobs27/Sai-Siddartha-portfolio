@@ -7,6 +7,8 @@ const IconExternal = () => (
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
+    width="1.4em"
+    height="1.4em"
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"

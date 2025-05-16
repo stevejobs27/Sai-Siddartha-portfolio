@@ -5,6 +5,7 @@ import About from "./components/About";
 import Projects from "./components/Projects";
 import Credits from "./components/Credits";
 import NavBar from "./components/NavBar";
+import Featured from "./components/Featured";
 import { StarsCanvas } from "./components/StarBackground";
 import "./App.css";
 import "./styles/Global.css";
@@ -21,6 +22,7 @@ function App() {
         <Intro />
         <About />
         <Experience />
+        <Featured />
         <Projects />
         <Credits />
       </div>

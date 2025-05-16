@@ -7,7 +7,9 @@ const IconFolder = () => (
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
-    strokeWidth="1"
+    width="2.5em"
+    height="2.5em"
+    strokeWidth="1.3"
     strokeLinecap="round"
     strokeLinejoin="round"
     className="feather feather-folder">

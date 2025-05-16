@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/Projects.css";
-import FolderOpenRoundedIcon from "@material-ui/icons/FolderOpenRounded";
+import Icon from './icons/icon';
 import FadeInSection from "./FadeInSection";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import Carousel from "react-bootstrap/Carousel";
@@ -142,9 +142,7 @@ class Projects extends React.Component {
                 <li className="projects-card">
                   <div className="card-header">
                     <div className="folder-icon">
-                      <FolderOpenRoundedIcon
-                        style={{ fontSize: 35 }}
-                      ></FolderOpenRoundedIcon>
+                      <Icon name="Folder" />
                     </div>
                     <ExternalLinks
                       githubLink={projects[key]["link"]}
