@@ -2,6 +2,21 @@ html {
   scroll-behavior: smooth;
 }
 
+::-webkit-scrollbar {
+  width: 10px; /* wider for arrow space, but arrows won't show */
+  background: var(--navy);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--green-bright);
+  border-radius: 8px;
+  border: 4px solid var(--navy); /* thumb inset look */
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--navy);
+}
+
 /* Animation */
 .App {
   position: relative;
@@ -79,7 +94,7 @@ html {
 }
 
 .project-title a {
-  color: var(--lightest-slate);
+  color: var(--off-white);
   text-decoration: none;
 }
 
@@ -145,7 +160,7 @@ html {
 }
 
 .App {
-  font-family: Inter, sans sans-serif;
+  font-family: Inter, sans-serif;
   background: var(--linear-gradient);
   display: flex;
   margin: auto;
@@ -197,17 +212,17 @@ a {
   content: "";
   display: block;
   width: 300px;
-  margin-top: 39px;
+  margin-top: 21px;
   height: 1px;
   margin-left: 20px;
   background-color: var(--light-grey);
 }
 
 .section-title {
-  font-family: Inter, sans sans-serif;
-  color: var(--lightest-slate);
-  font-size: 36px;
-  font-weight: bold;
+  font-family: Inter, sans-serif;
+  color: var(--off-white);
+  font-size: 26px;
+  font-weight: 650;
 }
 
 @media only screen and (max-width: 600px) {
@@ -226,10 +241,11 @@ a {
   }
 
   .section-header::after {
-    display: none;
+    flex: 1 1 auto;
+    width: auto;
   }
 
   .section-title {
-    font-size: 32px;
+    font-size: 22px;
   }
 }

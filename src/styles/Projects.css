@@ -1,8 +1,8 @@
 #projects {
   margin: auto;
   padding-top: 100px;
-max-width: 1000px;
-min-height: 50vh;
+  max-width: 1000px;
+  min-height: 50vh;
 }
 
 .projects-grid {
@@ -66,7 +66,7 @@ min-height: 50vh;
 
 .card-title {
   font-family: Inter, sans-serif;
-  color: var(--lightest-slate);
+  color: var(--off-white);
   font-size: 20px;
   font-weight: bold;
 }
@@ -119,14 +119,14 @@ min-height: 50vh;
 .carousel-caption h3 {
   font-size: 38px;
   font-weight: bold;
-  color: var(--lightest-slate);
+  color: var(--off-white);
 }
 
 .carousel-caption p {
   font-family: Inter, sans-serif;
   font-weight: bold;
   font-size: 18px;
-  color: var(--lightest-slate);
+  color: var(--off-white);
 }
 
 .carousel-caption p.techStack {

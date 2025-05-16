@@ -3,7 +3,6 @@ import React from "react";
 import "../styles/Intro.css";
 import Typist from "react-typist";
 import "react-typist/dist/Typist.css";
-import EmailRoundedIcon from "@material-ui/icons/EmailRounded";
 import FadeInSection from "./FadeInSection";
 import FractalTree from "./FractalTree";
 
@@ -40,13 +39,6 @@ class Intro extends React.Component {
             Passionate about using data to drive business decisions and innovation. 
             Eager to leverage my skills in leading industries to create meaningful impact.
           </div>
-          <a
-            href="mailto:rafsanahmed2828@gmail.com"
-            className="intro-contact"
-          >
-            <EmailRoundedIcon></EmailRoundedIcon>
-            {" Say hi!"}
-          </a>
         </FadeInSection>
       </div>
     );

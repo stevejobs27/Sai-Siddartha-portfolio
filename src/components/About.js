@@ -19,9 +19,9 @@ class About extends React.Component {
   render() {
     const one = (
       <p>
-        I am an aspiring <b>Data Analyst</b> exploring the field through hands-on
+        I am an aspiring Data Analyst exploring the field through hands-on
         <a href="https://github.com/rafsanahmed28"> projects </a>. 
-        Recently, I completed my graduation in <b> Master of Engineering </b> in <b>Innovation & Entrepreneurship </b>at{" "}
+        Recently, I completed my graduation in Master of Engineering in Innovation & Entrepreneurship at{" "}
         <a href="https://www.torontomu.ca/">Toronto Metropolitan University</a> where working with startups on market 
          research and product development completely made me fall in love with the power of data. Since then, 
         I have been honing my skills with analytical tools and technologies to build my expertise.
@@ -47,7 +47,7 @@ class About extends React.Component {
       <div id="about">
         <FadeInSection>
           <div className="section-header ">
-            <span className="section-title">/ about me</span>
+            <span className="section-title">About Me</span>
           </div>
           <div className="about-content">
             <div className="about-description">

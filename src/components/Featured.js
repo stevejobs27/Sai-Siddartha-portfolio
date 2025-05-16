@@ -25,7 +25,9 @@ const projects = [
 
 const Featured = () => (
   <section id="projects">
-    <h2 className="numbered-heading">Some Things I’ve Built</h2>
+    <div className="section-header ">
+          <span className="section-title">Some Things I've Built</span>
+        </div>
     <ul className="projects-grid">
       {projects.map((project, i) => (
         <li className="project-card" key={i}>

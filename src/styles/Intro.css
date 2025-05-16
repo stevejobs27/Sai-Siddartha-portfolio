@@ -10,7 +10,7 @@
 }
 
 .Typist {
-  color: var(--lightest-slate);
+  color: var(--off-white);
   text-align: center;
   font-size: 45px;
   margin-top: -30px;
@@ -78,28 +78,28 @@ b {
   }
 
   .intro-title {
-    font-size: 36px;
+    font-size: 32px;
+    font-weight: 600;
   }
   .intro-name {
-    font-size: 36px;
+    font-size: 32px;
   }
 
   .Typist {
-    font-size: 28px;
+    font-size: 32px;
   }
 
   .intro-subtitle {
     margin: 0;
-    font-size: 20px;
+    font-size: 18px;
+    font-weight: 400;
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
 
   .intro-desc {
-    font-size: 14px;
+    font-size: 15px;
     max-width: unset;
     padding-bottom: 30px;
-  }
-
-  .intro-contact {
-    font-size: 8px;
   }
 }

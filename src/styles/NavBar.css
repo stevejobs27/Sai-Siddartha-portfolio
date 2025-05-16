@@ -26,11 +26,11 @@
 }
 
 .navbar-light .navbar-brand  {
-    color: var(--lightest-slate) !important;
+    color: var(--off-white) !important;
   }
 
 .navbar-light .navbar-nav .nav-link {
-    color: var(--lightest-slate) !important;
+    color: var(--off-white) !important;
   }
 
 .navbar-light .navbar-nav .nav-link:hover {

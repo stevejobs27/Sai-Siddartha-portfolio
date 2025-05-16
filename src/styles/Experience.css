@@ -9,7 +9,7 @@
   font-family: Inter, sans-serif;
   font-size: 24px;
   font-weight: bold;
-  color: var(--lightest-slate);
+  color: var(--off-white);
 }
 
 .joblist-job-company {
@@ -39,7 +39,7 @@
 
 .MuiButtonBase-root {
   outline: none !important;
-  color: var(--lightest-slate) !important;
+  color: var(--off-white) !important;
 }
 
 .PrivateTabIndicator-colorSecondary-5 {
