@@ -1,6 +1,6 @@
 :root {
   --purple: #1c0a29; /* Using */
-  --linear-gradient: linear-gradient(to bottom,#000000 0%,#0E192D 35%,#1c0a29 40%, #0E192D 75%,#1c0a29 100%); /* Using */
+  --linear-gradient: linear-gradient(to bottom,#10021a 0%,#060e1f 20%,#100716 40%, #0E192D 75%,#100716 100%); /* Using */
   --navy: #0E192D; /* Using */
   --light-grey: #3d3d3d; /* Using */
   --lightest-grey: #a0a0a0; /* Using */
@@ -9,6 +9,6 @@
   --light-slate: #73798d;
   --off-white: #ccd6f6;
   --white: #e6f1ff;
-  --green-bright: #26E2A9;
+  --green-bright: hsl(160, 76%, 52%);
   --green-tint: rgba(100, 255, 218, 0.1);
 }

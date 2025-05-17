@@ -1,3 +1,8 @@
+// CREDIT BELONGS TO THE ORIGINAL CREATOR: https://codepen.io/filipz/pen/KwwKRRr
+// Please do not remove the credits from the original creator
+
+
+
 function setupPulsatingCircles() {
   const c = document.getElementById("anim1");
   if (!c) return;
@@ -299,27 +304,30 @@ for (let ring = 0; ring < numRings; ring++) {
 
 
 function setupFibonacciSpiral() {
-const c = document.getElementById("anim9");
-if (!c) return;
-c.innerHTML = "";
-const wrap = document.createElement("div");
-wrap.className = "fibonacci-container";
-c.appendChild(wrap);
-const cd = document.createElement("div");
-cd.className = "dot";
-cd.style.width = cd.style.height = "6px";
-cd.style.left = "calc(50% - 3px)";
-cd.style.top = "calc(50% - 3px)";
-cd.style.background = "rgba(255,255,255,0.9)";
-wrap.appendChild(cd);
-const golden = Math.PI * (3 - Math.sqrt(5)),
+  const c = document.getElementById("anim9");
+  if (!c) return;
+  c.innerHTML = "";
+  const wrap = document.createElement("div");
+  wrap.className = "fibonacci-container";
+  c.appendChild(wrap);
+  const cd = document.createElement("div");
+  cd.className = "dot";
+  cd.style.width = cd.style.height = "6px";
+  cd.style.left = "calc(50% - 3px)";
+  cd.style.top = "calc(50% - 3px)";
+  cd.style.background = "hsl(162,76%,52%)";
+  wrap.appendChild(cd);
+  const golden = Math.PI * (3 - Math.sqrt(5)),
     N = 100,
     scale = 2;
-for (let i = 0; i < N; i++) {
+
+  // Store dot references and their phase
+  const dots = [];
+  for (let i = 0; i < N; i++) {
     const angle = i * golden,
-    rad = scale * Math.sqrt(i) * 4;
+      rad = scale * Math.sqrt(i) * 4;
     const x = Math.cos(angle) * rad,
-    y = Math.sin(angle) * rad;
+      y = Math.sin(angle) * rad;
     const sz = 7.5 - (i / N) * 1.5;
     if (sz < 1) continue;
     const d = document.createElement("div");
@@ -328,9 +336,29 @@ for (let i = 0; i < N; i++) {
     d.style.left = `calc(50% + ${x}px - ${sz / 2}px)`;
     d.style.top = `calc(50% + ${y}px - ${sz / 2}px)`;
     d.style.animationDelay = `${(i / N) * 3}s`;
-    d.style.background = `rgba(255,255,255,${(90 - (i / N) * 60) / 100})`;
     wrap.appendChild(d);
-}
+    dots.push({ el: d, phase: i / N });
+  }
+
+  // Animate color using HSL, matching sunflower spiral's range
+  const startHue = 160;
+  const endHue = 200;
+  const sat = 76;
+  const light = 52;
+  const duration = 30; // seconds for a full cycle
+
+  function animateColors(time) {
+    const t = ((time / 1000) % duration) / duration;
+    dots.forEach(({ el, phase }) => {
+      // Offset each dot's color phase for a moving effect
+      const hue =
+        startHue +
+        ((endHue - startHue) * ((t + phase) % 1));
+      el.style.background = `hsl(${hue},${sat}%,${light}%)`;
+    });
+    requestAnimationFrame(animateColors);
+  }
+  requestAnimationFrame(animateColors);
 }
 
 function setupHalftoneGradient() {
@@ -387,26 +415,41 @@ for (let i = 0; i < N; i++) {
 
 // 12. Sunflower Spiral (perfect SVG + SMIL)
 function setupFibonacciConcentric() {
-const c = document.getElementById("anim12");
-if (!c) return;
-c.innerHTML = "";
-const N = 200;
-const SIZE = 180;
-const DOT_RADIUS = 2;
-const MARGIN = 4;
-const CENTER = SIZE / 2;
-const MAX_RADIUS = CENTER - MARGIN - DOT_RADIUS;
-const GOLDEN_ANGLE = Math.PI * (3 - Math.sqrt(5));
-const DURATION = 3;
-const svgNS = "http://www.w3.org/2000/svg";
+  const c = document.getElementById("anim12");
+  if (!c) return;
+  c.innerHTML = "";
+  const N = 200;
+  const SIZE = 500;
+  const DOT_RADIUS = 6;
+  const MARGIN = 3;
+  const CENTER = SIZE / 2;
+  const MAX_RADIUS = CENTER - MARGIN - DOT_RADIUS;
+  const GOLDEN_ANGLE = Math.PI * (3 - Math.sqrt(5));
+  const DURATION = 3;
+  const svgNS = "http://www.w3.org/2000/svg";
 
-const svg = document.createElementNS(svgNS, "svg");
-svg.setAttribute("width", SIZE);
-svg.setAttribute("height", SIZE);
-svg.setAttribute("viewBox", `0 0 ${SIZE} ${SIZE}`);
-c.appendChild(svg);
+  const svg = document.createElementNS(svgNS, "svg");
+  svg.setAttribute("width", SIZE);
+  svg.setAttribute("height", SIZE);
+  svg.setAttribute("viewBox", `0 0 ${SIZE} ${SIZE}`);
+  c.appendChild(svg);
 
-for (let i = 0; i < N; i++) {
+  // Generate a hue wheel for smooth color animation
+function hueWheel(steps) {
+  let colors = [];
+  const startHue = 160;   // Start at green
+  const endHue = 200;     // End at blue-violet (avoid pink/red/yellow)
+  const sat = 76;
+  const light = 52;
+  for (let i = 0; i <= steps; i++) {
+    const hue = startHue + ((endHue - startHue) * i) / steps;
+    colors.push(`hsl(${hue},${sat}%,${light}%)`);
+  }
+  return colors.join(";");
+}
+  const colorValues = hueWheel(24); // 24 steps for smoothness
+
+  for (let i = 0; i < N; i++) {
     const idx = i + 0.5;
     const frac = idx / N;
     const r = Math.sqrt(frac) * MAX_RADIUS;
@@ -418,7 +461,7 @@ for (let i = 0; i < N; i++) {
     circle.setAttribute("cx", x);
     circle.setAttribute("cy", y);
     circle.setAttribute("r", DOT_RADIUS);
-    circle.setAttribute("fill", "#fff");
+    circle.setAttribute("fill", "hsl(0, 0.00%, 0.00%)");
     circle.setAttribute("opacity", "0.6");
     svg.appendChild(circle);
 
@@ -426,8 +469,8 @@ for (let i = 0; i < N; i++) {
     const animR = document.createElementNS(svgNS, "animate");
     animR.setAttribute("attributeName", "r");
     animR.setAttribute(
-    "values",
-    `${DOT_RADIUS * 0.5};${DOT_RADIUS * 1.5};${DOT_RADIUS * 0.5}`
+      "values",
+      `${DOT_RADIUS * 0.5};${DOT_RADIUS * 1.5};${DOT_RADIUS * 0.5}`
     );
     animR.setAttribute("dur", `${DURATION}s`);
     animR.setAttribute("begin", `${frac * DURATION}s`);
@@ -446,7 +489,16 @@ for (let i = 0; i < N; i++) {
     animO.setAttribute("calcMode", "spline");
     animO.setAttribute("keySplines", "0.4 0 0.6 1;0.4 0 0.6 1");
     circle.appendChild(animO);
-}
+
+    // moving color animation through the full hue wheel
+    const animColor = document.createElementNS(svgNS, "animate");
+    animColor.setAttribute("attributeName", "fill");
+    animColor.setAttribute("values", colorValues);
+    animColor.setAttribute("dur", "30s"); // Adjust duration
+    animColor.setAttribute("repeatCount", "indefinite");
+    animColor.setAttribute("begin", `${(frac * 2).toFixed(2)}s`);
+    circle.appendChild(animColor);
+  }
 }
 
 // Add corner decorations to all animation containers

@@ -5,15 +5,12 @@ import "react-typist/dist/Typist.css";
 import FadeInSection from "./FadeInSection";
 import CircleAnimations from "./CircleAnimations";
 
-const spiralIds = ["anim12", "anim4", "anim5", "anim6", "anim8", "anim9", "anim10", "anim11"];
+const spiralIds = ["anim4", "anim5", "anim6", "anim8", "anim9", "anim10", "anim11", "anim12"];
 
 class Intro extends React.Component {
   constructor() {
     super();
-    // Set default animation to anim12
     const defaultId = "anim12";
-
-    // Select a random animation for refresh (excluding anim12)
     const randomId = spiralIds[Math.floor(Math.random() * spiralIds.length)];
 
     this.state = {

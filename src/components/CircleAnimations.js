@@ -40,7 +40,7 @@ export default function CircleAnimations({ showid, onCircleClick }) {
 
   return (
     <div className="center-wrapper">
-      <div className="container">
+      <div className="spiral-container">
         {animationList
           .filter(anim => anim.id === showid)
           .map(anim => (
