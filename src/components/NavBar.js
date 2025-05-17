@@ -2,7 +2,6 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import Icon from './icons/icon';
 import "../styles/NavBar.css";
 import logo from "../assets/logo.png";
 
@@ -42,7 +41,6 @@ class NavBar extends React.Component {
   }
 
   render() {
-    const { showStars, setShowStars } = this.props;
     const { show, atTop } = this.state;
     return (
       <Navbar
@@ -53,7 +51,7 @@ class NavBar extends React.Component {
           zIndex: 1000
         }}
       >
-        <Container>
+        <Container fluid style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <Navbar.Brand href="Home">
             <img
               src={logo}
@@ -66,36 +64,10 @@ class NavBar extends React.Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#intro">Home</Nav.Link>
               <Nav.Link href="#about">About</Nav.Link>
               <Nav.Link href="#experience">Experience</Nav.Link>
               <Nav.Link href="#projects">Projects</Nav.Link>
-            </Nav>
-            <Nav className="ml-auto" style={{ alignItems: "center" }}>
-              <Nav.Link href="https://github.com/rafsanahmed28" title="GitHub" target="_blank">
-                <Icon name="GitHub" />
-              </Nav.Link>
-              <Nav.Link href="https://www.linkedin.com/in/rafsanahmed28/" title="LinkedIn" target="_blank">
-                <Icon name="Linkedin" />
-              </Nav.Link>
-              <Nav.Link href="https://medium.com/@rafsanahmed2828" title="Medium" target="_blank">
-                <Icon name="Medium" />
-              </Nav.Link>
-              <Nav.Link
-                onClick={() => setShowStars((prev) => !prev)}
-                className={showStars ? "star-active" : ""}
-                style={{
-                  cursor: "pointer",
-                  display: "flex",
-                  alignItems: "center",
-                  borderRadius: "50%",
-                  background: "none",
-                  border: "none",
-                }}
-                title={showStars ? "Disable Background" : "Enable Background"}
-              >
-                <Icon name="Star"/>
-              </Nav.Link>
+              <Nav.Link href="#contact">Contact</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

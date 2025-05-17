@@ -24,20 +24,14 @@ h1 {
 
 @media (max-width: 768px) {
   .spiral-container {
-    grid-template-columns: repeat(2, 1fr);
     padding-top: 50px;
-    scale: 0.9;
-    transition: border-color 0.3s ease;
-    z-index: 1;
-    
+    transform: scale(0.95);
   }
 }
 @media (max-width: 500px) {
   .spiral-container {
     padding-top: 50px;
-    scale: 0.9;
-    transition: border-color 0.3s ease;
-    z-index: 1;
+    transform: scale(0.95);
   }
 }
 
@@ -73,10 +67,12 @@ h1 {
   pointer-events: none;
 }
 
-.animation-container:hover {
+.animation-container:hover,
+.animation-container:active {
   border-color: rgba(255, 255, 255, 0.3);
-  width: 223px;
-  height: 223px;
+  transform: scale(0.95);
+  filter: drop-shadow(0 0 1px rgba(0, 255, 85, 0.6));
+  transition: var(--transition);
 }
 
 .animation-title {
@@ -85,8 +81,8 @@ h1 {
 
 .circle-container {
   position: relative;
-  width: 150px;
-  height: 150px;
+  width: 175px;
+  height: 175px;
   display: flex;
   justify-content: center;
   align-items: center;

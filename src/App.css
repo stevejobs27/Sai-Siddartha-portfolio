@@ -4,7 +4,7 @@ html {
 
 ::-webkit-scrollbar {
   width: 5px; /* wider for arrow space, but arrows won't show */
-  background: #1c1a1f;
+  background: #18111d;
   
 }
 
@@ -18,8 +18,9 @@ html {
   background: var(--light-grey);
 }
 
-/* Animation */
+
 .App {
+  display: fixed;
   position: relative;
   z-index: 0;
 }
@@ -161,7 +162,7 @@ html {
 }
 
 .App {
-  font-family: Inter, sans-serif;
+  font-family: "NTR", sans-serif;
   background: var(--linear-gradient);
   display: flex;
   margin: auto;
@@ -181,6 +182,9 @@ a {
   width: 100vw;
   overflow-x: hidden;
   overflow-y: hidden;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 .rs-steps-horizontal .rs-steps-item-content {
   text-align: left;
@@ -213,14 +217,14 @@ a {
   content: "";
   display: block;
   width: 300px;
-  margin-top: 21px;
+  margin-top: 20px;
   height: 1px;
   margin-left: 20px;
   background-color: var(--light-grey);
 }
 
 .section-title {
-  font-family: Inter, sans-serif;
+  font-family: "NTR", sans-serif;
   color: var(--off-white);
   font-size: 26px;
   font-weight: 650;
@@ -244,9 +248,23 @@ a {
   .section-header::after {
     flex: 1 1 auto;
     width: auto;
+    margin-top: 16px;
   }
 
   .section-title {
     font-size: 22px;
+  }
+}
+
+@media (max-width: 1200px) {  
+
+  #content {
+    margin-left: 60px;
+  }
+}
+
+@media (max-width: 600px) {
+  #content {
+    margin-left: 0px;
   }
 }

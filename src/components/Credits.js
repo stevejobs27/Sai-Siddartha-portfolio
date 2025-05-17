@@ -1,7 +1,6 @@
 import React from "react";
 import "../styles/Credits.css";
 import FadeInSection from "./FadeInSection";
-
 class Credits extends React.Component {
   constructor() {
     super();

@@ -5,7 +5,9 @@ import About from "./components/About";
 import Projects from "./components/Projects";
 import Credits from "./components/Credits";
 import NavBar from "./components/NavBar";
+import SideNavBar from "./components/SideNavBar";
 import Featured from "./components/Featured";
+import Contact from "./components/Contact";
 import { StarsCanvas } from "./components/StarBackground";
 import "./App.css";
 import "./styles/Global.css";
@@ -17,13 +19,15 @@ function App() {
   return (
     <div className="App">
       {showStars && <StarsCanvas />}
-      <NavBar showStars={showStars} setShowStars={setShowStars} />
+      <NavBar />
+      <SideNavBar showStars={showStars} setShowStars={setShowStars} />
       <div id="content">
         <Intro />
         <About />
         <Experience />
         <Featured />
         <Projects />
+        <Contact />
         <Credits />
       </div>
     </div>

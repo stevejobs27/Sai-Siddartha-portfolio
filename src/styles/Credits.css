@@ -1,16 +1,14 @@
 #credits {
-  display: flex;
   align-items: center;
-  padding-top: 100px;
+  padding-top: 80px;
 }
 
 .ending-credits {
-  font-family: Inter, sans-serif;
+  font-family: "NTR", sans-serif;
   color: var(--green-bright);
   text-align: center;
   width: 100%;
-  font-size: 12px;
-  padding-bottom: 40px;
+  font-size: 16px;
 }
 
 .ending-credits a {

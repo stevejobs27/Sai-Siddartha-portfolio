@@ -6,21 +6,21 @@
 }
 
 .joblist-job-title {
-  font-family: Inter, sans-serif;
+  font-family: "NTR", sans-serif;
   font-size: 24px;
   font-weight: bold;
   color: var(--off-white);
 }
 
 .joblist-job-company {
-  font-family: Inter, sans-serif;
+  font-family: "NTR", sans-serif;
   font-size: 24px;
   color: var(--green-bright);
   font-weight: bold;
 }
 
 .joblist-duration {
-  font-family: Inter, sans-serif;
+  font-family: "NTR", sans-serif;
   font-size: 14px;
   color: var(--slate);
 }
@@ -34,7 +34,7 @@
   font-size: 13px;
   text-align: left;
   align-items: flex-start !important;
-  font-family: Inter, sans-serif;
+  font-family: "NTR", sans-serif;
 }
 
 .MuiButtonBase-root {
@@ -81,7 +81,7 @@ ul {
 .job-description {
   padding-top: 24px;
   max-width: 650px;
-  font-family: Inter, sans-serif;
+  font-family: "NTR", sans-serif;
   font-size: 18px;
 }
 

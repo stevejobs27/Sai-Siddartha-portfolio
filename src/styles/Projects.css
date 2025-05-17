@@ -65,21 +65,21 @@
 }
 
 .card-title {
-  font-family: Inter, sans-serif;
+  font-family: "NTR", sans-serif;
   color: var(--off-white);
   font-size: 20px;
   font-weight: bold;
 }
 
 .card-desc {
-  font-family: Inter, sans-serif;
+  font-family: "NTR", sans-serif;
   color: var(--slate);
   font-size: 15px;
   padding-bottom: 40px;
 }
 
 .card-tech {
-  font-family: Inter, sans-serif;
+  font-family: "NTR", sans-serif;
   color: var(--slate);
   font-size: 16px;
 }
@@ -109,7 +109,7 @@
 }
 
 .carousel-caption {
-  font-family: Inter, sans-serif;
+  font-family: "NTR", sans-serif;
   max-width: 500px;
   right: unset !important;
   left: 25% !important;
@@ -123,14 +123,14 @@
 }
 
 .carousel-caption p {
-  font-family: Inter, sans-serif;
+  font-family: "NTR", sans-serif;
   font-weight: bold;
   font-size: 18px;
   color: var(--off-white);
 }
 
 .carousel-caption p.techStack {
-  font-family: Inter, sans-serif;
+  font-family: "NTR", sans-serif;
   font-size: 14px;
   font-weight: bold;
   color: var(--green-bright);

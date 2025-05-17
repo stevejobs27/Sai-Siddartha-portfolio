@@ -7,7 +7,7 @@ import IconGitHub from './github';
 import IconLinkedin from './linkedin';
 import IconLogo from './logo';
 import IconMedium from './medium';
-import IconStar from './star';
+import IconPower from './power';
 
 const Icon = ({ name }) => {
   switch (name) {
@@ -25,8 +25,8 @@ const Icon = ({ name }) => {
       return <IconLogo />;
     case 'Medium':
       return <IconMedium />;
-    case 'Star':
-      return <IconStar />;
+    case 'Power':
+      return <IconPower />;
     default:
       return <IconExternal />;
   }

@@ -12,7 +12,7 @@
 .Typist {
   color: var(--off-white);
   text-align: center;
-  font-size: 45px;
+  font-size: 60px;
   margin-top: -30px;
 }
 .Typist .Cursor--blinking {
@@ -21,18 +21,18 @@
 }
 
 .intro-title {
-  font-family: General_sans, sans-serif;
+  font-family: "NTR", sans-serif;
   font-size: 60px;
 }
 .intro-name {
-  font-family: General_sans, sans-serif;
+  font-family: "NTR", sans-serif;
   color: var(--green-bright);
   font-weight: bold;
   font-size: 60px;
 }
 
 .intro-subtitle {
-  font-family: General_sans, sans-serif;
+  font-family: "NTR", sans-serif;
   color: var(--slate);
   text-align: center;
   font-weight: 300;
@@ -42,7 +42,7 @@
 .intro-desc {
   color: var(--slate);
   margin-top: 10px;
-  font-family: General_sans, sans-serif;
+  font-family: "NTR", sans-serif;
   font-size: 20px;
   text-align: center;
   max-width: 800px;
@@ -52,7 +52,7 @@
 .intro-contact {
   font-size: 18px;
   font-weight: bolder;
-  font-family: General_Sans, sans-serif;
+  font-family: "NTR", sans-serif;
   align-self: center;
   padding: 15px 30px;
   cursor: pointer;

@@ -11,4 +11,5 @@
   --white: #e6f1ff;
   --green-bright: hsl(160, 76%, 52%);
   --green-tint: rgba(100, 255, 218, 0.1);
+  --transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
 }
