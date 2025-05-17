@@ -6,10 +6,13 @@
 }
 
 .about-description ul {
-  padding-top: 18px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   list-style-type: none;
   display: grid;
   grid-template-columns: repeat(2, minmax(150px, 10px));
+  padding-left: 0;
+  margin: 10px 25px;
 }
 
 .about-description li {
@@ -36,7 +39,7 @@
   color: var(--slate);
   max-width: 600px;
   font-size: 17px;
-  text-align: justify;
+  text-align: left;
   line-height: 1.7;
   margin: 0;
 }

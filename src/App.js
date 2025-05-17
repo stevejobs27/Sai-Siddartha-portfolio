@@ -12,7 +12,7 @@ import "./styles/Global.css";
 import 'rsuite/styles/index.less';
 
 function App() {
-  const [showStars, setShowStars] = useState(false);
+  const [showStars, setShowStars] = useState(true);
 
   return (
     <div className="App">

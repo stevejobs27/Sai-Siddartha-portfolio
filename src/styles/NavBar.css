@@ -10,7 +10,7 @@
 
 .navbar-animated {
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.24);
-  padding: 0px, 10px;
+  padding: 0px 10px;
   transition: box-shadow 0.3s, padding 0.3s;
 }
 

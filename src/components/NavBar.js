@@ -92,7 +92,7 @@ class NavBar extends React.Component {
                   background: "none",
                   border: "none",
                 }}
-                title={showStars ? "Background Off" : "Background On"}
+                title={showStars ? "Disable Background" : "Enable Background"}
               >
                 <Icon name="Star"/>
               </Nav.Link>

@@ -3,18 +3,19 @@ html {
 }
 
 ::-webkit-scrollbar {
-  width: 10px; /* wider for arrow space, but arrows won't show */
-  background: var(--navy);
+  width: 5px; /* wider for arrow space, but arrows won't show */
+  background: #1c1a1f;
+  
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--green-bright);
-  border-radius: 8px;
-  border: 4px solid var(--navy); /* thumb inset look */
+  background: var(--light-slate);
+  border-radius: 6px;
+  border: 4px solid var(--light-slate);
 }
 
 ::-webkit-scrollbar-corner {
-  background: var(--navy);
+  background: var(--light-grey);
 }
 
 /* Animation */
@@ -228,7 +229,7 @@ a {
 @media only screen and (max-width: 600px) {
   .App {
     flex-direction: column;
-    padding: 40px 24px;
+    padding: 100px 24px;
   }
 
   #content {

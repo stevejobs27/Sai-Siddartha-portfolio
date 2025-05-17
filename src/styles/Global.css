@@ -1,11 +1,12 @@
 :root {
-  --purple: #1c0a29;
-  --linear-gradient: linear-gradient(to bottom,#1c0a29 0%,#0E192D 25%,#1c0a29 40%, #0E192D 75%,#1c0a29 100%);
-  --navy: #0E192D;
-  --light-grey: #1e4855; /* lightest-purple */
+  --purple: #1c0a29; /* Using */
+  --linear-gradient: linear-gradient(to bottom,#000000 0%,#0E192D 35%,#1c0a29 40%, #0E192D 75%,#1c0a29 100%); /* Using */
+  --navy: #0E192D; /* Using */
+  --light-grey: #3d3d3d; /* Using */
+  --lightest-grey: #a0a0a0; /* Using */
   --navy-shadow: rgba(26, 55, 100, 0.7);
   --slate: #8892b0;
-  --light-slate: #a8b2d1;
+  --light-slate: #73798d;
   --off-white: #ccd6f6;
   --white: #e6f1ff;
   --green-bright: #26E2A9;
