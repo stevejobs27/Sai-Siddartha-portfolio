@@ -5,18 +5,24 @@ import "react-typist/dist/Typist.css";
 import FadeInSection from "./FadeInSection";
 import CircleAnimations from "./CircleAnimations";
 
-const spiralIds = [ "anim4", "anim5", "anim6", "anim8", "anim9", "anim10", "anim11", "anim12" ];
+const spiralIds = ["anim12", "anim4", "anim5", "anim6", "anim8", "anim9", "anim10", "anim11"];
 
 class Intro extends React.Component {
   constructor() {
     super();
+    // Set default animation to anim12
+    const defaultId = "anim12";
+
+    // Select a random animation for refresh (excluding anim12)
     const randomId = spiralIds[Math.floor(Math.random() * spiralIds.length)];
+
     this.state = {
       expanded: true,
       activeKey: "1",
       visible: true,
-      randomSpiralId: randomId
+      randomSpiralId: window.performance.navigation.type === 1 ? randomId : defaultId, // Use randomId only on refresh
     };
+
     this.handleSelect = this.handleSelect.bind(this);
     this.handleCircleClick = this.handleCircleClick.bind(this);
   }
@@ -51,9 +57,10 @@ class Intro extends React.Component {
         </Typist>
         <FadeInSection>
           <div className="intro-subtitle">I like to clean and build stuff with data</div>
-          <div className="intro-desc">I'm an aspiring Data Analyst based in Toronto, Canada. 
-            Passionate about using data to drive business decisions and innovation. 
-            Eager to leverage my skills in leading industries to create meaningful impact.
+          <div className="intro-desc">
+            I'm an aspiring Data Analyst based in Toronto, Canada. Passionate about using data to
+            drive business decisions and innovation. Eager to leverage my skills in leading
+            industries to create meaningful impact.
           </div>
         </FadeInSection>
       </div>

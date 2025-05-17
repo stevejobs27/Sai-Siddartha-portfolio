@@ -89,18 +89,7 @@ h1 {
 
 /* Corner decorations for all animation containers */
 .corner {
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  color: white;
-  opacity: 0;
-  z-index: 10;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-
-.animation-container:hover .corner {
-  opacity: 1;
+  display: none;
 }
 
 .top-left {
