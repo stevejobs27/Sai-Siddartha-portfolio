@@ -42,8 +42,8 @@ h1 {
   border: #23583e 1px solid;
   box-shadow: 0 0 20px 4px rgba(150, 95, 196, 0.15),
               0 0 8px 2px rgba(38,226,169,0.15);
-  width: 225px;
-  height: 225px;
+  width: 200px;
+  height: 200px;
   margin-bottom: 70px;
   display: flex;
   flex-direction: column;
@@ -81,8 +81,8 @@ h1 {
 
 .circle-container {
   position: relative;
-  width: 175px;
-  height: 175px;
+  width: 150px;
+  height: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -129,14 +129,14 @@ h1 {
 /* 4. Concentric Rotations */
 .concentric-container {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 125px;
+  height: 125px;
   transform-style: preserve-3d;
 }
 .concentric-ring {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 125px;
+  height: 125px;
   border-radius: 50%;
   transform-style: preserve-3d;
   animation: rotateRing linear infinite;
@@ -151,6 +151,8 @@ h1 {
 .circular-wave-dot {
   animation: circularWave 3s infinite ease-in-out;
   transform-origin: center;
+  width: 125px;
+  height: 125px;
 }
 @keyframes circularWave {
   0% {
@@ -170,8 +172,8 @@ h1 {
 /* 6. Expanding Lines */
 .line-container {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 125px;
+  height: 125px;
   animation: rotateLines 8s infinite linear;
   transform-origin: center;
 }
@@ -208,8 +210,8 @@ h1 {
 /* 8. Ripple Effect */
 .ripple-container {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 125px;
+  height: 125px;
 }
 .ripple-ring {
   position: absolute;
@@ -256,8 +258,8 @@ h1 {
 /* 9. Fibonacci Spiral (div version) */
 .fibonacci-container {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 125px;
+  height: 125px;
   animation: rotateSlow 30s infinite linear;
   transform-origin: center;
 }
@@ -287,8 +289,8 @@ h1 {
 /* 10. Halftone Gradient */
 .halftone-container {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 125px;
+  height: 125px;
   animation: rotateSlow 20s infinite linear;
   transform-origin: center;
 }
@@ -313,8 +315,8 @@ h1 {
 /* 11. Silver Spiral */
 .silver-container {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 125px;
+  height: 125px;
   animation: rotateSlow 25s infinite reverse linear;
   transform-origin: center;
 }

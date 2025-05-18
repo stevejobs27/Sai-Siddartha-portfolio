@@ -39,13 +39,16 @@ class Intro extends React.Component {
   }
 
   render() {
+    const { showStars } = this.props;
+
     return (
       <div id="intro">
         <CircleAnimations
           showid={this.state.randomSpiralId}
           onCircleClick={this.handleCircleClick}
         />
-        <Typist avgTypingDelay={120}>
+        <Typist avgTypingDelay={120} 
+                cursor={{ show: true, blink: true, hideWhenDone: true, hideWhenDoneDelay: 0 }}>
           <span className="intro-title">
             {"hi, "}
             <span className="intro-name">{"rafsan"}</span>
@@ -60,6 +63,17 @@ class Intro extends React.Component {
             industries to create meaningful impact.
           </div>
         </FadeInSection>
+        {showStars && (
+          <Typist
+            avgTypingDelay={50}
+            className={`stars-typist${showStars ? " visible" : " hidden"}`}
+            cursor={{ show: true, blink: true, hideWhenDone: true, hideWhenDoneDelay: 0 }}
+          >
+            <span className="intro-stars-tip">
+              Each star represents a unique data point in the vast ocean of data.
+            </span>
+          </Typist>
+        )}
       </div>
     );
   }

@@ -3,7 +3,7 @@
     box-shadow: 0 1px 6px rgb(24, 24, 32);
     font-family: "NTR", sans-serif;
     font-weight: 600;
-    padding: 10px 60px !important;
+    padding: 5px 60px !important;
     line-height: 2;
     font-size: 1.1rem;
     backdrop-filter: blur(24px);
@@ -17,7 +17,7 @@
 
 .navbar-at-top {
   box-shadow:none !important;
-  padding: 20px 60px !important;
+  padding: 15px 60px !important;
 }
 .navbar-animated.navbar-hidden {
   transform: translateY(-100%);

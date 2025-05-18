@@ -1,15 +1,32 @@
-"use client";
-
-import { Points, PointMaterial } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
-import * as random from "maath/random";
-import { useState, useRef, Suspense } from "react";
+import { useRef, useMemo, Suspense } from "react";
+import * as THREE from "three";
 
-export const StarBackground = (props) => {
-  const ref = useRef(null);
-  const [sphere] = useState(() =>
-    random.inSphere(new Float32Array(5000), { radius: 1.2 })
-  );
+// Stardust component
+function Stardust({ count = 800 }) {
+  const ref = useRef();
+  const { positions, sizes, opacities } = useMemo(() => {
+    const positions = [];
+    const sizes = [];
+    const opacities = [];
+    for (let i = 0; i < count; i++) {
+      const phi = Math.acos(2 * Math.random() - 1);
+      const theta = 2 * Math.PI * Math.random();
+      const r = 1.2 * Math.cbrt(Math.random());
+      positions.push(
+        r * Math.sin(phi) * Math.cos(theta),
+        r * Math.sin(phi) * Math.sin(theta),
+        r * Math.cos(phi)
+      );
+      sizes.push(0.004 + Math.random() * 0.012);
+      opacities.push(0.5 + Math.random() * 0.5);
+    }
+    return {
+      positions: new Float32Array(positions),
+      sizes: new Float32Array(sizes),
+      opacities: new Float32Array(opacities),
+    };
+  }, [count]);
 
   useFrame((_, delta) => {
     if (ref.current) {
@@ -19,25 +36,44 @@ export const StarBackground = (props) => {
   });
 
   return (
-    <group rotation={[0, 0, Math.PI / 4]}>
-      <Points
-        ref={ref}
-        stride={3}
-        positions={sphere}
-        frustumCulled
-        {...props}
-      >
-        <PointMaterial
-          transparent
-          color="#fff"
-          size={0.002}
-          sizeAttenuation
-          depthWrite={false}
-        />
-      </Points>
-    </group>
+    <points ref={ref}>
+      <bufferGeometry>
+        <bufferAttribute attach="attributes-position" count={positions.length / 3} array={positions} itemSize={3} />
+        <bufferAttribute attach="attributes-size" count={sizes.length} array={sizes} itemSize={1} />
+        <bufferAttribute attach="attributes-opacity" count={opacities.length} array={opacities} itemSize={1} />
+      </bufferGeometry>
+      <shaderMaterial
+        transparent
+        depthWrite={false}
+        vertexShader={`
+          attribute float size;
+          attribute float opacity;
+          varying float vOpacity;
+          void main() {
+            vOpacity = opacity;
+            vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+            gl_PointSize = size * 100.0 / length(mvPosition.xyz);
+            gl_Position = projectionMatrix * mvPosition;
+          }
+        `}
+        fragmentShader={`
+          varying float vOpacity;
+          void main() {
+            float d = length(gl_PointCoord - vec2(0.5));
+            if (d > 0.5) discard;
+            gl_FragColor = vec4(1.0, 1.0, 1.0, vOpacity * (1.0 - step(0.5, d)));
+          }
+        `}
+      />
+    </points>
   );
-};
+}
+
+export const StarBackground = (props) => (
+  <group rotation={[0, 0, Math.PI / 4]}>
+    <Stardust count={1500} />
+  </group>
+);
 
 export const StarsCanvas = () => (
   <div
