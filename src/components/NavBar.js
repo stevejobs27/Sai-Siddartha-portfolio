@@ -4,6 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import "../styles/NavBar.css";
 import logo from "../assets/logo.png";
+import Icon from "./icons/icon"; // Import your Icon component
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -11,7 +12,7 @@ class NavBar extends React.Component {
     this.state = {
       show: true,
       lastScrollY: window.scrollY,
-      atTop: window.scrollY === 0
+      atTop: window.scrollY === 0,
     };
     this.handleScroll = this.handleScroll.bind(this);
   }
@@ -27,31 +28,36 @@ class NavBar extends React.Component {
   handleScroll() {
     const { lastScrollY } = this.state;
     const currentScrollY = window.scrollY;
-
-    // Track if at top
     const atTop = currentScrollY === 0;
 
     if (currentScrollY > lastScrollY && currentScrollY > 60) {
-      // Scrolling down
       this.setState({ show: false, lastScrollY: currentScrollY, atTop });
     } else {
-      // Scrolling up or at top
       this.setState({ show: true, lastScrollY: currentScrollY, atTop });
     }
   }
 
   render() {
     const { show, atTop } = this.state;
+    const { showStars, setShowStars } = this.props; // Receive from parent
+
     return (
       <Navbar
         fixed="top"
         className={`bg-body-tertiary navbar-animated${show ? " navbar-visible" : " navbar-hidden"}${atTop ? " navbar-at-top" : ""}`}
         style={{
           transition: "transform 0.3s cubic-bezier(0.4,0,0.2,1), padding 0.3s, box-shadow 0.3s",
-          zIndex: 1000
+          zIndex: 1000,
         }}
       >
-        <Container fluid style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <Container
+          fluid
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
           <Navbar.Brand href="Home">
             <img
               src={logo}
@@ -70,6 +76,14 @@ class NavBar extends React.Component {
               <Nav.Link href="#contact">Contact</Nav.Link>
             </Nav>
           </Navbar.Collapse>
+          <button
+            className={`star-btn navbar-star-btn${showStars ? " star-active" : ""}`}
+            onClick={() => setShowStars((prev) => !prev)}
+            title={showStars ? "Disable Background" : "Enable Background"}
+            type="button"
+          >
+            <Icon name="Power" />
+          </button>
         </Container>
       </Navbar>
     );

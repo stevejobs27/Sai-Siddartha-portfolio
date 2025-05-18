@@ -19,7 +19,7 @@ function App() {
   return (
     <div className="App">
       {showStars && <StarsCanvas />}
-      <NavBar />
+      <NavBar showStars={showStars} setShowStars={setShowStars} />
       <SideNavBar showStars={showStars} setShowStars={setShowStars} />
       <div id="content">
         <Intro />

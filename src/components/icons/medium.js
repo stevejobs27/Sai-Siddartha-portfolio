@@ -8,7 +8,7 @@ const IconMedium = () => (
   fill= "none"
   viewBox="0 0 24 24"
   stroke="currentColor"
-  strokeWidth="1.5"
+  strokeWidth="1.2"
   strokeLinecap="round"
   strokeLinejoin="round"
   className="feather feather-Medium"

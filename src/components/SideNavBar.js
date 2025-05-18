@@ -14,6 +14,9 @@ export default function SideNavBar({ showStars, setShowStars }) {
       <a href="https://medium.com/@rafsanahmed2828" title="Medium" target="_blank" rel="noopener noreferrer">
         <Icon name="Medium" />
       </a>
+      <a href="mailto:rafsanahmed2828@gmail.com" title="Email" target="_blank" rel="noopener noreferrer">
+        <Icon name="Email" />
+      </a>
       <div className="side-navbar-divider"></div>
       <button
         className={`star-btn${showStars ? " star-active" : ""}`}

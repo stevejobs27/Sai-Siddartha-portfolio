@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import IconEmail from './email';
 import IconExternal from './external';
 import IconFolder from './folder';
 import IconFork from './fork';
@@ -11,6 +12,8 @@ import IconPower from './power';
 
 const Icon = ({ name }) => {
   switch (name) {
+    case 'Email':
+      return <IconEmail />;
     case 'External':
       return <IconExternal />;
     case 'Folder':

@@ -9,7 +9,7 @@ const IconLinkedin = () => (
     stroke="currentColor"
     width="1.25em"
     height="1.25em"
-    strokeWidth="2"
+    strokeWidth="1.5"
     strokeLinecap="round"
     strokeLinejoin="round"
     className="feather feather-linkedin">
