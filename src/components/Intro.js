@@ -1,3 +1,4 @@
+// ...existing imports...
 import React from "react";
 import "../styles/Intro.css";
 import Typist from "react-typist";
@@ -17,11 +18,14 @@ class Intro extends React.Component {
       expanded: true,
       activeKey: "1",
       visible: true,
-      randomSpiralId: window.performance.navigation.type === 1 ? randomId : defaultId, // Use randomId only on refresh
+      randomSpiralId: window.performance.navigation.type === 1 ? randomId : defaultId,
+      showPopup: false, // <-- add popup state
     };
 
     this.handleSelect = this.handleSelect.bind(this);
     this.handleCircleClick = this.handleCircleClick.bind(this);
+    this.handlePopup = this.handlePopup.bind(this);
+    this.closePopup = this.closePopup.bind(this);
   }
 
   handleSelect(eventKey) {
@@ -38,41 +42,76 @@ class Intro extends React.Component {
     this.setState({ randomSpiralId: newId });
   }
 
+  handlePopup() {
+    this.setState({ showPopup: true });
+  }
+
+  closePopup() {
+    this.setState({ showPopup: false });
+  }
+
   render() {
     const { showStars } = this.props;
+    const { showPopup } = this.state;
 
     return (
       <div id="intro">
+        <Typist
+          avgTypingDelay={120}
+          cursor={{ show: true, blink: true, hideWhenDone: true, hideWhenDoneDelay: 0 }}
+        >
+          <span className="intro-title">
+            {"hey, world! i'm "}
+            <span className="intro-name">{"rafsan."}</span>
+          </span>
+        </Typist>
+        <div className="intro-subtitle">
+          I turn curiosity into insights and data into stories.
+        </div>
         <CircleAnimations
           showid={this.state.randomSpiralId}
           onCircleClick={this.handleCircleClick}
         />
-        <Typist avgTypingDelay={120} 
-                cursor={{ show: true, blink: true, hideWhenDone: true, hideWhenDoneDelay: 0 }}>
-          <span className="intro-title">
-            {"hi, "}
-            <span className="intro-name">{"rafsan"}</span>
-            {" here."}
-          </span>
-        </Typist>
         <FadeInSection>
-          <div className="intro-subtitle">I like to clean and build stuff with data</div>
           <div className="intro-desc">
             I'm an aspiring Data Analyst based in Toronto, Canada. Passionate about using data to
             drive business decisions and innovation. Eager to leverage my skills in leading
             industries to create meaningful impact.
           </div>
         </FadeInSection>
+        <span className="intro-click-here">
+          Click the Power Icon for something interesting!
+        </span>
         {showStars && (
           <Typist
             avgTypingDelay={50}
-            className={`stars-typist${showStars ? " visible" : " hidden"}`}
+            className="stars-typist"
             cursor={{ show: true, blink: true, hideWhenDone: true, hideWhenDoneDelay: 0 }}
           >
-            <span className="intro-stars-tip">
-              Each star represents a unique data point in the vast ocean of data.
+            <span>
+              Why the space theme
+              <span
+                className="intro-question-mark"
+                onClick={this.handlePopup}
+                title="Click to learn more"
+              > ?</span>
             </span>
           </Typist>
+        )}
+        {showPopup && (
+          <div
+            className="intro-popup-overlay"
+            onClick={this.closePopup}
+          >
+          <div
+            className="intro-popup"
+            onClick={e => e.stopPropagation()}
+          >
+          <span className="popup-text">
+            Each star represents a unique data point in the vast ocean of data.
+          </span>
+          </div>
+          </div>
         )}
       </div>
     );

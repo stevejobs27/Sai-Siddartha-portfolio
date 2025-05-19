@@ -1,15 +1,16 @@
 :root {
-  --purple: #1c0a29; /* Using */
-  --linear-gradient: linear-gradient(to bottom,#10021a 0%,#060e1f 20%,#100716 40%, #0E192D 75%,#100716 100%); /* Using */
+  --black-opacity: hsla(240, 30%, 4%, 0.103); /* NavBar */
+  --linear-gradient: linear-gradient(to bottom,#0d0b03 0%,#060e1f 20%,#11111f 40%, #060e1f 90%,#07070d 100%); /* Page Background Color */
+  --green-bright: #ffe45e; /* Text, Glow, Tags */
+  --off-white: #d3d3d3; /* TEXT MAIN */
+  --shadow: 0 1px 4px #242121a8; /* Shadow */
+  --transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
   --navy: #0E192D; /* Using */
   --light-grey: #3d3d3d; /* Using */
   --lightest-grey: #a0a0a0; /* Using */
   --navy-shadow: rgba(26, 55, 100, 0.7);
   --slate: #8892b0;
-  --light-slate: #73798d;
-  --off-white: #ccd6f6;
-  --white: #e6f1ff;
-  --green-bright: hsl(160, 76%, 52%);
+  --green-bright: #ffe45e;
   --green-tint: rgba(100, 255, 218, 0.1);
-  --transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
+  
 }

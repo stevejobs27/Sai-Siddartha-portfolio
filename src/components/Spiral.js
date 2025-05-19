@@ -437,8 +437,8 @@ function setupFibonacciConcentric() {
   // Generate a hue wheel for smooth color animation
 function hueWheel(steps) {
   let colors = [];
-  const startHue = 160;   // Start at green
-  const endHue = 200;     // End at blue-violet (avoid pink/red/yellow)
+  const startHue = 30; 
+  const endHue = 90;  
   const sat = 76;
   const light = 52;
   for (let i = 0; i <= steps; i++) {

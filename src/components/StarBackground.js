@@ -1,6 +1,5 @@
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useRef, useMemo, Suspense } from "react";
-import * as THREE from "three";
 
 // Stardust component
 function Stardust({ count = 800 }) {
@@ -30,8 +29,8 @@ function Stardust({ count = 800 }) {
 
   useFrame((_, delta) => {
     if (ref.current) {
-      ref.current.rotation.x -= delta / 10;
-      ref.current.rotation.y -= delta / 15;
+      ref.current.rotation.x -= delta / 40;
+      ref.current.rotation.y -= delta / 60;
     }
   });
 

@@ -47,7 +47,7 @@ class About extends React.Component {
       <div id="about">
         <FadeInSection>
           <div className="section-header ">
-            <span className="section-title">About Me</span>
+            <span className="section-title">My Story</span>
           </div>
           <div className="about-content">
             <div className="about-description">
@@ -65,7 +65,7 @@ class About extends React.Component {
               {[two]}
             </div>
             <div className="about-image">
-              <img alt="Rafsan Ahmed" src={"/assets/me4.jpg"} />
+              <img alt="Rafsan Ahmed" src={"/assets/me2.jpg"} />
             </div>
           </div>
         </FadeInSection>

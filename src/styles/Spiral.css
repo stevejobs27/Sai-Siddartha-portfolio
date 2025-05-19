@@ -28,9 +28,9 @@ h1 {
     transform: scale(0.95);
   }
 }
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .spiral-container {
-    padding-top: 50px;
+    padding-top: 5px;
     transform: scale(0.95);
   }
 }
@@ -39,11 +39,11 @@ h1 {
   position: center;
   background: radial-gradient(ellipse at center, #070a14 0%, #000000ee 65%);
   border-radius: 50%;
-  border: #23583e 1px solid;
-  box-shadow: 0 0 20px 4px rgba(150, 95, 196, 0.15),
-              0 0 8px 2px rgba(38,226,169,0.15);
-  width: 200px;
-  height: 200px;
+  border: #585423c7 1px solid;
+  box-shadow: 0 0 20px 4px rgba(116, 132, 35, 0.15),
+              0 0 8px 2px rgba(226, 213, 38, 0.15);
+  width: 220px;
+  height: 220px;
   margin-bottom: 70px;
   display: flex;
   flex-direction: column;
@@ -69,9 +69,9 @@ h1 {
 
 .animation-container:hover,
 .animation-container:active {
-  border-color: rgba(255, 255, 255, 0.3);
+  border: #585423c7 1px solid;
   transform: scale(0.95);
-  filter: drop-shadow(0 0 1px rgba(0, 255, 85, 0.6));
+  filter: drop-shadow(0 0 1px rgba(226, 213, 38, 0.5));
   transition: var(--transition);
 }
 

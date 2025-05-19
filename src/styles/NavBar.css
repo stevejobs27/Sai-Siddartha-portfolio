@@ -1,23 +1,22 @@
 .navbar {
-    background: rgba(22, 2, 34, 0.1);
-    box-shadow: 0 1px 6px rgb(24, 24, 32);
+    background-color: var(--black-opacity);
     font-family: "NTR", sans-serif;
     font-weight: 600;
-    padding: 5px 60px !important;
-    line-height: 2;
+    padding: 10px 60px !important;
     font-size: 1.1rem;
     backdrop-filter: blur(24px);
   }
   
 
 .navbar-animated {
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.24);
+  box-shadow: var(--shadow);
   transition: var(--transition);
 }
 
 .navbar-at-top {
   box-shadow:none !important;
   padding: 15px 60px !important;
+  border-bottom: none !important;
 }
 .navbar-animated.navbar-hidden {
   transform: translateY(-100%);
@@ -50,6 +49,7 @@
 .logo {
     display: flex;
     align-items: center;
+    margin: 0px -10px;
 }
 
 .logo:hover,
@@ -62,27 +62,22 @@
 @media (max-width: 1200px) {
   .navbar {
       margin-left: 0px;
-      padding: 10px 30px !important;
-      background: rgba(22, 2, 34, 0.1);
-      box-shadow: 0 1px 6px rgb(24, 24, 32);
     }
-  .navbar-at-top {
-  box-shadow: none !important;
-  padding: 20px 30px !important;
-}
   .navbar-nav .nav-link {
-      color: var(--off-white) !important;
       margin: 0 auto;
     }
-  .logo .navbar-nav.me-auto {
+  .navbar-nav.me-auto {
       display: flex;
+      
     }
+  .logo {
+    margin: 0px -30px;
+  }
 }
 
 @media only screen and (max-width: 600px) {
   .navbar {
       padding: 10px 20px !important;
-      background: rgba(22, 2, 34, 0.1);
       box-shadow: 0 1px 6px rgb(24, 24, 32);
       align-items: center;
       justify-content: center;
@@ -94,10 +89,15 @@
       justify-content: center;
 }
   .navbar-nav .nav-link {
+      font-size: 15px;
       color: var(--off-white) !important;
     }
-  .logo .navbar-nav.me-auto {
+  .navbar-nav.me-auto {
       display: flex;
+    }
+
+  .logo {
+      margin: 0;
     }
   .navbar-star-btn {
       display: flex;
@@ -105,11 +105,25 @@
       justify-content: center;
       background: none;
       border: none;
-      padding-right: 10px;
-      margin: 0 10px 0 5px;
+      margin: 0 5px 0 5px;
       color: var(--off-white);
       font-size: 0.9rem;
       cursor: pointer;
     }
-  
+  .navbar-star-btn:hover {
+      color: var(--green-bright) !important;
+      filter: drop-shadow(0 3px 4px rgba(0, 255, 85, 0.5));
+      scale:1.1;
+      transition: var(--transition);
+    }
+  .navbar-star-divider:before {
+      content: "";
+      width: 1.5px;
+      height: 20px; /* or 100% if you want it to stretch */
+      background-color: var(--green-bright);
+      filter: drop-shadow(0 3px 4px rgb(0, 255, 85));
+      display: flex;
+      margin: 10px 10px;
+      border-radius: 2px;
+    }
 }
