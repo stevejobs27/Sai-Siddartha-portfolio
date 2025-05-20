@@ -82,7 +82,7 @@ const JobList = () => {
   const [value, setValue] = React.useState(0);
 
   const experienceItems = {
-    Google: {
+    Reflect: {
       jobTitle: "Data Analyst @",
       duration: "JUL 2025 - PRESENT",
       desc: [
@@ -106,13 +106,6 @@ const JobList = () => {
         "Leveraged WebRTC to develop and maintain a Node.js online video-streaming platform in real-time competitive-mode games to research the effects of active stimulation for those suffering from dementia."
       ]
     },
-    // TDSB: {
-    //   jobTitle: "Software Engineer @",
-    //   duration: "SEPT 2019 - DEC 2020",
-    //   desc: [
-    //     "Co-developed homework management software integrable with Google Classroom by utilizing the Python’s Flask micro-framework for the back-end API and Vue.js for the front-end UI, in order to translate business requirements into a functional full-stack application."
-    //   ]
-    // },
     HealthMate: {
       jobTitle: "Technical Lead @",
       duration: "SEP 2022 - FEB 2023",

@@ -49,6 +49,7 @@ export default function CircleAnimations({ showid, onCircleClick }) {
               key={anim.id}
               onClick={onCircleClick}
               style={{ cursor: "pointer" }}
+              title={anim.title}
             >
               <div className="animation-title">{anim.title}</div>
               <div id={anim.id} className="circle-container"></div>

@@ -6,12 +6,12 @@ import "react-typist/dist/Typist.css";
 import FadeInSection from "./FadeInSection";
 import CircleAnimations from "./CircleAnimations";
 
-const spiralIds = ["anim4", "anim5", "anim6", "anim8", "anim9", "anim10", "anim11", "anim12"];
+const spiralIds = ["anim1", "anim3", "anim4", "anim5", "anim6", "anim8", "anim9", "anim10", "anim11", "anim12"];
 
 class Intro extends React.Component {
   constructor() {
     super();
-    const defaultId = "anim12";
+    const defaultId = "anim10";
     const randomId = spiralIds[Math.floor(Math.random() * spiralIds.length)];
 
     this.state = {
@@ -56,32 +56,36 @@ class Intro extends React.Component {
 
     return (
       <div id="intro">
+        <CircleAnimations
+          showid={this.state.randomSpiralId}
+          onCircleClick={this.handleCircleClick}
+        />
         <Typist
           avgTypingDelay={120}
           cursor={{ show: true, blink: true, hideWhenDone: true, hideWhenDoneDelay: 0 }}
         >
           <span className="intro-title">
-            {"hey, world! i'm "}
+            {"hey, "}
+            <span className="intro-name">{"world! "}</span>
+          </span>
+            <span className="intro-title">
+            {"i'm "}
             <span className="intro-name">{"rafsan."}</span>
           </span>
         </Typist>
         <div className="intro-subtitle">
           I turn curiosity into insights and data into stories.
         </div>
-        <CircleAnimations
-          showid={this.state.randomSpiralId}
-          onCircleClick={this.handleCircleClick}
-        />
         <FadeInSection>
           <div className="intro-desc">
             I'm an aspiring Data Analyst based in Toronto, Canada. Passionate about using data to
             drive business decisions and innovation. Eager to leverage my skills in leading
             industries to create meaningful impact.
           </div>
-        </FadeInSection>
-        <span className="intro-click-here">
+          <span className="intro-click-here">
           Click the Power Icon for something interesting!
-        </span>
+          </span>
+        </FadeInSection>
         {showStars && (
           <Typist
             avgTypingDelay={50}

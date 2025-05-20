@@ -13,7 +13,7 @@ function setupPulsatingCircles() {
   center.style.left = "calc(50% - 4px)";
   center.style.top = "calc(50% - 4px)";
   c.appendChild(center);
-  for (let r = 0; r < 4; r++) {
+  for (let r = 0; r < 3; r++) {
     const radius = 15 + r * 15,
       count = 6 + r * 3;
     for (let i = 0; i < count; i++) {
@@ -48,7 +48,7 @@ for (let r = 0; r < 3; r++) {
     oc.className = "orbit-container";
     oc.style.animationDuration = `${8 + r * 4}s`;
     oc.style.animationDirection = r % 2 ? "reverse" : "normal";
-    const radius = 20 + r * 20,
+    const radius = 12 + r * 20,
     count = 6 + r * 3;
     for (let i = 0; i < count; i++) {
     const d = document.createElement("div");
@@ -77,7 +77,7 @@ cd.style.width = cd.style.height = "6px";
 cd.style.left = "calc(50% - 3px)";
 cd.style.top = "calc(50% - 3px)";
 c.appendChild(cd);
-for (let i = 0; i < 5; i++) {
+for (let i = 0; i < 4; i++) {
     const rad = 15 + i * 15,
     count = 8 + i * 4;
     for (let j = 0; j < count; j++) {
@@ -112,11 +112,11 @@ cd.style.left = "calc(50% - 2.5px)";
 cd.style.top = "calc(50% - 2.5px)";
 cd.style.background = "rgba(255,255,255,0.9)";
 wrap.appendChild(cd);
-for (let r = 0; r < 8; r++) {
+for (let r = 0; r < 6; r++) {
     const ring = document.createElement("div");
     ring.className = "concentric-ring";
     ring.style.animationDuration = `${3 * Math.pow(1.5, r)}s`;
-    const radius = 10 + r * 10,
+    const radius = 10 + r * 9,
     circ = 2 * Math.PI * radius;
     const count = Math.max(6, Math.floor(circ / 10));
     for (let i = 0; i < count; i++) {
@@ -145,9 +145,9 @@ cd.style.width = cd.style.height = "8px";
 cd.style.left = "calc(50% - 4px)";
 cd.style.top = "calc(50% - 4px)";
 c.appendChild(cd);
-for (let r = 0; r < 5; r++) {
+for (let r = 0; r < 3; r++) {
     const rad = 20 + r * 15,
-    count = 16 + r * 4;
+    count = 12 + r * 4;
     for (let i = 0; i < count; i++) {
     const d = document.createElement("div");
     d.className = "dot circular-wave-dot";
@@ -181,7 +181,7 @@ for (let g = 0; g < 3; g++) {
     lc.className = "line-container";
     lc.style.animationDuration = `${8 + g * 4}s`;
     lc.style.animationDirection = g % 2 ? "reverse" : "normal";
-    for (let i = 0; i < 12; i++) {
+    for (let i = 0; i < 10; i++) {
     const line = document.createElement("div");
     line.className = "expanding-line";
     line.style.animationDelay = `${(i / 12) * 2}s`;
@@ -261,7 +261,7 @@ for (let i = 0; i < numRipples; i++) {
 
 // Create dots that will react to the ripple
 const numRings = 6;
-const maxRadius = 80;
+const maxRadius = 50;
 
 for (let ring = 0; ring < numRings; ring++) {
     const radius = 15 + (ring * (maxRadius - 15)) / (numRings - 1);
@@ -280,7 +280,7 @@ for (let ring = 0; ring < numRings; ring++) {
     d.className = "ripple-wave-dot";
 
     // Size decreases as we move outward
-    const size = 5 - ring * 0.5;
+    const size = 3 - ring * 0.5;
     d.style.width = d.style.height = `${size}px`;
     d.style.left = `calc(50% + ${x}px - ${size / 2}px)`;
     d.style.top = `calc(50% + ${y}px - ${size / 2}px)`;
@@ -315,11 +315,11 @@ function setupFibonacciSpiral() {
   cd.style.width = cd.style.height = "6px";
   cd.style.left = "calc(50% - 3px)";
   cd.style.top = "calc(50% - 3px)";
-  cd.style.background = "hsl(162,76%,52%)";
+  cd.style.background = "hsl(50, 0%, 100.00%)";
   wrap.appendChild(cd);
   const golden = Math.PI * (3 - Math.sqrt(5)),
     N = 100,
-    scale = 2;
+    scale = 1.3;
 
   // Store dot references and their phase
   const dots = [];
@@ -328,7 +328,7 @@ function setupFibonacciSpiral() {
       rad = scale * Math.sqrt(i) * 4;
     const x = Math.cos(angle) * rad,
       y = Math.sin(angle) * rad;
-    const sz = 7.5 - (i / N) * 1.5;
+    const sz = 4 - (i / N) * 1.5;
     if (sz < 1) continue;
     const d = document.createElement("div");
     d.className = "fibonacci-dot";
@@ -341,10 +341,10 @@ function setupFibonacciSpiral() {
   }
 
   // Animate color using HSL, matching sunflower spiral's range
-  const startHue = 160;
-  const endHue = 200;
-  const sat = 76;
-  const light = 52;
+  const startHue = 0;
+  const endHue = 360;
+  const sat = 0;
+  const light = 100;
   const duration = 30; // seconds for a full cycle
 
   function animateColors(time) {
@@ -368,10 +368,10 @@ c.innerHTML = "";
 const w = document.createElement("div");
 w.className = "halftone-container";
 c.appendChild(w);
-const radii = [20, 40, 60, 80];
+const radii = [12, 24, 36, 48];
 radii.forEach((radius, i) => {
     const count = 12 + i * 8,
-    size = 6 - i;
+    size = 3 - i;
     for (let j = 0; j < count; j++) {
     const d = document.createElement("div");
     d.className = "halftone-dot";
@@ -397,7 +397,7 @@ w.className = "silver-container";
 c.appendChild(w);
 const N = 120,
     angleStep = Math.PI * (2 - Math.sqrt(2)),
-    scale = 1.2;
+    scale = 0.8;
 for (let i = 0; i < N; i++) {
     const angle = i * angleStep,
     rad = scale * Math.sqrt(i) * 6;
@@ -439,8 +439,8 @@ function hueWheel(steps) {
   let colors = [];
   const startHue = 30; 
   const endHue = 90;  
-  const sat = 76;
-  const light = 52;
+  const sat = 0;
+  const light = 75;
   for (let i = 0; i <= steps; i++) {
     const hue = startHue + ((endHue - startHue) * i) / steps;
     colors.push(`hsl(${hue},${sat}%,${light}%)`);
@@ -461,7 +461,7 @@ function hueWheel(steps) {
     circle.setAttribute("cx", x);
     circle.setAttribute("cy", y);
     circle.setAttribute("r", DOT_RADIUS);
-    circle.setAttribute("fill", "hsl(0, 0.00%, 0.00%)");
+    circle.setAttribute("fill", "hsl(0, 0.00%, 100.00%)");
     circle.setAttribute("opacity", "0.6");
     svg.appendChild(circle);
 

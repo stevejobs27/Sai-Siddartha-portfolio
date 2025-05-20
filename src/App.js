@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Intro from "./components/Intro";
-import Experience from "./components/Experience";
 import About from "./components/About";
+import Timeline from "./components/Timeline";
+import Experience from "./components/Experience";
 import Projects from "./components/Projects";
 import Credits from "./components/Credits";
 import NavBar from "./components/NavBar";
@@ -24,6 +25,7 @@ function App() {
       <div id="content">
         <Intro showStars={showStars} setShowStars={setShowStars}/>
         <About />
+        <Timeline />
         <Experience />
         <Featured />
         <Projects />

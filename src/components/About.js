@@ -2,6 +2,8 @@ import React from "react";
 import "../styles/About.css";
 import FadeInSection from "./FadeInSection";
 
+// <div className="about-image"><img alt="Rafsan Ahmed" src={"/assets/me.jpg"}/></div> //
+
 class About extends React.Component {
   constructor() {
     super();
@@ -47,7 +49,7 @@ class About extends React.Component {
       <div id="about">
         <FadeInSection>
           <div className="section-header ">
-            <span className="section-title">My Story</span>
+            <span className="section-title">About Me</span>
           </div>
           <div className="about-content">
             <div className="about-description">
@@ -63,9 +65,6 @@ class About extends React.Component {
                 })}
               </ul>
               {[two]}
-            </div>
-            <div className="about-image">
-              <img alt="Rafsan Ahmed" src={"/assets/me2.jpg"} />
             </div>
           </div>
         </FadeInSection>

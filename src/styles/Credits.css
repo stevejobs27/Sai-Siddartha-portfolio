@@ -5,14 +5,14 @@
 
 .ending-credits {
   font-family: "NTR", sans-serif;
-  color: var(--green-bright);
+  color: var(--yellow-bright);
   text-align: center;
   width: 100%;
   font-size: 16px;
 }
 
 .ending-credits a {
-  color: var(--green-bright) !important;
+  color: var(--yellow-bright) !important;
   text-decoration: underline;
   font-family: inherit;
 }

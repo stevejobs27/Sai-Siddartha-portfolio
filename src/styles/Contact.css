@@ -16,7 +16,7 @@
 .contact-textarea {
   width: 100%;
   border-radius: 8px;
-  border: 1px solid var(--green-bright);
+  border: 1px solid var(--yellow-bright);
   padding: 12px;
   font-size: 1rem;
   resize: vertical;
@@ -31,7 +31,7 @@
 }
 
 .contact-send-btn {
-  background: var(--green-bright);
+  background: var(--yellow-bright);
   color: var(--navy, #18111d);
   border: none;
   border-radius: 8px;
