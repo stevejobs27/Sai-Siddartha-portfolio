@@ -5,7 +5,7 @@
   rafsanahmed.com - v1
 </h1>
 <p align="center">
-  The first iteration of <a href="https://rafsanahmed.com" target="_blank">rafsanahmed.com</a> built with React.js leveraging Material UI.
+  The first iteration of my personal website <a href="https://rafsanahmed.com" target="_blank">rafsanahmed.com</a> built with React.js. /* Work in Progress. */
 </p>
 
 ## 🛠 set-up
