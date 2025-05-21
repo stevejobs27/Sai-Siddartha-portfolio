@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/rafsanahmed28/Rafsan/9281677f51765bf8cc5ce618ed34cc2ec97992f9/public/logo.svg", height = 85px, width=auto/>
+  <img src="https://raw.githubusercontent.com/rafsanahmed28/Rafsan/3af2a6fad474f2a1316759c4bc40df528b5e168d/public/logo.svg", height = 85px, width=auto/>
 </p>
 <h1 align="center">
   rafsanahmed.com - v1
