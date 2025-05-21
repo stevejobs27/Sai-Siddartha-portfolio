@@ -3,10 +3,10 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin: auto;
+  margin: 0 auto;
   max-width: 1000px;
-  margin-top: 120px;
-  min-height: 100vh
+  padding-top: 150px;
+  min-height: 100vh;
 }
 
 .Typist {
@@ -16,7 +16,7 @@
   margin-top: -30px;
 }
 .Typist .Cursor--blinking {
-  color: var(--yellow-bright);
+  color: var(--green-bright);
   padding-left: 4px;
 }
 
@@ -29,7 +29,7 @@
 }
 .intro-name {
   font-family: "NTR", sans-serif;
-  color: var(--yellow-bright);
+  color: var(--green-bright);
   font-weight: bold;
   font-size: 72px;
 }
@@ -45,7 +45,7 @@
 
 .intro-subtitle-name {
   font-family: "NTR", sans-serif;
-  color: var(--yellow-bright);
+  color: var(--green-bright);
   font-size: 36px;
 }
 
@@ -62,8 +62,8 @@
 @media only screen and (max-width: 600px) {
   #intro {
     align-items: center;
-    margin-top: 60px;
     min-height: 80vh;
+    padding-top: 65px;
   }
 
   .intro-title {
@@ -83,7 +83,7 @@
     margin-top: 0px;  
   }
   .intro-subtitle-name {
-  color: var(--yellow-bright);
+  color: var(--green-bright);
   font-size: 20px;
 }
 
@@ -97,13 +97,6 @@
 
 @media only screen and (min-width: 2000px) {
   #intro {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  margin: auto;
-  max-width: 1000px;
-  margin-top: 300px;
-  min-height: 100vh
+    padding-top: 300px;
   }
 }

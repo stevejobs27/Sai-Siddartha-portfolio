@@ -12,6 +12,7 @@
   position: relative;
   z-index: 2;
 }
+
 .timeline-pipe-desktop { 
   position: absolute; 
   display: block; 
@@ -40,7 +41,7 @@
   width: 350px;
   margin: 10px auto;
   text-align: left;
-  transition: transform 0.3s;
+  transition: var(--transition);
 }
 
 .timeline-item.left {
@@ -61,12 +62,12 @@
 }
 .timeline-title {
   font-weight: bold;
-  color: var(--yellow-bright);
+  color: var(--green-bright);
   font-size: 28px;
 }
 .timeline-year {
   font-size: 24px;
-  color: var(--yellow-bright);
+  color: var(--green-bright);
 }
 .timeline-desc {
   color: var(--off-white);
@@ -85,7 +86,7 @@
 }
 .timeline-milestone-dot.active {
   r: 10;
-  fill: var(--yellow-bright);
+  fill: var(--green-bright);
   stroke-width: 5;
   animation: pulse 0.6s;
   filter: drop-shadow(0 0 18px #d7b134cc);
@@ -104,12 +105,11 @@
   fill: #fff;
   stroke: #fff;
   stroke-width: 8;
-  filter: drop-shadow(0 0 10px var(--yellow-bright));
+  filter: drop-shadow(0 0 10px var(--green-bright));
   transition: r 0.3s;
 }
 
 @media only screen and (max-width: 1200px) {
-
   .timeline-pipe-desktop { display: none; }
   .timeline-pipe-mobile { display: block;}
 
@@ -171,14 +171,9 @@
   .timeline-pipe-desktop { display: none; }
   .timeline-pipe-mobile { display: none;}
 
-  .timeline-list {
-    display: flex;
-    flex-direction: column;
-    gap: 60px;
-  }
-
   .timeline-item {
     background: var(--navy);
+    width: auto;
     padding: 20px;
     box-shadow: var(--shadow);
     border-radius: 20px;

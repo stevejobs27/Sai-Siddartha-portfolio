@@ -9,18 +9,18 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--yellow-bright);
+  background: #0d1422;
   border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--yellow-bright);
+  background: #0d1422;
   border-radius: 12px;
-  box-shadow: 0 0 12px var(--yellow-bright);
+  box-shadow: 0 0 12px #000000;
 }
 
 ::-webkit-scrollbar-corner {
-  background: var(--yellow-bright);
+  background: var(--green-bright);
 }
 
 
@@ -51,32 +51,10 @@ html {
 .App {
   font-family: "NTR", sans-serif;
   display: flex;
+  background: var(--linear-gradient);
   margin: auto;
 }
 
-.gradient {
-  top: 0;
-  left: 0;
-  z-index: -1; /* Make sure it's behind everything */
-  background: var(--linear-gradient);
-  background: radial-gradient(circle at 60% 40%, #04250f55 0%, transparent 60%),
-              linear-gradient(to bottom, #010b1d 0%, #081123 20%, #010b1d 40%, #081123 60%, #010b1d 80%);
-  background-blend-mode: lighten, lighten, lighten, normal;
-  background-size: 200% 200%, 180% 180%;
-  animation: gradient-fabric 3s ease-in-out alternate;
-}
-
-@keyframes gradient-animation {
-  0% {
-    background-position: 0% 100%;
-  }
-  50% {
-    background-position: 100% 0%;
-  }
-  100% {
-    background-position: 0% 100%;
-  }
-}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -84,7 +62,7 @@ html {
 
 a {
   text-decoration: none !important;
-  color: var(--yellow-bright) !important;
+  color: var(--green-bright) !important;
 }
 
 #content {
@@ -127,7 +105,7 @@ a {
   content: "";
   display: block;
   width: 300px;
-  margin-top: 40px;
+  margin-top: 30px;
   height: 1px;
   margin-left: 20px;
   background-color: var(--light-grey);
@@ -136,7 +114,7 @@ a {
 .section-title {
   font-family: "NTR", sans-serif;
   color: var(--off-white);
-  font-size: 48px;
+  font-size: 40px;
   font-weight: 650;
 }
 

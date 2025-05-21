@@ -16,8 +16,8 @@ function setupPulsatingCircles() {
 
   function hueWheel(steps) {
   let colors = [];
-  const startHue = 0;
-  const endHue = 360;
+  const startHue = 50;
+  const endHue = 200;
   const sat = 52;
   const light = 66;
   for (let i = 0; i <= steps; i++) {
@@ -29,9 +29,9 @@ function setupPulsatingCircles() {
   // Color wheel for the rings
   const colorArr = hueWheel(24);
 
-  for (let r = 0; r < 6; r++) {
+  for (let r = 0; r < 5; r++) {
     const radius = 15 + r * 15,
-      count = 6 + r * 3;
+      count = 7 + r * 3;
     for (let i = 0; i < count; i++) {
       const d = document.createElement("div");
       d.className = "dot pulse-dot";
@@ -190,33 +190,51 @@ function setupConcentricRotations() {
 }
 
 function setupCircularWaves() {
-const c = document.getElementById("anim5");
-if (!c) return;
-c.innerHTML = "";
-const cd = document.createElement("div");
-cd.className = "dot";
-cd.style.width = cd.style.height = "8px";
-cd.style.left = "calc(50% - 4px)";
-cd.style.top = "calc(50% - 4px)";
-c.appendChild(cd);
-for (let r = 0; r < 6; r++) {
-    const rad = 20 + r * 15,
-    count = 15 + r * 4;
-    for (let i = 0; i < count; i++) {
-    const d = document.createElement("div");
-    d.className = "dot circular-wave-dot";
-    const angle = (i / count) * 2 * Math.PI;
-    const x = Math.cos(angle) * rad,
-        y = Math.sin(angle) * rad;
-    const sz = 3 + r * 0.2;
-    d.style.width = d.style.height = `${sz}px`;
-    d.style.left = `calc(50% + ${x}px - ${sz / 2}px)`;
-    d.style.top = `calc(50% + ${y}px - ${sz / 2}px)`;
-    d.style.animationDelay = `${r * 0.2 + (i / count) * 0.5}s`;
-    d.style.background = `rgba(255,255,255,${(90 - r * 10) / 100})`;
-    c.appendChild(d);
+  const c = document.getElementById("anim5");
+  if (!c) return;
+  c.innerHTML = "";
+  const cd = document.createElement("div");
+  cd.className = "dot";
+  cd.style.width = cd.style.height = "8px";
+  cd.style.left = "calc(50% - 4px)";
+  cd.style.top = "calc(50% - 4px)";
+  c.appendChild(cd);
+
+  // Color wheel for the waves
+  function hueWheel(steps) {
+    let colors = [];
+    const startHue = 50;
+    const endHue = 200;
+    const sat = 52;
+    const light = 76;
+    for (let i = 0; i <= steps; i++) {
+      const hue = startHue + ((endHue - startHue) * i) / steps;
+      colors.push(`hsl(${hue},${sat}%,${light}%)`);
     }
-}
+    return colors;
+  }
+  const colorArr = hueWheel(24);
+
+  for (let r = 0; r < 5; r++) {
+    const rad = 20 + r * 15,
+      count = 15 + r * 4;
+    for (let i = 0; i < count; i++) {
+      const d = document.createElement("div");
+      d.className = "dot circular-wave-dot";
+      const angle = (i / count) * 2 * Math.PI;
+      const x = Math.cos(angle) * rad,
+        y = Math.sin(angle) * rad;
+      const sz = 3 + r * 0.2;
+      d.style.width = d.style.height = `${sz}px`;
+      d.style.left = `calc(50% + ${x}px - ${sz / 2}px)`;
+      d.style.top = `calc(50% + ${y}px - ${sz / 2}px)`;
+      d.style.animationDelay = `${r * 0.2 + (i / count) * 0.5}s`;
+      // Assign color from the wheel, offset by ring and dot index for variety
+      const colorIdx = (i + r * 4) % colorArr.length;
+      d.style.background = colorArr[colorIdx];
+      c.appendChild(d);
+    }
+  }
 }
 
 function setupExpandingLines() {
@@ -303,77 +321,93 @@ for (let y = 0; y < grid; y++) {
 }
 
 function setupRippleEffect() {
-const c = document.getElementById("anim8");
-if (!c) return;
-c.innerHTML = "";
+  const c = document.getElementById("anim8");
+  if (!c) return;
+  c.innerHTML = "";
 
-// Center dot
-const cd = document.createElement("div");
-cd.className = "dot";
-cd.style.width = cd.style.height = "8px";
-cd.style.left = "calc(50% - 4px)";
-cd.style.top = "calc(50% - 4px)";
-cd.style.background = "rgba(255,255,255,0.9)";
-cd.style.zIndex = "10";
-c.appendChild(cd);
+  // Center dot
+  const cd = document.createElement("div");
+  cd.className = "dot";
+  cd.style.width = cd.style.height = "8px";
+  cd.style.left = "calc(50% - 4px)";
+  cd.style.top = "calc(50% - 4px)";
+  cd.style.background = "rgba(255,255,255,0.9)";
+  cd.style.zIndex = "10";
+  c.appendChild(cd);
 
-// Ripple container
-const rc = document.createElement("div");
-rc.className = "ripple-container";
-c.appendChild(rc);
+  // Ripple container
+  const rc = document.createElement("div");
+  rc.className = "ripple-container";
+  c.appendChild(rc);
 
-// Create ripple rings
-const numRipples = 6;
-const rippleDuration = 4; // seconds
+  // Create ripple rings
+  const numRipples = 6;
+  const rippleDuration = 4; // seconds
 
-for (let i = 0; i < numRipples; i++) {
+  for (let i = 0; i < numRipples; i++) {
     const r = document.createElement("div");
     r.className = "ripple-ring";
     r.style.animationDelay = `${i * (rippleDuration / numRipples)}s`;
     rc.appendChild(r);
-}
+  }
 
-// Create dots that will react to the ripple
-const numRings = 6;
-const maxRadius = 80;
+  // Color wheel for the dots (same as halftone/circular waves)
+  function hueWheel(steps) {
+    let colors = [];
+    const startHue = 50;
+    const endHue = 200;
+    const sat = 52;
+    const light = 76;
+    for (let i = 0; i <= steps; i++) {
+      const hue = startHue + ((endHue - startHue) * i) / steps;
+      colors.push(`hsl(${hue},${sat}%,${light}%)`);
+    }
+    return colors;
+  }
+  const colorArr = hueWheel(24);
 
-for (let ring = 0; ring < numRings; ring++) {
-    const radius = 25 + (ring * (maxRadius - 15)) / (numRings - 1);
-    const numDots = 6 + ring * 3;
+  // Create dots that will react to the ripple
+  const numRings = 4;
+  const maxRadius = 60;
+
+  for (let ring = 0; ring < numRings; ring++) {
+    const radius = 30 + (ring * (maxRadius - 15)) / (numRings - 1);
+    const numDots = 9 + ring * 3;
 
     for (let i = 0; i < numDots; i++) {
-    const angle = (i / numDots) * 2 * Math.PI;
-    const x = Math.cos(angle) * radius;
-    const y = Math.sin(angle) * radius;
+      const angle = (i / numDots) * 2 * Math.PI;
+      const x = Math.cos(angle) * radius;
+      const y = Math.sin(angle) * radius;
 
-    // Calculate distance from center (normalized to 0-1)
-    const distanceFromCenter = Math.sqrt(x * x + y * y) / maxRadius;
+      // Calculate distance from center (normalized to 0-1)
+      const distanceFromCenter = Math.sqrt(x * x + y * y) / maxRadius;
 
-    // Create the dot
-    const d = document.createElement("div");
-    d.className = "ripple-wave-dot";
+      // Create the dot
+      const d = document.createElement("div");
+      d.className = "ripple-wave-dot";
 
-    // Size decreases as we move outward
-    const size = 3 - ring * 0.5;
-    d.style.width = d.style.height = `${size}px`;
-    d.style.left = `calc(50% + ${x}px - ${size / 2}px)`;
-    d.style.top = `calc(50% + ${y}px - ${size / 2}px)`;
+      // Size decreases as we move outward
+      const size = 3 - ring * 0.5;
+      d.style.width = d.style.height = `${size}px`;
+      d.style.left = `calc(50% + ${x}px - ${size / 2}px)`;
+      d.style.top = `calc(50% + ${y}px - ${size / 2}px)`;
 
-    // Set animation
-    d.style.animation = "rippleWave 1s infinite ease-in-out";
+      // Set animation
+      d.style.animation = "rippleWave 1s infinite ease-in-out";
 
-    // Delay based on distance from center - this creates the wave effect
-    // Multiply by rippleDuration to match the ripple timing
-    d.style.animationDelay = `${
+      // Delay based on distance from center - this creates the wave effect
+      // Multiply by rippleDuration to match the ripple timing
+      d.style.animationDelay = `${
         distanceFromCenter * (rippleDuration / 1.2)
-    }s`;
+      }s`;
 
-    // Opacity and color based on ring
-    d.style.background = `rgba(255,255,255,${(90 - ring * 10) / 100})`;
+      // Assign color from the wheel, offset by ring and dot index for variety
+      const colorIdx = (i + ring * 4) % colorArr.length;
+      d.style.background = colorArr[colorIdx];
 
-    c.appendChild(d);
+      c.appendChild(d);
     }
-}
+  }
 }
 
 
@@ -416,7 +450,7 @@ function setupFibonacciSpiral() {
 
   // Animate color using HSL, matching sunflower spiral's range
   const startHue = 120;
-  const endHue = 240;
+  const endHue = 200;
   const sat =52;
   const light = 56;
   const duration = 30; // seconds for a full cycle
@@ -436,45 +470,79 @@ function setupFibonacciSpiral() {
 }
 
 function setupHalftoneGradient() {
-const c = document.getElementById("anim10");
-if (!c) return;
-c.innerHTML = "";
-const w = document.createElement("div");
-w.className = "halftone-container";
-c.appendChild(w);
-const radii = [20, 40, 60, 80, 100];
-radii.forEach((radius, i) => {
-    const count = 12 + i * 8,
-    size = 5 - i;
-    for (let j = 0; j < count; j++) {
-    const d = document.createElement("div");
-    d.className = "halftone-dot";
-    d.style.width = d.style.height = `${size}px`;
-    const angle = (j / count) * 2 * Math.PI;
-    const x = Math.cos(angle) * radius,
-        y = Math.sin(angle) * radius;
-    d.style.left = `calc(50% + ${x}px - ${size / 2}px)`;
-    d.style.top = `calc(50% + ${y}px - ${size / 2}px)`;
-    d.style.animationDelay = `${(i * 0.3 + j / count).toFixed(2)}s`;
-    d.style.background = `rgba(255,255,255,${(90 - i * 15) / 100})`;
-    w.appendChild(d);
+  const c = document.getElementById("anim10");
+  if (!c) return;
+  c.innerHTML = "";
+  const w = document.createElement("div");
+  w.className = "halftone-container";
+  c.appendChild(w);
+
+  // Use the same color pattern as requested
+  function hueWheel(steps) {
+    let colors = [];
+    const startHue = 50;
+    const endHue = 200;
+    const sat = 52;
+    const light = 76;
+    for (let i = 0; i <= steps; i++) {
+      const hue = startHue + ((endHue - startHue) * i) / steps;
+      colors.push(`hsl(${hue},${sat}%,${light}%)`);
     }
-});
+    return colors;
+  }
+  const colorArr = hueWheel(24);
+
+  const radii = [20, 40, 60, 80];
+  radii.forEach((radius, i) => {
+    const count = 12 + i * 8,
+      size = 5 - i;
+    for (let j = 0; j < count; j++) {
+      const d = document.createElement("div");
+      d.className = "halftone-dot";
+      d.style.width = d.style.height = `${size}px`;
+      const angle = (j / count) * 2 * Math.PI;
+      const x = Math.cos(angle) * radius,
+        y = Math.sin(angle) * radius;
+      d.style.left = `calc(50% + ${x}px - ${size / 2}px)`;
+      d.style.top = `calc(50% + ${y}px - ${size / 2}px)`;
+      d.style.animationDelay = `${(i * 0.3 + j / count).toFixed(2)}s`;
+      // Assign color from the wheel, offset by ring and dot index for variety
+      const colorIdx = (j + i * 4) % colorArr.length;
+      d.style.background = colorArr[colorIdx];
+      w.appendChild(d);
+    }
+  });
 }
 
 function setupSilverSpiral() {
-const c = document.getElementById("anim11");
-if (!c) return;
-c.innerHTML = "";
-const w = document.createElement("div");
-w.className = "silver-container";
-c.appendChild(w);
-const N = 150,
+  const c = document.getElementById("anim11");
+  if (!c) return;
+  c.innerHTML = "";
+  const w = document.createElement("div");
+  w.className = "silver-container";
+  c.appendChild(w);
+  const N = 150,
     angleStep = Math.PI * (2 - Math.sqrt(2)),
-    scale = 1.2;
-for (let i = 0; i < N; i++) {
+    scale = 1.1;
+
+  // Use the same color pattern as halftone/circular waves
+  function hueWheel(steps) {
+    let colors = [];
+    const startHue = 50;
+    const endHue = 200;
+    const sat = 52;
+    const light = 76;
+    for (let i = 0; i <= steps; i++) {
+      const hue = startHue + ((endHue - startHue) * i) / steps;
+      colors.push(`hsl(${hue},${sat}%,${light}%)`);
+    }
+    return colors;
+  }
+  const colorArr = hueWheel(24);
+
+  for (let i = 0; i < N; i++) {
     const angle = i * angleStep,
-    rad = scale * Math.sqrt(i) * 6;
+      rad = scale * Math.sqrt(i) * 6;
     const size = 5 - (i / N) * 2;
     if (size < 1) continue;
     const d = document.createElement("div");
@@ -483,8 +551,11 @@ for (let i = 0; i < N; i++) {
     d.style.left = `calc(50% + ${Math.cos(angle) * rad}px - ${size / 2}px)`;
     d.style.top = `calc(50% + ${Math.sin(angle) * rad}px - ${size / 2}px)`;
     d.style.animationDelay = `${(i / N) * 2}s`;
+    // Assign color from the wheel, offset by index for variety
+    const colorIdx = i % colorArr.length;
+    d.style.background = colorArr[colorIdx];
     w.appendChild(d);
-}
+  }
 }
 
 // 12. Sunflower Spiral (perfect SVG + SMIL)
@@ -511,10 +582,10 @@ function setupFibonacciConcentric() {
   // Generate a hue wheel for smooth color animation
 function hueWheel(steps) {
   let colors = [];
-  const startHue = 0; 
-  const endHue = 360;  
-  const sat = 52;
-  const light = 76;
+    const startHue = 50;
+    const endHue = 200;
+    const sat = 52;
+    const light = 76;
   for (let i = 0; i <= steps; i++) {
     const hue = startHue + ((endHue - startHue) * i) / steps;
     colors.push(`hsl(${hue},${sat}%,${light}%)`);
