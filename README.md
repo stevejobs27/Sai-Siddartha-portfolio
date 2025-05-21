@@ -37,7 +37,7 @@
 | -------------- | -------------------------------------------------------------------- |
 | Black          | ![#030617](https://placehold.co/100x25/030617/ffffff?text=%23030617) |
 | Green Dark     | ![#17322E](https://placehold.co/100x25/17322E/ffffff?text=%2317322E) |
-| Green Bright   | ![#64D98A](https://placehold.co/100x25/64D98A/ffffff?text=%2364D98A) |
+| Green Bright   | ![#64D98A](https://placehold.co/100x25/64D98A/000000?text=%2364D98A) |
 | Beige          | ![#b3b3b3](https://placehold.co/100x25/b3b3b3/000000?text=%23b3b3b3) |
 | Navy           | ![#0E192D](https://placehold.co/100x25/0E192D/ffffff?text=%230E192D) |
 | Light Grey     | ![#3d3d3d](https://placehold.co/100x25/3d3d3d/ffffff?text=%233d3d3d) |
