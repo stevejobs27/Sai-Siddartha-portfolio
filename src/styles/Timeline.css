@@ -1,37 +1,40 @@
 #timeline {
   max-width: 1000px;
-  margin: 0 auto;         /* Center horizontally */
+  margin: 0 auto;
   padding-top: 100px;
 }
-
 .timeline-section {
   position: relative;
   min-height: 800px;
-  width: 100%;
-  margin: 0;
-  left: unset;
-  right: unset;
 }
 
 .timeline-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0px; /* Adjust this value for vertical spacing */
   position: relative;
   z-index: 2;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+}
+.timeline-pipe-desktop { 
+  position: absolute; 
+  display: block; 
+  stroke: #868585;
+  stroke-width: 8;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-.timeline-branch {
-  /* Show/hide or style as you wish */
-  stroke: #5f5f5f;
-  stroke-width: 5;
-  /* To hide: */
-  /* display: none; */
+.timeline-pipe-mobile { 
+  position: absolute; 
+  display: none; 
+  stroke: #868585;
+  stroke-width: 4;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  margin-top: 200px;
+  margin-left: -480px;
+  transform: scale(1.4);
 }
+
 
 .timeline-item {
   width: 350px;
@@ -53,7 +56,7 @@
 }
 
 .timeline-item.active {
-  transform: scale(1.2);
+  transform: scale(1.1);
   z-index: 2;
 }
 .timeline-title {
@@ -63,44 +66,19 @@
 }
 .timeline-year {
   font-size: 24px;
-  color: #d7b134;
+  color: var(--yellow-bright);
 }
 .timeline-desc {
-  color: #b3b3b3;
+  color: var(--off-white);
   font-size: 16px;
   word-break: break-word;
   max-width: 100%;
 }
 
-/* Timeline SVG & Pipe */
-.timeline-pipe-svg {
-  position: absolute;
-}
-.timeline-pipe {
-  stroke: #5f5f5f;
-  stroke-width: 5;
-  fill: none;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-.timeline-pipe-shadow {
-  stroke: #494949;
-  stroke-width: 5;
-  fill: none;
-  opacity: 0.25;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-.timeline-branch {
-  stroke: #5f5f5f;
-  stroke-width: 5;
-  transition: stroke 0.3s, stroke-width 0.3s;
-}
-
 /* Milestone Dots */
 .timeline-milestone-dot {
-  r: 3;
-  fill: var(--yellow-bright);
+  r: 4;
+  fill:#fff;
   stroke: #fff;
   stroke-width: 4;
   transition: r 0.3s, fill 0.3s, stroke-width 0.3s, filter 0.3s;
@@ -122,42 +100,112 @@
   100% { r: 9; }
 }
 .timeline-big-dot {
-  r: 4;
-  fill: #d7b134;
+  r: 5;
+  fill: #fff;
   stroke: #fff;
   stroke-width: 8;
+  filter: drop-shadow(0 0 10px var(--yellow-bright));
   transition: r 0.3s;
 }
 
-/* Mobile Styles */
-@media (max-width: 600px) {
-  #timeline {
-    display:none;
-  }
-}
-
 @media only screen and (max-width: 1200px) {
-  .timeline-branch {
-    display: none !important;
+
+  .timeline-pipe-desktop { display: none; }
+  .timeline-pipe-mobile { display: block;}
+
+  .timeline-list {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
   }
-  .timeline-item.left,
+
+  .timeline-item {
+    background: var(--navy);
+    width: 500px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+    border-radius: 20px;
+    z-index: 2;
+  }
+
+  .timeline-item.left {
+    text-align: left !important;
+    margin: 0 auto;
+  }
+
   .timeline-item.right {
     text-align: left !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    align-self: flex-start !important;
+    margin: 0 auto;
   }
+  .timeline-item.active {
+    transform: scale(1.06);
+    z-index: 2;
+  }
+
+  .timeline-title {
+    font-size: 24px;
+  }
+  .timeline-year {
+    font-size: 22px;
+  }
+  .timeline-desc {
+    font-size: 18px;
+  }
+  .timeline-big-dot {
+    r: 3;
+  }
+  .timeline-milestone-dot {
+    r: 4;
+  }
+  .timeline-milestone-dot.active {
+    r: 6;
+  }
+  @keyframes pulse {
+  0% { r: 6; }
+  50% { r: 8; }
+  100% { r: 6; }
+}
 }
 
-@media only screen and (max-width: 600px) {
-  .timeline-branch {
-    display: none !important;
+@media only screen and (max-width: 750px) {
+  .timeline-pipe-desktop { display: none; }
+  .timeline-pipe-mobile { display: none;}
+
+  .timeline-list {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
   }
-  .timeline-item.left,
+
+  .timeline-item {
+    background: var(--navy);
+    padding: 20px;
+    box-shadow: var(--shadow);
+    border-radius: 20px;
+    z-index: 2;
+  }
+
+  .timeline-item.left {
+    text-align: left !important;
+    margin: 0 auto;
+  }
+
   .timeline-item.right {
     text-align: left !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    align-self: flex-start !important;
+    margin: 0 auto;
+  }
+  .timeline-item.active {
+    transform: scale(1.06);
+    z-index: 2;
+  }
+
+  .timeline-title {
+    font-size: 18px;
+  }
+  .timeline-year {
+    font-size: 16px;
+  }
+  .timeline-desc {
+    font-size: 15px;
   }
 }

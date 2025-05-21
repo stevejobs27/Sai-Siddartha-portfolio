@@ -13,7 +13,23 @@ function setupPulsatingCircles() {
   center.style.left = "calc(50% - 4px)";
   center.style.top = "calc(50% - 4px)";
   c.appendChild(center);
-  for (let r = 0; r < 3; r++) {
+
+  function hueWheel(steps) {
+  let colors = [];
+  const startHue = 0;
+  const endHue = 360;
+  const sat = 52;
+  const light = 66;
+  for (let i = 0; i <= steps; i++) {
+    const hue = startHue + ((endHue - startHue) * i) / steps;
+    colors.push(`hsl(${hue},${sat}%,${light}%)`);
+  }
+  return colors;
+}
+  // Color wheel for the rings
+  const colorArr = hueWheel(24);
+
+  for (let r = 0; r < 6; r++) {
     const radius = 15 + r * 15,
       count = 6 + r * 3;
     for (let i = 0; i < count; i++) {
@@ -27,7 +43,9 @@ function setupPulsatingCircles() {
       d.style.left = `calc(50% + ${x}px - ${sz / 2}px)`;
       d.style.top = `calc(50% + ${y}px - ${sz / 2}px)`;
       d.style.animationDelay = `${r * 0.2 + i * 0.1}s`;
-      d.style.background = `rgba(255,255,255,${(90 - r * 10) / 100})`;
+      // Assign color from the wheel, offset by ring and dot index for variety
+      const colorIdx = (i + r * 4) % colorArr.length;
+      d.style.background = colorArr[colorIdx];
       c.appendChild(d);
     }
   }
@@ -68,71 +86,107 @@ for (let r = 0; r < 3; r++) {
 }
 
 function setupSequentialRings() {
-const c = document.getElementById("anim3");
-if (!c) return;
-c.innerHTML = "";
-const cd = document.createElement("div");
-cd.className = "dot";
-cd.style.width = cd.style.height = "6px";
-cd.style.left = "calc(50% - 3px)";
-cd.style.top = "calc(50% - 3px)";
-c.appendChild(cd);
-for (let i = 0; i < 4; i++) {
-    const rad = 15 + i * 15,
-    count = 8 + i * 4;
-    for (let j = 0; j < count; j++) {
-    const d = document.createElement("div");
-    d.className = "dot sequential-dot";
-    const angle = (j / count) * 2 * Math.PI;
-    const x = Math.cos(angle) * rad,
-        y = Math.sin(angle) * rad;
-    const sz = 3 + i * 0.2;
-    d.style.width = d.style.height = `${sz}px`;
-    d.style.left = `calc(50% + ${x}px - ${sz / 2}px)`;
-    d.style.top = `calc(50% + ${y}px - ${sz / 2}px)`;
-    d.style.animation = `expandRing 3s infinite`;
-    d.style.animationDelay = `${i * 0.3 + (j / count) * 0.1}s`;
-    d.style.background = `rgba(255,255,255,${(90 - i * 15) / 100})`;
-    c.appendChild(d);
+  const c = document.getElementById("anim3");
+  if (!c) return;
+  c.innerHTML = "";
+  const cd = document.createElement("div");
+  cd.className = "dot";
+  cd.style.width = cd.style.height = "6px";
+  cd.style.left = "calc(50% - 3px)";
+  cd.style.top = "calc(50% - 3px)";
+  c.appendChild(cd);
+
+  // Color wheel for the rings
+  function hueWheel(steps) {
+    let colors = [];
+    const startHue = 30;
+    const endHue = 120;
+    const sat = 52;
+    const light = 66;
+    for (let i = 0; i <= steps; i++) {
+      const hue = startHue + ((endHue - startHue) * i) / steps;
+      colors.push(`hsl(${hue},${sat}%,${light}%)`);
     }
-}
+    return colors;
+  }
+  const colorArr = hueWheel(24);
+
+  for (let i = 0; i < 6; i++) {
+    const rad = 15 + i * 15,
+      count = 8 + i * 4;
+    for (let j = 0; j < count; j++) {
+      const d = document.createElement("div");
+      d.className = "dot sequential-dot";
+      const angle = (j / count) * 2 * Math.PI;
+      const x = Math.cos(angle) * rad,
+        y = Math.sin(angle) * rad;
+      const sz = 5 + i * 0.2;
+      d.style.width = d.style.height = `${sz}px`;
+      d.style.left = `calc(50% + ${x}px - ${sz / 2}px)`;
+      d.style.top = `calc(50% + ${y}px - ${sz / 2}px)`;
+      d.style.animation = `expandRing 3s infinite`;
+      d.style.animationDelay = `${i * 0.3 + (j / count) * 0.1}s`;
+      // Assign color from the wheel, offset by ring and dot index for variety
+      const colorIdx = (j + i * 4) % colorArr.length;
+      d.style.background = colorArr[colorIdx];
+      c.appendChild(d);
+    }
+  }
 }
 
 function setupConcentricRotations() {
-const c = document.getElementById("anim4");
-if (!c) return;
-c.innerHTML = "";
-const wrap = document.createElement("div");
-wrap.className = "concentric-container";
-c.appendChild(wrap);
-const cd = document.createElement("div");
-cd.className = "dot";
-cd.style.width = cd.style.height = "5px";
-cd.style.left = "calc(50% - 2.5px)";
-cd.style.top = "calc(50% - 2.5px)";
-cd.style.background = "rgba(255,255,255,0.9)";
-wrap.appendChild(cd);
-for (let r = 0; r < 6; r++) {
+  const c = document.getElementById("anim4");
+  if (!c) return;
+  c.innerHTML = "";
+  const wrap = document.createElement("div");
+  wrap.className = "concentric-container";
+  c.appendChild(wrap);
+  const cd = document.createElement("div");
+  cd.className = "dot";
+  cd.style.width = cd.style.height = "5px";
+  cd.style.left = "calc(50% - 2.5px)";
+  cd.style.top = "calc(50% - 2.5px)";
+  cd.style.background = "rgba(255,255,255,0.9)";
+  wrap.appendChild(cd);
+
+  // Color wheel for the rings
+  function hueWheel(steps) {
+    let colors = [];
+    const startHue = 0;
+    const endHue = 360;
+    const sat = 52;
+    const light = 66;
+    for (let i = 0; i <= steps; i++) {
+      const hue = startHue + ((endHue - startHue) * i) / steps;
+      colors.push(`hsl(${hue},${sat}%,${light}%)`);
+    }
+    return colors;
+  }
+  const colorArr = hueWheel(24);
+
+  for (let r = 0; r < 10; r++) {
     const ring = document.createElement("div");
     ring.className = "concentric-ring";
     ring.style.animationDuration = `${3 * Math.pow(1.5, r)}s`;
     const radius = 10 + r * 9,
-    circ = 2 * Math.PI * radius;
+      circ = 2 * Math.PI * radius;
     const count = Math.max(6, Math.floor(circ / 10));
     for (let i = 0; i < count; i++) {
-    const d = document.createElement("div");
-    d.className = "dot";
-    const angle = (i / count) * 2 * Math.PI;
-    const x = Math.cos(angle) * radius,
+      const d = document.createElement("div");
+      d.className = "dot";
+      const angle = (i / count) * 2 * Math.PI;
+      const x = Math.cos(angle) * radius,
         y = Math.sin(angle) * radius;
-    d.style.width = d.style.height = "4px";
-    d.style.left = `calc(50% + ${x}px - 2px)`;
-    d.style.top = `calc(50% + ${y}px - 2px)`;
-    d.style.background = `rgba(255,255,255,${(90 - r * 5) / 100})`;
-    ring.appendChild(d);
+      d.style.width = d.style.height = "4px";
+      d.style.left = `calc(50% + ${x}px - 2px)`;
+      d.style.top = `calc(50% + ${y}px - 2px)`;
+      // Assign color from the wheel, offset by ring and dot index for variety
+      const colorIdx = (i + r * 4) % colorArr.length;
+      d.style.background = colorArr[colorIdx];
+      ring.appendChild(d);
     }
     wrap.appendChild(ring);
-}
+  }
 }
 
 function setupCircularWaves() {
@@ -145,9 +199,9 @@ cd.style.width = cd.style.height = "8px";
 cd.style.left = "calc(50% - 4px)";
 cd.style.top = "calc(50% - 4px)";
 c.appendChild(cd);
-for (let r = 0; r < 3; r++) {
+for (let r = 0; r < 6; r++) {
     const rad = 20 + r * 15,
-    count = 12 + r * 4;
+    count = 15 + r * 4;
     for (let i = 0; i < count; i++) {
     const d = document.createElement("div");
     d.className = "dot circular-wave-dot";
@@ -166,37 +220,57 @@ for (let r = 0; r < 3; r++) {
 }
 
 function setupExpandingLines() {
-const c = document.getElementById("anim6");
-if (!c) return;
-c.innerHTML = "";
-const cd = document.createElement("div");
-cd.className = "dot";
-cd.style.width = cd.style.height = "6px";
-cd.style.left = "calc(50% - 3px)";
-cd.style.top = "calc(50% - 3px)";
-cd.style.background = "rgba(255,255,255,0.8)";
-c.appendChild(cd);
-for (let g = 0; g < 3; g++) {
+  const c = document.getElementById("anim6");
+  if (!c) return;
+  c.innerHTML = "";
+  const cd = document.createElement("div");
+  cd.className = "dot";
+  cd.style.width = cd.style.height = "6px";
+  cd.style.left = "calc(50% - 3px)";
+  cd.style.top = "calc(50% - 3px)";
+  cd.style.background = "rgba(255,255,255,0.8)";
+  c.appendChild(cd);
+
+  // Color wheel for the lines
+  function hueWheel(steps) {
+    let colors = [];
+    const startHue = 0;
+    const endHue = 360;
+    const sat = 50;
+    const light = 66;
+    for (let i = 0; i <= steps; i++) {
+      const hue = startHue + ((endHue - startHue) * i) / steps;
+      colors.push(`hsl(${hue},${sat}%,${light}%)`);
+    }
+    return colors;
+  }
+  const colorArr = hueWheel(24);
+
+  for (let g = 0; g < 3; g++) {
     const lc = document.createElement("div");
     lc.className = "line-container";
     lc.style.animationDuration = `${8 + g * 4}s`;
     lc.style.animationDirection = g % 2 ? "reverse" : "normal";
     for (let i = 0; i < 10; i++) {
-    const line = document.createElement("div");
-    line.className = "expanding-line";
-    line.style.animationDelay = `${(i / 12) * 2}s`;
-    line.style.transform = `rotate(${(360 / 12) * i}deg)`;
-    const dot = document.createElement("div");
-    dot.className = "dot";
-    dot.style.width = dot.style.height = "3px";
-    dot.style.left = "70px";
-    dot.style.top = "calc(50% - 1.5px)";
-    dot.style.background = `rgba(255,255,255,0.8)`;
-    line.appendChild(dot);
-    lc.appendChild(line);
+      const line = document.createElement("div");
+      line.className = "expanding-line";
+      line.style.animationDelay = `${(i / 12) * 2}s`;
+      line.style.transform = `rotate(${(360 / 12) * i}deg)`;
+
+      const dot = document.createElement("div");
+      dot.className = "dot";
+      dot.style.width = dot.style.height = "4px";
+      dot.style.left = "70px";
+      dot.style.top = "calc(50% - 1.5px)";
+      // Assign color from the wheel, offset by group and line index for variety
+      const colorIdx = (i + g * 4) % colorArr.length;
+      dot.style.background = colorArr[colorIdx];
+
+      line.appendChild(dot);
+      lc.appendChild(line);
     }
     c.appendChild(lc);
-}
+  }
 }
 
 function setupBreathingGrid() {
@@ -249,7 +323,7 @@ rc.className = "ripple-container";
 c.appendChild(rc);
 
 // Create ripple rings
-const numRipples = 4;
+const numRipples = 6;
 const rippleDuration = 4; // seconds
 
 for (let i = 0; i < numRipples; i++) {
@@ -261,10 +335,10 @@ for (let i = 0; i < numRipples; i++) {
 
 // Create dots that will react to the ripple
 const numRings = 6;
-const maxRadius = 50;
+const maxRadius = 80;
 
 for (let ring = 0; ring < numRings; ring++) {
-    const radius = 15 + (ring * (maxRadius - 15)) / (numRings - 1);
+    const radius = 25 + (ring * (maxRadius - 15)) / (numRings - 1);
     const numDots = 6 + ring * 3;
 
     for (let i = 0; i < numDots; i++) {
@@ -318,8 +392,8 @@ function setupFibonacciSpiral() {
   cd.style.background = "hsl(50, 0%, 100.00%)";
   wrap.appendChild(cd);
   const golden = Math.PI * (3 - Math.sqrt(5)),
-    N = 100,
-    scale = 1.3;
+    N = 120,
+    scale = 2;
 
   // Store dot references and their phase
   const dots = [];
@@ -328,7 +402,7 @@ function setupFibonacciSpiral() {
       rad = scale * Math.sqrt(i) * 4;
     const x = Math.cos(angle) * rad,
       y = Math.sin(angle) * rad;
-    const sz = 4 - (i / N) * 1.5;
+    const sz = 6 - (i / N) * 1.5;
     if (sz < 1) continue;
     const d = document.createElement("div");
     d.className = "fibonacci-dot";
@@ -341,10 +415,10 @@ function setupFibonacciSpiral() {
   }
 
   // Animate color using HSL, matching sunflower spiral's range
-  const startHue = 0;
-  const endHue = 360;
-  const sat = 0;
-  const light = 100;
+  const startHue = 120;
+  const endHue = 240;
+  const sat =52;
+  const light = 56;
   const duration = 30; // seconds for a full cycle
 
   function animateColors(time) {
@@ -368,10 +442,10 @@ c.innerHTML = "";
 const w = document.createElement("div");
 w.className = "halftone-container";
 c.appendChild(w);
-const radii = [12, 24, 36, 48];
+const radii = [20, 40, 60, 80, 100];
 radii.forEach((radius, i) => {
     const count = 12 + i * 8,
-    size = 3 - i;
+    size = 5 - i;
     for (let j = 0; j < count; j++) {
     const d = document.createElement("div");
     d.className = "halftone-dot";
@@ -395,13 +469,13 @@ c.innerHTML = "";
 const w = document.createElement("div");
 w.className = "silver-container";
 c.appendChild(w);
-const N = 120,
+const N = 150,
     angleStep = Math.PI * (2 - Math.sqrt(2)),
-    scale = 0.8;
+    scale = 1.2;
 for (let i = 0; i < N; i++) {
     const angle = i * angleStep,
     rad = scale * Math.sqrt(i) * 6;
-    const size = 4 - (i / N) * 2;
+    const size = 5 - (i / N) * 2;
     if (size < 1) continue;
     const d = document.createElement("div");
     d.className = "silver-dot";
@@ -437,10 +511,10 @@ function setupFibonacciConcentric() {
   // Generate a hue wheel for smooth color animation
 function hueWheel(steps) {
   let colors = [];
-  const startHue = 30; 
-  const endHue = 90;  
-  const sat = 0;
-  const light = 75;
+  const startHue = 0; 
+  const endHue = 360;  
+  const sat = 52;
+  const light = 76;
   for (let i = 0; i <= steps; i++) {
     const hue = startHue + ((endHue - startHue) * i) / steps;
     colors.push(`hsl(${hue},${sat}%,${light}%)`);

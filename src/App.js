@@ -18,6 +18,7 @@ function App() {
   const [showStars, setShowStars] = useState(false);
 
   return (
+    <div class="gradient">
     <div className="App">
       {showStars && <StarsCanvas />}
       <NavBar showStars={showStars} setShowStars={setShowStars} />
@@ -32,6 +33,7 @@ function App() {
         <Contact />
         <Credits />
       </div>
+    </div>
     </div>
   );
 }

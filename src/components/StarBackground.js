@@ -2,7 +2,7 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { useRef, useMemo, Suspense } from "react";
 
 // Stardust component
-function Stardust({ count = 1000 }) {
+function Stardust({ count = 2000 }) {
   const ref = useRef();
   const { positions, sizes, opacities } = useMemo(() => {
     const positions = [];
@@ -18,7 +18,7 @@ function Stardust({ count = 1000 }) {
         r * Math.cos(phi)
       );
       sizes.push(0.008 + Math.random() * 0.012);
-      opacities.push(0.25 + Math.random() * 0.25);
+      opacities.push(0.4 + Math.random() * 0.4);
     }
     return {
       positions: new Float32Array(positions),
@@ -29,8 +29,8 @@ function Stardust({ count = 1000 }) {
 
   useFrame((_, delta) => {
     if (ref.current) {
-      ref.current.rotation.x -= delta / 40;
-      ref.current.rotation.y -= delta / 60;
+      ref.current.rotation.x -= delta / 200;
+      ref.current.rotation.y -= delta / 200;
     }
   });
 
@@ -70,7 +70,7 @@ function Stardust({ count = 1000 }) {
 
 export const StarBackground = (props) => (
   <group rotation={[0, 0, Math.PI / 4]}>
-    <Stardust count={1000} />
+    <Stardust count={2000} />
   </group>
 );
 

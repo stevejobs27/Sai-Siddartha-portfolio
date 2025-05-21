@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
+import { useMediaQuery } from 'react-responsive';
 import FadeInSection from "./FadeInSection";
 import "../styles/Timeline.css";
 
@@ -30,10 +31,8 @@ const milestones = [
   }
 ];
 
-
 // Layout constants
 const WIDTH = 1000;
-const HEIGHT = 750;
 const PIPE_X = WIDTH / 2;
 const PIPE_TOP = 80;
 const PIPE_SPACING = 150;
@@ -42,117 +41,224 @@ const EVENT_WIDTH = 350;
 const EVENT_HEIGHT = 100;
 
 export default function Timeline() {
+  const isMobile = useMediaQuery({ maxWidth: 1200 });
   const pathRef = useRef(null);
-  const [dotPos, setDotPos] = useState({ x: PIPE_X, y: PIPE_TOP });
+  const straightPathRef = useRef(null);
+  const timelineListRef = useRef(null);
+  const [dotPos, setDotPos] = useState({ x: 0, y: 0 });
+  const [straightDotPos, setStraightDotPos] = useState({ x: 0, y: 0 });
   const [activeIndex, setActiveIndex] = useState(0);
+  const [svgHeight, setSvgHeight] = useState(750);
 
-  // Points for milestones and branches
-  const points = milestones.map((_, idx) => ({
-    x: PIPE_X,
-    y: PIPE_TOP + idx * PIPE_SPACING
-  }));
-  const branchEnds = milestones.map((_, idx) => {
-    const isLeft = idx % 2 === 0;
+  // Zigzag points for milestones (desktop)
+  const points = milestones.map((_, idx) => {
+    const isLeft = idx % 2 !== 0;
     return {
       x: isLeft ? PIPE_X - BRANCH_LENGTH : PIPE_X + BRANCH_LENGTH,
       y: PIPE_TOP + idx * PIPE_SPACING
     };
   });
 
-  // SVG path for the pipe
-  const pathD = `M${PIPE_X},${PIPE_TOP} V${PIPE_TOP + (milestones.length - 1) * PIPE_SPACING}`;
+  // Straight points for milestones (mobile/tablet)
+  const straightPoints = milestones.map((_, idx) => ({
+    x: PIPE_X,
+    y: PIPE_TOP + idx * PIPE_SPACING
+  }));
 
-  // Interactive dot logic
+  // Adjust SVG height to fit content
   useEffect(() => {
+    if (timelineListRef.current) {
+      setSvgHeight(timelineListRef.current.offsetHeight + 120); // 120 for padding
+    }
+  }, [milestones, isMobile]);
+
+  // Rectangular zigzag path (desktop)
+  let pathD = `M${points[0].x},${points[0].y}`;
+  for (let i = 0; i < points.length - 1; i++) {
+    pathD += ` L${PIPE_X},${points[i].y}`;
+    pathD += ` L${PIPE_X},${points[i + 1].y}`;
+    pathD += ` L${points[i + 1].x},${points[i + 1].y}`;
+  }
+
+  // Straight path (mobile/tablet)
+  let straightPathD = `M${PIPE_X},${straightPoints[0].y}`;
+  for (let i = 1; i < straightPoints.length; i++) {
+    straightPathD += ` L${PIPE_X},${straightPoints[i].y}`;
+  }
+
+  // Interactive dot logic for desktop
+  useEffect(() => {
+    if (isMobile) return;
     function handleScroll() {
       const section = document.querySelector(".timeline-section");
       if (!section || !pathRef.current) return;
       const rect = section.getBoundingClientRect();
       const windowH = window.innerHeight;
-      const centerY = windowH / 2 - rect.top;
-      const minY = PIPE_TOP;
-      const maxY = PIPE_TOP + (milestones.length - 1) * PIPE_SPACING;
-      const clampedY = Math.max(minY, Math.min(maxY, centerY));
+      const scrollY = windowH / 2 - rect.top;
+      const pathLength = pathRef.current.getTotalLength();
+      const minY = 0;
+      const maxY = pathLength;
+      const percent = Math.max(0, Math.min(1, scrollY / (rect.height || 1)));
+      const length = minY + (maxY - minY) * percent;
+      const pt = pathRef.current.getPointAtLength(length);
+      setDotPos({ x: pt.x, y: pt.y });
 
-      // Find the closest milestone
+      // Find closest milestone for highlight
       let closest = 0;
       let minDist = Infinity;
-      points.forEach((pt, idx) => {
-        const dist = Math.abs(pt.y - clampedY);
+      points.forEach((p, idx) => {
+        const dist = Math.hypot(pt.x - p.x, pt.y - p.y);
         if (dist < minDist) {
           minDist = dist;
           closest = idx;
         }
       });
-      setDotPos({ x: PIPE_X, y: clampedY });
       setActiveIndex(closest);
     }
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [points]);
+  }, [points, isMobile]);
+
+  // Interactive dot logic for mobile/tablet
+  useEffect(() => {
+    if (!isMobile) return;
+    function handleScroll() {
+      const section = document.querySelector(".timeline-section");
+      if (!section || !straightPathRef.current) return;
+      const rect = section.getBoundingClientRect();
+      const windowH = window.innerHeight;
+      const scrollY = windowH / 2 - rect.top;
+      const pathLength = straightPathRef.current.getTotalLength();
+      const minY = 0;
+      const maxY = pathLength;
+      const percent = Math.max(0, Math.min(1, scrollY / (rect.height || 1)));
+      const length = minY + (maxY - minY) * percent;
+      const pt = straightPathRef.current.getPointAtLength(length);
+      setStraightDotPos({ x: pt.x, y: pt.y });
+
+      // Find closest milestone for highlight
+      let closest = 0;
+      let minDist = Infinity;
+      straightPoints.forEach((p, idx) => {
+        const dist = Math.hypot(pt.x - p.x, pt.y - p.y);
+        if (dist < minDist) {
+          minDist = dist;
+          closest = idx;
+        }
+      });
+      setActiveIndex(closest);
+    }
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [straightPoints, isMobile]);
 
   return (
     <div id="timeline">
       <div className="section-header">
         <span className="section-title">Timeline</span>
       </div>
-      <div className="timeline-section timeline-section-large">
-        <svg
-          className="timeline-pipe-svg"
-          width={WIDTH}
-          height={HEIGHT}
-        >
-          {/* Pipe */}
-          <path
-            ref={pathRef}
-            d={pathD}
-            className="timeline-pipe"
-            strokeLinejoin="round"
-            strokeLinecap="round"
-          />
-          {/* Branches */}
-          {points.map((pt, idx) => (
-            <line
-              key={idx}
-              x1={pt.x}
-              y1={pt.y}
-              x2={branchEnds[idx].x}
-              y2={branchEnds[idx].y}
-              className="timeline-branch"
+      <div className="timeline-section">
+        {/* Desktop SVG */}
+        {!isMobile && (
+          <svg
+            className="timeline-pipe-desktop"
+            width={WIDTH}
+            height={svgHeight}
+          >
+            {/* Rectangular Zigzag Path */}
+            <path
+              ref={pathRef}
+              d={pathD}
+              strokeLinejoin="round"
+              strokeLinecap="round"
+              fill="none"
             />
-          ))}
-          {/* Milestone dots */}
-          {branchEnds.map((pt, idx) => (
+            {/* Branches */}
+            {points.map((pt, idx) => (
+              <line
+                key={idx}
+                x1={PIPE_X}
+                y1={pt.y}
+                x2={pt.x}
+                y2={pt.y}
+              />
+            ))}
+            {/* Milestone dots, each associated with its event */}
+            {milestones.map((item, idx) => (
+              <a key={item.title} tabIndex={0} aria-label={item.title}>
+                <circle
+                  cx={points[idx].x}
+                  cy={points[idx].y}
+                  className={`timeline-milestone-dot${activeIndex === idx ? " active" : ""}`}
+                  data-event-index={idx}
+                />
+              </a>
+            ))}
+            {/* Big moving dot */}
             <circle
-              key={idx}
-              cx={pt.x}
-              cy={pt.y}
-              className={`timeline-milestone-dot${activeIndex === idx ? " active" : ""}`}
+              cx={dotPos.x}
+              cy={dotPos.y}
+              className="timeline-big-dot"
             />
-          ))}
-          {/* Big moving dot */}
-          <circle
-            cx={dotPos.x}
-            cy={dotPos.y}
-            className="timeline-big-dot"
-          />
-        </svg>
-        <ul className="timeline-list">
+          </svg>
+        )}
+        {/* Mobile/Tablet SVG */}
+        {isMobile && (
+          <svg
+            className="timeline-pipe-mobile"
+            width={WIDTH}
+            height={svgHeight}
+          >
+            {/* Straight Pipe Path */}
+            <path
+              ref={straightPathRef}
+              d={straightPathD}
+              strokeLinejoin="round"
+              strokeLinecap="round"
+              fill="none"
+            />
+            {/* Milestone dots, each associated with its event */}
+            {milestones.map((item, idx) => (
+              <a key={item.title} tabIndex={0} aria-label={item.title}>
+                <circle
+                  cx={straightPoints[idx].x}
+                  cy={straightPoints[idx].y}
+                  className={`timeline-milestone-dot${activeIndex === idx ? " active" : ""}`}
+                  data-event-index={idx}
+                />
+              </a>
+            ))}
+            {/* Big moving dot */}
+            <circle
+              cx={straightDotPos.x}
+              cy={straightDotPos.y}
+              className="timeline-big-dot"
+            />
+          </svg>
+        )}
+        <ul className="timeline-list" ref={timelineListRef}>
           {milestones.map((item, idx) => {
-            const pt = branchEnds[idx];
-            const isLeft = idx % 2 === 0;
-            const style = {
+            const pt = points[idx];
+            const straightPt = straightPoints[idx];
+            const isLeft = idx % 2 !== 0;
+            const styleDesktop = {
               top: pt.y - (EVENT_HEIGHT / 2),
               left: isLeft
                 ? `${pt.x - EVENT_WIDTH}px`
                 : `${pt.x}px`
             };
+            const styleMobile = {
+              top: straightPt.y - (EVENT_HEIGHT / 2),
+              left: `${straightPt.x}px`
+            };
             return (
               <FadeInSection key={item.title}>
                 <li
                   className={`timeline-item${activeIndex === idx ? " active" : ""} ${isLeft ? "left" : "right"}`}
-                  style={style}
+                  style={isMobile ? styleMobile : styleDesktop}
+                  data-dot-index={idx}
                 >
                   <div className="timeline-title">{item.title}</div>
                   <div className="timeline-year">{item.year}</div>

@@ -1,10 +1,9 @@
 :root {
-  --black-opacity: #0d122025; /* NavBar */
-  --linear-gradient: linear-gradient(to bottom,#0d141b 0%,#020714 20%); /* Page Background Color */
-  --yellow-bright: #d7b134; /* Highlight Text, Glow, Tags */
+  --black-opacity: #010b1d25; /* NavBar */
+  --linear-gradient: linear-gradient(to bottom,#010b1d 0%,#081123 20%,#010b1d 40%, #081123 60%, #010b1d 80%); /* Page Background Color */
+  --yellow-bright: #34d768; /* Highlight Text, Glow, Tags */
   --off-white: #b3b3b3; /* TEXT MAIN */
   --navy: #0E192D; /* Project Boxes */
   --light-grey: #3d3d3d; /* Divider */
   --shadow: 0 1px 4px #242121a8; /* Shadow */
-  --transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1); /* Transition */ 
-}
+  --transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1); /* Transition */ }
