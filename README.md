@@ -33,13 +33,11 @@
 
 ## 🎨 color codes
 
-| Color          | Hex                                                                |
-| -------------- | ------------------------------------------------------------------ |
-| Purple         | ![#10041f](https://placehold.co/100x25/10041f/ffffff?text=%2310041f) |
-| Light Purple   | ![#0c0514](https://placehold.co/100x25/0c0514/ffffff?text=%230c0514) |
-| Lightest Purple| ![#170925](https://placehold.co/100x25/170925/ffffff?text=%23170925) |
-| Slate          | ![#8892b0](https://placehold.co/100x25/8892b0/000000?text=%238892b0) |
-| Light Slate    | ![#a8b2d1](https://placehold.co/100x25/a8b2d1/000000?text=%23a8b2d1) |
-| Lightest Slate | ![#ccd6f6](https://placehold.co/100x25/ccd6f6/000000?text=%23ccd6f6) |
-| White          | ![#e6f1ff](https://placehold.co/100x25/e6f1ff/000000?text=%23e6f1ff) |
-| Green          | ![#7187e9](https://placehold.co/100x25/7187e9/ffffff?text=%237187e9) |
+| Color          | Hex                                                                  |
+| -------------- | -------------------------------------------------------------------- |
+| Black          | ![#030617](https://placehold.co/100x25/030617/ffffff?text=%23030617) |
+| Green Dark     | ![#17322E](https://placehold.co/100x25/17322E/ffffff?text=%2317322E) |
+| Green Bright   | ![#64D98A](https://placehold.co/100x25/64D98A/ffffff?text=%2364D98A) |
+| Beige          | ![#b3b3b3](https://placehold.co/100x25/b3b3b3/000000?text=%23b3b3b3) |
+| Navy           | ![#0E192D](https://placehold.co/100x25/0E192D/ffffff?text=%230E192D) |
+| Light Grey     | ![#3d3d3d](https://placehold.co/100x25/3d3d3d/ffffff?text=%233d3d3d) |
