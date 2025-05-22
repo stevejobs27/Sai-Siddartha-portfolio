@@ -6,7 +6,7 @@
 
 .contact-form {
   max-width: 500px;
-  margin: 0 auto 60px auto;
+  margin: 0 auto 20px auto;
   padding: 32px;
   background: var(--navy, #18111d);
   border-radius: 16px;
@@ -22,7 +22,6 @@
   resize: vertical;
   background: var(--dark-navy, #22223b);
   color: var(--off-white, #fff);
-  min-height: 120px;
 }
 
 .contact-actions {
@@ -32,7 +31,7 @@
 
 .contact-send-btn {
   background: var(--green-bright);
-  color: var(--navy, #18111d);
+  color: var(--navy);
   border: none;
   border-radius: 8px;
   padding: 6px 16px;
@@ -43,12 +42,19 @@
 }
 
 .contact-send-btn:hover {
-  background: var(--green, #1bc98e);
+  background: var(--green-bright);
 }
 
 .contact-rectangle {
   margin-top: 24px;
-  color: var(--off-white, #fff);
+  color: var(--off-white);
   text-align: center;
   line-height: 0.8;
+}
+
+.footer {
+  text-align: center;
+  font-size: 15px;
+  opacity: 0.7;
+  color: var(--off-white);
 }

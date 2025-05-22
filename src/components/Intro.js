@@ -10,7 +10,7 @@ const spiralIds = ["anim1", "anim3", "anim5", "anim6", "anim8", "anim9", "anim10
 class Intro extends React.Component {
   constructor() {
     super();
-    const defaultId = "anim9";
+    const defaultId = "anim8";
     const randomId = spiralIds[Math.floor(Math.random() * spiralIds.length)];
 
     this.state = {
