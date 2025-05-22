@@ -2,10 +2,10 @@
   <img src="https://raw.githubusercontent.com/rafsanahmed28/Rafsan/3af2a6fad474f2a1316759c4bc40df528b5e168d/public/logo.svg", height = 85px, width=auto/>
 </p>
 <h1 align="center">
-  rafsanahmed.com - v1
+  rafsanahmed.com - v1 - Under Construction
 </h1>
 <p align="center">
-  The first iteration of my personal website <a href="https://rafsanahmed.com" target="_blank">rafsanahmed.com</a> built with React.js. /* Work in Progress. */
+  The first iteration of my first personal website <a href="https://rafsanahmed.com" target="_blank">rafsanahmed.com</a> built with React.js
 </p>
 
 ## 🛠 set-up
