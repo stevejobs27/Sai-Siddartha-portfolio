@@ -17,7 +17,7 @@ function Stardust({ count = 2000 }) {
         r * Math.sin(phi) * Math.sin(theta),
         r * Math.cos(phi)
       );
-      sizes.push(0.008 + Math.random() * 0.012);
+      sizes.push(0.012 + Math.random() * 0.008);
       opacities.push(0.4 + Math.random() * 0.4);
     }
     return {
@@ -29,8 +29,8 @@ function Stardust({ count = 2000 }) {
 
   useFrame((_, delta) => {
     if (ref.current) {
-      ref.current.rotation.x -= delta / 200;
-      ref.current.rotation.y -= delta / 200;
+      ref.current.rotation.x -= delta / 100;
+      ref.current.rotation.y -= delta / 100;
     }
   });
 

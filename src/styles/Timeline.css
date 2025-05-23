@@ -67,6 +67,7 @@
 }
 .timeline-year {
   font-size: 24px;
+  font-weight: bold;
   color: var(--green-bright);
 }
 .timeline-desc {

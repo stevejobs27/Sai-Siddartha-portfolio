@@ -36,7 +36,7 @@
 
 .navbar-nav .nav-link:hover {
     color: var(--green-bright) !important;
-    filter: drop-shadow(0 3px 4px rgba(0, 255, 85, 0.5));
+    filter: var(--drop-shadow);
     scale:1.1;
     transition: var(--transition);
   }
@@ -54,7 +54,7 @@
 .logo:hover,
 .logo:focus {
   scale:1.1;
-  filter: drop-shadow(0 3px 4px rgba(0, 255, 85, 0.5));
+  filter: var(--drop-shadow);
   transition: var(--transition);
 }
 
@@ -111,16 +111,16 @@
     }
   .navbar-star-btn:hover {
       color: var(--green-bright) !important;
-      filter: drop-shadow(0 3px 4px rgba(0, 255, 85, 0.5));
+      filter: var(--drop-shadow);
       scale:1.1;
       transition: var(--transition);
     }
   .navbar-star-divider:before {
       content: "";
       width: 1.5px;
-      height: 20px; /* or 100% if you want it to stretch */
+      height: 20px;
       background-color: var(--green-bright);
-      filter: drop-shadow(0 3px 4px rgb(0, 255, 85));
+      filter: var(--drop-shadow);
       display: flex;
       margin: 10px 10px;
       border-radius: 2px;

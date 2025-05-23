@@ -9,6 +9,7 @@ import IconLinkedin from './linkedin';
 import IconLogo from './logo';
 import IconMedium from './medium';
 import IconPower from './power';
+import IconTableau from './tableau';
 
 const Icon = ({ name }) => {
   switch (name) {
@@ -30,6 +31,8 @@ const Icon = ({ name }) => {
       return <IconMedium />;
     case 'Power':
       return <IconPower />;
+    case 'Tableau':
+      return <IconTableau />;
     default:
       return <IconExternal />;
   }
