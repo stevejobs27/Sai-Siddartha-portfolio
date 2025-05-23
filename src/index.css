@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", "Roboto", "Oxygen",
+  font-family: 'Public Sans', "Segoe UI", "Inter", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -9,6 +9,6 @@ body {
 }
 
 code {
-  font-family: Menlo, Monaco, Consolas, Inter, "Courier New",
+  font-family: Public Sans, Menlo, Monaco, Consolas, Inter, "Courier New",
     monospace;
 }

@@ -1,268 +1,189 @@
 #projects {
   margin: auto;
-  padding-top: 100px;
-  max-width: 1000px;
-  min-height: 50vh;
-  padding: 60px 0;
+  font-family: Public Sans, sans-serif;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
 }
 
 .projects-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(300px, 1fr));
-  grid-gap: 10px;
-}
-
-.numbered-heading {
-  font-size: 2rem;
-  margin-bottom: 40px;
-  color: var(--green-bright);
-}
-
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 40px;
-  list-style: none;
+  display: flex;
+  flex-direction: column;
   padding: 0;
-  margin: 0;
 }
 
-.project-card {
-  background: var(--navy);
-  border-radius: 8px;
-  box-shadow: 0 10px 30px -15px var(--shadow);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  transition: box-shadow 0.2s;
-}
-
-.project-card:hover {
-  box-shadow: 0 20px 40px -10px var(--shadow);
-}
-
-.project-content {
-  padding: 24px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.project-overline {
-  color: var(--green-bright);
-  font-size: 0.9rem;
-  margin-bottom: 8px;
-  letter-spacing: 1px;
-}
-
-.project-title {
-  font-size: 1.4rem;
-  margin: 0 0 12px 0;
-}
-
-.project-title a {
+.project-subtitle {
+  font-size: 24px;
+  font-weight: bold;
   color: var(--off-white);
-  text-decoration: none;
+  text-align: left;
+  margin-bottom: 1rem;
 }
 
-.project-description {
+.project-card-flex {
+  display: flex;
+  background: var(--navy);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+}
+
+.project-card-menu {
+  display: flex;
+  flex-direction: column;
+  background: #030817;
+  padding: 1.5rem 0.5rem;
+  min-width: 110px; /* Useful width */
+  align-items: stretch;
+  gap: 1rem;
+}
+
+.project-card-menu button {
+  background: none;
+  border: none;
   color: var(--off-white);
   font-size: 1rem;
-  margin-bottom: 16px;
+  padding: 0.7rem 0.5rem;
+  cursor: pointer;
+  transition: var(--transition);
 }
 
-.project-tech-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin: 0 0 16px 0;
-  padding: 0;
-  list-style: none;
-}
-
-.project-tech-list li {
-  font-size: 0.95rem;
+.project-card-menu button.active,
+.project-card-menu button:hover {
   color: var(--green-bright);
-  background: rgba(100,255,218,0.07);
-  padding: 2px 8px;
-  border-radius: 4px;
+}
+
+.project-card-content {
+  flex: 1;
+  padding: 1.5rem;
+  color: var(--off-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  height: 500px;
 }
 
 .project-links {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
   display: flex;
-  align-items: center;
-  gap: 16px;
+  gap: 0.7rem;
+  z-index: 2;
 }
 
-.github-icon,
-.open-icon {
-  color: #fff;
-  transition: color 0.3s;
-  font-size: 1.2em;
-}
-
-.github-icon:hover,
-.open-icon:hover,
-.github-icon:focus,
-.open-icon:focus {
-  color: var(--green-bright);
-}
-
-.project-image {
-  width: 100%;
-  overflow: hidden;
-  background: var(--navy-light);
-  display: flex;
+.icon-link {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  color: var(--green-bright);
+  width: 32px;
+  height: 32px;
+  font-size: 1.3rem;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.icon-link:hover {
+  filter: var(--drop-shadow)
 }
 
 .project-image img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-}
-
-@media (max-width: 1080px) {
-  .projects-grid {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  }
-}
-
-.projects-card {
-  position: relative;
-  cursor: default;
   display: flex;
-  flex-direction: column;
-  position: relative;
-  height: 100%;
-  padding: 2rem 1.75rem;
-  background-color: var(--navy);
-  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
-  border-radius: 16px;
-}
-
-.projects-card:hover {
-  transform: translateY(-7px);
-  background-color: var(--navy);
-}
-
-.card-header {
-  margin-top: -20px;
-  display: flex;
-  padding: 1.25em 0 !important;
-  flex-direction: row;
-  justify-content: space-between;
-  border-bottom: none !important;
-}
-.folder-icon {
-  color: var(--green-bright);
-}
-
-.external-links a svg {
-  color: #fff;
-  stroke: currentColor;
-  transition: color 0.3s;
-}
-
-/* On hover: icons use currentColor (set by parent or theme) */
-.external-links a:hover svg,
-.external-links a:focus svg {
-  color: var(--green-bright); /* or any color you want for hover */
-}
-
-
-
-.open-icon {
-  margin-left: 12px;
-}
-
-.card-title {
-  font-family: "NTR", sans-serif;
-  color: var(--off-white);
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.card-desc {
-  font-family: "NTR", sans-serif;
-  color: var(--off-white);
-  font-size: 15px;
-  padding-bottom: 40px;
-}
-
-.card-tech {
-  font-family: "NTR", sans-serif;
-  color: var(--off-white);
-  font-size: 16px;
-}
-
-/* Spotlight carousel */
-.carousel.slide {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding-bottom: 60px;
-}
-
-.carousel-inner {
-  height: 500px;
-  border-radius: 24px;
-  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
-}
-
-.carousel-inner:hover {
-  transform: scale(1.01);
-}
-
-.carousel img {
-  object-fit: cover;
-  object-position: center;
-  height: 100%;
-  opacity: 0.5;
-}
-
-.carousel-caption {
-  font-family: "NTR", sans-serif;
   max-width: 500px;
-  right: unset !important;
-  left: 25% !important;
-  user-select: none;
+  border-radius: 10px;
+  height: auto;
+  object-fit: cover;
+  margin-bottom: 1rem;
 }
 
-.carousel-caption h3 {
-  font-size: 38px;
-  font-weight: bold;
-  color: var(--off-white);
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  list-style: none;
+  padding: 0;
 }
-
-.carousel-caption p {
-  font-family: "NTR", sans-serif;
-  font-weight: bold;
-  font-size: 18px;
-  color: var(--off-white);
-}
-
-.carousel-caption p.techStack {
-  font-family: "NTR", sans-serif;
-  font-size: 14px;
-  font-weight: bold;
+.project-tags li {
+  background: #030617;
   color: var(--green-bright);
+  padding: 0.2rem 0.8rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
 }
 
-.carousel-indicators .active {
-  background-color: var(--green-bright);
+.code-viewer {
+  position: relative;
+  background: #030617;
+  border-radius: 0 0 18px 18px;
+  max-width: 750px;
+  max-height: 500px;
+  overflow: hidden;
+  width: 100%;
 }
 
-@media only screen and (max-width: 600px) {
-  #projects {
-    height: unset;
-    padding-left: unset;
-    padding-right: unset;
-  }
-  .carousel {
-    display: none;
-  }
+.code-tabs {
+  display: flex;
+  gap: 1rem;
+  position: sticky;
+  top: 0;
+  background: #030617;
+  padding: 0.5rem 1rem 0.5rem 1rem;
 }
+
+.code-tab-btn {
+  background: #090f1a;
+  color: var(--off-white);
+  border-radius: 8px;
+  border: none;
+  padding: 0.1rem 0.5rem;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.code-tab-btn.active,
+.code-tab-btn:hover {
+  background: #232c3b;
+  color: #fff;
+}
+
+.code-block-container {
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 440px;
+  padding: 1rem;
+}
+
+/* Add to your Projects.css or a new file */
+/* Folder/file tree styles */
+.project-file-tree {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: 'Public Sans', sans-serif;
+}
+.project-file-tree li button {
+  background: none;
+  border: none;
+  color: var(--off-white);
+  text-align: left;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+.project-file-tree li button.active,
+.project-file-tree li button:hover {
+  background: #232c3b;
+  color: #64d98a;
+}
+
+
