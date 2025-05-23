@@ -84,35 +84,36 @@ const JobList = () => {
   const experienceItems = {
     Reflect: {
       jobTitle: "Data Analyst @",
-      duration: "JUL 2025 - PRESENT",
+      duration: "JAN 2023 - APR 2024",
       desc: [
-        "Loremed ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.",
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi."
-      ]
-    },
-    "Innovation Boost Zone": {
-      jobTitle: "Project Lead @",
-      duration: "SEP 2022 - DEC 2023",
-      desc: [
-        "Developed and researched an NLP-based framework using state-of-the-art tools like Spacy and Stanza to facilitate the derivation of requirements from health data by leveraging syntactic dependencies, entity-recognition and rule-based match-making.",
-        " Application selected for DCS Research Award ($4,000) as part of the ”Visualizing Privacy Analysis Results” project led by Professor Marsha Chechik."
+        "Conducted 20+ customer interviews to understand user needs and pain points, translating insights into actionable business requirements and aligning product development with customer demands",
+        "Successfully secured $13,000 in grant funding by winning both Stage 1 and Stage 2 of the Norman Esch Awards, validating the venture’s impact and potential"
       ]
     },
     "ShieldMate INC.": {
       jobTitle: "Research Analyst @",
       duration: "MAR 2023 - DEC 2023",
       desc: [
-        "Developed interactive and neural-activation technologies to stimulate physical and cognitive functions in order to slow the progression of neurodegenerative disorders.",
-        "Leveraged WebRTC to develop and maintain a Node.js online video-streaming platform in real-time competitive-mode games to research the effects of active stimulation for those suffering from dementia."
+        "Utilized analytical skills to conduct in-depth market research, identify key market needs and trends to inform the development process for the innovative startup that aims to address the underreporting of IPV",
+        "Led the conceptualization and wireframing for the envisioned platform using Figma to guide app development and ensure maximum user satisfaction",
+        "Collaborated with various stakeholders and firms to forge strategic partnerships to amplify the app's reach and impact"
       ]
     },
     HealthMate: {
       jobTitle: "Technical Lead @",
       duration: "SEP 2022 - FEB 2023",
       desc: [
-        "Developed a Node.js smart home system through Facebook’s Messenger integrated with Bocco sensors and other smart devices (Nest camera, TPLink smart plugs) to derive conclusions about the current state of the home",
-        "Identified continuous improvements in data quality, design reports and coding activities, presenting results and findings to internal business stakeholders.",
-        "Relevant technologies/tools used: DialogFlow, Vision, AutoML, Messenger Bot API, MongoDB."
+        "Developed a Node.js smart home system through Facebook’s Messenger integrated with Bocco sensors and other smart devices (Nest camera, TPLink smart plugs) to derive conclusions about the current state of the homeLed prototyping and product development, using Bubble.io for a no-code platform and guiding the team through technical decisions",
+        "Designed UI/UX assets in Figma and Adobe Illustrator to deliver a functional and user-friendly health tech interface"
+      ]
+    },
+        "Fiverr": {
+      jobTitle: "Graphic Designer @",
+      duration: "SEP 2022 - DEC 2023",
+      desc: [
+        "Collaborated with clients to understand their target audience and develop designs that effectively conveyed the desired sentiment, resulting in increased product sales and customer satisfaction",
+        "Leveraged graphic design skills and creativity to produce unique and compelling designs for global clients that stood out in the competitive Print-on-Demand market",
+        "Effectively managed client expectations, deadlines, and project requirements, demonstrating strong communication and time management skills"
       ]
     }
   };
