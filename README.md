@@ -27,7 +27,7 @@
 1. Generate a full static production build
 
    ```sh
-   npm run build
+   yarn build
    ```
 
 
@@ -35,8 +35,8 @@
 
 | Color          | Hex                                                                  |
 | -------------- | -------------------------------------------------------------------- |
-| Black          | ![#030617](https://placehold.co/100x25/030617/ffffff?text=%23030617) |
-| Green Dark     | ![#17322E](https://placehold.co/100x25/17322E/ffffff?text=%2317322E) |
+| Black          | ![#030817](https://placehold.co/100x25/030817/ffffff?text=%23030817) |
+| Green Dark     | ![#0E1F1C](https://placehold.co/100x25/0E1F1C/ffffff?text=%230E1F1C) |
 | Green Bright   | ![#64D98A](https://placehold.co/100x25/64D98A/000000?text=%2364D98A) |
 | Beige          | ![#b3b3b3](https://placehold.co/100x25/b3b3b3/000000?text=%23b3b3b3) |
 | Navy           | ![#0E192D](https://placehold.co/100x25/0E192D/ffffff?text=%230E192D) |
