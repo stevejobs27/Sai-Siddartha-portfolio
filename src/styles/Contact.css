@@ -8,7 +8,7 @@
   max-width: 500px;
   margin: 0 auto 20px auto;
   padding: 32px;
-  background: #010610;
+  background: #101224;
   border-radius: 16px;
   box-shadow: var(--shadow-box);
 }
@@ -19,7 +19,7 @@
   padding: 12px;
   font-size: 1rem;
   resize: vertical;
-  background: #101224;
+  background: #181f2a;
   color: var(--off-white);
 }
 

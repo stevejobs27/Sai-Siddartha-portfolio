@@ -335,7 +335,10 @@ SELECT
 	ROUND(AVG(endlng), 4) AS end_lng
 FROM (
     -- The Most Popular Starting Station Hourly for Member Riders
-    SELECT member_casual, COUNT(*) AS total, start_station_name, DATE_FORMAT(started_at, '%H') AS hour_of_day,
+    SELECT member_casual, 
+    COUNT(*) AS total, 
+    start_station_name, 
+    DATE_FORMAT(started_at, '%H') AS hour_of_day,
     AVG(TIMESTAMPDIFF(MINUTE, started_at, ended_at)) AS avgtd,
     ROUND(AVG(start_lat), 4) AS startlat,
 	ROUND(AVG(start_lng), 4) AS startlng, 
@@ -347,7 +350,10 @@ FROM (
     UNION ALL
     
     -- The Most Popular Ending Station Hourly for Member Riders
-    SELECT member_casual, COUNT(*) AS total, end_station_name, DATE_FORMAT(started_at, '%H') AS hour_of_day,
+    SELECT member_casual, 
+    COUNT(*) AS total, 
+    end_station_name, 
+    DATE_FORMAT(started_at, '%H') AS hour_of_day,
     AVG(TIMESTAMPDIFF(MINUTE, started_at, ended_at)) AS avgtd,
     ROUND(AVG(start_lat), 4) AS startlat,
 	ROUND(AVG(start_lng), 4) AS startlng, 
@@ -360,7 +366,7 @@ GROUP BY member_casual, all_stations, hour_of_day
 ORDER BY hour_of_day
 ;
 
--- This table was also filtered using Excel to remove inconsistent data for proper visualization`
+-- This data was later cleaned on Excel to remove inconsistent data for proper visualization`
 };
 
 export default cyclistic;

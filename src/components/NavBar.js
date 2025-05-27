@@ -3,7 +3,6 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import "../styles/NavBar.css";
-import logo from "../assets/logo.png";
 import Icon from "./icons/icon"; // Import your Icon component
 
 class NavBar extends React.Component {
@@ -60,7 +59,7 @@ class NavBar extends React.Component {
         >
           <Navbar.Brand href="Home">
             <img
-              src={logo}
+              src="/assets/logo.png"
               alt="Rafsan Ahmed Logo"
               title="Logo"
               className="logo"

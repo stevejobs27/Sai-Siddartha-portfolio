@@ -54,7 +54,19 @@ export default function Projects() {
                     {selectedFile.type === "info" ? (
                       <>
                         <div className="project-image">
-                          <img src={selectedProject.image} alt={selectedProject.name} />
+                          {/* Make image clickable for Tableau projects */}
+                          {selectedProject.tableau ? (
+                            <a
+                              href={selectedProject.tableau}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              title="View Tableau Dashboard"
+                            >
+                              <img src={selectedProject.image} alt={selectedProject.name} />
+                            </a>
+                          ) : (
+                            <img src={selectedProject.image} alt={selectedProject.name} />
+                          )}
                         </div>
                         <h3 className="project-title">{selectedProject.name}</h3>
                         <p className="project-description">{selectedFile.content}</p>
@@ -100,7 +112,12 @@ export default function Projects() {
                         </div>
                       </>
                     ) : (
-                    <CodeViewer code={selectedFile.content} language={selectedFile.language} type={selectedFile.type} />                    )}
+                      <CodeViewer
+                        code={selectedFile.content}
+                        language={selectedFile.language}
+                        type={selectedFile.type}
+                      />
+                    )}
                   </div>
                 </div>
               </div>
