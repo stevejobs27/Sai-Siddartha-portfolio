@@ -1,28 +1,8 @@
 html {
   scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #232c3b #10131a;
 }
-
-::-webkit-scrollbar {
-  width: 7.5px; /* wider for arrow space, but arrows won't show */
-  background: #454546;
-  
-}
-
-::-webkit-scrollbar-thumb {
-  background: #0d1422;
-  border-radius: 6px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #0d1422;
-  border-radius: 12px;
-  box-shadow: 0 0 12px #000000;
-}
-
-::-webkit-scrollbar-corner {
-  background: var(--green-bright);
-}
-
 
 .App {
   display: fixed;
@@ -113,7 +93,7 @@ a {
 
 .section-title {
   font-family: "NTR", sans-serif;
-  color: var(--off-white);
+  color: var(--lightest-slate);
   font-size: 40px;
   font-weight: 650;
 }

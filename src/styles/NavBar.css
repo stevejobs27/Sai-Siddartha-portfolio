@@ -5,6 +5,7 @@
     padding: 10px 60px !important;
     font-size: 1.1rem;
     backdrop-filter: blur(10px);
+    z-index: 2000;
   }
   
 
@@ -25,12 +26,12 @@
 }
 
 .navbar-brand  {
-    color: var(--off-white) !important;
+    color: var(--lightest-slate) !important;
     width: 100%;
   }
 
 .navbar-nav .nav-link {
-    color: var(--off-white) !important;
+    color: var(--lightest-slate) !important;
     margin-right: 30px;;
   }
 
@@ -89,7 +90,7 @@
 }
   .navbar-nav .nav-link {
       font-size: 12px;
-      color: var(--off-white) !important;
+      color: var(--lightest-slate) !important;
     }
   .navbar-nav.me-auto {
       display: flex;
@@ -105,7 +106,7 @@
       background: none;
       border: none;
       margin: 0 5px 0 5px;
-      color: var(--off-white);
+      color: var(--lightest-slate) !important;
       font-size: 0.9rem;
       cursor: pointer;
     }

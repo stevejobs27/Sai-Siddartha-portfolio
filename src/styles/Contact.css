@@ -8,20 +8,19 @@
   max-width: 500px;
   margin: 0 auto 20px auto;
   padding: 32px;
-  background: var(--navy, #18111d);
+  background: #010610;
   border-radius: 16px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+  box-shadow: var(--shadow-box);
 }
 
 .contact-textarea {
   width: 100%;
   border-radius: 8px;
-  border: 1px solid var(--green-bright);
   padding: 12px;
   font-size: 1rem;
   resize: vertical;
-  background: var(--dark-navy, #22223b);
-  color: var(--off-white, #fff);
+  background: #101224;
+  color: var(--off-white);
 }
 
 .contact-actions {
@@ -30,7 +29,7 @@
 }
 
 .contact-send-btn {
-  background: var(--green-bright);
+  background: var(--off-white);
   color: var(--navy);
   border: none;
   border-radius: 8px;
@@ -43,6 +42,8 @@
 
 .contact-send-btn:hover {
   background: var(--green-bright);
+  filter: var(--drop-shadow);
+  transition: var(--transition);
 }
 
 .contact-rectangle {
@@ -52,9 +53,14 @@
   line-height: 0.8;
 }
 
-.footer {
-  text-align: center;
-  font-size: 15px;
-  opacity: 0.7;
-  color: var(--off-white);
+.contact-email {
+  color: var(--off-white) !important;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.contact-email:hover {
+  color: var(--green-bright) !important;
+  filter: var(--drop-shadow);
+  transition: var(--transition);
 }

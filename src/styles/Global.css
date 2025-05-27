@@ -1,11 +1,14 @@
 :root {
-  --nav-color: #0e1f1c80; /* NavBar */
-  --linear-gradient: linear-gradient(to bottom,#0e1f1c 0%,#030817 20%,#0c1a17 40%, #030817 60%, #0e1f1c 90%, #030817 100%); /* Page Background Color */
+  --lightest-slate: #ccd6f6; /* Headings */
+  --nav-color: #0b1a1a10; /* NavBar */
+  --linear-gradient: linear-gradient(to bottom,#0b1a1a 0%,#030817 20%); /* Page Background Color */
   --green-bright: #64D98A; /* Highlight Text, Glow, Tags */
-  --off-white: #b3b3b3; /* TEXT MAIN */
+  --color-hover: #101224; /* Hover Color */
+  --off-white: #a8b2d1; /* TEXT MAIN */
   --navy: #0E192D; /* Project Boxes */
   --light-grey: #3d3d3d; /* Divider */
   --shadow: 0 4px 4px #0e0e0e60; /* Shadow */
+  --shadow-box: 0 0 12px #000000c9; /* Shadow */
   --transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1); /* Transition */ 
   --drop-shadow: drop-shadow(0 3px 4px rgba(0, 255, 85, 0.5)); /* Drop Shadow */
 }
