@@ -1,86 +1,66 @@
 #projects {
+  min-height: 50vh;
   margin: auto;
-  font-family: Public Sans, sans-serif;
-  max-width: 900px;
+  font-family: "NTR", sans-serif;
+  max-width: 950px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
 }
 
-.projects-grid {
-  display: flex;
+.projects-directory-layout {
+  margin-bottom: 3rem;
+}
+
+.project-section {
+  height: 450px;
+  overflow: auto;
+  display: flex;  
   flex-direction: column;
-  padding: 0;
-}
-
-.project-subtitle {
-  font-size: 24px;
-  font-weight: bold;
-  color: var(--off-white);
-  text-align: left;
-  margin-bottom: 1rem;
-}
-
-.project-card-flex {
-  display: flex;
-  background: var(--navy);
-  box-shadow: var(--shadow);
-  overflow: hidden;
   border-radius: 10px;
-  margin-bottom: 2rem;
+  box-shadow: var(--shadow-box);
 }
 
-.project-card-menu {
-  display: flex;
-  flex-direction: column;
-  background: #030817;
-  padding: 1.5rem 0.5rem;
-  min-width: 110px; /* Useful width */
-  align-items: stretch;
-  gap: 1rem;
-}
-
-.project-card-menu button {
-  background: none;
-  border: none;
+.project-section-title {
   color: var(--off-white);
-  font-size: 1rem;
-  padding: 0.7rem 0.5rem;
-  cursor: pointer;
-  transition: var(--transition);
+  font-size: 24px;
+  margin-bottom: 1.2rem;
+  font-weight: bold;
 }
 
-.project-card-menu button.active,
-.project-card-menu button:hover {
-  color: var(--green-bright);
-}
-
-.project-card-content {
-  flex: 1;
-  padding: 1.5rem;
+.project-title {
   color: var(--off-white);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  position: relative;
-  height: 500px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 1rem 0 0.5rem 0;
+  letter-spacing: 0.01em;
+  padding-left: 1rem;
+  padding-top: 1rem;
+  
+}
+
+.project-description {
+  color: var(--off-white);
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .project-links {
-  position: absolute;
-  bottom: 1.5rem;
-  right: 1.5rem;
+  margin-top: auto;
   display: flex;
   gap: 0.7rem;
-  z-index: 2;
+  align-self: flex-end;
+  padding-bottom: 1.5rem; 
+  padding-right: 1.5rem;
 }
 
 .icon-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--green-bright);
+  color: var(--off-white) !important;
   width: 32px;
   height: 32px;
   font-size: 1.3rem;
@@ -89,16 +69,17 @@
 }
 
 .icon-link:hover {
-  filter: var(--drop-shadow)
+  color: var(--green-bright) !important;
+  transition: var(--transition);
+  filter: var(--drop-shadow);
+  transform: scale(1.1);
 }
 
 .project-image img {
-  display: flex;
-  max-width: 500px;
-  border-radius: 10px;
-  height: auto;
-  object-fit: cover;
-  margin-bottom: 1rem;
+  width: 100%;
+  height: 200px;
+  object-fit:cover;
+  display: block;
 }
 
 .project-tags {
@@ -108,6 +89,8 @@
   margin-top: 1rem;
   list-style: none;
   padding: 0;
+  padding-left: 1rem;
+  padding-top: 1rem;
 }
 .project-tags li {
   background: #030617;
@@ -120,70 +103,68 @@
 .code-viewer {
   position: relative;
   background: #030617;
-  border-radius: 0 0 18px 18px;
-  max-width: 750px;
-  max-height: 500px;
-  overflow: hidden;
   width: 100%;
-}
-
-.code-tabs {
   display: flex;
-  gap: 1rem;
-  position: sticky;
-  top: 0;
-  background: #030617;
-  padding: 0.5rem 1rem 0.5rem 1rem;
-}
-
-.code-tab-btn {
-  background: #090f1a;
-  color: var(--off-white);
-  border-radius: 8px;
-  border: none;
-  padding: 0.1rem 0.5rem;
-  cursor: pointer;
-  font-size: 12px;
-  transition: background 0.2s, color 0.2s;
-}
-
-.code-tab-btn.active,
-.code-tab-btn:hover {
-  background: #232c3b;
-  color: #fff;
+  flex-direction: column;
 }
 
 .code-block-container {
   overflow-x: auto;
-  overflow-y: auto;
-  max-height: 440px;
-  padding: 1rem;
+  overflow-y: scroll;
+  height: 450px;
 }
 
-/* Add to your Projects.css or a new file */
-/* Folder/file tree styles */
-.project-file-tree {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  font-family: 'Public Sans', sans-serif;
-}
-.project-file-tree li button {
-  background: none;
-  border: none;
-  color: var(--off-white);
-  text-align: left;
-  width: 100%;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  font-size: 1rem;
-  border-radius: 6px;
-  transition: background 0.2s;
-}
-.project-file-tree li button.active,
-.project-file-tree li button:hover {
-  background: #232c3b;
-  color: #64d98a;
+/* Responsive media queries */
+@media (max-width: 750px) {
+  #projects {
+    max-width: 100vw;
+    padding: 0 0.5rem;
+  }
+  .project-image img,
+  .code-viewer {
+    max-width: 100%;
+  }
 }
 
+@media (max-width: 600px) {
+  .directory-box {
+    flex-direction: column;
+    border-radius: 8px;
+  }
+  .project-title {
+    font-size: 1rem;
+  }
+  .project-section-title {
+    font-size: 1.2rem;
+  }
+  .project-image img {
+    max-width: 100%;
+    margin-bottom: 0.7rem;
+  }
+  .code-viewer {
+    border-radius: 0 0 10px 10px;
+    max-width: 100%;
+    max-height: 300px;
+    padding: 0.5rem;
+  }
+}
 
+.code-block-container::-webkit-scrollbar {
+  height: 8px;         /* Set the horizontal scrollbar thickness */
+}
+
+.code-block-container::-webkit-scrollbar-thumb {
+  background: #232c3b; /* Color of the scrollbar thumb */
+  border-radius: 4px;
+}
+
+.code-block-container::-webkit-scrollbar-track {
+  background: #10131a; /* Color of the scrollbar track */
+  border-radius: 4px;
+}
+
+/* For Firefox */
+.code-block-container {
+  scrollbar-width: thin;
+  scrollbar-color: #232c3b #10131a;
+}
