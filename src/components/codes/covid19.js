@@ -1,5 +1,3 @@
-import React from 'react';
-
 const covid19 = (
 
 `-- General Querying and Finding out the Percentage of People Vaccinated Over Time against Population 
