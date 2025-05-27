@@ -35,9 +35,6 @@ return (
             <a href={`mailto:${yourEmail}`} className="contact-email">{yourEmail}</a>
         </div>
         </form>   
-        <div className="footer">
-          <strong>Note:</strong> This site uses Google Analytics. No personal data is collected.
-        </div>
     </FadeInSection>
 </div>
   );
