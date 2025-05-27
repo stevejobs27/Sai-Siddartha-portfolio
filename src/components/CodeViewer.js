@@ -3,12 +3,26 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import "../styles/Projects.css";
 
-export default function CodeViewer({ code, language }) {
+export default function CodeViewer({ code, language, type }) {
   const isTabbed = code && typeof code === "object" && !Array.isArray(code);
   const tabKeys = isTabbed ? Object.keys(code) : [];
   const [activeTab, setActiveTab] = useState(isTabbed ? tabKeys[0] : null);
 
   const codeToShow = isTabbed ? code[activeTab] : code;
+
+  if ((type === "notebook" || type === "html") && typeof code === "string") {
+    return (
+      <div className="code-viewer">
+        <iframe
+          src={code}
+          width="100%"
+          height="450"
+          style={{ border: "none" }}
+          title="Notebook"
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="code-viewer">
