@@ -9,8 +9,7 @@
 // WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. //
 
 import React, { useEffect, useRef } from "react";
-import { FaGraduationCap, FaLaptopCode } from "react-icons/fa";
-import { BsBriefcaseFill } from "react-icons/bs";
+import { FcGraduationCap, FcIdea, FcBriefcase, FcGoogle, FcAcceptDatabase } from "react-icons/fc";
 import "../styles/Timeline.css";
 
 const milestones = [
@@ -24,7 +23,9 @@ const milestones = [
     title: "Startup Projects",
     description: "Discovered data analytics through startup projects with Reflect, ShieldMate, and HealthMate.",
     year: "2023",
-    type: "project"
+    type: "startup",
+    learnMoreLink: "#experience",
+    learnMoreText: "View Experience"
   },
   {
     title: "Career Decision",
@@ -36,13 +37,16 @@ const milestones = [
     title: "Google Data Analytics Certification",
     description: "Started my journey with the Google Data Analytics Professional Certificate.",
     year: "2023",
-    type: "education"
+    type: "google",
+    certificateUrl: "https://www.coursera.org/account/accomplishments/professional-cert/23OIJ3BGH8FJ"
   },
   {
     title: "Project Journey",
     description: "Worked on many projects using tools like Python, SQL, Tableau, and more.",
     year: "2024",
-    type: "project"
+    type: "project",
+    learnMoreLink: "#projects", 
+    learnMoreText: "See Projects"
   }
 ];
 
@@ -110,11 +114,15 @@ export default function Timeline() {
   const renderIcon = (type) => {
     switch (type) {
       case 'education':
-        return <FaGraduationCap className="timeline-icon" />;
-      case 'project':
-        return <FaLaptopCode className="timeline-icon" />;
+        return <FcGraduationCap className="timeline-icon" />;
+      case 'startup':
+        return <FcIdea className="timeline-icon" />;
       case 'career':
-        return <BsBriefcaseFill className="timeline-icon" />;
+        return <FcBriefcase className="timeline-icon" />;
+      case 'google':
+        return <FcGoogle className="timeline-icon" />;
+      case 'project':
+        return <FcAcceptDatabase className="timeline-icon" />;
       default:
         return null;
     }
@@ -132,12 +140,32 @@ export default function Timeline() {
             <div className={`cd-timeline-img cd-${item.type}`}>
               {renderIcon(item.type)}
             </div>
-
-            <div className="cd-timeline-content">
-              <h2>{item.title}</h2>
-              <p>{item.description}</p>
-              <span className="cd-date">{item.year}</span>
-            </div>
+              <div className="cd-timeline-content">
+                <h2>{item.title}</h2>
+                <p>{item.description}</p>
+                
+                {item.certificateUrl && (
+                  <a 
+                    href={item.certificateUrl} 
+                    className="cd-certificate-link"
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                  >
+                    View Certificate
+                  </a>
+                )}
+                
+                {item.learnMoreLink && (
+                  <a 
+                    href={item.learnMoreLink} 
+                    className="cd-certificate-link"
+                  >
+                    {item.learnMoreText || "Learn More"}
+                  </a>
+                )}
+                
+                <span className="cd-date">{item.year}</span>
+              </div>
           </div>
         ))}
       </section>

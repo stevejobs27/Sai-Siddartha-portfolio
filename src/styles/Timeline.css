@@ -15,31 +15,6 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
   max-width: 1000px;
 }
 
-.section-header {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.section-title {
-  font-size: 2rem;
-  font-weight: bold;
-  display: inline-block;
-  position: relative;
-  color: var(--green-bright, #64ffda);
-  padding-bottom: 10px;
-}
-
-.section-title:after {
-  content: '';
-  position: absolute;
-  width: 60%;
-  height: 3px;
-  background-color: var(--green-bright, #64ffda);
-  bottom: 0;
-  left: 20%;
-}
-
-/* Container for timeline */
 .cd-container {
   width: 90%;
   max-width: 1170px;
@@ -52,7 +27,6 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
   clear: both;
 }
 
-/* Timeline vertical line */
 #cd-timeline {
   position: relative;
   padding: 2em 0;
@@ -64,13 +38,12 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
   content: '';
   position: absolute;
   top: var(--line-top, 20px);
-  bottom: calc(100% - var(--line-bottom, calc(100% - 20px)));
+  bottom: calc(100% - var(--line-bottom));
   left: 18px;
   width: 4px;
   background: #8892b0;
 }
 
-/* Timeline block */
 .cd-timeline-block {
   position: relative;
   margin: 2em 0;
@@ -90,7 +63,6 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
   clear: both;
 }
 
-/* Timeline dots */
 .cd-timeline-img {
   position: absolute;
   top: 0;
@@ -103,24 +75,41 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
   justify-content: center;
   box-shadow: 0 0 0 4px #112240, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);
 }
-
-.cd-timeline-img.cd-education {
-  background: var(--green-bright, #64ffda);
+.cd-certificate-link {
+  display: block;
+  text-align: right;
+  color: var(--green-bright);
+  font-size: 15px;
+  text-decoration: none;
+}
+.cd-certificate-link:hover {
+  text-decoration: underline !important;
 }
 
-.cd-timeline-img.cd-project {
-  background: #64d98a;
+.cd-timeline-img.cd-education {
+  background: var(--color-hover);
+}
+
+.cd-timeline-img.cd-startup {
+  background: var(--color-hover);
 }
 
 .cd-timeline-img.cd-career {
-  background: #8892b0;
+  background: var(--color-hover);
 }
 
-/* Timeline content */
+.cd-timeline-img.cd-google {
+  background: var(--color-hover);
+}
+
+.cd-timeline-img.cd-project {
+  background: var(--color-hover);
+}
+
 .cd-timeline-content {
   position: relative;
   margin-left: 60px;
-  background: var(--color-hover, #112240);
+  background: var(--color-hover);
   border-radius: 0.25em;
   padding: 1em;
   box-shadow: 0 3px 0 #8892b0;
@@ -133,29 +122,28 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 }
 
 .cd-timeline-content h2 {
-  color: var(--green-bright, #64ffda);
+  color: var(--green-bright);
   margin-top: 0;
   margin-bottom: 5px;
-  font-size: 1.25rem;
+  font-size: 24px;
 }
 
 .cd-timeline-content p {
   margin: 1em 0;
   line-height: 1.6;
-  color: var(--off-white, #a8b2d1);
-  font-size: 0.9rem;
+  color: var(--off-white);
+  font-size: 18px;
 }
 
 .cd-timeline-content .cd-date {
   float: left;
   padding: 0.8em 0;
   opacity: 0.7;
-  color: var(--off-white, #ccd6f6);
+  color: var(--off-white);
   font-weight: bold;
-  font-size: 0.9rem;
+  font-size: 18px;
 }
 
-/* Arrow pointing to timeline */
 .cd-timeline-content::before {
   content: '';
   position: absolute;
@@ -164,17 +152,15 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
   height: 0;
   width: 0;
   border: 7px solid transparent;
-  border-right: 7px solid var(--color-hover, #112240);
+  border-right: 7px solid var(--color-hover);
 }
 
-/* Timeline icons */
 .timeline-icon {
   width: 24px;
   height: 24px;
   color: white;
 }
 
-/* Animation classes */
 .cd-timeline-img.is-hidden,
 .cd-timeline-content.is-hidden {
   visibility: hidden;
@@ -191,7 +177,6 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
   animation: cd-bounce-2 0.6s;
 }
 
-/* Animations */
 @keyframes cd-bounce-1 {
   0% {
     opacity: 0;
@@ -220,7 +205,6 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
   }
 }
 
-/* Desktop layout */
 @media only screen and (min-width: 1170px) {
   #cd-timeline::before {
     left: 50%;
@@ -253,7 +237,7 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
     top: 24px;
     left: 100%;
     border-color: transparent;
-    border-left-color: var(--color-hover, #112240);
+    border-left-color: var(--color-hover);
   }
 
   .cd-timeline-content .cd-date {
@@ -264,7 +248,6 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
     font-size: 1rem;
   }
 
-  /* Position blocks alternating left/right */
   .cd-timeline-block:nth-child(even) .cd-timeline-content {
     float: right;
   }
@@ -274,7 +257,7 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
     left: auto;
     right: 100%;
     border-color: transparent;
-    border-right-color: var(--color-hover, #112240);
+    border-right-color: var(--color-hover);
   }
 
   .cd-timeline-block:nth-child(even) .cd-date {
@@ -283,7 +266,6 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
     text-align: right;
   }
 
-  /* Inverse bounce effect on even content blocks */
   @keyframes cd-bounce-2-inverse {
     0% {
       opacity: 0;
@@ -303,7 +285,6 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
   }
 }
 
-/* Medium screens */
 @media only screen and (min-width: 768px) and (max-width: 1169px) {
   .cd-timeline-content h2 {
     font-size: 20px;
@@ -314,11 +295,10 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
   }
 
   .cd-timeline-content .cd-date {
-    font-size: 14px;
+    font-size: 15px;
   }
 }
 
-/* Mobile screens */
 @media only screen and (max-width: 767px) {
   .cd-timeline-img {
     width: 40px;
@@ -329,8 +309,24 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
     width: 20px;
     height: 20px;
   }
-  
   .cd-timeline-content {
     padding: 1em;
+  }
+
+    .cd-timeline-content h2 {
+    font-size: 20px;
+  }
+
+  .cd-timeline-content p {
+    font-size: 15px;
+  }
+
+  .cd-timeline-content .cd-date {
+    font-size: 15px;
+  }
+
+  .cd-certificate-link {
+    float: right;
+    margin-top: 10px;
   }
 }
