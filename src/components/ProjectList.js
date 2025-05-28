@@ -3,6 +3,26 @@ import Code from "./codes/code";
 const ProjectList = {
   SQL: [
     {
+      name: "Data Cleaning - NashVille Housing Data",
+      image: "/assets/nashville.png",
+      github: "https://github.com/rafsanahmed28/Data-Cleaning-MySQL",
+      tags: ["MySQL", "Analytics"],
+      files: [
+        {
+          name: "README.md",
+          type: "info",
+          content: "Cleaned and transformed Nashville housing data for analysis, focusing on data integrity and consistency.",
+        },
+        {
+          name: "nasvhille.sql",
+          type: "code",
+          content: Code("Nashville"),
+          language: "sql",
+        },
+      ],
+    },
+    
+    {
       name: "Cyclistic Bike Share Analysis",
       image: "/assets/cyclistic.png",
       medium: "https://medium.com/@rafsanahmed2828/from-data-to-insights-googles-cyclistic-case-study-04fb362c2d0d",
@@ -38,54 +58,14 @@ const ProjectList = {
           language: "sql",
         },
       ],
-    },
-
-    {
-      name: "Data Cleaning - NashVille Housing Data",
-      image: "/assets/nashville.png",
-      github: "https://github.com/rafsanahmed28/Data-Cleaning-MySQL",
-      tags: ["MySQL", "Analytics"],
-      files: [
-        {
-          name: "README.md",
-          type: "info",
-          content: "Cleaned and transformed Nashville housing data for analysis, focusing on data integrity and consistency.",
-        },
-        {
-          name: "nasvhille.sql",
-          type: "code",
-          content: Code("Nashville"),
-          language: "sql",
-        },
-      ],
     }
   ],
   Python: [
     {
-      name: "Amazon Web Scraping",
-      image: "/assets/truth.png",
-      github: "https://github.com/rafsanahmed28/Amazon-Web-Scraping",
-      tags: ["pandas", "matplotlib", "forecasting"],
-      files: [
-        {
-          name: "README.md",
-          type: "info",
-          content: "Built a web scraper to track price changes of a specific product on Amazon and send email to myself using Python libraries BeautifulSoup, and pandas.",
-        },
-        {
-          name: "amazon.ipynb",
-          type: "notebook",
-          content: "/amazon.html",
-          language: "python",
-        },
-      ],
-    },
-
-    {
       name: "Movie Correlation Analysis",
-      image: "/assets/truth.png",
+      image: "/assets/correlation.png",
       github: "https://github.com/rafsanahmed28/Movie-Correlation---Pandas-NumPy-SNS",
-      tags: ["pandas", "numpy", "seaborn", "matplotlib"],
+      tags: ["Pandas", "Numpy", "Seaborn", "Matplotlib"],
       files: [
         {
           name: "README.md",
@@ -95,7 +75,27 @@ const ProjectList = {
         {
           name: "correlation.ipynb",
           type: "notebook",
-          content: "/correlation.html",
+          content: "https://nbviewer.org/github/rafsanahmed28/Movie-Correlation---Pandas-NumPy-SNS/blob/main/Finding%20Movie%20Correlation.ipynb",
+          language: "python",
+        },
+      ],
+    },
+
+    {
+      name: "Amazon Web Scraping",
+      image: "/assets/amazon.png",
+      github: "https://github.com/rafsanahmed28/Amazon-Web-Scraping",
+      tags: ["BeautifulSoup", "Pandas"],
+      files: [
+        {
+          name: "README.md",
+          type: "info",
+          content: "Built a web scraper to track price changes of a specific product on Amazon and send email to myself using Python libraries BeautifulSoup, and pandas.",
+        },
+        {
+          name: "amazon.ipynb",
+          type: "notebook",
+          content: "https://nbviewer.org/github/rafsanahmed28/Amazon-Web-Scraping/blob/main/Amazon%20Web%20Scraping%20-%20Data%20Project.ipynb",
           language: "python",
         },
       ],
@@ -103,9 +103,9 @@ const ProjectList = {
 
     {
       name: "Automating Crypto Data using CoinGecko API",
-      image: "/assets/truth.png",
+      image: "/assets/crypto.png",
       github: "https://github.com/rafsanahmed28/Automating-Crypto-Data-using-CoinGecko-API",
-      tags: ["pandas", "matplotlib", "forecasting"],
+      tags: ["Pandas", "Seaborn", "Matplotlib"],
       files: [
         {
           name: "README.md",
@@ -115,7 +115,7 @@ const ProjectList = {
         {
           name: "crypto.ipynb",
           type: "notebook",
-          content: "/crypto.html",
+          content: "https://nbviewer.org/github/rafsanahmed28/Automating-Crypto-Data-using-CoinGecko-API/blob/main/Automating%20Crypto%20-%20CoinGecko%20API.ipynb",
           language: "python",
         },
       ],
@@ -125,6 +125,7 @@ const ProjectList = {
     {
       name: "Cyclistic Case Study Visualization",
       image: "/assets/cyclisticviz.png",
+      medium: "https://medium.com/@rafsanahmed2828/from-data-to-insights-googles-cyclistic-case-study-04fb362c2d0d",
       tableau: "https://public.tableau.com/app/profile/rafsan.ahmed8668/viz/GoogleCyclisticCaseStudyVisualization/DashboardMain",
       tags: ["Tableau", "Data Visualization"],
       files: [

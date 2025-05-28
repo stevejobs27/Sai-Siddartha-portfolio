@@ -256,7 +256,7 @@
     border-left-color: transparent;
   }
 
-  .timeline-event.active.left {
+  .timeline-event.active.left .timeline-content:after {
     border-left-color: transparent;
   }
   
