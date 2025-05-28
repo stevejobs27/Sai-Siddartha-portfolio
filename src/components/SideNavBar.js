@@ -22,8 +22,7 @@ export default function SideNavBar({ showStars, setShowStars }) {
         className={`star-btn${showStars ? " star-active" : ""}`}
         onClick={() => setShowStars((prev) => !prev)}
         title={showStars ? "Disable Background" : "Enable Background"}
-        type="button"
-      >
+        type="button">
         <Icon name="Power" />
       </button>
     </div>
