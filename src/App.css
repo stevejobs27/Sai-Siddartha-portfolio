@@ -85,8 +85,8 @@ a {
   content: "";
   display: block;
   width: 300px;
-  margin-top: 30px;
-  height: 1px;
+  margin-top: 27px;
+  height: 0.8px;
   margin-left: 20px;
   background-color: var(--light-grey);
 }
@@ -94,8 +94,24 @@ a {
 .section-title {
   font-family: "NTR", sans-serif;
   color: var(--lightest-slate);
-  font-size: 40px;
+  font-size: 36px;
   font-weight: 650;
+}
+
+.section-title {
+  display: inline-block;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.section-title:after {
+  content: '';
+  position: absolute;
+  width: 60%;
+  height: 3px;
+  background-color: var(--green-bright);
+  bottom: 0;
+  left: 20%;
 }
 
 @media only screen and (max-width: 600px) {

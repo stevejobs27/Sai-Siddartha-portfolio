@@ -4,7 +4,7 @@
   max-width: 800px;
   align-content: center;
   justify-content: center;
-  padding-top: 200px;
+  margin-top: 200px;
   padding-bottom: 100px;
 }
 
@@ -117,10 +117,11 @@ ul {
   .joblist-tabs {
     flex-direction: row;
     border-right: none;
-    min-width: 0;
     padding-top: 0;
   }
   .joblist-tab {
+    flex: 1;
+    text-align: center;
     padding: 0.7rem 1rem;
     font-size: 0.95rem;
     border-left: none;
@@ -133,6 +134,14 @@ ul {
   }
   .joblist-job-title,
   .joblist-job-company {
-    font-size: 22px;
+    font-size: 18px;
+  }
+
+  .joblist-duration {
+    font-size: 16px;
+  }
+
+  .job-description li {
+    font-size: 15px;
   }
 }

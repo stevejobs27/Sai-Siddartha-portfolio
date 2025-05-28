@@ -1,11 +1,13 @@
+/* CREDIT BELONGS TO THE ORIGINAL CREATOR: https://codepen.io/filipz/pen/KwwKRRr */
+/* Please do not remove the credits from the original creator */
+
 .spiral-container {
   display: flex;
-  grid-template-columns: repeat(3, 1fr);
   gap: 30px;
   max-width: 300px;
   justify-content: center;
   align-items: center;
-    
+  z-index: 3000;
 }
 
 @media (max-width: 768px) {
@@ -23,7 +25,7 @@
   position: center;
   background: radial-gradient(ellipse at center, #070a14 0%, #000000ee 65%);
   border-radius: 50%;
-  box-shadow: 0 0 8px 2px rgba(38, 226, 104, 0.15);
+  box-shadow: 0 0 8px 2px rgba(38, 226, 104, 0.25);
   width: 225px;
   height: 225px;
   margin-bottom: 70px;
@@ -33,7 +35,6 @@
   justify-content: center;
   overflow: visible;
   transition: border-color 0.3s ease, width 0.3s ease, height 0.3s ease;
-  z-index: 1;
 }
 
 .animation-container::before {
@@ -45,7 +46,6 @@
   height: calc(100% + 20px);
   border-radius: 50%;
   filter: blur(4px);
-  z-index: 0;
   pointer-events: none;
 }
 
@@ -75,7 +75,6 @@
   background: #fff;
 }
 
-/* Corner decorations for all animation containers */
 .corner {
   display: none;
 }

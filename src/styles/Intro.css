@@ -3,10 +3,8 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin: 0 auto;
-  max-width: 1000px;
-  padding-top: 150px;
-  min-height: 100vh;
+  margin-top: 150px;
+  min-height: 70vh;
 }
 
 .Typist {
@@ -56,14 +54,12 @@
   font-size: 20px;
   text-align: center;
   max-width: 800px;
-  margin-bottom: 30px;
 }
 
 @media only screen and (max-width: 600px) {
   #intro {
     align-items: center;
-    min-height: 80vh;
-    padding-top: 65px;
+    margin-top: 65px;
   }
 
   .intro-title {
@@ -97,6 +93,6 @@
 
 @media only screen and (min-width: 2000px) {
   #intro {
-    padding-top: 300px;
+    margin-top: 300px;
   }
 }

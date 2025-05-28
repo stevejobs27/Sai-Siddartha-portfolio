@@ -1,13 +1,12 @@
 .navbar {
-    background-color: var(--nav-color);
-    font-family: "NTR", sans-serif;
-    font-weight: 600;
-    padding: 10px 60px !important;
-    font-size: 1.1rem;
-    backdrop-filter: blur(10px);
-    z-index: 2000;
-  }
-  
+  background-color: var(--nav-color);
+  font-family: "NTR", sans-serif;
+  padding: 10px 60px !important;
+  font-size: 18px;
+  backdrop-filter: blur(10px);
+  z-index: 2000;
+  position: fixed;
+}
 
 .navbar-animated {
   box-shadow: var(--shadow);
@@ -15,9 +14,10 @@
 }
 
 .navbar-at-top {
-  box-shadow:none !important;
+  box-shadow: none !important;
   padding: 20px 60px !important;
 }
+
 .navbar-animated.navbar-hidden {
   transform: translateY(-100%);
 }
@@ -25,51 +25,50 @@
   transform: translateY(0);
 }
 
-.navbar-brand  {
-    color: var(--lightest-slate) !important;
-    width: 100%;
-  }
+.navbar-brand {
+  color: var(--lightest-slate) !important;
+  width: 100%;
+}
 
 .navbar-nav .nav-link {
-    color: var(--lightest-slate) !important;
-    margin-right: 30px;;
-  }
+  color: var(--lightest-slate) !important;
+  margin-right: 30px;
+}
 
 .navbar-nav .nav-link:hover {
-    color: var(--green-bright) !important;
-    filter: var(--drop-shadow);
-    scale:1.1;
-    transition: var(--transition);
-  }
+  color: var(--green-bright) !important;
+  filter: var(--drop-shadow);
+  scale: 1.1;
+  transition: var(--transition);
+}
 
 .navbar-star-btn {
   display: none;
 }
 
 .logo {
-    display: flex;
-    align-items: center;
-    margin: 0px -10px;
+  display: flex;
+  align-items: center;
+  margin: 0px -10px;
 }
 
 .logo:hover,
 .logo:focus {
-  scale:1.1;
+  scale: 1.1;
   filter: var(--drop-shadow);
   transition: var(--transition);
 }
 
 @media (max-width: 1200px) {
   .navbar {
-      margin-left: 0px;
-    }
+    margin-left: 0px;
+  }
   .navbar-nav .nav-link {
-      margin: 0 auto;
-    }
+    margin: 0 auto;
+  }
   .navbar-nav.me-auto {
-      display: flex;
-      
-    }
+    display: flex;
+  }
   .logo {
     margin: 0px -30px;
   }
@@ -77,53 +76,51 @@
 
 @media only screen and (max-width: 600px) {
   .navbar {
-      padding: 10px 20px !important;
-      box-shadow: 0 1px 6px rgb(24, 24, 32);
-      align-items: center;
-      justify-content: center;
-    }
+    padding: 10px 20px !important;
+    align-items: center;
+    justify-content: center;
+  }
   .navbar-at-top {
-      box-shadow: none !important;
-      padding: 15px 20px !important;
-      align-items: center;
-      justify-content: center;
-}
+    box-shadow: none !important;
+    padding: 15px 20px !important;
+    align-items: center;
+    justify-content: center;
+  }
   .navbar-nav .nav-link {
-      font-size: 12px;
-      color: var(--lightest-slate) !important;
-    }
+    font-size: 13px;
+    color: var(--lightest-slate) !important;
+  }
   .navbar-nav.me-auto {
-      display: flex;
-    }
-
+    display: flex;
+  }
   .logo {
-      margin: 0;
-    }
+    margin: 0;
+  }
   .navbar-star-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: none;
-      border: none;
-      margin: 0 5px 0 5px;
-      color: var(--lightest-slate) !important;
-      font-size: 0.9rem;
-      cursor: pointer;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    margin: 0 5px 0 0;
+    color: var(--lightest-slate) !important;
+    font-size: 0.9rem;
+  }
+
   .navbar-star-btn:hover {
-      color: var(--green-bright) !important;
-      filter: var(--drop-shadow);
-      scale:1.1;
-      transition: var(--transition);
-    }
+    color: var(--green-bright) !important;
+    filter: var(--drop-shadow);
+    scale: 1.1;
+    transition: var(--transition);
+  }
   .navbar-star-divider:before {
-      content: "";
-      width: 1.5px;
-      height: 20px;
-      background-color: var(--green-bright);
-      filter: var(--drop-shadow);
-      display: flex;
-      margin: 10px 10px;
-      border-radius: 2px;
-    }
+    content: "";
+    width: 1.5px;
+    height: 20px;
+    background-color: var(--green-bright);
+    filter: var(--drop-shadow);
+    display: flex;
+    margin: 10px 10px;
+    border-radius: 2px;
+  }
 }

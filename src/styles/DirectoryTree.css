@@ -1,19 +1,25 @@
 .directory-sidebar {
-  min-width: 100px;
   max-width: 200px;
   background: #010610;
   box-shadow: var(--shadow);
   padding: .7rem 0.2rem;
   display: flex;    
   flex-direction: column;
-  border-right: 1px solid #161616;
-  overflow: auto;
+  border-right: 1px solid #111111;
+  overflow: auto
+}
+
+.directory-box {
+  display: flex;
+  background: #101224;
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.12);    
+  overflow: hidden;
+  min-height: 350px;
 }
 
 .directory-content {
   flex: 1;
   min-width: 0;
-  background: #101224;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -47,7 +53,7 @@
 
 .directory-folder.open:hover {
   background: #101224;
-  color: #87e79c;
+  color: var(--green-bright);
 }
 
 .directory-files {
@@ -77,15 +83,7 @@
 .directory-file-btn.active,
 .directory-file-btn:hover {
   background: #101224;
-  color: #64d98a;
-}
-
-.directory-box {
-  display: flex;
-  background: #181f2a;
-  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.12);    
-  overflow: hidden;
-  min-height: 350px;
+  color: var(--green-bright);
 }
 
 .directory-folder,
