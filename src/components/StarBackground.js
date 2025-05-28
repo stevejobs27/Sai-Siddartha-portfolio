@@ -1,7 +1,6 @@
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useRef, useMemo, Suspense } from "react";
 
-// Stardust component
 function Stardust({ count = 2000 }) {
   const ref = useRef();
   const { positions, sizes, opacities } = useMemo(() => {
