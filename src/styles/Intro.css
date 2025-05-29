@@ -1,21 +1,106 @@
-#intro {
+.intro-section {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  text-align: center;
-  margin-top: 150px;
-  min-height: 70vh;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 0;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
-.Typist {
-  color: var(--off-white);
-  text-align: center;
-  font-size: 66px;
-  margin-top: -30px;
+.intro-content {
+  flex: 1;
+  max-width: 600px;
+  padding-right: 20px;
+  z-index: 10;
 }
-.Typist .Cursor--blinking {
+
+.intro-animation {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  margin-top: 150px;
+  align-items: center;
+  position: relative;
+  z-index: 5;
+}
+
+.intro-buttons {
+  display: flex;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.button-icon {
+  margin-left: 8px;
+  width: 16px;
+  height: 16px;
+  stroke-width: 2px;
+  vertical-align: middle;
+  transition: transform 0.3s ease;
+}
+
+.main-button, .outline-button {
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.main-button {
+  background-color: var(--color-select);
+  color: var(--navy);
+  border: 2px solid var(--green-bright);
+}
+
+.outline-button {
+  background-color: var(--color-select);
   color: var(--green-bright);
-  padding-left: 4px;
+  border: 2px solid var(--green-bright);
+}
+
+.main-button:hover, .outline-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.typist-content {
+  font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  position: relative;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.windmill-cursor {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  margin-left: 5px;
+  vertical-align: middle;
+  position: relative;
+}
+
+.windmill-cursor svg {
+  width: 140%;
+  height: 140%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
 }
 
 
@@ -23,19 +108,19 @@
   color: var(--off-white);
   font-family: "NTR", sans-serif;
   font-weight: 200;
-  font-size: 66px;
+  font-size: 56px;
 }
 .intro-name {
   font-family: "NTR", sans-serif;
   color: var(--green-bright);
   font-weight: bold;
-  font-size: 72px;
+  font-size: 60px;
 }
 
 .intro-subtitle {
   font-family: "NTR", sans-serif;
   color: var(--off-white);
-  text-align: center;
+  text-align: left;
   margin-top: -10px;
   margin-bottom: 40px;
   font-size: 36px;
@@ -52,47 +137,152 @@
   margin-top: -30px;
   font-family: "NTR", sans-serif;
   font-size: 20px;
-  text-align: center;
-  max-width: 800px;
+  text-align: left;
+  max-width: 600px;
 }
 
+@media (max-width: 1200px) {
+  .intro-section {
+    flex-direction: column-reverse;
+    padding-top: 60px;
+    min-height: auto;
+    overflow: visible; /* Ensure overflow is visible */
+  }
+  
+  .intro-animation {
+    width: 100%;
+    margin: 0 auto 40px auto; /* Center horizontally with bottom margin */
+    overflow: visible;
+  }
+  
+  .animated-robot-container {
+    scale: 0.65;
+    margin: 0 auto;
+    height: auto; /* Auto height */
+    min-height: 450px; /* Minimum height to ensure visibility */
+  }
+  
+  .intro-content {
+    max-width: 100%;
+    padding-right: 0;
+    margin-bottom: 40px;
+  }
+  
+  .intro-buttons {
+    justify-content: center;
+  }
+  
+  .text-scramble__content {
+    font-size: 2rem; /* Slightly smaller text on tablet */
+  }
+}
+
+/* Smaller mobile devices */
 @media only screen and (max-width: 600px) {
-  #intro {
+  .intro-section {
+    padding-top: 0; /* Remove top padding */
+    overflow: visible;
+  }
+
+  .typist-content {
+    justify-content: center;
+    text-align: center;
+    flex-wrap: wrap; /* Allow content to wrap */
+  }
+  
+  .animated-robot-container {
+    scale: 0.60; /* Slightly larger than before */
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    margin-top: 65px;
+    justify-content: center;
+    margin: 0 auto;
+    height: auto; /* Auto height for better responsiveness */
+  }
+  
+  .intro-animation {
+    margin: 0 auto 20px auto;
+    min-height: 350px; /* Ensure enough space */
+    overflow: visible;
+    margin-top: -40px;
+  }
+
+  .text-scramble__content {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
   }
 
   .intro-title {
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 600;
   }
+  
   .intro-name {
-    font-size: 32px;
-  }
-
-  .Typist {
-    font-size: 32px;
+    font-size: 28px;
   }
 
   .intro-subtitle {
-    font-size: 20px;
-    margin-top: 0px;  
+    font-size: 18px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    text-align: center;
   }
+  
   .intro-subtitle-name {
-  color: var(--green-bright);
-  font-size: 20px;
-}
-
+    font-size: 18px;
+  }
 
   .intro-desc {
     font-size: 16px;
     max-width: unset;
-    margin-bottom: 15px;
+    margin-top: 0;
+    text-align: center;
   }
+  
+  /* Smaller buttons */
+  .intro-buttons {
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .main-button, .outline-button {
+    padding: 8px 16px;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+  }
+  
+.windmill-cursor svg {
+  width: 90%;
+  height: 90%;
+}
 }
 
-@media only screen and (min-width: 2000px) {
-  #intro {
-    margin-top: 300px;
+/* Extra small devices */
+@media only screen and (max-width: 375px) {
+  .animated-robot-container {
+    scale: 0.4;
+    min-height: 300px;
+  }
+  
+  .intro-animation {
+    min-height: 300px;
+  }
+  
+  .intro-title, .intro-name {
+    font-size: 24px;
+  }
+  
+  .intro-subtitle, .intro-subtitle-name {
+    font-size: 16px;
+  }
+  
+  .intro-desc {
+    font-size: 14px;
+  }
+  
+  .main-button, .outline-button {
+    padding: 6px 12px;
+    font-size: 12px;
   }
 }
