@@ -11,7 +11,6 @@ import Contact from "./components/Contact";
 import { StarsCanvas } from "./components/StarBackground";
 import "./App.css";
 import "./styles/Global.css";
-import 'rsuite/styles/index.less';
 
 function App() {
   const [showStars, setShowStars] = useState(false);
