@@ -1,8 +1,9 @@
 .navbar {
   background-color: var(--nav-color);
   font-family: "NTR", sans-serif;
-  padding: 10px 60px !important;
-  font-size: 18px;
+  padding: 20px 60px !important;
+  font-size: 16px;
+  font-weight: 600;
   backdrop-filter: blur(10px);
   z-index: 2000;
   position: fixed;
@@ -15,12 +16,13 @@
 
 .navbar-at-top {
   box-shadow: none !important;
-  padding: 20px 60px !important;
+  padding: 30px 60px !important;
 }
 
 .navbar-animated.navbar-hidden {
   transform: translateY(-100%);
 }
+
 .navbar-animated.navbar-visible {
   transform: translateY(0);
 }
@@ -42,110 +44,240 @@
 }
 
 .navbar-nav .nav-link:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
   content: "";
   display: block;
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: 0;
   height: 2px;
+  left: 50%;
+  position: absolute;
   background: var(--green-bright);
   transition: var(--transition);
+  width: 0;
+}
+
+.navbar-nav .nav-link:hover:after,
+.navbar-nav .nav-link:focus:after { 
+  width: 100%; 
+  left: 0; 
 }
 
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link:focus {
   color: var(--green-bright) !important;
-  filter: var(--drop-shadow);
   scale: 1.1;
   transition: var(--transition);
 }
 
-.navbar-nav .nav-link:hover:after,
-.navbar-nav .nav-link:focus:after {
-  width: 100%;
-  left: 0;
-}
-
 .navbar-star-btn {
   display: none;
+  background: transparent;
+  border: none;
+  color: var(--lightest-slate);
+  padding: 8px;
+  cursor: pointer;
+  transition: var(--transition);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-star-btn:hover,
+.navbar-star-btn:focus {
+  color: var(--green-bright);
+  transform: scale(1.1);
+}
+
+.navbar-star-btn.star-active {
+  color: var(--green-bright);
+}
+
+.navbar-mobile-divider {
+  display: none;
+  height: 20px;
+  width: 2px;
+  background-color: var(--green-bright);
+  border-radius: 10px;
+  filter: drop-shadow(0 3px 4px rgb(0, 255, 85));
+  margin-right: 25px;
+  margin-left: 10px;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  margin: 0px -10px;
+  margin: 0px 10px;
+  scale: 1.2
 }
 
 .logo:hover,
 .logo:focus {
-  scale: 1.1;
+  scale: 1.3;
   filter: var(--drop-shadow);
   transition: var(--transition);
+}
+
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25px;
+  height: 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 2001;
+}
+
+.mobile-menu-overlay {
+  display: none; /* Start hidden */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(10, 25, 47, 0.9); /* Darker navy with 90% opacity */
+  z-index: 1998;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-menu-overlay.open {
+  display: block;
+  opacity: 1;
+}
+
+/* Remove duplicate mobile-menu selector and keep this one */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 225px;
+  height: 100vh;
+  background-color: var(--mobile-nav);
+  backdrop-filter: blur(15px);
+  padding: 80px 25px 25px;
+  box-shadow: var(--shadow-box);
+  z-index: 1999;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-left: 1px solid rgba(100, 217, 138, 0.1);
+}
+
+.mobile-menu.open {
+  transform: translateX(0);
+}
+
+.line {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--lightest-slate);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
+
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.mobile-nav-links .nav-link {
+  width: 100%;
+  text-align: left;
+  font-size: 18px !important;
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(204, 214, 246, 0.1);
+  transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.mobile-nav-links .nav-link:hover {
+  color: var(--green-bright) !important;
+  padding-left: 5px;
 }
 
 @media (max-width: 1200px) {
   .navbar {
     margin-left: 0px;
   }
+  
   .navbar-nav .nav-link {
     margin: 0 auto;
   }
+  
   .navbar-nav.me-auto {
     display: flex;
   }
+  
   .logo {
     margin: 0px -30px;
   }
 }
 
+/* Mobile media query - consolidated */
 @media only screen and (max-width: 600px) {
   .navbar {
     padding: 10px 20px !important;
     align-items: center;
     justify-content: center;
   }
+  
   .navbar-at-top {
     box-shadow: none !important;
     padding: 15px 20px !important;
     align-items: center;
     justify-content: center;
+  }  
+  /* Remove this since we're moving the button outside */
+  .mobile-menu .star-btn {
+    display: none;
   }
-  .navbar-nav .nav-link {
-    font-size: 13px;
-    color: var(--lightest-slate) !important;
-  }
-  .navbar-nav.me-auto {
-    display: flex;
-  }
-  .logo {
-    margin: 0;
-  }
+  
+  /* Display the button in the navbar instead */
   .navbar-star-btn {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    background: none;
-    border: none;
-    margin: 0 5px 0 0;
-    color: var(--lightest-slate) !important;
-    font-size: 0.9rem;
   }
-
-  .navbar-star-btn:hover {
-    color: var(--green-bright) !important;
-    filter: var(--drop-shadow);
-    scale: 1.1;
-    transition: var(--transition);
+  
+  /* Display the divider */
+  .navbar-mobile-divider {
+    display: block;
   }
-  .navbar-star-divider:before {
-    content: "";
-    width: 1.5px;
-    height: 20px;
-    background-color: var(--green-bright);
-    filter: var(--drop-shadow);
+  
+  /* Create a container for the mobile controls */
+  .mobile-controls {
     display: flex;
-    margin: 10px 10px;
-    border-radius: 2px;
+    align-items: center;
+  }
+  
+  /* Rest of your mobile styles */
+  .logo {
+    margin-left: 15px;
+  }
+  
+  .desktop-nav {
+    display: none;
+  }
+  
+  .hamburger-menu {
+    display: flex;
+  }
+  
+  .mobile-menu {
+    display: block;
+  }
+  
+  /* Force vertical layout */
+  .mobile-menu .nav,
+  .mobile-menu .navbar-nav,
+  .mobile-nav-links {
+    flex-direction: column !important;
+    display: flex !important;
   }
 }
