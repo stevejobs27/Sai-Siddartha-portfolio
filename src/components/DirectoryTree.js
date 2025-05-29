@@ -73,7 +73,7 @@ export default function DirectoryTree({
               style={{ display: "flex", alignItems: "center", cursor: "pointer" }}
             >
               {openFolders[idx]
-                ? <VscFolderOpened style={{ marginRight: 6, verticalAlign: "middle", color: "#64D98A", fontSize: 15, flexShrink: 0 }} />
+                ? <VscFolderOpened style={{ marginRight: 6, verticalAlign: "middle", color: "var(--green-bright)", fontSize: 15, flexShrink: 0 }} />
                 : <VscFolder style={{ marginRight: 6, verticalAlign: "middle", color: "#8da1b9", fontSize: 15, flexShrink: 0 }} />}
             </span>
             <span>{project.name}</span>

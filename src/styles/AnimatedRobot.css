@@ -30,3 +30,24 @@
 .svg-box #robot {
   cursor: pointer;
 }
+
+.animated-robot-container {
+  margin: 0 auto; /* Center horizontally */
+  position: absolute;
+  width: 1000px;
+  height: 800px;
+  align-items: right;
+  display: flex;
+  justify-content: right;
+  transform: scale(0.9);
+}
+
+@media (max-width: 1200px) {
+  .animated-robot-container {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    transform: scale(0.8);
+    margin-top: -40px; /* Adjust overlap with text on mobile */
+  }
+}

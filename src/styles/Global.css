@@ -4,6 +4,7 @@
   --linear-gradient: linear-gradient(to bottom,#03141a 0%,#030817 20%, #060a17 40%, #030817 60%); /* Page Background Color */
   --green-bright: #64D98A; /* Highlight Text, Glow, Tags */
   --color-hover: #101224; /* Box Color, Hover Color */
+  --color-select: #030817; /* Select Color */
   --off-white: #a8b2d1; /* TEXT MAIN */
   --navy: #0E192D; /* Project Boxes */
   --light-grey: #3d3d3d; /* Divider */

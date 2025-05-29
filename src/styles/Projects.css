@@ -19,7 +19,6 @@
   display: flex;  
   flex-direction: column;
   border-radius: 10px;
-  background: #232c3b;
   box-shadow: var(--shadow-box);
 }
 
@@ -94,7 +93,7 @@
   padding-top: 1rem;
 }
 .project-tags li {
-  background: #030617;
+  background: var(--color-hover);
   color: var(--green-bright);
   padding: 0.2rem 0.8rem;
   border-radius: 10px;
@@ -103,7 +102,7 @@
 
 .code-viewer {
   position: relative;
-  background: #030617;
+  background: var(--navy);
   width: 100%;
   display: flex;
   flex-direction: column;

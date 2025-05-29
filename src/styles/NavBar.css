@@ -33,13 +33,38 @@
 .navbar-nav .nav-link {
   color: var(--lightest-slate) !important;
   margin-right: 30px;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  background: none;
+  transition: var(--transition);
 }
 
-.navbar-nav .nav-link:hover {
+.navbar-nav .nav-link:after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: var(--green-bright);
+  transition: var(--transition);
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
   color: var(--green-bright) !important;
   filter: var(--drop-shadow);
   scale: 1.1;
   transition: var(--transition);
+}
+
+.navbar-nav .nav-link:hover:after,
+.navbar-nav .nav-link:focus:after {
+  width: 100%;
+  left: 0;
 }
 
 .navbar-star-btn {

@@ -13,21 +13,19 @@
   border-radius: 10px;
   min-height: 300px;
   margin: 1rem 0;
-  background: #03081790;
 }
 
 .joblist-tabs {
   display: flex;
   flex-direction: column;
   min-width: 160px;
-  background:#03081790;
   padding-top: 0.5rem;
 }
 
 .joblist-tab {
   background: none;
   border: none;
-  color: var(--off-white, #bfc9d5);
+  color: var(--off-white);
   padding: 1rem 1.5rem;
   cursor: pointer;
   text-align: left;
@@ -38,15 +36,15 @@
 
 .joblist-tab.active,
 .joblist-tab:focus {
-  background: #101224;
-  color: #64d98a;
+  background: var(--color-select);
+  color: var(--green-bright);
   font-weight: bold;
-  border-left: 3px solid #64d98a;
+  border-left: 3px solid var(--green-bright);
 }
 
 .joblist-tab:hover {
-  background: #101224;
-  color: #64d98a;
+  background: var(--color-hover);
+  color: var(--green-bright);
 }
 
 .joblist-content {

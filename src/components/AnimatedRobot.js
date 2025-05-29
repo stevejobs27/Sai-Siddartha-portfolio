@@ -846,7 +846,6 @@ export default function AnimatedRobot() {
           </g>
         </svg>
       </div>
-      <canvas ref={webgl2Ref} className="webgl2" style={{ position: "absolute", top: 0, left: 0, outline: "none", zIndex: 2 }} />
     </div>
   );
 }

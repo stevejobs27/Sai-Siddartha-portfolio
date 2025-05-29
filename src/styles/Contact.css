@@ -8,7 +8,7 @@
   max-width: 500px;
   margin: 0 auto 20px auto;
   padding: 32px;
-  background: #101224;
+  background: var(--color-hover);
   border-radius: 16px;
   box-shadow: var(--shadow-box);
 }
@@ -16,11 +16,17 @@
 .contact-textarea {
   width: 100%;
   border-radius: 8px;
+  border: 1px solid var(--navy);
   padding: 12px;
-  font-size: 1rem;
+  font-size: 15px;
   resize: vertical;
-  background: #181f2a;
+  background: var(--color-select);
   color: var(--off-white);
+}
+
+.contact-textarea:focus {
+  border: 1px solid var(--green-bright);
+  outline: none;
 }
 
 .contact-actions {
@@ -29,8 +35,8 @@
 }
 
 .contact-send-btn {
-  background: var(--off-white);
-  color: var(--navy);
+  background: var(--color-select);
+  color: var(--lightest-slate);
   border: none;
   border-radius: 8px;
   padding: 6px 16px;
@@ -42,7 +48,7 @@
 
 .contact-send-btn:hover {
   background: var(--green-bright);
-  filter: var(--drop-shadow);
+  color: var(--color-hover);
   transition: var(--transition);
 }
 
@@ -61,6 +67,5 @@
 
 .contact-email:hover {
   color: var(--green-bright) !important;
-  filter: var(--drop-shadow);
   transition: var(--transition);
 }

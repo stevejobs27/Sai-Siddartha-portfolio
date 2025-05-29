@@ -2,7 +2,6 @@ import React from 'react';
 import IconEmail from './email';
 import IconGitHub from './github';
 import IconLinkedin from './linkedin';
-import IconLogo from './logo';
 import IconMedium from './medium';
 import IconPower from './power';
 import IconTableau from './tableau';
@@ -15,8 +14,6 @@ const Icon = ({ name }) => {
       return <IconGitHub />;
     case 'Linkedin':
       return <IconLinkedin />;
-    case 'Logo':
-      return <IconLogo />;
     case 'Medium':
       return <IconMedium />;
     case 'Power':
