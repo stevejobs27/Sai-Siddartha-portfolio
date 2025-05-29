@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ProjectList from "./ProjectList";
 import CodeViewer from "./CodeViewer";
-import Icon from "./icons/icon";
+import Icon from "./Icons";
 import FadeInSection from "./FadeInSection";
 import DirectoryTree from "./DirectoryTree";
 import "../styles/Projects.css";

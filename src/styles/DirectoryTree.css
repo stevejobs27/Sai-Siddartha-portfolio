@@ -27,13 +27,11 @@
 }
 
 .directory-tree {
-  list-style: none;
-  padding: 5px 0;
-  margin: 10px;
-  height: 500px;
-  border-radius: 10px;
-  background: var(--color-select);
-
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  font-family: 'Fira Code', monospace;
+  font-size: 14px;
 }
 
 .directory-folder {
