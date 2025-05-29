@@ -686,7 +686,7 @@ export default function AnimatedRobot() {
       {/* Background SVG */}
       <div id="bg-box" style={{ width: 802, height: 602, position: "absolute", zIndex: -1 }}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
-          <path fill="#03141a10" d="M0 0v600h800V0zm405.6 458.4C217 458.4 64.1 360.6 64.1 240S217 21.5 405.6 21.5 747.3 119.3 747.3 240s-153 218.4-341.6 218.4z" />
+          <path fill="#07f00000" d="M0 0v600h800V0zm405.6 458.4C217 458.4 64.1 360.6 64.1 240S217 21.5 405.6 21.5 747.3 119.3 747.3 240s-153 218.4-341.6 218.4z" />
         </svg>
       </div>
       

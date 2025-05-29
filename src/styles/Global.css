@@ -1,6 +1,7 @@
 :root {
   --lightest-slate: #ccd6f6; /* Headings */
   --nav-color: #03141a10; /* NavBar */
+  --mobile-nav: #03141aee; /* NavBar */
   --linear-gradient: linear-gradient(to bottom,#03141a 0%,#030817 20%, #060a17 40%, #030817 60%); /* Page Background Color */
   --green-bright: #64D98A; /* Highlight Text, Glow, Tags */
   --color-hover: #101224; /* Box Color, Hover Color */
@@ -11,5 +12,4 @@
   --shadow: 0 4px 4px #0e0e0e60; /* Shadow */
   --shadow-box: 0 0 12px #000000c9; /* Shadow */
   --transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1); /* Transition */ 
-  --drop-shadow: drop-shadow(0 3px 4px rgba(0, 255, 85, 0.5)); /* Drop Shadow */
 }
