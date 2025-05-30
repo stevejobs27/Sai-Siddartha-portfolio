@@ -1,136 +1,553 @@
+/* =============================================
+   Main Layout
+   ============================================= */
 #projects {
   min-height: 50vh;
   margin: auto;
-  font-family: "NTR", sans-serif;
-  max-width: 950px;
+  margin-top: 200px;
+  max-width: 1100px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  position: relative;
+}
+
+.projects-section-container {
+  margin-bottom: 80px;
+  opacity: 0; 
 }
 
 .projects-directory-layout {
-  margin-bottom: 3rem;
-}
-
-.project-section {
-  height: 450px;
-  overflow: auto;
-  display: flex;  
-  flex-direction: column;
-  border-radius: 10px;
-  box-shadow: var(--shadow-box);
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .project-section-title {
-  color: var(--off-white);
-  font-size: 24px;
-  margin-bottom: 1.2rem;
-  font-weight: bold;
+  font-size: 28px;
+  margin-bottom: 25px;
+  color: var(--lightest-slate);
+  font-weight: 600;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, var(--green-bright), #4ec9b0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline;
+}
+
+/* =============================================
+   Directory Box with Animated Gradient Border
+   ============================================= */
+.directory-box {
+  display: flex;
+  background-color: rgba(11, 15, 29, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  position: relative;
+  height: 600px; /* Fixed height */
+  width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1;
+}
+
+.gradient-border {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes borderRotate {
+  0% {
+    background-position: 0% 0%;
+  }
+  25% {
+    background-position: 100% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px; 
+  padding: 2px; 
+  background: var(--gradient-border);
+  background-size: 300% 300%;
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  
+  pointer-events: none;
+  animation: borderRotate 13s linear infinite;
+  z-index: 0;
+}
+
+.directory-sidebar {
+  width: 260px;
+  height: 100%;
+  padding: 20px 15px;
+  overflow-y: auto;
+  border-right: 1px solid rgba(156, 182, 164, 0.1);
+  transition: var(--transition);
+  z-index: 2;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(100, 217, 138, 0.3) rgba(13, 25, 45, 0.5);
+}
+
+.directory-content {
+  flex: 1;
+  height: 100%;
+  padding: 30px;
+  overflow-y: auto;
+  position: relative;
+  z-index: 2;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(100, 217, 138, 0.3) rgba(13, 25, 45, 0.1);
+}
+
+/* =============================================
+   Directory Tree Structure
+   ============================================= */
+.directory-tree {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  font-family: 'Fira Code', monospace;
+  font-size: 14px;
+  width: 100%;
+}
+
+.project-item {
+  margin-bottom: 4px;
+}
+
+.directory-folder {
+  cursor: pointer;
+  padding: 6px 10px 6px 8px;
+  border-radius: 6px;
+  font-size: 14px;
+  color: var(--lightest-slate);
+  font-family: "NTR", sans-serif;
+  user-select: none;
+  margin-bottom: 2px;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.directory-folder:hover {
+  background-color: rgba(100, 217, 138, 0.05);
+}
+
+.directory-folder.open {
+  color: var(--green-bright);
+}
+
+.directory-folder .folder-icon {
+  margin-right: 6px;
+  font-size: 15px;
+  flex-shrink: 0;
+  transition: color 0.3s ease;
+}
+
+.directory-folder .chevron-icon {
+  margin-right: 4px;
+  font-size: 14px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.directory-folder .folder-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+
+.directory-folder.active {
+  background: linear-gradient(90deg, rgba(100, 217, 138, 0.1), rgba(65, 199, 199, 0.05));
+  position: relative;
+  border-radius: 6px;
+}
+
+.directory-folder:not(.active) {
+  background: transparent;
+}
+
+.directory-folder.active .folder-name {
+  color: var(--green-bright);
+  font-weight: 500;
+}
+
+.directory-folder:hover:not(.active) {
+  background: rgba(100, 217, 138, 0.05);
+}
+
+.directory-files {
+  list-style: none;
+  padding-left: 1.5rem;
+  padding-right: 0.5rem;
+  margin: 2px 0 6px 0;
+  overflow: hidden;
+}
+
+.file-item {
+  margin: 2px 0;
+}
+
+.directory-file-btn {
+  background: none;
+  border: none;
+  color: var(--lightest-slate);
+  text-align: left;
+  width: 100%;
+  padding: 5px 10px 5px 8px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 4px;
+  font-family: "NTR", sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  position: relative;
+  outline: none;
+}
+
+.directory-file-btn svg {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.directory-file-btn:hover:not(.active) {
+  background-color: rgba(100, 217, 138, 0.05);
+  color: var(--lightest-slate);
+  padding-left: 12px;
+}
+
+.directory-file-btn.active {
+  background: linear-gradient(90deg, rgba(100, 217, 138, 0.15), rgba(65, 199, 199, 0.05));
+  color: var(--green-bright) !important;
+  font-weight: 500;
+  padding-left: 12px !important;
+  position: relative;
+}
+
+/* =============================================
+   Project Info Styling
+   ============================================= */
+.project-info-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.project-image-container {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  background-color: rgba(255, 255, 255, 0.02);
+  height: 250px; /* Fixed height */
+  width: 100%;
+}
+
+.image-wrapper, .image-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.image-wrapper img, .image-link img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Make images cover the container */
+  object-position: center;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.hover-effect:hover img {
+  transform: scale(1.05);
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 25, 47, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.image-overlay span {
+  color: white;
+  font-weight: 600;
+  padding: 8px 16px;
+  border: 2px solid white;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.hover-effect:hover .image-overlay {
+  opacity: 1;
 }
 
 .project-title {
-  color: var(--off-white);
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin: 1rem 0 0.5rem 0;
-  letter-spacing: 0.01em;
-  padding-left: 1rem;
-  padding-top: 1rem;
-  
+  font-size: 30px;
+  margin: 0 0 15px 0;
+  font-weight: 700;
+}
+
+.project-title::selection {
+  background-color: var(--navy);
+  color: var(--green-bright);
+  text-shadow: none;
 }
 
 .project-description {
-  color: var(--off-white);
-  margin-bottom: 1rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  flex: 1;
+  margin-bottom: 20px;
+  color: var(--lightest-slate);
+  line-height: 1.6;
 }
 
-.project-links {
-  margin-top: auto;
-  display: flex;
-  gap: 0.7rem;
-  align-self: flex-end;
-  padding-bottom: 1.5rem; 
-  padding-right: 1.5rem;
-}
-
-.icon-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--off-white) !important;
-  width: 32px;
-  height: 32px;
-  font-size: 1.3rem;
-  text-decoration: none;
-  transition: var(--transition);
-}
-
-.icon-link:hover {
-  color: var(--green-bright) !important;
-  transition: var(--transition);
-  filter: var(--drop-shadow);
-  transform: scale(1.1);
-}
-
-.project-image img {
-  width: 100%;
-  height: 200px;
-  object-fit:cover;
-  display: block;
-}
-
+/* =============================================
+   Tags Styling
+   ============================================= */
 .project-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 1rem;
-  list-style: none;
+  gap: 8px;
+  margin: 15px 0;
   padding: 0;
-  padding-left: 1rem;
-  padding-top: 1rem;
-}
-.project-tags li {
-  background: var(--color-hover);
-  color: var(--green-bright);
-  padding: 0.2rem 0.8rem;
-  border-radius: 10px;
-  font-size: 0.9rem;
+  list-style: none;
 }
 
-.code-viewer {
+.tag-pill {
+  padding: 6px 12px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--green-bright);
+  border: 1px solid rgba(100, 217, 138, 0.3);
+  transition: all 0.3s ease;
+}
+
+.tag-pill:hover {
+  background: linear-gradient(120deg, rgba(100, 217, 138, 0.2), rgba(65, 199, 199, 0.2));
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* =============================================
+   Project Links
+   ============================================= */
+.project-links {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+  justify-content: flex-end; /* Right align links */
+}
+
+.icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  color: var(--green-bright);
+  transition: var(--transition);
   position: relative;
-  background: var(--navy);
-  width: 100%;
+  overflow: hidden;
+}
+
+.icon-link:hover {
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+  color: white;
+}
+
+.icon-link svg {
+  width: 25px;
+  height: 25px;
+}
+
+/* =============================================
+   Code Viewer
+   ============================================= */
+.code-viewer-container {
+  height: 100%;
   display: flex;
   flex-direction: column;
+  background-color: rgba(5, 14, 27, 0.822);
+  border-radius: 8px;
+  overflow: auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.code-block-container {
-  overflow-x: auto;
-  overflow-y: scroll;
-  height: 450px;
+.code-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background-color: rgba(4, 12, 24, 0.6);
+  border-bottom: 1px solid rgba(100, 217, 138, 0.2);
 }
 
-
-.code-block-container::-webkit-scrollbar {
-  height: 8px;         /* Set the horizontal scrollbar thickness */
+.file-name {
+  font-family: 'Fira Code', monospace;
+  font-size: 14px;
+  color: var(--lightest-slate);
 }
 
-.code-block-container::-webkit-scrollbar-thumb {
-  background: #232c3b; /* Color of the scrollbar thumb */
+.code-language-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  background: linear-gradient(90deg, rgba(100, 217, 138, 0.2), rgba(65, 199, 199, 0.2));
+  color: var(--green-bright);
+}
+
+/* Make the code area scrollable */
+.code-viewer-container pre {
+  flex: 1;
+  overflow: auto;
+  margin: 0;
+  padding: 20px;
+}
+
+.code-viewer-container code {
+  font-family: 'Fira Code', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* =============================================
+   SQL Project Special Handling
+   ============================================= */
+.project-item[data-project-type="sql"] .directory-folder.open:not(.active) {
+  color: var(--lightest-slate);
+}
+
+.project-item[data-project-type="sql"] .directory-folder:not(.active) .folder-icon {
+  color: #8da1b9 !important;
+}
+
+.project-item[data-project-type="sql"] .directory-folder.active .folder-icon {
+  color: var(--green-bright) !important;
+}
+
+.project-item[data-project-type="sql"] .directory-folder:not(.active) {
+  color: var(--lightest-slate) !important;
+  background-color: transparent !important;
+}
+
+/* =============================================
+   Enhanced Scrollbar Styling
+   ============================================= */
+/* For Webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(13, 25, 45, 0.3);
   border-radius: 4px;
 }
 
-.code-block-container::-webkit-scrollbar-track {
-  background: #10131a; /* Color of the scrollbar track */
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 217, 138, 0.3);
   border-radius: 4px;
 }
 
-/* For Firefox */
-.code-block-container {
-  scrollbar-width: thin;
-  scrollbar-color: #232c3b #10131a;
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 217, 138, 0.5);
+}
+
+/* =============================================
+   Responsive Styles
+   ============================================= */
+@media (max-width: 992px) {
+  .directory-box {
+    flex-direction: column;
+    height: auto;
+    min-height: 700px;
+  }
+  
+  .directory-sidebar {
+    width: 100%;
+    max-height: 200px;
+    overflow: auto;
+    border-right: none;
+    border-bottom: 1px solid rgba(100, 217, 138, 0.1);
+  }
+  
+  .project-links {
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 768px) {
+  
+  .project-section-title {
+    font-size: 24px;
+  }
+  
+  .project-title {
+    font-size: 20px;
+  }
+  
+  .directory-folder,
+  .directory-file-btn {
+    font-size: 13px;
+  }
+  
+  .directory-files {
+    padding-left: 1.2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  #projects {
+    margin-top: 150px;
+  }
+  
+  .project-image-container {
+    height: 200px;
+  }
+  
+  .tag-pill {
+    font-size: 11px;
+    padding: 4px 10px;
+  }
 }
