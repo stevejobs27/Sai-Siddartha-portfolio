@@ -1,76 +1,87 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "../styles/About.css";
-import FadeInSection from "./FadeInSection";
 
-// <div className="about-image"><img alt="Rafsan Ahmed" src={"/assets/me.jpg"}/></div> //
+gsap.registerPlugin(ScrollTrigger);
 
-class About extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      expanded: true,
-      activeKey: "1"
-    };
-    this.handleSelect = this.handleSelect.bind(this);
-  }
-  handleSelect(eventKey) {
-    this.setState({
-      activeKey: eventKey
+const About = () => {
+  const aboutRef = useRef(null);
+  const textRefs = useRef([]);
+  
+  useEffect(() => {
+    gsap.fromTo(".about-title",
+      {
+        y: 30,
+        opacity: 0
+      },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.6,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: "#about",
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+    
+    gsap.from(textRefs.current, {
+      y: 30,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.2,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".about-content",
+        start: "top 75%",
+        toggleActions: "play none none reverse"
+      }
     });
-  }
-  render() {
-    const one = (
-      <p>
-        I am an aspiring Data Analyst exploring the field through hands-on
-        <a href="https://github.com/rafsanahmed28"> projects </a>. 
-        Recently, I completed my graduation in Master of Engineering in Innovation & Entrepreneurship at{" "}
-        <a href="https://www.torontomu.ca/">Toronto Metropolitan University</a> where working with startups on market 
-         research and product development completely made me fall in love with the power of data. Since then, 
-        I have been honing my skills with analytical tools and technologies to build my expertise.
-      </p>
-    );
-    const two = (
-      <p>
-        Outside of work, I'm interested in cool tech products, 
-        aesthetic decor. I also play video games.
-      </p>
-    );
-
-    const tech_stack = [
-      "MySQL",
-      "PostgreSQL",
-      "Python",
-      "Tableau",
-      "R",
-      "Excel"
-    ];
-
-    return (
-      <div id="about">
-        <FadeInSection>
-          <div className="section-header ">
-            <span className="section-title">About Me</span>
-          </div>
-          <div className="about-content">
-            <div className="about-description">
-              {[one]}
-              {"Here are some technologies I have been working with:"}
-              <ul className="tech-stack">
-                {tech_stack.map(function (tech_item, i) {
-                  return (
-                    <FadeInSection delay={`${i + 1}00ms`}>
-                      <li>{tech_item}</li>
-                    </FadeInSection>
-                  );
-                })}
-              </ul>
-              {[two]}
-            </div>
-          </div>
-        </FadeInSection>
+    
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
+  
+  return (
+    <section id="about" ref={aboutRef}>
+      <div className="section-header">
+        <span className="section-title about-title">About Me</span>
       </div>
-    );
-  }
-}
+      
+      <div className="about-content">
+        <div className="about-description">
+          <p ref={el => textRefs.current[0] = el}>
+            I am an aspiring <span className="highlight">Data Analyst</span> exploring the field through hands-on
+            <a href="#projects"> projects</a>. 
+            Recently, I completed my graduation in Master of Engineering in Innovation & Entrepreneurship at{" "}
+            <a href="https://www.torontomu.ca/">Toronto Metropolitan University</a> where working with startups on market 
+            research and product development completely made me fall in love with the power of data.
+          </p>
+          
+          <p ref={el => textRefs.current[1] = el}>
+            My analytical journey is driven by a passion for transforming raw data into meaningful insights that drive decisions. 
+            I've been developing expertise in <span className="highlight">SQL</span>, <span className="highlight">Python</span>, 
+            <span className="highlight">Tableau</span>, and various data analysis tools to build a solid foundation in the field.
+          </p>
+          
+          <p ref={el => textRefs.current[2] = el}>
+            Outside of work, I'm interested in cool tech products, aesthetic decor, and I enjoy playing video games. 
+            I believe in continuous learning and am always exploring new technologies and methodologies to enhance my analytical capabilities.
+          </p>
+          
+          <div className="about-actions" ref={el => textRefs.current[3] = el}>
+            <a href="/resume.pdf" className="resume-button" target="_blank" rel="noopener noreferrer">
+              View Resume
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 export default About;

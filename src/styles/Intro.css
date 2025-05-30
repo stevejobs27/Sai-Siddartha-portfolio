@@ -11,8 +11,7 @@
 }
 
 .intro-content {
-  flex: 1;
-  max-width: 600px;
+  width: 800px;
   padding-right: 20px;
   z-index: 10;
 }
@@ -20,8 +19,9 @@
 .intro-animation {
   flex: 1;
   display: flex;
+  width: 100%;
+  height: 100%;
   justify-content: center;
-  margin-top: 150px;
   align-items: center;
   position: relative;
   z-index: 5;
@@ -29,7 +29,6 @@
 
 .intro-buttons {
   display: flex;
-  gap: 16px;
   margin-top: 30px;
 }
 
@@ -43,40 +42,47 @@
 }
 
 .main-button, .outline-button {
-  padding: 12px 24px;
+  display: inline-block;
+  padding: 14px 26px;
+  background-color: transparent;
+  border: 1.5px solid var(--green-bright);
   border-radius: 4px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s ease;
+  color: var(--green);
   font-size: 16px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.main-button {
-  background-color: var(--color-select);
-  color: var(--navy);
-  border: 2px solid var(--green-bright);
-}
-
-.outline-button {
-  background-color: var(--color-select);
-  color: var(--green-bright);
-  border: 2px solid var(--green-bright);
+  font-weight: 500;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
 }
 
 .main-button:hover, .outline-button:hover {
+  background-color: rgba(100, 255, 218, 0.1);
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.outline-button::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--green-bright);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease;
+}
+
+.outline-button:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }
 
 .typist-content {
-  font-size: 2.5rem;
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   line-height: 1.1;
   position: relative;
-  margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
 }
@@ -105,7 +111,7 @@
 
 
 .intro-title {
-  color: var(--off-white);
+  color: var(--lightest-slate);
   font-family: "NTR", sans-serif;
   font-weight: 200;
   font-size: 56px;
@@ -119,9 +125,8 @@
 
 .intro-subtitle {
   font-family: "NTR", sans-serif;
-  color: var(--off-white);
+  color: var(--lightest-slate);
   text-align: left;
-  margin-top: -10px;
   margin-bottom: 40px;
   font-size: 36px;
 }
@@ -133,7 +138,7 @@
 }
 
 .intro-desc {
-  color: var(--off-white);
+  color: var(--lightest-slate);
   margin-top: -30px;
   font-family: "NTR", sans-serif;
   font-size: 20px;
@@ -141,27 +146,33 @@
   max-width: 600px;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1350px) {
   .intro-section {
     flex-direction: column-reverse;
     padding-top: 60px;
     min-height: auto;
-    overflow: visible; /* Ensure overflow is visible */
-  }
-  
-  .intro-animation {
-    width: 100%;
-    margin: 0 auto 40px auto; /* Center horizontally with bottom margin */
     overflow: visible;
   }
   
   .animated-robot-container {
     scale: 0.65;
     margin: 0 auto;
-    height: auto; /* Auto height */
-    min-height: 450px; /* Minimum height to ensure visibility */
+    height: auto; 
+    min-height: 450px; 
   }
-  
+  .typist-content {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .intro-subtitle {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .intro-desc {
+    text-align: center;
+    margin: 0 auto;
+  }
   .intro-content {
     max-width: 100%;
     padding-right: 0;
@@ -171,46 +182,36 @@
   .intro-buttons {
     justify-content: center;
   }
-  
-  .text-scramble__content {
-    font-size: 2rem; /* Slightly smaller text on tablet */
-  }
 }
 
-/* Smaller mobile devices */
 @media only screen and (max-width: 600px) {
   .intro-section {
-    padding-top: 0; /* Remove top padding */
+    padding-top: 0;
     overflow: visible;
   }
 
   .typist-content {
     justify-content: center;
     text-align: center;
-    flex-wrap: wrap; /* Allow content to wrap */
+    margin-bottom: 10px; 
+    flex-wrap: wrap; 
   }
   
   .animated-robot-container {
-    scale: 0.60; /* Slightly larger than before */
-    overflow: visible;
+    scale: 0.60;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-    height: auto; /* Auto height for better responsiveness */
+    height: auto;
   }
   
   .intro-animation {
     margin: 0 auto 20px auto;
-    min-height: 350px; /* Ensure enough space */
+    min-height: 350px;
     overflow: visible;
     margin-top: -40px;
-  }
-
-  .text-scramble__content {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
   }
 
   .intro-title {
@@ -225,7 +226,7 @@
   .intro-subtitle {
     font-size: 18px;
     margin-top: 0px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     text-align: center;
   }
   
@@ -234,16 +235,9 @@
   }
 
   .intro-desc {
-    font-size: 16px;
-    max-width: unset;
+    font-size: 17px;
     margin-top: 0;
     text-align: center;
-  }
-  
-  /* Smaller buttons */
-  .intro-buttons {
-    gap: 10px;
-    margin-top: 20px;
   }
   
   .main-button, .outline-button {
@@ -252,37 +246,8 @@
     letter-spacing: 0.5px;
   }
   
-.windmill-cursor svg {
-  width: 90%;
-  height: 90%;
-}
-}
-
-/* Extra small devices */
-@media only screen and (max-width: 375px) {
-  .animated-robot-container {
-    scale: 0.4;
-    min-height: 300px;
-  }
-  
-  .intro-animation {
-    min-height: 300px;
-  }
-  
-  .intro-title, .intro-name {
-    font-size: 24px;
-  }
-  
-  .intro-subtitle, .intro-subtitle-name {
-    font-size: 16px;
-  }
-  
-  .intro-desc {
-    font-size: 14px;
-  }
-  
-  .main-button, .outline-button {
-    padding: 6px 12px;
-    font-size: 12px;
+  .windmill-cursor svg {
+    width: 90%;
+    height: 90%;
   }
 }

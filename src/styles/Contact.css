@@ -20,6 +20,51 @@
   z-index: 1;
 }
 
+.contact-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px; 
+  padding: 2px; 
+  background: linear-gradient(
+    120deg, 
+    rgba(100, 217, 138, 0.8), 
+    rgba(100, 217, 138, 0.1),
+    rgba(65, 199, 199, 0.6),
+    rgba(100, 217, 138, 0.2)
+  );
+  background-size: 300% 300%;
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  animation: borderRotate 8s linear infinite;
+}
+
+/* Rotating border animation */
+@keyframes borderRotate {
+  0% {
+    background-position: 0% 0%;
+  }
+  25% {
+    background-position: 100% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
 .contact-bg-elements {
   position: absolute;
   top: 0;
@@ -53,6 +98,7 @@
   filter: blur(40px);
 }
 
+/* Rest of your existing contact CSS styles remain unchanged */
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -66,7 +112,7 @@
 .contact-input,
 .contact-textarea {
   width: 100%;
-  padding: 16px 20px 16px 30px;
+  padding: 16px 20px 16px 50px;
   border-radius: 10px;
   background-color: rgba(30, 41, 59, 0.5);
   border: 1px solid rgba(100, 217, 138, 0.1);
@@ -116,7 +162,7 @@
   align-items: center;
   gap: 8px;
   background-color: var(--green-bright);
-  color: var(--navy-dark);
+  color: var(--color-hover);
   border: none;
   padding: 12px 20px;
   margin-bottom: 10px;
@@ -214,7 +260,7 @@
 @media (max-width: 768px) {
   .contact-container {
     padding: 30px 20px;
-    margin: 0 15px;
+    margin: 0 20px;
   }
   
   .contact-actions {

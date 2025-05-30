@@ -6,7 +6,7 @@ const isHorizontal = window.innerWidth < 600;
 
 const experienceItems = {
   Reflect: {
-    jobTitle: "Data Analyst @",
+    jobTitle: "Project Lead @",
     duration: "JAN 2023 - APR 2024",
     desc: [
       "Conducted 20+ customer interviews to understand user needs and pain points, translating insights into actionable business requirements and aligning product development with customer demands",

@@ -1,7 +1,6 @@
 html {
   scroll-behavior: smooth;
-  scrollbar-width: thin;
-  scrollbar-color: #232c3b #10131a;
+  scrollbar-color: rgba(100, 217, 138, 0.3) #10131a;
 }
 
 .App {
@@ -82,7 +81,7 @@ a {
 
 .section-header::after {
   content: "";
-  display: block;
+  display: none;
   width: 300px;
   margin-top: 27px;
   height: 0.8px;
@@ -116,7 +115,7 @@ a {
 @media only screen and (max-width: 600px) {
   .App {
     flex-direction: column;
-    padding: 100px 24px;
+    padding: 60px 24px;
   }
 
   #content {
@@ -131,11 +130,11 @@ a {
   .section-header::after {
     flex: 1 1 auto;
     width: auto;
-    margin-top: 16px;
+    margin-top: 20px;
   }
 
   .section-title {
-    font-size: 22px;
+    font-size: 27px;
   }
 }
 

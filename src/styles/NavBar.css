@@ -35,6 +35,7 @@
 .navbar-nav .nav-link {
   color: var(--lightest-slate) !important;
   margin-right: 30px;
+  letter-spacing: 2px;
   text-transform: uppercase;
   text-decoration: none;
   display: inline-block;
@@ -78,8 +79,7 @@
   cursor: pointer;
   transition: var(--transition);
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  font-size: 27px;
   align-items: center;
   justify-content: center;
 }
@@ -115,7 +115,6 @@
 .logo:hover,
 .logo:focus {
   scale: 1.3;
-  filter: var(--drop-shadow);
   transition: var(--transition);
 }
 
@@ -133,13 +132,13 @@
 }
 
 .mobile-menu-overlay {
-  display: none; /* Start hidden */
+  display: none; 
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
-  background-color: rgba(10, 25, 47, 0.9); /* Darker navy with 90% opacity */
+  height: 100%;
+  background-color: rgba(10, 25, 47, 0.9);
   z-index: 1998;
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -221,7 +220,6 @@
   }
 }
 
-/* Mobile media query - consolidated */
 @media only screen and (max-width: 600px) {
   .navbar {
     padding: 10px 20px !important;
@@ -235,28 +233,25 @@
     align-items: center;
     justify-content: center;
   }  
-  /* Remove this since we're moving the button outside */
-  .mobile-menu .star-btn {
-    display: none;
+
+  .mobile-nav-links .nav-link {
+    letter-spacing: 1px !important;
+    font-size: 16px !important;
   }
   
-  /* Display the button in the navbar instead */
   .navbar-star-btn {
     display: flex;
   }
   
-  /* Display the divider */
   .navbar-mobile-divider {
     display: block;
   }
   
-  /* Create a container for the mobile controls */
   .mobile-controls {
     display: flex;
     align-items: center;
   }
   
-  /* Rest of your mobile styles */
   .logo {
     margin-left: 15px;
   }
@@ -273,7 +268,6 @@
     display: block;
   }
   
-  /* Force vertical layout */
   .mobile-menu .nav,
   .mobile-menu .navbar-nav,
   .mobile-nav-links {

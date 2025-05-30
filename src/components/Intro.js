@@ -29,7 +29,7 @@ const Intro = () => {
             avgTypingDelay={70}
             stdTypingDelay={25}
             cursor={{
-              show: false, // Hide default cursor since we have our custom one
+              show: false,
               blink: true,
               element: '|'
             }}

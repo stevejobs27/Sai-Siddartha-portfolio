@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Intro from "./components/Intro";
 import About from "./components/About";
+import TechStack from "./components/TechStack";
 import Timeline from "./components/Timeline";
 import Experience from "./components/Experience";
 import Credits from "./components/Credits";
@@ -23,6 +24,7 @@ function App() {
       <div id="content">
         <Intro showStars={showStars} setShowStars={setShowStars}/>
         <About />
+        <TechStack />
         <Timeline />
         <Experience />
         <Projects />
