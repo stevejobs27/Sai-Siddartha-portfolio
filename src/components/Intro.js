@@ -66,7 +66,7 @@ const Intro = () => {
   const windmill = cursorRef.current.querySelector('svg');
   gsap.to(windmill, {
     rotation: 360 * 6, // Multiple rotations for fast spinning
-    duration: 2.3, // Duration matches typing time
+    duration: 2, // Duration matches typing time
     ease: "linear",
     transformOrigin: "center center"
   }).then(() => {
@@ -77,7 +77,7 @@ const Intro = () => {
       },
       {
         rotation: 360 * 3, // Do 3 more rotations while slowing down
-        duration: 4.6, // Long duration for visibly slowing down
+        duration: 6, // Long duration for visibly slowing down
         ease: "power1.out", // Physics-based slowdown curve
         transformOrigin: "center center",
         onComplete: () => {
@@ -85,7 +85,7 @@ const Intro = () => {
           gsap.to(windmill, {
             rotation: "+=360", // Keep rotating
             repeat: -1,
-            duration: 10, // Final slow, continuous speed
+            duration: 5, // Final slow, continuous speed
             ease: "none",
             transformOrigin: "center center"
           });

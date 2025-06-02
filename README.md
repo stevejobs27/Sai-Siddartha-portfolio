@@ -35,9 +35,9 @@
 
 | Color          | Hex                                                                  |
 | -------------- | -------------------------------------------------------------------- |
-| Black          | ![#030817](https://placehold.co/100x25/030817/ffffff?text=%23030817) |
-| Green Dark     | ![#0E1F1C](https://placehold.co/100x25/0E1F1C/ffffff?text=%230E1F1C) |
+| Lightest Slate | ![#E2E8FD](https://placehold.co/100x25/E2E8FD/000000?text=%23E2E8FD) |
 | Green Bright   | ![#64D98A](https://placehold.co/100x25/64D98A/000000?text=%2364D98A) |
-| Beige          | ![#b3b3b3](https://placehold.co/100x25/b3b3b3/000000?text=%23b3b3b3) |
-| Navy           | ![#0E192D](https://placehold.co/100x25/0E192D/ffffff?text=%230E192D) |
-| Light Grey     | ![#3d3d3d](https://placehold.co/100x25/3d3d3d/ffffff?text=%233d3d3d) |
+| Dark Green     | ![#03141A](https://placehold.co/100x25/03141A/ffffff?text=%2303141A) |
+| Dark Blue      | ![#060A17](https://placehold.co/100x25/060A17/ffffff?text=%23060A17) |
+| Darkest Blue   | ![#0B0F1D](https://placehold.co/100x25/0B0F1D/ffffff?text=%230B0F1D) |
+| Black          | ![#030817](https://placehold.co/100x25/030817/ffffff?text=%23030817) |

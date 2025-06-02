@@ -41,7 +41,7 @@
    ============================================= */
 .directory-box {
   display: flex;
-  background-color: rgba(11, 15, 29, 0.8);
+  background-color: var(--box-color);
   backdrop-filter: blur(4px);
   border-radius: 12px;
   overflow: hidden;

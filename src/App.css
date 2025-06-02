@@ -18,7 +18,7 @@ html {
 .App {
   font-family: "NTR", sans-serif;
   display: flex;
-  background: var(--linear-gradient);
+  background: var(--bg-gradient);
   margin: auto;
 }
 
