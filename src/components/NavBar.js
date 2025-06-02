@@ -151,9 +151,9 @@ class NavBar extends React.Component {
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
                 <Nav.Link href="#about">About</Nav.Link>
+                <Nav.Link href="#projects">Projects</Nav.Link>
                 <Nav.Link href="#timeline">Timeline</Nav.Link>
                 <Nav.Link href="#experience">Experience</Nav.Link>
-                <Nav.Link href="#projects">Projects</Nav.Link>
                 <Nav.Link href="#contact">Contact</Nav.Link>
               </Nav>
             </Navbar.Collapse>
@@ -193,9 +193,9 @@ class NavBar extends React.Component {
           >
             <Nav className="mobile-nav-links">
               <Nav.Link href="#about" onClick={this.toggleMobileMenu}>About</Nav.Link>
+              <Nav.Link href="#projects" onClick={this.toggleMobileMenu}>Projects</Nav.Link>
               <Nav.Link href="#timeline" onClick={this.toggleMobileMenu}>Timeline</Nav.Link>
               <Nav.Link href="#experience" onClick={this.toggleMobileMenu}>Experience</Nav.Link>
-              <Nav.Link href="#projects" onClick={this.toggleMobileMenu}>Projects</Nav.Link>
               <Nav.Link href="#contact" onClick={this.toggleMobileMenu}>Contact</Nav.Link>
             </Nav>
           </div>

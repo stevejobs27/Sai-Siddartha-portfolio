@@ -60,7 +60,7 @@ export default function TechStack() {
         ease: "power2.out",
         scrollTrigger: {
           trigger: "#tech-stack",
-          start: "top 80%",
+          start: "top 90%",
           toggleActions: "play none none reverse" // Animate out when scrolling away
         }
       }
@@ -69,21 +69,24 @@ export default function TechStack() {
     // Animation for tech icons with reverse on scroll away
     gsap.fromTo(".tech-icon-container",
       {
-        scale: 0.5,
-        y: 30,
+        scale: 0.1,
+        y: -250,
         opacity: 0
       },
       {
         y: 0,
         scale: 1,
-        duration: 1,
-        rotation: 360,
+        duration: 0.5,
         opacity: 1,
-        stagger: 0.1,
-        ease: "sine.out", 
+        stagger: {
+        grid: [7,15],
+        from: "center",
+        amount: 1 ,
+      },
+        ease: "power1.inOut", 
         scrollTrigger: {
-          trigger: ".tech-grid-container",
-          start: "top 80%",
+          trigger: "#tech-stack",
+          start: "top 70%",
           toggleActions: "play none none reverse" // Animate out when scrolling away
         }
       }

@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react";
 import "../styles/Intro.css";
-import FadeInSection from "./FadeInSection";
 import AnimatedRobot from "./AnimatedRobot";
 import { FiMail } from "react-icons/fi"; 
 import Typist from "react-typist";
@@ -8,22 +7,97 @@ import { gsap } from "gsap";
 
 const Intro = () => {
   const cursorRef = useRef(null);
+  const subtitleRef = useRef(null);
+  const descRef = useRef(null);
+  const buttonsRef = useRef(null);
+  const contentRef = useRef(null);
+  const animationRef = useRef(null);
 
   useEffect(() => {
-    // Animate the windmill cursor
-    gsap.to(cursorRef.current.querySelector('svg'), {
-      rotation: 360,
-      repeat: -1,
-      duration: 10,
-      ease: "none",
-      transformOrigin: "center center"
+    // Create a timeline for sequential animations
+    const tl = gsap.timeline();
+    
+    // Set initial states (everything hidden except the typing content)
+    gsap.set([subtitleRef.current, descRef.current, buttonsRef.current], {
+      opacity: 0,
+      y: 20
     });
+    
+    gsap.set(animationRef.current, {
+      opacity: 0,
+      scale: 0.95
+    });
+    
+    // STEP 1: Wait for typing to complete (2.5s)
+    // STEP 2: First reveal the robot design
+    tl.to(animationRef.current, {
+      opacity: 1, 
+      scale: 1, 
+      duration: 0.8, 
+      ease: "power2.out",
+      delay: 2.5 // Wait for typing to complete
+    });
+    
+    // STEP 3: Then reveal the subtitle
+    tl.to(subtitleRef.current, {
+      opacity: 1, 
+      y: 0, 
+      duration: 0.25, 
+      ease: "power2.out"
+    },);
+    
+    // STEP 4: Then reveal the description
+    tl.to(descRef.current, {
+      opacity: 1, 
+      y: 0, 
+      duration: 0.25, 
+      ease: "power2.out"
+    },);
+    
+    // STEP 5: Finally reveal the button
+    tl.to(buttonsRef.current, {
+      opacity: 1, 
+      y: 0, 
+      duration: 0.25, 
+      ease: "power2.out"
+    },);
 
+  // Windmill Animation Stuff
+  const windmill = cursorRef.current.querySelector('svg');
+  gsap.to(windmill, {
+    rotation: 360 * 6, // Multiple rotations for fast spinning
+    duration: 2.3, // Duration matches typing time
+    ease: "linear",
+    transformOrigin: "center center"
+  }).then(() => {
+    // After fast rotation completes, do a gradual slowdown
+    gsap.fromTo(windmill, 
+      { 
+        rotation: 0 // Start fresh for smooth counting
+      },
+      {
+        rotation: 360 * 3, // Do 3 more rotations while slowing down
+        duration: 4.6, // Long duration for visibly slowing down
+        ease: "power1.out", // Physics-based slowdown curve
+        transformOrigin: "center center",
+        onComplete: () => {
+          // When slowdown completes, start the continuous slow rotation
+          gsap.to(windmill, {
+            rotation: "+=360", // Keep rotating
+            repeat: -1,
+            duration: 10, // Final slow, continuous speed
+            ease: "none",
+            transformOrigin: "center center"
+          });
+        }
+      }
+    );
+  });
   }, []);
 
   return (
     <div className="intro-section">
-      <div className="intro-content">
+      <div className="intro-content" ref={contentRef}>
         <div className="typist-content">
           <Typist 
             avgTypingDelay={70}
@@ -34,7 +108,7 @@ const Intro = () => {
               element: '|'
             }}
           >   
-            <span className="intro-title">Hello there! I'm </span>
+            <span className="intro-title">Hi there! I'm </span>
             <span className="intro-name">Rafsan.</span>
             <span>&nbsp;</span>
             <Typist.Delay ms={300} />
@@ -62,26 +136,22 @@ const Intro = () => {
           </div>
         </div>
         
-        <div className="intro-subtitle">
+        <div className="intro-subtitle" ref={subtitleRef}>
           I'm a <span className="intro-subtitle-name">Data Analyst</span> with a love for design.
         </div>
         
-        <FadeInSection>
-          <div className="intro-desc">
-            I'm an aspiring Data Analyst based in Toronto, Canada. Passionate about using data to
-            drive business decisions and innovation. Eager to leverage my skills in leading
-            industries to create meaningful impact.
-          </div>
-        </FadeInSection>
+        <div className="intro-desc" ref={descRef}>
+          I'm a techie who loves working with numbers and graphics. I thrive on solving problems using analytical skills and
+          creating powerful and insightful visualizations. I'm also very customer oriented, 
+          always striving to understand user needs and deliver the best solutions.
+        </div>
         
-        <FadeInSection>
-          <div className="intro-buttons">
-            <a href="#contact" className="outline-button">Get In Touch <FiMail className="button-icon" /></a>
-          </div>
-        </FadeInSection>
+        <div className="intro-buttons" ref={buttonsRef}>
+          <a href="#contact" className="outline-button">Get In Touch <FiMail className="button-icon" /></a>
+        </div>
       </div>
       
-      <div className="intro-animation">
+      <div className="intro-animation" ref={animationRef}>
         <AnimatedRobot />
       </div>
     </div>

@@ -14,7 +14,7 @@
   position: relative;
   padding: 30px;
   border-radius: 16px;
-  background-color: rgba(22, 28, 47, 0.7);
+  background-color: var(--color-select);
   backdrop-filter: blur(10px);
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
   z-index: 1;
@@ -238,7 +238,7 @@
 }
 
 .success-message p {
-  color: var(--light-slate);
+  color: var(--lightest-slate);
   margin-bottom: 30px;
 }
 
@@ -289,4 +289,18 @@
     padding: 12px 20px;
     font-size: 15px;
   }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  /* Override the autofill background color */
+  -webkit-box-shadow: 0 0 0 30px var(--color-hover) inset !important;
+  
+  /* Override the autofill text color */
+  -webkit-text-fill-color: var(--lightest-slate) !important;
+  
+  /* Make the transition delay very long so color doesn't revert */
+  transition: background-color 5000s ease-in-out 0s;
 }

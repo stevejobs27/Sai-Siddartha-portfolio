@@ -29,7 +29,7 @@
 }
 
 .gradient-text {
-  background: linear-gradient(90deg, var(--green-bright), #4ec9b0);
+  background: linear-gradient(90deg, var(--green-bright));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -42,7 +42,7 @@
 .directory-box {
   display: flex;
   background-color: rgba(11, 15, 29, 0.8);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(4px);
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
@@ -50,7 +50,7 @@
   height: 600px; /* Fixed height */
   width: 100%;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  z-index: 1;
+  z-index: 5;
 }
 
 .gradient-border {
@@ -327,12 +327,6 @@
   font-weight: 700;
 }
 
-.project-title::selection {
-  background-color: var(--navy);
-  color: var(--green-bright);
-  text-shadow: none;
-}
-
 .project-description {
   flex: 1;
   margin-bottom: 20px;
@@ -437,7 +431,7 @@
   color: var(--green-bright);
 }
 
-/* Make the code area scrollable */
+/* Code area scrollable */
 .code-viewer-container pre {
   flex: 1;
   overflow: auto;
@@ -451,48 +445,6 @@
   line-height: 1.5;
 }
 
-/* =============================================
-   SQL Project Special Handling
-   ============================================= */
-.project-item[data-project-type="sql"] .directory-folder.open:not(.active) {
-  color: var(--lightest-slate);
-}
-
-.project-item[data-project-type="sql"] .directory-folder:not(.active) .folder-icon {
-  color: #8da1b9 !important;
-}
-
-.project-item[data-project-type="sql"] .directory-folder.active .folder-icon {
-  color: var(--green-bright) !important;
-}
-
-.project-item[data-project-type="sql"] .directory-folder:not(.active) {
-  color: var(--lightest-slate) !important;
-  background-color: transparent !important;
-}
-
-/* =============================================
-   Enhanced Scrollbar Styling
-   ============================================= */
-/* For Webkit browsers */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: rgba(13, 25, 45, 0.3);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(100, 217, 138, 0.3);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(100, 217, 138, 0.5);
-}
 
 /* =============================================
    Responsive Styles
@@ -501,7 +453,7 @@
   .directory-box {
     flex-direction: column;
     height: auto;
-    min-height: 700px;
+    height: 600px;
   }
   
   .directory-sidebar {
@@ -514,6 +466,12 @@
   
   .project-links {
     justify-content: flex-end;
+  }
+
+  .code-viewer-container code {
+    font-family: 'Fira Code', monospace;
+    font-size: 10px;
+    line-height: 1.5;
   }
 }
 

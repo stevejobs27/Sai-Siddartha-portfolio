@@ -21,7 +21,6 @@
     "react-scripts": "^5.0.1",
     "react-syntax-highlighter": "^15.6.1",
     "react-typist": "^2.0.5",
-    "rsuite": "^5.80.2",
     "three": "^0.176.0"
   },
   "scripts": {

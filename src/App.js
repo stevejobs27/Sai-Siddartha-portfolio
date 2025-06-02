@@ -22,12 +22,12 @@ function App() {
       <NavBar showStars={showStars} setShowStars={setShowStars} />
       <SideNavBar showStars={showStars} setShowStars={setShowStars} />
       <div id="content">
-        <Intro showStars={showStars} setShowStars={setShowStars}/>
+        <Intro />
         <About />
-        <TechStack />
+        <TechStack /> 
+        <Projects />
         <Timeline />
         <Experience />
-        <Projects />
         <Contact />
         <Credits />
       </div>

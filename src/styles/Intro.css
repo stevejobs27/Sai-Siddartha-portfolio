@@ -80,7 +80,7 @@
 
 .typist-content {
   font-weight: 600;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.01em;
   line-height: 1.1;
   position: relative;
   display: flex;
@@ -127,7 +127,8 @@
   font-family: "NTR", sans-serif;
   color: var(--lightest-slate);
   text-align: left;
-  margin-bottom: 40px;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
   font-size: 36px;
 }
 
@@ -139,11 +140,12 @@
 
 .intro-desc {
   color: var(--lightest-slate);
-  margin-top: -30px;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
   font-family: "NTR", sans-serif;
   font-size: 20px;
   text-align: left;
-  max-width: 600px;
+  max-width: 550px;
 }
 
 @media (max-width: 1350px) {
@@ -190,6 +192,12 @@
     overflow: visible;
   }
 
+  .intro-content {
+    width: 100%;
+    padding-right: 0;
+    margin-top: -70px;
+  }
+
   .typist-content {
     justify-content: center;
     text-align: center;
@@ -211,7 +219,7 @@
     margin: 0 auto 20px auto;
     min-height: 350px;
     overflow: visible;
-    margin-top: -40px;
+    margin-top: -50px;
   }
 
   .intro-title {

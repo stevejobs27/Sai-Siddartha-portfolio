@@ -65,15 +65,17 @@ const About = () => {
           <p ref={el => textRefs.current[1] = el}>
             My analytical journey is driven by a passion for transforming raw data into meaningful insights that drive decisions. 
             I've been developing expertise in <span className="highlight">SQL</span>, <span className="highlight">Python</span>, 
-            <span className="highlight">Tableau</span>, and various data analysis tools to build a solid foundation in the field.
-          </p>
-          
+            <span className="highlight">Tableau</span>, and various data analysis tools to build a solid foundation in the field. </p>
           <p ref={el => textRefs.current[2] = el}>
-            Outside of work, I'm interested in cool tech products, aesthetic decor, and I enjoy playing video games. 
-            I believe in continuous learning and am always exploring new technologies and methodologies to enhance my analytical capabilities.
+            Although unrelated, but I have also garnered a substantial amount of experience in <span className="highlight">HTML, CSS & Javascript </span>
+            in the process of building this website. I also have a background in <span className="highlight">Graphic Design.</span>
           </p>
           
-          <div className="about-actions" ref={el => textRefs.current[3] = el}>
+          <p ref={el => textRefs.current[3] = el}>
+            Outside of work, I'm interested in cool tech products, aesthetic decor, playing video games and watching soccer.
+          </p>
+          
+          <div className="about-actions" ref={el => textRefs.current[4] = el}>
             <a href="/resume.pdf" className="resume-button" target="_blank" rel="noopener noreferrer">
               View Resume
             </a>

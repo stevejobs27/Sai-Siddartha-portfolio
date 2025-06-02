@@ -13,6 +13,6 @@
   --shadow-box: 0 0 12px #000000c9; /* Shadow */
   --drop-shadow: drop-shadow(0 3px 4px rgb(0, 255, 85)); /* Drop Shadow */
   --transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1); /* Transition */ 
-  --bottom-gradient: linear-gradient(to right, var(--green-bright), var(--off-white), var(--green-bright), var(--off-white), var(--green-bright)); /* Bottom Border Gradient */
+  --bottom-gradient: linear-gradient(120deg,rgba(100, 217, 138, 0.8),rgba(100, 217, 138, 0.3),rgba(65, 199, 199, 0.6),rgba(100, 217, 138, 0.3), rgba(100, 217, 138, 0.8)); /* Bottom Border Gradient */
   --gradient-border: linear-gradient(120deg,rgba(100, 217, 138, 0.8),rgba(100, 217, 138, 0.1),rgba(65, 199, 199, 0.6),rgba(100, 217, 138, 0.2));
 }

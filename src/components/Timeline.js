@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FcGraduationCap, FcIdea, FcBriefcase, FcGoogle, FcAcceptDatabase, FcStatistics } from "react-icons/fc";
@@ -8,15 +8,15 @@ gsap.registerPlugin(ScrollTrigger);
 
 const milestones = [
   {
-    title: "Masters at TMU",
+    title: "It All Started when I was Born",
     description: "Completed my Master of Engineering at TMU, where I first discovered the power of data through market research and analytics projects.",
-    year: "Late 2022",
+    year: "Sep 2022",
     type: "education" 
   },
   {
-    title: "Exposure to Data in Startup Environment",
+    title: "Exposure to Data in Startup Environments",
     description: "Worked at 3 different startups where I gained initial exposure to huge amounts of data during market research, focusing on customer insights and market trends.",
-    year: "Early 2023",
+    year: "Till 2023",
     type: "startup",
     learnMoreLink: "#projects", 
     learnMoreText: "View Projects"
@@ -24,27 +24,26 @@ const milestones = [
   {
     title: "Decision to Pivot to Data Analytics",
     description: "Realized my passion for data analytics and decided to pivot my career towards becoming a Data Analyst, focusing on data-driven decision making.",
-    year: "Mid 2023",
+    year: "Early 2024",
     type: "career",
   },
   {
     title: "Google Data Analytics Professional Certificate",
     description: "Completed Google's Data Analytics Professional Certificate, establishing core competencies in data preparation, analysis, and visualization.",
     certificateUrl: "https://www.coursera.org/account/accomplishments/professional-cert/23OIJ3BGH8FJ",
-    year: "Late 2023",
+    year: "Early 2024",
     type: "google",
 
   },
   {
     title: "First Data Projects",
     description: "Built my first portfolio projects, analyzing real-world datasets and creating visualizations with Tableau and Python libraries.",
-    description: "Deepened my SQL expertise with advanced query techniques, window functions, and database optimization strategies.",
-    year: "Early 2024",
+    year: "Sep 2024",
     type: "project"
   },
   {
-    title: "Data Storytelling",
-    description: "Focused on transforming raw analysis into compelling data stories that drive business decisions and create meaningful impact.",
+    title: "Advanced Data Analysis & Storytelling",
+    description: "Deepened my skills in advanced data analysis techniques, focusing on transforming raw data into compelling narratives that drive business decisions.",
     year: "Present",
     type: "statistics",
     learnMoreLink: "#contact",
@@ -55,6 +54,35 @@ const milestones = [
 export default function Timeline() {
   const timelineWrapRef = useRef(null);
   const timelineItemsRef = useRef([]);
+  const [visibleItems, setVisibleItems] = useState([]);
+  
+  // Setup intersection observer to load items on scroll
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const itemIndex = parseInt(entry.target.dataset.index);
+          if (!visibleItems.includes(itemIndex)) {
+            setVisibleItems(prev => [...prev, itemIndex]);
+          }
+        }
+      });
+    }, { threshold: 0.2 });
+    
+    // Add dataset index to each item and observe them
+    timelineItemsRef.current.forEach((item, index) => {
+      if (item) {
+        item.dataset.index = index;
+        observer.observe(item);
+      }
+    });
+    
+    return () => {
+      timelineItemsRef.current.forEach(item => {
+        if (item) observer.unobserve(item);
+      });
+    };
+  }, [visibleItems]);
   
   useEffect(() => {
     timelineItemsRef.current = [];
@@ -63,7 +91,7 @@ export default function Timeline() {
       const mainTimeline = gsap.timeline({
         scrollTrigger: {
           trigger: timelineWrapRef.current,
-          start: "top 80%",
+          start: "top 95%",
           end: "bottom 20%",
           toggleActions: "play none none reverse"
         }
@@ -89,32 +117,33 @@ export default function Timeline() {
         }
       );
       
-      // Animate each timeline item
-      timelineItemsRef.current.forEach((item, index) => {
+      return () => {
+        ctx.revert();
+      };
+    });
+  }, []);
+  
+  useEffect(() => {
+    visibleItems.forEach(index => {
+      const item = timelineItemsRef.current[index];
+      
+      // Skip if item is already animated or doesn't exist
+      if (!item || item.isAnimated) return;
+      
+      // Mark as animated to prevent re-animation
+      item.isAnimated = true;
+      
       const direction = index % 2 === 0 ? -1 : 1;
       const content = item.querySelector('.timeline-content');
       const dot = item.querySelector('.timeline-dot');
       
-      // Create individual timeline for each item
-      const itemTimeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: item,
-          start: "top 75%",
-          end: "top 55%",
-          toggleActions: "play none none reverse",
-        }
-      });
-      
-      // Animate the timeline dot
-      itemTimeline.fromTo(dot, 
-        { scale: 0, opacity: 0 },
-        { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.7)" }
-      );
-      
+      // Create individual timeline for this item
+      const itemTimeline = gsap.timeline();
+
       // Animate the content
       itemTimeline.fromTo(content,
         { 
-          x: direction * 50, 
+          x: direction * 100, 
           opacity: 0 
         },
         { 
@@ -122,31 +151,10 @@ export default function Timeline() {
           opacity: 1, 
           duration: 0.5, 
           ease: "power2.out" 
-        },
-        "-=0.2" // Overlap with previous animation
-      );
-      
-      // Animate the bottom border gradient - NOW TARGETING BORDER WIDTH
-      itemTimeline.fromTo(content,
-        { borderBottomWidth: "0px" },
-        { borderBottomWidth: "3px", duration: 0.6, ease: "power1.out" },
-        "-=0.3" // Overlap with previous animation
+        }
       );
     });
-    
-    // Create moving gradient animation for all content boxes
-    gsap.to(".timeline-content", {
-      backgroundPositionX: "200%",
-      duration: 3,
-      repeat: -1,
-      ease: "none"
-    });
-  });
-  
-  return () => {
-    ctx.revert();
-  };
-}, []);
+  }, [visibleItems]);
 
   const renderIcon = (type) => {
     switch (type) {
@@ -170,7 +178,7 @@ export default function Timeline() {
   return (
     <div id="timeline">
       <div className="section-header">
-        <span className="section-title">My Data Journey</span>
+        <span className="section-title">My Journey to Data</span>
       </div>
       
       <div className="timeline-wrapper" ref={timelineWrapRef}>

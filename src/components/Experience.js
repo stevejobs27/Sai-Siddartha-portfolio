@@ -71,6 +71,10 @@ const Experience = () => {
       </div>
       
       <div className="experience-content" ref={contentRef}>
+      <div className="experience-bg-elements">
+            <div className="experience-circle"></div>
+            <div className="experience-square"></div>
+          </div>
         <JobList 
           activeKey={activeKey} 
           handleSelect={handleSelect}

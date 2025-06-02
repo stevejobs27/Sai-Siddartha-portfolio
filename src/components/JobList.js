@@ -1,8 +1,6 @@
-import React, { useState } from "react";
-import FadeInSection from "./FadeInSection";
+import React, { useState, useRef, useEffect } from "react";
+import { gsap } from "gsap";
 import "../styles/Experience.css";
-
-const isHorizontal = window.innerWidth < 600;
 
 const experienceItems = {
   Reflect: {
@@ -10,7 +8,7 @@ const experienceItems = {
     duration: "JAN 2023 - APR 2024",
     desc: [
       "Conducted 20+ customer interviews to understand user needs and pain points, translating insights into actionable business requirements and aligning product development with customer demands",
-      "Successfully secured $13,000 in grant funding by winning both Stage 1 and Stage 2 of the Norman Esch Awards, validating the venture’s impact and potential"
+      "Successfully secured $13,000 in grant funding by winning both Stage 1 and Stage 2 of the Norman Esch Awards, validating the venture's impact and potential"
     ]
   },
   "ShieldMate INC.": {
@@ -26,16 +24,17 @@ const experienceItems = {
     jobTitle: "Technical Lead @",
     duration: "SEP 2022 - FEB 2023",
     desc: [
-      "Developed a Node.js smart home system through Facebook’s Messenger integrated with Bocco sensors and other smart devices (Nest camera, TPLink smart plugs) to derive conclusions about the current state of the homeLed prototyping and product development, using Bubble.io for a no-code platform and guiding the team through technical decisions",
+      "Developed a Node.js smart home system through Facebook's Messenger integrated with Bocco sensors and other smart devices (Nest camera, TPLink smart plugs) to derive conclusions about the current state of the home",
+      "Led prototyping and product development, using Bubble.io for a no-code platform and guiding the team through technical decisions",
       "Designed UI/UX assets in Figma and Adobe Illustrator to deliver a functional and user-friendly health tech interface"
     ]
   },
   "Doctor's": {
-  jobTitle: "Executive Manager @",
-  duration: "JAN 2022 - AUG 2022",
-  desc: [
-    "Spearheaded the implementation of ERP solutions to streamline inventory and warehouse management processes, optimizing efficiency and ensuring smooth operations within the company",
-    "Acted as a technical expert, advising management on best practices and technologies to support business growth and scalability, demonstrating adaptability and a wide range of skills"
+    jobTitle: "Executive Manager @",
+    duration: "JAN 2022 - AUG 2022",
+    desc: [
+      "Spearheaded the implementation of ERP solutions to streamline inventory and warehouse management processes, optimizing efficiency and ensuring smooth operations within the company",
+      "Acted as a technical expert, advising management on best practices and technologies to support business growth and scalability, demonstrating adaptability and a wide range of skills"
     ]
   },
   Fiverr: {
@@ -51,8 +50,85 @@ const experienceItems = {
 
 const JobList = () => {
   const [value, setValue] = useState(0);
+  const [isHorizontal, setIsHorizontal] = useState(window.innerWidth < 600);
   const keys = Object.keys(experienceItems);
-
+  
+  const contentRef = useRef(null);
+  const listsRef = useRef({});
+  const oldValueRef = useRef(value);
+  
+  // Handle window resize for responsive behavior
+  useEffect(() => {
+    const handleResize = () => {
+      setIsHorizontal(window.innerWidth < 600);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  
+  // Handle tab change with animations
+  const handleTabChange = (index) => {
+    const oldIndex = oldValueRef.current;
+    
+    // Don't animate if clicking the same tab
+    if (oldIndex === index) return;
+    
+    // Store the new value in ref for future comparisons
+    oldValueRef.current = index;
+    
+    // Find current job panel if it exists
+    const currentPanel = document.querySelector('.joblist-panel');
+    
+    if (currentPanel) {
+      // Fade out current content
+      gsap.to(currentPanel, {
+        opacity: 0,
+        duration: 0.3,
+        onComplete: () => {
+          // After fade out, update state and animate new content
+          setValue(index);
+          animateJobDetails();
+          
+          // Fade in new content
+          const newPanel = contentRef.current.querySelector(`.joblist-panel:nth-child(${index + 1})`);
+          if (newPanel) {
+            gsap.fromTo(newPanel, { opacity: 0 }, { opacity: 1, duration: 0.3 });
+          }
+        }
+      });
+    } else {
+      // No current panel, just update state
+      setValue(index);
+      animateJobDetails();
+    }
+  };
+  
+  // Animate job description items
+  const animateJobDetails = () => {
+    // Get the list items in the current job panel
+    const listItems = contentRef.current?.querySelectorAll('.job-description li');
+    
+    if (listItems?.length) {
+      // Reset initial state
+      gsap.set(listItems, { opacity: 0, x: 20 });
+      
+      // Animate with stagger
+      gsap.to(listItems, {
+        opacity: 1,
+        x: 0,
+        duration: 0.4,
+        stagger: 0.1,
+        ease: "power2.out"
+      });
+    }
+  };
+  
+  // Initial animation on component mount
+  useEffect(() => {
+    animateJobDetails();
+  }, []);
+  
   return (
     <div className={`joblist-root ${isHorizontal ? "horizontal" : "vertical"}`}>
       <div className={`joblist-tabs ${isHorizontal ? "horizontal" : "vertical"}`}>
@@ -60,13 +136,14 @@ const JobList = () => {
           <button
             key={key}
             className={`joblist-tab${value === i ? " active" : ""}`}
-            onClick={() => setValue(i)}
+            onClick={() => handleTabChange(i)}
           >
-            {isHorizontal ? `0${i}.` : key}
+            {isHorizontal ? `0${i+1}.` : key}
           </button>
         ))}
       </div>
-      <div className="joblist-content">
+      
+      <div className="joblist-content" ref={contentRef}>
         {keys.map((key, i) =>
           value === i ? (
             <div key={key} className="joblist-panel">
@@ -79,9 +156,7 @@ const JobList = () => {
               </div>
               <ul className="job-description">
                 {experienceItems[key]["desc"].map((descItem, j) => (
-                  <FadeInSection key={j} delay={`${j + 1}00ms`}>
-                    <li>{descItem}</li>
-                  </FadeInSection>
+                  <li key={j}>{descItem}</li>
                 ))}
               </ul>
             </div>

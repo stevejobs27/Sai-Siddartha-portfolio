@@ -1,37 +1,57 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "../styles/Credits.css";
-import FadeInSection from "./FadeInSection";
 import SideNavBar from "./SideNavBar";
-class Credits extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      expanded: true,
-      activeKey: "1"
-    };
-    this.handleSelect = this.handleSelect.bind(this);
-  }
-  handleSelect(eventKey) {
-    this.setState({
-      activeKey: eventKey
-    });
-  }
-  render() {
-    return (
-      <FadeInSection>
-        <div id="credits">
-          <div className="ending-credits">
-             <SideNavBar />
-            <a href="https://github.com/rafsanahmed28/rafsan"
-               target="_blank"
-               rel="noopener noreferrer">
-                Designed & Built by Rafsan Ahmed © 2025
-              </a>
-          </div>
-        </div>
-      </FadeInSection>
+
+// Register GSAP plugins
+gsap.registerPlugin(ScrollTrigger);
+
+const Credits = () => {
+  const creditsRef = useRef(null);
+  
+  useEffect(() => {
+    // Animation for credits section
+    gsap.fromTo(
+      creditsRef.current,
+      {
+        opacity: 0,
+        y: 20
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: "#credits",
+          start: "top 95%",
+          end: "bottom 90%",
+          toggleActions: "play none none reverse"
+        }
+      }
     );
-  }
-}
+    
+    // Cleanup function
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
+  
+  return (
+    <div id="credits" ref={creditsRef}>
+      <div className="ending-credits">
+        <SideNavBar />
+        <a 
+          href="https://github.com/rafsanahmed28/rafsan"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Designed & Built by Rafsan Ahmed © 2025
+        </a>
+      </div>
+    </div>
+  );
+};
 
 export default Credits;
