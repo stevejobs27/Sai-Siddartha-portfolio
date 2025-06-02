@@ -24,10 +24,10 @@ function App() {
       <div id="content">
         <Intro />
         <About />
-        <TechStack /> 
         <Projects />
         <Timeline />
         <Experience />
+        <TechStack /> 
         <Contact />
         <Credits />
       </div>

@@ -90,12 +90,23 @@ export default function Projects() {
     const tl = gsap.timeline();
     
     // Animate section headers
-    tl.from(".section-title", {
-      y: 50,
-      opacity: 0,
-      duration: 0.8,
-      ease: "power3.out"
-    });
+    gsap.fromTo("#projects .section-title",
+      {
+        y: 30,
+        opacity: 0
+      },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.6,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: "#projects",
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
     
     // Create scroll triggers for each project section
     sectionsRef.current.forEach((section, index) => {
@@ -121,18 +132,6 @@ export default function Projects() {
       );
     });
     
-    // Create subtle parallax effect on project boxes
-    gsap.to(".directory-box", {
-      y: -30,
-      ease: "none",
-      scrollTrigger: {
-        trigger: "#projects",
-        start: "top bottom",
-        end: "bottom top",
-        scrub: 0.5
-      }
-    });
-    
     return () => {
       // Clean up scroll triggers
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
@@ -150,47 +149,50 @@ export default function Projects() {
     const chevron = folderEl.querySelector('.chevron-icon');
     
     if (isOpen) {
-      // Open animation
+      // Open animation - Experience style
       filesEl.style.display = 'block';
-      filesEl.style.height = '0px';
+      filesEl.style.height = 'auto';
       
-      gsap.to(filesEl, { 
-        height: 'auto', 
-        opacity: 1, 
-        duration: 0.4, 
-        ease: "power2.out",
-        onComplete: () => filesEl.style.height = ''
-      });
-      
-      // Stagger in files
-      gsap.from(fileItems, {
-        x: -10,
+      // Hide files initially
+      gsap.set(fileItems, { 
         opacity: 0,
-        duration: 0.3,
-        stagger: 0.04
+        y: 30 // Starting from below, like Experience
       });
       
-      // Animate folder icon and chevron
+      // Animate in files one by one with Experience-style animation
+      gsap.to(fileItems, { 
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.08, // Stagger each file animation
+        ease: "power2.out" // Same easing as Experience
+      });
+      
+      // Animate folder icon
       gsap.to(folderEl.querySelector('.folder-icon'), {
         color: "var(--green-bright)",
         duration: 0.3
       });
       
+      // Animate chevron rotation
       gsap.to(chevron, {
         rotate: 90,
         duration: 0.3
       });
     } else {
       // Close animation
-      gsap.to(filesEl, {
-        height: 0,
+      gsap.to(fileItems, {
         opacity: 0,
-        duration: 0.3,
+        y: 20,
+        duration: 0.4,
+        stagger: 0.03,
         ease: "power2.in",
-        onComplete: () => filesEl.style.display = 'none'
+        onComplete: () => {
+          filesEl.style.display = 'none';
+        }
       });
       
-      // Animate folder icon and chevron
+      // Animate folder icon and chevron back
       gsap.to(folderEl.querySelector('.folder-icon'), {
         color: "#8da1b9",
         duration: 0.3
@@ -310,44 +312,57 @@ export default function Projects() {
         [projectIdx]: true
       }
     }));
-    
+
     // Set folder as active
     setActiveFolders(prev => ({
       ...prev,
       [section]: projectIdx
     }));
-    
+
     // Save the current state for animation
-    const state = contentRefs.current[section]?.current && 
-                 Flip.getState(contentRefs.current[section].current);
-    
-    // Update the selection
-    setSelected(prev => ({
-      ...prev,
-      [section]: { projectIdx, fileIdx }
-    }));
-    
-    // After state updates, animate the transition
-    if (state) {
-      setTimeout(() => {
-        // Animate content change
-        Flip.from(state, {
-          duration: 0.6,
-          ease: "power2.inOut",
-          absolute: true,
-          onEnter: elements => 
-            gsap.fromTo(elements, 
-              { opacity: 0, scale: 0.95 }, 
-              { opacity: 1, scale: 1, duration: 0.4, delay: 0.2 }
-            ),
-          onLeave: elements => 
-            gsap.to(elements, 
-              { opacity: 0, scale: 0.95, duration: 0.3 }
-            )
-        });
-      }, 10);
+    const contentElement = contentRefs.current[section]?.current;
+
+    if (contentElement) {
+      // First, fade out current content
+      gsap.to(contentElement.children, {
+        opacity: 0,
+        y: -20,
+        duration: 0.3,
+        ease: "power2.in",
+        onComplete: () => {
+          // Update the selection after fade out
+          setSelected(prev => ({
+            ...prev,
+            [section]: { projectIdx, fileIdx }
+          }));
+          
+          // Short delay before fading in new content
+          setTimeout(() => {
+            // Now animate the new content in with Experience-style animation
+            gsap.fromTo(contentElement.children,
+              {
+                y: 30,
+                opacity: 0
+              },
+              {
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
+                ease: "power2.out",
+                stagger: 0.05 // Stagger for more polished feel
+              }
+            );
+          }, 50);
+        }
+      });
+    } else {
+      // Fallback if ref isn't available
+      setSelected(prev => ({
+        ...prev,
+        [section]: { projectIdx, fileIdx }
+      }));
     }
-  };
+    };
 
   // File hover animation
   const handleFileHover = (enter, element) => {
@@ -557,7 +572,7 @@ export default function Projects() {
                           )}
                         </div>
                         
-                        <h3 className="project-title gradient-text">{selectedProject.name}</h3>
+                        <h3 className="project-title">{selectedProject.name}</h3>
                         
                         <p className="project-description">{selectedFile.content}</p>
                         

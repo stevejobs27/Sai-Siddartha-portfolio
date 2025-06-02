@@ -11,7 +11,7 @@ const ProjectList = {
         {
           name: "README.md",
           type: "info",
-          content: "Cleaned and transformed Nashville housing data for analysis, focusing on data integrity and consistency.",
+          content: "Cleaned and transformed Nashville housing data for analysis, focusing on data integrity and consistency. This project's goal was to go through the important steps of data cleaning and transformation, including removing duplicates, handling missing values, and ensuring data types are correct.",
         },
         {
           name: "nasvhille.sql",
@@ -32,7 +32,7 @@ const ProjectList = {
         {
           name: "README.md",
           type: "info",
-          content: "Analyzed Cyclistic bike share data to identify customer segments and usage patterns.",
+          content: "Cyclistic is a fictional bike-share company in Chicago. The goal of this project is to analyze the bike usage data to understand how different types of users (casual vs. annual members) use the service and to provide insights for marketing strategies. Learn more about my approach, analysis, and findings in the Medium article.",
         },
         { name: "cleaning.sql", type: "code", content: Code("Cyclistic").cleaning, language: "sql" },
         { name: "querying.sql", type: "code", content: Code("Cyclistic").querying, language: "sql" },

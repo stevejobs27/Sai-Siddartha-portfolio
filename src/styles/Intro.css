@@ -64,8 +64,8 @@
   content: '';
   position: absolute;
   width: 100%;
-  transform: scaleX(0);
-  height: 1px;
+  transform: scale(0);
+  height: 2px;
   bottom: -2px;
   left: 0;
   background-color: var(--green-bright);
@@ -74,7 +74,7 @@
 }
 
 .outline-button:hover::after {
-  transform: scaleX(1);
+  transform: scale(1);
   transform-origin: bottom left;
 }
 

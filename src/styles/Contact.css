@@ -26,13 +26,7 @@
   inset: 0;
   border-radius: 16px; 
   padding: 2px; 
-  background: linear-gradient(
-    120deg, 
-    rgba(100, 217, 138, 0.8), 
-    rgba(100, 217, 138, 0.1),
-    rgba(65, 199, 199, 0.6),
-    rgba(100, 217, 138, 0.2)
-  );
+  background: var(--gradient-border);
   background-size: 300% 300%;
   -webkit-mask: 
     linear-gradient(#fff 0 0) content-box, 

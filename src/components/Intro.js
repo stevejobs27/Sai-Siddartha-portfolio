@@ -125,11 +125,11 @@ const Intro = () => {
               <defs>
                 <linearGradient id="windmill-gradient-1" x1="218" x2="-47.283" y1="258" y2="153.706" gradientUnits="userSpaceOnUse">
                   <stop offset=".27" stopColor="#64D98A"></stop>
-                  <stop offset=".838" stopColor="#ccd6f6"></stop>
+                  <stop offset=".838" stopColor="cyan"></stop>
                 </linearGradient>
                 <linearGradient id="windmill-gradient-2" x1="-21.183" x2="223.712" y1="-7.807" y2="329.472" gradientUnits="userSpaceOnUse">
                   <stop offset=".27" stopColor="#64D98A"></stop>
-                  <stop offset=".838" stopColor="#ccd6f6"></stop>
+                  <stop offset=".838" stopColor="cyan"></stop>
                 </linearGradient>
               </defs>
             </svg>

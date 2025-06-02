@@ -65,21 +65,27 @@ const About = () => {
           <p ref={el => textRefs.current[1] = el}>
             My analytical journey is driven by a passion for transforming raw data into meaningful insights that drive decisions. 
             I've been developing expertise in <span className="highlight">SQL</span>, <span className="highlight">Python</span>, 
-            <span className="highlight">Tableau</span>, and various data analysis tools to build a solid foundation in the field. </p>
+            <span className="highlight">Tableau</span>, and various data analysis tools to build a solid foundation in the field.
+          </p>
+          
           <p ref={el => textRefs.current[2] = el}>
-            Although unrelated, but I have also garnered a substantial amount of experience in <span className="highlight">HTML, CSS & Javascript </span>
-            in the process of building this website. I also have a background in <span className="highlight">Graphic Design.</span>
+            Although unrelated, I also have a background in <span className="highlight">Graphic Design</span> which helps me create visually appealing and intuitive data visualizations.
           </p>
           
           <p ref={el => textRefs.current[3] = el}>
             Outside of work, I'm interested in cool tech products, aesthetic decor, playing video games and watching soccer.
           </p>
-          
-          <div className="about-actions" ref={el => textRefs.current[4] = el}>
-            <a href="/resume.pdf" className="resume-button" target="_blank" rel="noopener noreferrer">
-              View Resume
-            </a>
-          </div>
+        </div>
+        <p className="about-timeline-link" ref={el => textRefs.current[5] = el}>
+          <a href="#timeline">
+            <span role="img" aria-label="timeline">🗺️</span> 
+            View my <span className="about-timeline-highlight">timeline</span> to learn more about my unique journey into data &rarr;
+          </a>
+        </p>     
+        <div className="about-actions" ref={el => textRefs.current[6] = el}>
+          <a href="/resume.pdf" className="resume-button" target="_blank" rel="noopener noreferrer">
+            View Resume
+          </a>
         </div>
       </div>
     </section>

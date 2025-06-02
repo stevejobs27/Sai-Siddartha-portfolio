@@ -68,6 +68,7 @@
   color: var(--green-bright) !important;
   scale: 1.1;
   transition: var(--transition);
+  filter: var(--drop-shadow);
 }
 
 .navbar-star-btn {
@@ -108,14 +109,17 @@
 .logo {
   display: flex;
   align-items: center;
-  margin: 0px 10px;
-  scale: 1.2
+  margin-left: -15px;
+  scale: 1.2;
+  transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  position: relative;
 }
 
 .logo:hover,
 .logo:focus {
-  scale: 1.3;
-  transition: var(--transition);
+  transform: scale(1.2);
+  filter: var(--drop-shadow);
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 
 .hamburger-menu {
@@ -202,13 +206,13 @@
   padding-left: 5px;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1260px) {
   .navbar {
     margin-left: 0px;
   }
   
   .navbar-nav .nav-link {
-    margin: 0 auto;
+    margin-right: 10px;
   }
   
   .navbar-nav.me-auto {
