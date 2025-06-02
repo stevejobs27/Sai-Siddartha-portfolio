@@ -39,5 +39,5 @@
 | Green Bright   | ![#64D98A](https://placehold.co/100x25/64D98A/000000?text=%2364D98A) |
 | Dark Green     | ![#03141A](https://placehold.co/100x25/03141A/ffffff?text=%2303141A) |
 | Dark Blue      | ![#060A17](https://placehold.co/100x25/060A17/ffffff?text=%23060A17) |
-| Faded Blue     | ![#0B0F1D](https://placehold.co/100x25/0B0F1D/ffffff?text=%230B0F1D) |
+| Dark Purple    | ![#0B0F1D](https://placehold.co/100x25/0B0F1D/ffffff?text=%230B0F1D) |
 | Black          | ![#030817](https://placehold.co/100x25/030817/ffffff?text=%23030817) |
