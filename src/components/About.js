@@ -64,8 +64,7 @@ const About = () => {
           
           <p ref={el => textRefs.current[1] = el}>
             My analytical journey is driven by a passion for transforming raw data into meaningful insights that drive decisions. 
-            I've been developing expertise in <span className="highlight">SQL</span>, <span className="highlight">Python</span>, 
-            <span className="highlight">Tableau</span>, and various data analysis tools to build a solid foundation in the field.
+            I've been developing expertise in <span className="highlight">SQL, Tableau, Python </span> and various data analysis tools to build a solid foundation in the field.
           </p>
           
           <p ref={el => textRefs.current[2] = el}>
@@ -83,7 +82,7 @@ const About = () => {
           </a>
         </p>     
         <div className="about-actions" ref={el => textRefs.current[6] = el}>
-          <a href="/resume.pdf" className="resume-button" target="_blank" rel="noopener noreferrer">
+          <a href="/resume.pdf" className="resume-button btn-effect" target="_blank" rel="noopener noreferrer">
             View Resume
           </a>
         </div>

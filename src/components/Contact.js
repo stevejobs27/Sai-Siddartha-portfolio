@@ -21,7 +21,7 @@ export default function Contact() {
   useEffect(() => {
       gsap.set(".contact-container", {
       width: "100%",
-      maxWidth: "800px",
+      maxWidth: "600px",
       height: "auto", 
       margin: "0 auto"
     });
@@ -179,15 +179,21 @@ export default function Contact() {
   };
 
   return (
-    <div id="contact" className="contact-section" ref={contactSectionRef}>
+    <section id="contact" ref={contactSectionRef}>
       <div className="section-header">
         <span className="section-title">Get In Touch</span>
+      </div>
+      <div className="contact-intro">
+      <p>
+        I’m currently exploring data analyst opportunities and always open to connecting with like-minded professionals. If you have a role, project, or collaboration in mind, I’d love to hear from you!
+      </p>  
       </div>
       <div className="contact-container">
         <div className="contact-bg-elements">
           <div className="contact-circle"></div>
           <div className="contact-square"></div>
         </div>
+        
         
         <form className="contact-form" onSubmit={handleSend} ref={formRef}>
           <div className="form-group">
@@ -228,7 +234,7 @@ export default function Contact() {
           
           <div className="contact-actions">
             <button 
-              className="contact-send-btn" 
+              className="contact-send-btn btn-effect" 
               type="submit"
             >
               Send Message
@@ -258,6 +264,6 @@ export default function Contact() {
           </button>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

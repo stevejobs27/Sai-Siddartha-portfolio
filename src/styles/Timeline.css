@@ -166,11 +166,11 @@
 }
 
 .timeline-item.left .timeline-date {
-  right: 400px;
+  right: 300px;
 }
 
 .timeline-item.right .timeline-date {
-  left: 400px;
+  left: 300px;
 }
 
 .timeline-actions {
@@ -249,11 +249,11 @@
 
 @media only screen and (max-width: 1200px) {
   .timeline-item.left .timeline-date {
-    right: 300px;
+    right: 200px;
   }
 
   .timeline-item.right .timeline-date {
-    left: 300px;
+    left: 200px;
   }
 }
 /* Responsive styles */
@@ -345,16 +345,12 @@
   }
   
   .timeline-content p {
-    font-size: 14px;
-  }
-  
-  .timeline-date {
-    font-size: 12px;
-    top: -25px;
+    font-size: 16px;
   }
   
   .timeline-link {
-    font-size: 13px;
+    text-align: right;
+    font-size: 14px;
   }
   
   .timeline-item {

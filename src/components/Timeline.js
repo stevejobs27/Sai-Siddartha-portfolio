@@ -8,15 +8,15 @@ gsap.registerPlugin(ScrollTrigger);
 
 const milestones = [
   {
-    title: "It All Started when I was Born",
-    description: "Completed my Master of Engineering at TMU, where I first discovered the power of data through market research and analytics projects.",
-    year: "Sep 2022",
+    title: "Masters at TMU",
+    description: "Enrolled in an Innovation and Entrepreneurship degree in an attempt to explore new fields and gain a broader perspective on business and technology.",
+    year: "Sep 2022 - Dec 2023",
     type: "education" 
   },
   {
     title: "Exposure to Data in Startup Environments",
-    description: "Worked at 3 different startups where I gained initial exposure to huge amounts of data during market research, focusing on customer insights and market trends.",
-    year: "Till 2023",
+    description: "During my time at TMU, I worked at 3 different startups where I gained initial exposure to huge amounts of data during market research, which introduced me to the power of data analytics in decision making.",
+    year: "Sep 2022 - Apr 2024",
     type: "startup",
     learnMoreLink: "#projects", 
     learnMoreText: "View Projects"

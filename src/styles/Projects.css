@@ -130,7 +130,7 @@
   padding: 0;
   margin: 0;
   font-family: 'Fira Code', monospace;
-  font-size: 14px;
+  font-size: 16px;
   width: 100%;
 }
 
@@ -142,7 +142,7 @@
   cursor: pointer;
   padding: 6px 10px 6px 8px;
   border-radius: 6px;
-  font-size: 14px;
+  font-size: 16px;
   color: var(--lightest-slate);
   font-family: "NTR", sans-serif;
   user-select: none;
@@ -162,14 +162,14 @@
 
 .directory-folder .folder-icon {
   margin-right: 6px;
-  font-size: 15px;
+  font-size: 16px;
   flex-shrink: 0;
   transition: color 0.3s ease;
 }
 
 .directory-folder .chevron-icon {
   margin-right: 4px;
-  font-size: 14px;
+  font-size: 16px;
   flex-shrink: 0;
   transition: transform 0.3s ease;
 }
@@ -220,7 +220,7 @@
   width: 100%;
   padding: 5px 10px 5px 8px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 16px;
   border-radius: 4px;
   font-family: "NTR", sans-serif;
   display: flex;
@@ -331,6 +331,7 @@
 .project-description {
   flex: 1;
   margin-bottom: 20px;
+  font-size: 18px;
   color: var(--lightest-slate);
   line-height: 1.6;
 }
@@ -350,7 +351,7 @@
 .tag-pill {
   padding: 6px 12px;
   border-radius: 50px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
   color: var(--green-bright);
   border: 1px solid rgba(100, 217, 138, 0.3);
@@ -489,6 +490,13 @@
     font-size: 20px;
   }
   
+  .project-description {
+    font-size: 16px;
+  }
+  .tag-pill {
+    font-size: 12px;
+  }
+
   .directory-folder,
   .directory-file-btn {
     font-size: 13px;
@@ -506,10 +514,10 @@
   
   .project-image-container {
     height: 200px;
+    overflow: visible;
   }
   
   .tag-pill {
-    font-size: 11px;
     padding: 4px 10px;
   }
 }

@@ -5,7 +5,7 @@ import { FiMail } from "react-icons/fi";
 import Typist from "react-typist";
 import { gsap } from "gsap";
 
-const Intro = () => {
+const Intro = ({ onTypingDone }) => {
   const cursorRef = useRef(null);
   const subtitleRef = useRef(null);
   const descRef = useRef(null);
@@ -35,7 +35,7 @@ const Intro = () => {
       scale: 1, 
       duration: 0.8, 
       ease: "power2.out",
-      delay: 2.5 // Wait for typing to complete
+      delay: 2.8 // Wait for typing to complete
     });
     
     // STEP 3: Then reveal the subtitle
@@ -76,16 +76,15 @@ const Intro = () => {
         rotation: 0 // Start fresh for smooth counting
       },
       {
-        rotation: 360 * 3, // Do 3 more rotations while slowing down
-        duration: 6, // Long duration for visibly slowing down
-        ease: "power1.out", // Physics-based slowdown curve
+        rotation: 360 * 3, 
+        duration: 6, 
+        ease: "power1.out", 
         transformOrigin: "center center",
-        onComplete: () => {
-          // When slowdown completes, start the continuous slow rotation
+        onTypingDone: () => {
           gsap.to(windmill, {
-            rotation: "+=360", // Keep rotating
+            rotation: "+=360",
             repeat: -1,
-            duration: 5, // Final slow, continuous speed
+            duration: 5, 
             ease: "none",
             transformOrigin: "center center"
           });
@@ -99,7 +98,7 @@ const Intro = () => {
     <div className="intro-section">
       <div className="intro-content" ref={contentRef}>
         <div className="typist-content">
-          <Typist 
+          <Typist
             avgTypingDelay={70}
             stdTypingDelay={25}
             cursor={{
@@ -107,7 +106,8 @@ const Intro = () => {
               blink: true,
               element: '|'
             }}
-          >   
+            onTypingDone={onTypingDone}
+          >
             <span className="intro-title">Hi there! I'm </span>
             <span className="intro-name">Rafsan.</span>
             <span>&nbsp;</span>
@@ -125,29 +125,27 @@ const Intro = () => {
               <defs>
                 <linearGradient id="windmill-gradient-1" x1="218" x2="-47.283" y1="258" y2="153.706" gradientUnits="userSpaceOnUse">
                   <stop offset=".27" stopColor="#64D98A"></stop>
-                  <stop offset=".838" stopColor="cyan"></stop>
+                  <stop offset=".838" stopColor="#e2e8fd"></stop>
                 </linearGradient>
                 <linearGradient id="windmill-gradient-2" x1="-21.183" x2="223.712" y1="-7.807" y2="329.472" gradientUnits="userSpaceOnUse">
                   <stop offset=".27" stopColor="#64D98A"></stop>
-                  <stop offset=".838" stopColor="cyan"></stop>
+                  <stop offset=".838" stopColor="#e2e8fd"></stop>
                 </linearGradient>
               </defs>
             </svg>
           </div>
         </div>
-        
         <div className="intro-subtitle" ref={subtitleRef}>
-          I'm a <span className="intro-subtitle-name">Data Analyst</span> with a love for design.
+          A <span className="intro-subtitle-name">Data Analyst</span> with a love for design.
         </div>
         
         <div className="intro-desc" ref={descRef}>
           I'm a techie who loves working with numbers and graphics. I thrive on solving problems using analytical skills and
-          creating powerful and insightful visualizations. I'm also very customer oriented, 
-          always striving to understand user needs and deliver the best solutions.
+          creating powerful and insightful visualizations.
         </div>
         
         <div className="intro-buttons" ref={buttonsRef}>
-          <a href="#contact" className="outline-button">Get In Touch <FiMail className="button-icon" /></a>
+          <a href="#contact" className="outline-button btn-effect">Get In Touch <FiMail className="button-icon" /></a>
         </div>
       </div>
       

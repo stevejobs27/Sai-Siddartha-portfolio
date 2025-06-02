@@ -137,13 +137,14 @@ class NavBar extends React.Component {
           }}
         >
           <Navbar.Brand href="Home">
-            <img
+          <div class="logo-container btn-effect">
+            <img class="logo"
               src="/assets/logo.png"
               alt="Rafsan Ahmed Logo"
               title="Logo"
-              className="logo"
-              style={{ height: "28px", width: "auto" }}
+              style={{ height: "36px", width: "36px" }}
             />
+          </div>
           </Navbar.Brand>
           
           {/* Desktop Nav Links */}
