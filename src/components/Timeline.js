@@ -16,38 +16,38 @@ const milestones = [
   {
     title: "Exposure to Data in Startup Environments",
     description: "During my time at TMU, I worked at 3 different startups where I gained initial exposure to huge amounts of data during market research, which introduced me to the power of data analytics in decision making.",
-    year: "Sep 2022 - Apr 2024",
+    year: "Sep 2022 - Jan 2024",
     type: "startup",
-    learnMoreLink: "#projects", 
-    learnMoreText: "View Projects"
+    learnMoreLink: "#experience", 
+    learnMoreText: "View Experience"
   },
   {
     title: "Decision to Pivot to Data Analytics",
     description: "Realized my passion for data analytics and decided to pivot my career towards becoming a Data Analyst, focusing on data-driven decision making.",
-    year: "Early 2024",
+    year: "Jan 2024 - Feb 2024",
     type: "career",
   },
   {
     title: "Google Data Analytics Professional Certificate",
     description: "Completed Google's Data Analytics Professional Certificate, establishing core competencies in data preparation, analysis, and visualization.",
     certificateUrl: "https://www.coursera.org/account/accomplishments/professional-cert/23OIJ3BGH8FJ",
-    year: "Early 2024",
+    year: "Mar 2024 - Sep 2024",
     type: "google",
 
   },
   {
     title: "First Data Projects",
-    description: "Built my first portfolio projects, analyzing real-world datasets and creating visualizations with Tableau and Python libraries.",
-    year: "Sep 2024",
+    description: "Built my first portfolio projects (Covid-19 and Cyclistic), analyzing real-world datasets using Excel, MySQL and creating visualizations with Tableau.",
+    year: "Sep 2024 - Dec 2024",
     type: "project"
   },
   {
     title: "Advanced Data Analysis & Storytelling",
-    description: "Deepened my skills in advanced data analysis techniques, focusing on transforming raw data into compelling narratives that drive business decisions.",
-    year: "Present",
+    description: "Deepened my skills in advanced data analysis techniques, delving deeper into advanced SQL queries,  and diving into Python to unlock even more powerful ways to explore, manipulate, and tell stories with data.",
+    year: "Jan 2025 - Present",
     type: "statistics",
-    learnMoreLink: "#contact",
-    learnMoreText: "Get In Touch"
+    learnMoreLink: "#projects",
+    learnMoreText: "View Projects"
   }
 ];
 

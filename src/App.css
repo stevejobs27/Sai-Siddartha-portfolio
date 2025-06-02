@@ -67,7 +67,10 @@ a {
 
 .section-title {
   font-family: "NTR", sans-serif;
-  color: var(--lightest-slate);
+  background: var(--anchor-text);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
   padding-bottom: 10px;
   font-size: 2.5rem;
   font-weight: 650;

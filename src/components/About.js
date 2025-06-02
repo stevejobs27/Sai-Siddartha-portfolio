@@ -55,24 +55,20 @@ const About = () => {
       <div className="about-content">
         <div className="about-description">
           <p ref={el => textRefs.current[0] = el}>
-            I am an aspiring <span className="highlight">Data Analyst</span> exploring the field through hands-on
-            <a href="#projects"> projects</a>. 
-            Recently, I completed my graduation in Master of Engineering in Innovation & Entrepreneurship at{" "}
-            <a href="https://www.torontomu.ca/">Toronto Metropolitan University</a> where working with startups on market 
-            research and product development completely made me fall in love with the power of data.
+              Hi, my name is Rafsan and I enjoy fiddling with numbers and solving problems. My interest in data started back in 2022 when I was working on a market research report for a startup.
+              The subtle realization of the power of data was all it took to get me hooked on the field of data analytics. 
           </p>
           
           <p ref={el => textRefs.current[1] = el}>
-            My analytical journey is driven by a passion for transforming raw data into meaningful insights that drive decisions. 
-            I've been developing expertise in <span className="highlight">SQL, Tableau, Python </span> and various data analysis tools to build a solid foundation in the field.
+            Since then, I’ve earned a <a href= "https://www.credly.com/badges/76531ad7-80dc-4eea-8523-983d8b70f941/public_url" target="_blank">Google Data Analytics Certificate</a> and built a strong foundation in <span className="highlight">SQL, Tableau, and Python</span>.   For me, data analysis feels like playing detective—piecing together clues from numbers to reveal the bigger picture.
           </p>
           
           <p ref={el => textRefs.current[2] = el}>
-            Although unrelated, I also have a background in <span className="highlight">Graphic Design</span> which helps me create visually appealing and intuitive data visualizations.
+            I have a strong appetite for learning and I'm always eager to explore new technologies. This website is a testament to my journey where I picked up <span className="highlight">HTML, CSS & JavaScript</span> along the way. I also have a background in <span className="highlight"> Graphic Design. </span>
           </p>
           
           <p ref={el => textRefs.current[3] = el}>
-            Outside of work, I'm interested in cool tech products, aesthetic decor, playing video games and watching soccer.
+            Outside of work, I'm interested in cool tech products, aesthetic decor and playing video games.
           </p>
         </div>
         <p className="about-timeline-link" ref={el => textRefs.current[5] = el}>

@@ -10,6 +10,7 @@ import {
   VscFolder, VscFolderOpened, VscMarkdown, VscChevronRight
 } from "react-icons/vsc";
 import { SiMysql, SiPython } from "react-icons/si";
+import { FaDatabase } from "react-icons/fa";
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger, Flip);
@@ -575,7 +576,11 @@ export default function Projects() {
                         <h3 className="project-title">{selectedProject.name}</h3>
                         
                         <p className="project-description">{selectedFile.content}</p>
-                        
+                        {selectedProject.dataset && (
+                          <a href={selectedProject.dataset} className="project-link" target="_blank" rel="noopener noreferrer">
+                            <FaDatabase /> Dataset
+                          </a>
+                        )}
                         <ul className="project-tags">
                           {selectedProject.tags && selectedProject.tags.map((tag, i) => (
                             <li key={i} className="tag-pill">{tag}</li>

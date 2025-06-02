@@ -24,7 +24,6 @@ const experienceItems = {
     jobTitle: "Technical Lead @",
     duration: "SEP 2022 - FEB 2023",
     desc: [
-      "Developed a Node.js smart home system through Facebook's Messenger integrated with Bocco sensors and other smart devices (Nest camera, TPLink smart plugs) to derive conclusions about the current state of the home",
       "Led prototyping and product development, using Bubble.io for a no-code platform and guiding the team through technical decisions",
       "Designed UI/UX assets in Figma and Adobe Illustrator to deliver a functional and user-friendly health tech interface"
     ]
