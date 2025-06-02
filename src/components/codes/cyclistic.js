@@ -2,6 +2,9 @@ const cyclistic = {
 cleaning: `-- In this query, we'll go through the Data Cleaning process
 -- 12 months of data (June 2023- May 2024) was imported
 -- Total 5743278 rows imported
+-- P.S. Even though deleting data is not a good practice,
+-- but this dataset had a lot of unusable and irrelevant data
+
 SELECT * 
 FROM cyclistic.cyclisticmain
 ;
