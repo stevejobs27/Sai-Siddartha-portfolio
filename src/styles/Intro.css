@@ -129,7 +129,7 @@
   max-width: 480px;
 }
 
-@media (max-width: 1350px) {
+@media (max-width: 1400px) {
   .intro-section {
     flex-direction: column-reverse;
     padding-top: 60px;
@@ -164,6 +164,13 @@
   
   .intro-buttons {
     justify-content: center;
+  }
+}
+
+@media (max-width: 992px) {
+  .intro-name {
+    color: var(--green-bright);
+    background: none;
   }
 }
 
