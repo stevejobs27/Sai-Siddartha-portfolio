@@ -21,6 +21,7 @@ class NavBar extends React.Component {
     this.toggleMobileMenu = this.toggleMobileMenu.bind(this);
     this.mobileMenuRef = React.createRef();
     this.hamburgerRef = React.createRef();
+    this.navbarRef = React.createRef(); // Add ref for navbar animation
   }
 
   toggleStars() {
@@ -34,69 +35,84 @@ class NavBar extends React.Component {
   }
 
   toggleMobileMenu() {
-  const { mobileMenuOpen } = this.state;
-  
-  // Toggle state
-  this.setState({ mobileMenuOpen: !mobileMenuOpen });
-  
-  // Animate with GSAP
-  if (!mobileMenuOpen) {
-    // Opening animation - slide from right
-    gsap.to(this.mobileMenuRef.current, {
-      x: 0, // Slide in from right
-      duration: 0.4,
-      ease: "power3.out"
-    });
+    const { mobileMenuOpen } = this.state;
     
-    // Animate hamburger to X
-    gsap.to(this.hamburgerRef.current.querySelector('.line-1'), {
-      rotation: 45,
-      y: 8,
-      duration: 0.3
-    });
-    gsap.to(this.hamburgerRef.current.querySelector('.line-2'), {
-      opacity: 0,
-      duration: 0.3
-    });
-    gsap.to(this.hamburgerRef.current.querySelector('.line-3'), {
-      rotation: -45,
-      y: -8,
-      duration: 0.3
-    });
-  } else {
-    // Closing animation - slide to right
-    gsap.to(this.mobileMenuRef.current, {
-      x: '100%', // Slide out to right
-      duration: 0.4,
-      ease: "power3.in"
-    });
+    // Toggle state
+    this.setState({ mobileMenuOpen: !mobileMenuOpen });
     
-    // Animate X back to hamburger
-    gsap.to(this.hamburgerRef.current.querySelector('.line-1'), {
-      rotation: 0,
-      y: 0,
-      duration: 0.3
-    });
-    gsap.to(this.hamburgerRef.current.querySelector('.line-2'), {
-      opacity: 1,
-      duration: 0.3
-    });
-    gsap.to(this.hamburgerRef.current.querySelector('.line-3'), {
-      rotation: 0,
-      y: 0,
-      duration: 0.3
-    });
+    // Animate with GSAP
+    if (!mobileMenuOpen) {
+      // Opening animation - slide from right
+      gsap.to(this.mobileMenuRef.current, {
+        x: 0, // Slide in from right
+        duration: 0.4,
+        ease: "power3.out"
+      });
+      
+      // Animate hamburger to X
+      gsap.to(this.hamburgerRef.current.querySelector('.line-1'), {
+        rotation: 45,
+        y: 8,
+        duration: 0.3
+      });
+      gsap.to(this.hamburgerRef.current.querySelector('.line-2'), {
+        opacity: 0,
+        duration: 0.3
+      });
+      gsap.to(this.hamburgerRef.current.querySelector('.line-3'), {
+        rotation: -45,
+        y: -8,
+        duration: 0.3
+      });
+    } else {
+      // Closing animation - slide to right
+      gsap.to(this.mobileMenuRef.current, {
+        x: '100%', // Slide out to right
+        duration: 0.4,
+        ease: "power3.in"
+      });
+      
+      // Animate X back to hamburger
+      gsap.to(this.hamburgerRef.current.querySelector('.line-1'), {
+        rotation: 0,
+        y: 0,
+        duration: 0.3
+      });
+      gsap.to(this.hamburgerRef.current.querySelector('.line-2'), {
+        opacity: 1,
+        duration: 0.3
+      });
+      gsap.to(this.hamburgerRef.current.querySelector('.line-3'), {
+        rotation: 0,
+        y: 0,
+        duration: 0.3
+      });
+    }
   }
-}
 
   componentDidMount() {
-  window.addEventListener("scroll", this.handleScroll);
-  
-  // Initialize mobile menu position
-  gsap.set(this.mobileMenuRef.current, {
-    x: '100%' // Start off-screen to the right
-  });
-}
+    window.addEventListener("scroll", this.handleScroll);
+    
+    // Initialize mobile menu position
+    gsap.set(this.mobileMenuRef.current, {
+      x: '100%' // Start off-screen to the right
+    });
+    
+    // Initial fade-in animation for the navbar
+    gsap.set(this.navbarRef.current, {
+      opacity: 0,
+      y: -15
+    });
+    
+    // Animate the navbar in
+    gsap.to(this.navbarRef.current, {
+      opacity: 1,
+      y: 0,
+      duration: 0.6,
+      ease: "power2.out",
+      delay: 1.5
+    });
+  }
 
   componentWillUnmount() {
     window.removeEventListener("scroll", this.handleScroll);
@@ -120,6 +136,7 @@ class NavBar extends React.Component {
 
     return (
       <Navbar
+        ref={this.navbarRef} // Add the ref here
         fixed="top"
         className={`bg-body-tertiary navbar-animated${show ? " navbar-visible" : " navbar-hidden"}${atTop ? " navbar-at-top" : ""}`}
         style={{
@@ -127,7 +144,6 @@ class NavBar extends React.Component {
           zIndex: 1000,
         }}
       >
-
         <Container
           fluid
           style={{
@@ -137,14 +153,14 @@ class NavBar extends React.Component {
           }}
         >
           <Navbar.Brand href="Home">
-          <div class="logo-container btn-effect">
-            <img class="logo"
-              src="/assets/logo.png"
-              alt="Rafsan Ahmed Logo"
-              title="Logo"
-              style={{ height: "36px", width: "36px" }}
-            />
-          </div>
+            <div className="logo-container btn-effect">
+              <img className="logo"
+                src="/assets/logo.png"
+                alt="Rafsan Ahmed Logo"
+                title="Logo"
+                style={{ height: "36px", width: "36px" }}
+              />
+            </div>
           </Navbar.Brand>
           
           {/* Desktop Nav Links */}

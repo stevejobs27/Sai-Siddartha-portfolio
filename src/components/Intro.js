@@ -35,7 +35,7 @@ const Intro = ({ onTypingDone }) => {
       scale: 1, 
       duration: 0.8, 
       ease: "power2.out",
-      delay: 2.8 // Wait for typing to complete
+      delay: 2.5 // Wait for typing to complete
     });
     
     // STEP 3: Then reveal the subtitle
@@ -64,33 +64,33 @@ const Intro = ({ onTypingDone }) => {
 
   // Windmill Animation Stuff
   const windmill = cursorRef.current.querySelector('svg');
+
+  // First fast spinning
   gsap.to(windmill, {
-    rotation: 360 * 6, // Multiple rotations for fast spinning
-    duration: 2, // Duration matches typing time
+    rotation: 360 * 4, 
+    duration: 2,
     ease: "linear",
-    transformOrigin: "center center"
-  }).then(() => {
-    // After fast rotation completes, do a gradual slowdown
-    gsap.fromTo(windmill, 
-      { 
-        rotation: 0 // Start fresh for smooth counting
-      },
-      {
-        rotation: 360 * 3, 
-        duration: 6, 
-        ease: "power1.out", 
+    transformOrigin: "center center",
+    onComplete: () => {
+      // When fast spin completes, transition to slow continuous spin
+      // WITHOUT resetting to 0
+      gsap.to(windmill, {
+        rotation: "+=720", // Add 2 more rotations as it slows down
+        duration: 3, 
+        ease: "power2.out", 
         transformOrigin: "center center",
-        onTypingDone: () => {
+        onComplete: () => {
+          // Final continuous slow rotation
           gsap.to(windmill, {
             rotation: "+=360",
             repeat: -1,
-            duration: 5, 
-            ease: "none",
+            duration: 2, 
+            ease: "power1.in",
             transformOrigin: "center center"
           });
         }
-      }
-    );
+      });
+    }
   });
   }, []);
 
