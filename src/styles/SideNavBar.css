@@ -4,12 +4,13 @@
   display: flex;
   flex-direction: column;
   margin: 0 0 10px 25px;
-
+  visibility: hidden;
   align-items: center;
   width: 60px;
   gap: 25px;
   z-index: 500;
 }
+
 .side-navbar a {
   color: var(--lightest-slate) !important;
 }

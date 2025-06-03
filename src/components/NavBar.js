@@ -21,7 +21,7 @@ class NavBar extends React.Component {
     this.toggleMobileMenu = this.toggleMobileMenu.bind(this);
     this.mobileMenuRef = React.createRef();
     this.hamburgerRef = React.createRef();
-    this.navbarRef = React.createRef(); // Add ref for navbar animation
+    this.navbarRef = React.createRef();
   }
 
   toggleStars() {
@@ -37,19 +37,15 @@ class NavBar extends React.Component {
   toggleMobileMenu() {
     const { mobileMenuOpen } = this.state;
     
-    // Toggle state
     this.setState({ mobileMenuOpen: !mobileMenuOpen });
     
-    // Animate with GSAP
     if (!mobileMenuOpen) {
-      // Opening animation - slide from right
       gsap.to(this.mobileMenuRef.current, {
-        x: 0, // Slide in from right
+        x: 0, 
         duration: 0.4,
         ease: "power3.out"
       });
       
-      // Animate hamburger to X
       gsap.to(this.hamburgerRef.current.querySelector('.line-1'), {
         rotation: 45,
         y: 8,
@@ -65,14 +61,12 @@ class NavBar extends React.Component {
         duration: 0.3
       });
     } else {
-      // Closing animation - slide to right
       gsap.to(this.mobileMenuRef.current, {
-        x: '100%', // Slide out to right
+        x: '100%', 
         duration: 0.4,
         ease: "power3.in"
       });
       
-      // Animate X back to hamburger
       gsap.to(this.hamburgerRef.current.querySelector('.line-1'), {
         rotation: 0,
         y: 0,
@@ -93,24 +87,21 @@ class NavBar extends React.Component {
   componentDidMount() {
     window.addEventListener("scroll", this.handleScroll);
     
-    // Initialize mobile menu position
     gsap.set(this.mobileMenuRef.current, {
-      x: '100%' // Start off-screen to the right
+      x: '100%' 
     });
     
-    // Initial fade-in animation for the navbar
     gsap.set(this.navbarRef.current, {
       opacity: 0,
       y: -15
     });
     
-    // Animate the navbar in
     gsap.to(this.navbarRef.current, {
       opacity: 1,
       y: 0,
       duration: 0.6,
       ease: "power2.out",
-      delay: 1.5
+      delay: 0.2
     });
   }
 
@@ -136,7 +127,7 @@ class NavBar extends React.Component {
 
     return (
       <Navbar
-        ref={this.navbarRef} // Add the ref here
+        ref={this.navbarRef} 
         fixed="top"
         className={`bg-body-tertiary navbar-animated${show ? " navbar-visible" : " navbar-hidden"}${atTop ? " navbar-at-top" : ""}`}
         style={{

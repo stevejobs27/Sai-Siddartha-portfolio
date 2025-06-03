@@ -17,7 +17,7 @@ function Stardust({ count = 1500 }) {
         r * Math.cos(phi)
       );
       sizes.push(0.012 + Math.random() * 0.008);
-      opacities.push(0.4 + Math.random() * 0.4);
+      opacities.push(0.3 + Math.random() * 0.2);
     }
     return {
       positions: new Float32Array(positions),

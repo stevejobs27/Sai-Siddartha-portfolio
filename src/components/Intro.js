@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from "react";
 import "../styles/Intro.css";
 import AnimatedRobot from "./AnimatedRobot";
 import { FiMail } from "react-icons/fi"; 
-import Typist from "react-typist";
 import { gsap } from "gsap";
 
 const Intro = ({ onTypingDone }) => {
@@ -12,12 +11,21 @@ const Intro = ({ onTypingDone }) => {
   const buttonsRef = useRef(null);
   const contentRef = useRef(null);
   const animationRef = useRef(null);
+  const textContainerRef = useRef(null);
+  const textRef = useRef(null);
+  const nameRef = useRef(null);
+  const hasRunRef = useRef(false); 
 
   useEffect(() => {
-    // Create a timeline for sequential animations
-    const tl = gsap.timeline();
+    if (hasRunRef.current) return;
+    hasRunRef.current = true;
     
-    // Set initial states (everything hidden except the typing content)
+    const mainTl = gsap.timeline({
+      onComplete: () => {
+        if (onTypingDone) onTypingDone();
+      }
+    });
+    
     gsap.set([subtitleRef.current, descRef.current, buttonsRef.current], {
       opacity: 0,
       y: 20
@@ -27,114 +35,158 @@ const Intro = ({ onTypingDone }) => {
       opacity: 0,
       scale: 0.95
     });
+
+    const introText = textRef.current.textContent;
+    const nameText = nameRef.current.textContent;
     
-    // STEP 1: Wait for typing to complete (2.5s)
-    // STEP 2: First reveal the robot design
-    tl.to(animationRef.current, {
-      opacity: 1, 
-      scale: 1, 
-      duration: 0.8, 
-      ease: "power2.out",
-      delay: 2.5 // Wait for typing to complete
+    textRef.current.textContent = "";
+    nameRef.current.textContent = "";
+    
+    const introChars = introText.split("").map(char => {
+      const span = document.createElement("span");
+      span.textContent = char;
+      span.style.opacity = "0";
+      textRef.current.appendChild(span);
+      return span;
     });
     
-    // STEP 3: Then reveal the subtitle
-    tl.to(subtitleRef.current, {
-      opacity: 1, 
-      y: 0, 
-      duration: 0.25, 
-      ease: "power2.out"
-    },);
+    const nameChars = nameText.split("").map(char => {
+      const span = document.createElement("span");
+      span.textContent = char;
+      span.style.opacity = "0";
+      nameRef.current.appendChild(span);
+      return span;
+    });
     
-    // STEP 4: Then reveal the description
-    tl.to(descRef.current, {
-      opacity: 1, 
-      y: 0, 
-      duration: 0.25, 
-      ease: "power2.out"
-    },);
+    const allChars = [...introChars, ...nameChars];
     
-    // STEP 5: Finally reveal the button
-    tl.to(buttonsRef.current, {
-      opacity: 1, 
-      y: 0, 
-      duration: 0.25, 
-      ease: "power2.out"
-    },);
-
-  // Windmill Animation Stuff
-  const windmill = cursorRef.current.querySelector('svg');
-
-  // First fast spinning
-  gsap.to(windmill, {
-    rotation: 360 * 4, 
-    duration: 2,
-    ease: "linear",
-    transformOrigin: "center center",
-    onComplete: () => {
-      // When fast spin completes, transition to slow continuous spin
-      // WITHOUT resetting to 0
-      gsap.to(windmill, {
-        rotation: "+=720", // Add 2 more rotations as it slows down
-        duration: 3, 
-        ease: "power2.out", 
-        transformOrigin: "center center",
-        onComplete: () => {
-          // Final continuous slow rotation
-          gsap.to(windmill, {
-            rotation: "+=360",
-            repeat: -1,
-            duration: 2, 
-            ease: "power1.in",
-            transformOrigin: "center center"
+    const windmill = cursorRef.current.querySelector('svg');
+    
+    gsap.set(cursorRef.current, {
+      opacity: 1,
+      left: -10, 
+      top: "50%",
+      xPercent: 0,
+      yPercent: -50
+    });
+    
+    const typingTl = gsap.timeline();
+    
+    gsap.to(windmill, {
+      rotation: 360 * 7.5,
+      duration: 3,
+      ease: "linear",
+      repeat: -1,
+      transformOrigin: "center center"
+    });
+    
+    allChars.forEach((char, index) => {
+      const charRect = char.getBoundingClientRect();
+      const charWidth = char.offsetWidth || 10;
+      
+      typingTl.to(cursorRef.current, {
+        left: `+=${charWidth}`,
+        duration: 0.08, 
+        ease: "none",
+        onStart: () => {
+          gsap.to(char, {
+            opacity: 1,
+            duration: 0.1
           });
         }
       });
-    }
-  });
-  }, []);
+    });
+    
+    typingTl.to(cursorRef.current, {
+      left: "+=20",
+      duration: 0.1,
+      ease: "power1.out"
+    });
+    
+    typingTl.add(() => {
+      gsap.killTweensOf(windmill);
+      
+      gsap.to(windmill, {
+        rotation: "+=385", 
+        duration: .9,
+        ease: "power2.Out",
+        transformOrigin: "center center"
+      });
+    });
+    
+    mainTl.add(typingTl);
+    
+    mainTl.to(animationRef.current, {
+      opacity: 1, 
+      scale: 1, 
+      duration: 0.8, 
+      ease: "power2.out"
+    });
+    
+    mainTl.to(subtitleRef.current, {
+      opacity: 1, 
+      y: 0, 
+      duration: 0.2, 
+      ease: "power2.out"
+    });
+    
+    mainTl.to(descRef.current, {
+      opacity: 1, 
+      y: 0, 
+      duration: 0.2, 
+      ease: "power2.out"
+    });
+    
+    mainTl.to(buttonsRef.current, {
+      opacity: 1, 
+      y: 0, 
+      duration: 0.2, 
+      ease: "power2.out"
+    });
+    
+    return () => {
+      mainTl.kill();
+      typingTl.kill();
+      gsap.killTweensOf(windmill);
+      gsap.killTweensOf(cursorRef.current);
+      allChars.forEach(char => {
+        gsap.killTweensOf(char);
+      });
+    };
+  }, [onTypingDone]);
 
   return (
     <div className="intro-section">
       <div className="intro-content" ref={contentRef}>
-        <div className="typist-content">
-          <Typist
-            avgTypingDelay={70}
-            stdTypingDelay={25}
-            cursor={{
-              show: false,
-              blink: true,
-              element: '|'
-            }}
-            onTypingDone={onTypingDone}
-          >
-            <span className="intro-title">Hi there! I'm </span>
-            <span className="intro-name">Rafsan.</span>
-            <span>&nbsp;</span>
-            <Typist.Delay ms={300} />
-          </Typist>
-          
-          <div 
-            ref={cursorRef} 
-            id="custom-cursor" 
-            className="windmill-cursor"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 248 248" aria-hidden="true">
-              <path fill="url(#windmill-gradient-1)" d="M152.266 123.716h94.275c.802 0 1.459.656 1.459 1.459v121.067c0 .81-.664 1.474-1.474 1.466-67.274-.78-121.669-55.137-122.522-122.387v121.22c0 .803-.657 1.459-1.46 1.459H1.474c-.81 0-1.474-.664-1.467-1.474C.795 178.721 56 124.008 123.996 124H1.459C.657 124 0 123.344 0 122.541V1.474C0 .664.664 0 1.474.008c67.274.78 121.669 55.137 122.522 122.387V1.46c0-.803.657-1.46 1.46-1.46h121.07c.81 0 1.474.664 1.467 1.474-.679 58.224-41.486 106.801-96.055 119.367-1.686.386-1.401 2.875.336 2.875h-.008Z"></path>
-              <path fill="url(#windmill-gradient-2)" d="M152.266 123.716h94.275c.802 0 1.459.656 1.459 1.459v121.067c0 .81-.664 1.474-1.474 1.466-67.274-.78-121.669-55.137-122.522-122.387v121.22c0 .803-.657 1.459-1.46 1.459H1.474c-.81 0-1.474-.664-1.467-1.474C.795 178.721 56 124.008 123.996 124H1.459C.657 124 0 123.344 0 122.541V1.474C0 .664.664 0 1.474.008c67.274.78 121.669 55.137 122.522 122.387V1.46c0-.803.657-1.46 1.46-1.46h121.07c.81 0 1.474.664 1.467 1.474-.679 58.224-41.486 106.801-96.055 119.367-1.686.386-1.401 2.875.336 2.875h-.008Z"></path>
-              <defs>
-                <linearGradient id="windmill-gradient-1" x1="218" x2="-47.283" y1="258" y2="153.706" gradientUnits="userSpaceOnUse">
-                  <stop offset=".27" stopColor="#64D98A"></stop>
-                  <stop offset=".838" stopColor="#e2e8fd"></stop>
-                </linearGradient>
-                <linearGradient id="windmill-gradient-2" x1="-21.183" x2="223.712" y1="-7.807" y2="329.472" gradientUnits="userSpaceOnUse">
-                  <stop offset=".27" stopColor="#64D98A"></stop>
-                  <stop offset=".838" stopColor="#e2e8fd"></stop>
-                </linearGradient>
-              </defs>
-            </svg>
+        <div className="typist-content" ref={textContainerRef}>
+          <div className="text-typing-container" style={{ position: "relative" }}>
+            <span className="intro-title" ref={textRef}>Hi there! I'm </span>
+            <span className="intro-name" ref={nameRef}>Rafsan.</span>
+            
+            <div 
+              ref={cursorRef} 
+              id="custom-cursor" 
+              className="windmill-cursor"
+              style={{ position: "absolute", pointerEvents: "none" }}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 248 248" aria-hidden="true">
+                <path fill="url(#windmill-gradient-1)" d="M152.266 123.716h94.275c.802 0 1.459.656 1.459 1.459v121.067c0 .81-.664 1.474-1.474 1.466-67.274-.78-121.669-55.137-122.522-122.387v121.22c0 .803-.657 1.459-1.46 1.459H1.474c-.81 0-1.474-.664-1.467-1.474C.795 178.721 56 124.008 123.996 124H1.459C.657 124 0 123.344 0 122.541V1.474C0 .664.664 0 1.474.008c67.274.78 121.669 55.137 122.522 122.387V1.46c0-.803.657-1.46 1.46-1.46h121.07c.81 0 1.474.664 1.467 1.474-.679 58.224-41.486 106.801-96.055 119.367-1.686.386-1.401 2.875.336 2.875h-.008Z"></path>
+                <path fill="url(#windmill-gradient-2)" d="M152.266 123.716h94.275c.802 0 1.459.656 1.459 1.459v121.067c0 .81-.664 1.474-1.474 1.466-67.274-.78-121.669-55.137-122.522-122.387v121.22c0 .803-.657 1.459-1.46 1.459H1.474c-.81 0-1.474-.664-1.467-1.474C.795 178.721 56 124.008 123.996 124H1.459C.657 124 0 123.344 0 122.541V1.474C0 .664.664 0 1.474.008c67.274.78 121.669 55.137 122.522 122.387V1.46c0-.803.657-1.46 1.46-1.46h121.07c.81 0 1.474.664 1.467 1.474-.679 58.224-41.486 106.801-96.055 119.367-1.686.386-1.401 2.875.336 2.875h-.008Z"></path>
+                <defs>
+                  <linearGradient id="windmill-gradient-1" x1="218" x2="-47.283" y1="258" y2="153.706" gradientUnits="userSpaceOnUse">
+                    <stop offset=".27" stopColor="#64D98A"></stop>
+                    <stop offset=".838" stopColor="#e2e8fd"></stop>
+                  </linearGradient>
+                  <linearGradient id="windmill-gradient-2" x1="-21.183" x2="223.712" y1="-7.807" y2="329.472" gradientUnits="userSpaceOnUse">
+                    <stop offset=".27" stopColor="#64D98A"></stop>
+                    <stop offset=".838" stopColor="#e2e8fd"></stop>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
           </div>
         </div>
+        
         <div className="intro-subtitle" ref={subtitleRef}>
           A <span className="intro-subtitle-name">Data Analyst</span> with a love for design.
         </div>
