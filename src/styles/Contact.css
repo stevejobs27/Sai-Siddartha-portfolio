@@ -143,7 +143,7 @@
   left: 16px;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--light-slate);
+  color: var(--lightest-slate);
   font-size: 20px;
   pointer-events: none;
 }
