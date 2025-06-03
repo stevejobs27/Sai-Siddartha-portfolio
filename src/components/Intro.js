@@ -115,6 +115,8 @@ const Intro = ({ onTypingDone }) => {
     });
     
     mainTl.add(typingTl);
+
+    
     
     mainTl.to(animationRef.current, {
       opacity: 1, 
