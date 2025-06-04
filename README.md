@@ -1,37 +1,54 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/rafsanahmed28/Rafsan/2b3f93807208c7266be6316e54e06bef8fa44b8c/public/logo.svg", height = 85px, width=auto/>
+  <img src="https://raw.githubusercontent.com/rafsanahmed28/Rafsan/3149a4845a8a16e5401212ec3e0d3eb6cce10d2c/public/logo.svg", height = 85px, width=auto/>
 </p>
 <h1 align="center">
-  rafsanahmed.com - v1 - Under Construction
+  rafsanahmed.com - v1
 </h1>
 <p align="center">
-  The first iteration of my first personal website <a href="https://rafsanahmed.com" target="_blank">rafsanahmed.com</a> built with React.js
-</p>
+  The first iteration of my first personal website <a href="https://rafsanahmed.com" target="_blank">rafsanahmed.com</a> built with <a href="https://react.dev/">React.js</a> utilizing <a href="https://gsap.com/"> GSAP Animations</a> and hosted with <a href="https://vercel.com/"> Vercel</a>
 
-## 🛠 set-up
+![homepage](https://raw.githubusercontent.com/rafsanahmed28/Rafsan/refs/heads/main/public/assets/homepage.png)
 
-1. Install the dependencies
+## 💚 Credits 
+Robot Animation: [Shunya Koide](https://codepen.io/shunyadezain)
+
+Code references and design inspirations: [Gazi Jarin](https://github.com/gazijarin/Gazi) and [Brittany Chiang](https://github.com/bchiang7/v4)
+
+## 🧬 Forking this Repo
+Feel free to fork this repository but if you use or adapt this work, please give me proper credit by linking back to the original repository.
+
+Also, if you're using components from third-party sources included in this codebase, please ensure you maintain their attribution as well. Thank you!
+
+1. Cloning the Repo
 
    ```sh
-   npm install or yarn
+   git clone https://github.com/rafsanahmed28/Rafsan.git
    ```
 
-2. Start the development server
+## 🛠 Installation & Setup
+
+1. Install the Dependencies
 
    ```sh
-   yarn run start
+   yarn install
    ```
 
-## 🚀 build and run for production
+2. Start the development Server
 
-1. Generate a full static production build
+   ```sh
+   yarn start
+   ```
+
+## 🚀 Build and Run for Production
+
+1. Generate a Full Static Production Build
 
    ```sh
    yarn build
    ```
 
 
-## 🎨 color codes
+## 🎨 Color Palette
 
 | Color          | Hex                                                                  |
 | -------------- | -------------------------------------------------------------------- |
