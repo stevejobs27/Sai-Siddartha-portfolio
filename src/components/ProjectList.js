@@ -3,6 +3,25 @@ import Code from "./codes/code";
 const ProjectList = {
   SQL: [
     {
+      name: "Cyclistic Bike Share Analysis",
+      image: "/assets/cyclistic.png",
+      medium: "https://medium.com/@rafsanahmed2828/from-data-to-insights-googles-cyclistic-case-study-04fb362c2d0d",
+      github: "https://github.com/rafsanahmed28/Cyclistic-Case-Study",
+      dataset: "https://divvy-tripdata.s3.amazonaws.com/index.html",
+      tags: ["MySQL", "Excel", "Tableau", "Data Visualization", "Data Analysis"],
+      files: [
+        {
+          name: "README.md",
+          type: "info",
+          content: "Cyclistic is a fictional bike-share company in Chicago. The goal of this project is to analyze the bike usage data to understand how different types of users (casual vs. annual members) use the service and to provide insights for marketing strategies. Learn more about my approach, analysis, and findings in the Medium article linked below.",
+        },
+        { name: "cleaning.sql", type: "code", content: Code("Cyclistic").cleaning, language: "sql" },
+        { name: "querying.sql", type: "code", content: Code("Cyclistic").querying, language: "sql" },
+        { name: "viz_query.sql", type: "code", content: Code("Cyclistic").viz_query, language: "sql" }
+      ],
+    },
+
+    {
       name: "Data Cleaning - NashVille Housing Data",
       image: "/assets/nashville.png",
       github: "https://github.com/rafsanahmed28/Data-Cleaning-MySQL",
@@ -20,25 +39,6 @@ const ProjectList = {
           content: Code("Nashville"),
           language: "sql",
         },
-      ],
-    },
-    
-    {
-      name: "Cyclistic Bike Share Analysis",
-      image: "/assets/cyclistic.png",
-      medium: "https://medium.com/@rafsanahmed2828/from-data-to-insights-googles-cyclistic-case-study-04fb362c2d0d",
-      github: "https://github.com/rafsanahmed28/Cyclistic-Case-Study",
-      dataset: "https://divvy-tripdata.s3.amazonaws.com/index.html",
-      tags: ["MySQL", "Excel", "Tableau", "Data Visualization", "Data Analysis"],
-      files: [
-        {
-          name: "README.md",
-          type: "info",
-          content: "Cyclistic is a fictional bike-share company in Chicago. The goal of this project is to analyze the bike usage data to understand how different types of users (casual vs. annual members) use the service and to provide insights for marketing strategies. Learn more about my approach, analysis, and findings in the Medium article linked below.",
-        },
-        { name: "cleaning.sql", type: "code", content: Code("Cyclistic").cleaning, language: "sql" },
-        { name: "querying.sql", type: "code", content: Code("Cyclistic").querying, language: "sql" },
-        { name: "viz_query.sql", type: "code", content: Code("Cyclistic").viz_query, language: "sql" }
       ],
     },
 
@@ -88,7 +88,7 @@ const ProjectList = {
     {
       name: "Automating Crypto Data using CoinGecko API",
       image: "/assets/crypto.png",
-      github: "https://github.com/rafsanahmed28/Automating-Crypto-Data-using-CoinGecko-API",
+      github: "https://github.com/rafsanahmed28/Automating-Crypto-Data-using-CoinGecko-API?flush_cache=true",
       tags: ["Pandas", "Seaborn", "Matplotlib"],
       files: [
         {

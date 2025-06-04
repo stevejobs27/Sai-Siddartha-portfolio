@@ -68,7 +68,7 @@ const About = () => {
           </p>
           
           <p ref={el => textRefs.current[3] = el}>
-            Outside of work, I'm interested in cool tech products, aesthetic decor and playing video games.
+            Outside of work, I love playing video games. I'm an also aestheic interior design enthusiast and I hoard cool tech products.
           </p>
         </div>
         <p className="about-timeline-link" ref={el => textRefs.current[5] = el}>
