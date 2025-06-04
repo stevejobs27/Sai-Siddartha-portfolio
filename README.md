@@ -5,7 +5,11 @@
   rafsanahmed.com - v1
 </h1>
 <p align="center">
-  The first iteration of my first personal website <a href="https://rafsanahmed.com" target="_blank">rafsanahmed.com</a> built with <a href="https://react.dev/">React.js</a> utilizing <a href="https://gsap.com/"> GSAP Animations</a> and hosted with <a href="https://vercel.com/"> Vercel</a>
+  The first iteration of my first personal website <a href="https://rafsanahmed.com" target="_blank">rafsanahmed.com</a> 
+</p>
+<p align="center">
+  Built with <a href="https://react.dev/">React.js</a> utilizing <a href="https://gsap.com/"> GSAP Animations</a> and hosted with <a href="https://vercel.com/"> Vercel</a>
+</p>
 
 ![homepage](https://raw.githubusercontent.com/rafsanahmed28/Rafsan/refs/heads/main/public/assets/homepage.png)
 
