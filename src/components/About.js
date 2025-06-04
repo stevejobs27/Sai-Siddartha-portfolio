@@ -79,7 +79,7 @@ const About = () => {
           </a>
         </p>     
         <div className="about-actions" ref={el => textRefs.current[6] = el}>
-          <a href="/assets/pdf/resume.pdf" className="resume-button btn-effect" target="_blank" rel="noopener noreferrer">
+          <a href="/assets/resume.pdf" className="resume-button btn-effect" target="_blank" rel="noopener noreferrer">
             View Resume
           </a>
         </div>

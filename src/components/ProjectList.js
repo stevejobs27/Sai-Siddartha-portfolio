@@ -52,7 +52,7 @@ const ProjectList = {
         {
           name: "README.md",
           type: "info",
-          content: "Performed exploratory data analysis on Covid-19 data to find the damage caused by the pandemic in different countries. The project includes data cleaning, transformation, and visualization to provide insights into the impact of Covid-19 globally.",
+          content: "Performed exploratory data analysis on Covid-19 data to find the damage caused by the pandemic in different countries. The project focuses on data transformation, exploratory data analysis and visualization to provide insights into the impact of Covid-19 globally.",
         },
         {
           name: "covid19.sql",

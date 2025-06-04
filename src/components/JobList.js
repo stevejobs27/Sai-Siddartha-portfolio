@@ -15,7 +15,7 @@ const experienceItems = {
     jobTitle: "Research Analyst @",
     duration: "MAR 2023 - DEC 2023",
     desc: [
-      "Utilized analytical skills to conduct in-depth market research, identify key market needs and trends to inform the development process for the innovative startup that aims to address the underreporting of IPV",
+      "Utilized analytical skills to conduct in-depth market research, identify key market needs and trends to inform the development process for the innovative startup",
       "Led the conceptualization and wireframing for the envisioned platform using Figma to guide app development and ensure maximum user satisfaction",
       "Collaborated with various stakeholders and firms to forge strategic partnerships to amplify the app's reach and impact"
     ]
