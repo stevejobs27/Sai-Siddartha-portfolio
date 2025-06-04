@@ -68,8 +68,9 @@ const About = () => {
           </p>
           
           <p ref={el => textRefs.current[3] = el}>
-            Outside of work, I love playing video games. I'm an also aestheic interior design enthusiast and I hoard cool tech products.
+            Outside of work, I love playing video games. I'm also an aesthetic interior design enthusiast and I hoard cool tech products.
           </p>
+          
         </div>
         <p className="about-timeline-link" ref={el => textRefs.current[5] = el}>
           <a href="#timeline">
@@ -78,7 +79,7 @@ const About = () => {
           </a>
         </p>     
         <div className="about-actions" ref={el => textRefs.current[6] = el}>
-          <a href="/resume.pdf" className="resume-button btn-effect" target="_blank" rel="noopener noreferrer">
+          <a href="/assets/pdf/resume.pdf" className="resume-button btn-effect" target="_blank" rel="noopener noreferrer">
             View Resume
           </a>
         </div>

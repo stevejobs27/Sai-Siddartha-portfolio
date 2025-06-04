@@ -17,7 +17,6 @@ export default function Contact() {
   const contactSectionRef = useRef(null);
   const yourEmail = "rafsanahmed2828@gmail.com";
 
-  // Add GSAP animations
   useEffect(() => {
       gsap.set(".contact-container", {
       width: "100%",
@@ -25,7 +24,7 @@ export default function Contact() {
       height: "auto", 
       margin: "0 auto"
     });
-    // Animation timeline
+    
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: "#contact",
@@ -34,7 +33,6 @@ export default function Contact() {
       }
     });
     
-    // Animate section title
     tl.fromTo(
       "#contact .section-title",
       {
@@ -49,7 +47,6 @@ export default function Contact() {
       }
     );
     
-    // Animate contact container with background elements
     tl.fromTo(
       ".contact-container",
       {
@@ -62,10 +59,9 @@ export default function Contact() {
         duration: 0.8,
         ease: "power3.out"
       },
-      "-=0.3" // Slight overlap with previous animation
+      "-=0.3"
     );
     
-    // Animate form fields with stagger
     tl.fromTo(
       ".form-group",
       {
@@ -82,7 +78,6 @@ export default function Contact() {
       "-=0.4"
     );
     
-    // Animate contact info and button
     tl.fromTo(
       [".contact-actions", ".contact-info"],
       {
@@ -99,17 +94,14 @@ export default function Contact() {
       "-=0.2"
     );
     
-    // Cleanup function
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);
 
-  // Handle form submission
   const handleSend = (e) => {
     e.preventDefault();
     
-    // Hide form and show success message with animation
     gsap.to(formRef.current, {
       opacity: 0,
       y: -20,
@@ -119,7 +111,6 @@ export default function Contact() {
         formRef.current.style.display = 'none';
         successRef.current.style.display = 'flex';
         
-        // Animate success message appearance
         gsap.fromTo(
           successRef.current,
           { opacity: 0, y: 20 },
@@ -128,10 +119,8 @@ export default function Contact() {
       }
     });
     
-    // Set submitted state
     setIsSubmitted(true);
     
-    // Open email client after a brief delay
     setTimeout(() => {
       const mailtoUrl = `mailto:${yourEmail}?subject=Contact from ${name}&body=${encodeURIComponent(message)}`;
       const newWindow = window.open(mailtoUrl, '_blank');
@@ -151,12 +140,10 @@ export default function Contact() {
   };
 
   const handleReset = () => {
-    // Reset form values
     setName('');
     setEmail('');
     setMessage('');
     
-    // Animate transition back to form
     gsap.to(successRef.current, {
       opacity: 0,
       y: -20,
@@ -166,7 +153,6 @@ export default function Contact() {
         successRef.current.style.display = 'none';
         formRef.current.style.display = 'block';
         
-        // Animate form reappearance
         gsap.fromTo(
           formRef.current,
           { opacity: 0, y: 20 },

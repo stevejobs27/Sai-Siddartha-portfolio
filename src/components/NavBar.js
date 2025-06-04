@@ -22,6 +22,25 @@ class NavBar extends React.Component {
     this.mobileMenuRef = React.createRef();
     this.hamburgerRef = React.createRef();
     this.navbarRef = React.createRef();
+    this.navLinksRef = []; 
+    this.mobileNavLinksRef = []; 
+    this.addToDesktopNavRefs = this.addToDesktopNavRefs.bind(this);
+    this.addToMobileNavRefs = this.addToMobileNavRefs.bind(this);
+    this.logoRef = React.createRef();
+    this.initialRenderComplete = false;
+
+  }
+
+  addToDesktopNavRefs(el) {
+    if (el && !this.navLinksRef.includes(el)) {
+      this.navLinksRef.push(el);
+    }
+  }
+
+  addToMobileNavRefs(el) {
+    if (el && !this.mobileNavLinksRef.includes(el)) {
+      this.mobileNavLinksRef.push(el);
+    }
   }
 
   toggleStars() {
@@ -40,68 +59,81 @@ class NavBar extends React.Component {
     this.setState({ mobileMenuOpen: !mobileMenuOpen });
     
     if (!mobileMenuOpen) {
-      gsap.to(this.mobileMenuRef.current, {
-        x: 0, 
-        duration: 0.4,
-        ease: "power3.out"
+      gsap.to(this.mobileMenuRef.current, { x: 0, duration: 0.4, ease: "power3.out" });
+      gsap.to(this.hamburgerRef.current.querySelector('.line-1'), { rotation: 45, y: 8, duration: 0.3 });
+      gsap.to(this.hamburgerRef.current.querySelector('.line-2'), { opacity: 0, duration: 0.3 });
+      gsap.to(this.hamburgerRef.current.querySelector('.line-3'), { rotation: -45, y: -8, duration: 0.3 });
+      
+      gsap.set(this.mobileNavLinksRef, { 
+        autoAlpha: 0, 
+        y: -15,
+        x: -10
       });
       
-      gsap.to(this.hamburgerRef.current.querySelector('.line-1'), {
-        rotation: 45,
-        y: 8,
-        duration: 0.3
-      });
-      gsap.to(this.hamburgerRef.current.querySelector('.line-2'), {
-        opacity: 0,
-        duration: 0.3
-      });
-      gsap.to(this.hamburgerRef.current.querySelector('.line-3'), {
-        rotation: -45,
-        y: -8,
-        duration: 0.3
+      gsap.to(this.mobileNavLinksRef, {
+        autoAlpha: 1,
+        y: 0,
+        x: 0,
+        duration: 0.6,
+        stagger: 0.12,
+        ease: "back.out(1.2)",
+        delay: 0.2
       });
     } else {
-      gsap.to(this.mobileMenuRef.current, {
-        x: '100%', 
-        duration: 0.4,
-        ease: "power3.in"
-      });
-      
-      gsap.to(this.hamburgerRef.current.querySelector('.line-1'), {
-        rotation: 0,
-        y: 0,
-        duration: 0.3
-      });
-      gsap.to(this.hamburgerRef.current.querySelector('.line-2'), {
-        opacity: 1,
-        duration: 0.3
-      });
-      gsap.to(this.hamburgerRef.current.querySelector('.line-3'), {
-        rotation: 0,
-        y: 0,
-        duration: 0.3
-      });
+      gsap.to(this.mobileMenuRef.current, { x: '100%', duration: 0.4, ease: "power3.in" });
+      gsap.to(this.hamburgerRef.current.querySelector('.line-1'), { rotation: 0, y: 0, duration: 0.3 });
+      gsap.to(this.hamburgerRef.current.querySelector('.line-2'), { opacity: 1, duration: 0.3 });
+      gsap.to(this.hamburgerRef.current.querySelector('.line-3'), { rotation: 0, y: 0, duration: 0.3 });
     }
   }
 
   componentDidMount() {
     window.addEventListener("scroll", this.handleScroll);
+
+    if (this.navbarRef.current) {
+      this.navbarRef.current.style.visibility = 'hidden';
+    }
     
-    gsap.set(this.mobileMenuRef.current, {
-      x: '100%' 
+    gsap.set(this.mobileMenuRef.current, { x: '100%' });
+    
+    gsap.fromTo(
+      this.logoRef.current,
+      { autoAlpha: 0 },
+      { 
+        autoAlpha: 1,
+        duration: 0.2,
+        stagger: 0.08,
+        ease: "back.out(1.2)",
+        delay: 0.6
+      }
+    );
+    
+    gsap.fromTo(
+      this.navbarRef.current, 
+      { opacity: 0, y: -15 },
+      { 
+        opacity: 1, 
+        y: 0, 
+        duration: 0.6, 
+        ease: "power2.out", 
+        onComplete: () => gsap.set(this.navbarRef.current, { clearProps: "all" }),
+      }
+    );
+    
+    gsap.set(this.navLinksRef, { 
+      autoAlpha: 0, 
+      y: -10,
+      x: -5
     });
     
-    gsap.set(this.navbarRef.current, {
-      opacity: 0,
-      y: -15
-    });
-    
-    gsap.to(this.navbarRef.current, {
-      opacity: 1,
+    gsap.to(this.navLinksRef, {
+      autoAlpha: 1,
       y: 0,
-      duration: 0.6,
-      ease: "power2.out",
-      delay: 0.2
+      x: 0,
+      duration: 0.4,
+      stagger: 0.08,
+      ease: "back.out(1.2)",
+      delay: 0.6
     });
   }
 
@@ -127,25 +159,17 @@ class NavBar extends React.Component {
 
     return (
       <Navbar
-        ref={this.navbarRef} 
+        as="nav"
+        ref={this.navbarRef}
         fixed="top"
         className={`bg-body-tertiary navbar-animated${show ? " navbar-visible" : " navbar-hidden"}${atTop ? " navbar-at-top" : ""}`}
-        style={{
-          transition: "transform 0.3s cubic-bezier(0.4,0,0.2,1), padding 0.3s, box-shadow 0.3s",
-          zIndex: 1000,
-        }}
+        style={{ zIndex: 1000 }}
       >
-        <Container
-          fluid
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
+        <Container fluid style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <Navbar.Brand href="Home">
-            <div className="logo-container btn-effect">
-              <img className="logo"
+            <div className="logo-container btn-effect" ref={this.logoRef}>
+              <img 
+                className="logo"
                 src="/assets/logo.png"
                 alt="Rafsan Ahmed Logo"
                 title="Logo"
@@ -154,22 +178,19 @@ class NavBar extends React.Component {
             </div>
           </Navbar.Brand>
           
-          {/* Desktop Nav Links */}
           <div className="desktop-nav">
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
-                <Nav.Link href="#about">About</Nav.Link>
-                <Nav.Link href="#projects">Projects</Nav.Link>
-                <Nav.Link href="#timeline">Timeline</Nav.Link>
-                <Nav.Link href="#experience">Experience</Nav.Link>
-                <Nav.Link href="#contact">Contact</Nav.Link>
+                <Nav.Link href="#about" ref={this.addToDesktopNavRefs}>About</Nav.Link>
+                <Nav.Link href="#projects" ref={this.addToDesktopNavRefs}>Projects</Nav.Link>
+                <Nav.Link href="#timeline" ref={this.addToDesktopNavRefs}>Timeline</Nav.Link>
+                <Nav.Link href="#experience" ref={this.addToDesktopNavRefs}>Experience</Nav.Link>
+                <Nav.Link href="#contact" ref={this.addToDesktopNavRefs}>Contact</Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </div>
           
-          {/* Mobile Controls Group */}
           <div className="mobile-controls">
-            {/* Star Toggle Button */}
             <button
               className={`star-btn navbar-star-btn${showStars ? " star-active" : ""}`}
               onClick={this.toggleStars}
@@ -179,10 +200,8 @@ class NavBar extends React.Component {
               <Icon name="Star" />
             </button>
             
-            {/* Divider */}
             <div className="navbar-mobile-divider"></div>
             
-            {/* Hamburger Button */}
             <button 
               className="hamburger-menu" 
               ref={this.hamburgerRef}
@@ -194,17 +213,16 @@ class NavBar extends React.Component {
             </button>
           </div>
           
-          {/* Mobile Dropdown Menu */}
           <div 
             className={`mobile-menu${mobileMenuOpen ? " open" : ""}`}
             ref={this.mobileMenuRef}
           >
             <Nav className="mobile-nav-links">
-              <Nav.Link href="#about" onClick={this.toggleMobileMenu}>About</Nav.Link>
-              <Nav.Link href="#projects" onClick={this.toggleMobileMenu}>Projects</Nav.Link>
-              <Nav.Link href="#timeline" onClick={this.toggleMobileMenu}>Timeline</Nav.Link>
-              <Nav.Link href="#experience" onClick={this.toggleMobileMenu}>Experience</Nav.Link>
-              <Nav.Link href="#contact" onClick={this.toggleMobileMenu}>Contact</Nav.Link>
+              <Nav.Link href="#about" onClick={this.toggleMobileMenu} ref={this.addToMobileNavRefs}>About</Nav.Link>
+              <Nav.Link href="#projects" onClick={this.toggleMobileMenu} ref={this.addToMobileNavRefs}>Projects</Nav.Link>
+              <Nav.Link href="#timeline" onClick={this.toggleMobileMenu} ref={this.addToMobileNavRefs}>Timeline</Nav.Link>
+              <Nav.Link href="#experience" onClick={this.toggleMobileMenu} ref={this.addToMobileNavRefs}>Experience</Nav.Link>
+              <Nav.Link href="#contact" onClick={this.toggleMobileMenu} ref={this.addToMobileNavRefs}>Contact</Nav.Link>
             </Nav>
           </div>
         </Container>

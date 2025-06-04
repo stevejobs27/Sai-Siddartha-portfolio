@@ -1,7 +1,7 @@
 .navbar {
   background-color: var(--nav-color);
   font-family: "NTR", sans-serif;
-  padding: 20px 60px !important;
+  padding: 15px 60px !important;
   font-size: 16px;
   font-weight: 600;
   backdrop-filter: blur(10px);
@@ -16,7 +16,7 @@
 
 .navbar-at-top {
   box-shadow: none !important;
-  padding: 30px 60px !important;
+  padding: 25px 60px !important;
 }
 
 .navbar-animated.navbar-hidden {
@@ -147,7 +147,6 @@
   opacity: 1;
 }
 
-/* Remove duplicate mobile-menu selector and keep this one */
 .mobile-menu {
   display: none;
   position: fixed;
@@ -258,7 +257,7 @@
     margin-left: 0px;
   }
 
-   .logo-container {
+  .logo-container {
     margin-left: 15px;
   }
   

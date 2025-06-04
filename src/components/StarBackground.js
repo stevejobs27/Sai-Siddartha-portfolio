@@ -1,7 +1,7 @@
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useRef, useMemo, Suspense } from "react";
 
-function Stardust({ count = 1500 }) {
+function Stardust({ count = 1750 }) {
   const ref = useRef();
   const { positions, sizes, opacities } = useMemo(() => {
     const positions = [];
@@ -69,7 +69,7 @@ function Stardust({ count = 1500 }) {
 
 export const StarBackground = (props) => (
   <group rotation={[0, 0, Math.PI / 4]}>
-    <Stardust count={1500} />
+    <Stardust count={1750} />
   </group>
 );
 

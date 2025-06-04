@@ -56,7 +56,6 @@ export default function Timeline() {
   const timelineItemsRef = useRef([]);
   const [visibleItems, setVisibleItems] = useState([]);
   
-  // Setup intersection observer to load items on scroll
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -69,7 +68,6 @@ export default function Timeline() {
       });
     }, { threshold: 0.2 });
     
-    // Add dataset index to each item and observe them
     timelineItemsRef.current.forEach((item, index) => {
       if (item) {
         item.dataset.index = index;
@@ -97,7 +95,6 @@ export default function Timeline() {
         }
       });
       
-      // Animate the section title
       mainTimeline.fromTo("#timeline .section-title", 
         { y: 30, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" }
@@ -127,20 +124,16 @@ export default function Timeline() {
     visibleItems.forEach(index => {
       const item = timelineItemsRef.current[index];
       
-      // Skip if item is already animated or doesn't exist
       if (!item || item.isAnimated) return;
       
-      // Mark as animated to prevent re-animation
       item.isAnimated = true;
       
       const direction = index % 2 === 0 ? -1 : 1;
       const content = item.querySelector('.timeline-content');
       const dot = item.querySelector('.timeline-dot');
       
-      // Create individual timeline for this item
       const itemTimeline = gsap.timeline();
 
-      // Animate the content
       itemTimeline.fromTo(content,
         { 
           x: direction * 100, 

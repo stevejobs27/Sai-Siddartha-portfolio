@@ -56,7 +56,6 @@ const JobList = () => {
   const listsRef = useRef({});
   const oldValueRef = useRef(value);
   
-  // Handle window resize for responsive behavior
   useEffect(() => {
     const handleResize = () => {
       setIsHorizontal(window.innerWidth < 600);
@@ -66,30 +65,23 @@ const JobList = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
   
-  // Handle tab change with animations
   const handleTabChange = (index) => {
     const oldIndex = oldValueRef.current;
     
-    // Don't animate if clicking the same tab
     if (oldIndex === index) return;
     
-    // Store the new value in ref for future comparisons
     oldValueRef.current = index;
     
-    // Find current job panel if it exists
     const currentPanel = document.querySelector('.joblist-panel');
     
     if (currentPanel) {
-      // Fade out current content
       gsap.to(currentPanel, {
         opacity: 0,
         duration: 0.3,
         onComplete: () => {
-          // After fade out, update state and animate new content
           setValue(index);
           animateJobDetails();
           
-          // Fade in new content
           const newPanel = contentRef.current.querySelector(`.joblist-panel:nth-child(${index + 1})`);
           if (newPanel) {
             gsap.fromTo(newPanel, { opacity: 0 }, { opacity: 1, duration: 0.3 });
@@ -97,22 +89,17 @@ const JobList = () => {
         }
       });
     } else {
-      // No current panel, just update state
       setValue(index);
       animateJobDetails();
     }
   };
   
-  // Animate job description items
   const animateJobDetails = () => {
-    // Get the list items in the current job panel
     const listItems = contentRef.current?.querySelectorAll('.job-description li');
     
     if (listItems?.length) {
-      // Reset initial state
       gsap.set(listItems, { opacity: 0, x: 20 });
       
-      // Animate with stagger
       gsap.to(listItems, {
         opacity: 1,
         x: 0,
@@ -123,7 +110,6 @@ const JobList = () => {
     }
   };
   
-  // Initial animation on component mount
   useEffect(() => {
     animateJobDetails();
   }, []);

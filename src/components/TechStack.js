@@ -11,10 +11,8 @@ import {
   SiAdobeillustrator, SiAdobephotoshop
 } from "react-icons/si";
 
-// Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
 
-// Simplified tech stack data - just a flat array of tools
 const techStackData = [
   { name: "MySQL", icon: <SiMysql />, color: "#00758F" },
   { name: "PostgreSQL", icon: <SiPostgresql />, color: "#336791" },
@@ -38,7 +36,6 @@ export default function TechStack() {
   useEffect(() => {
     console.log("TechStack component mounted");
     
-    // Calculate grid dimensions
     const totalItems = techStackData.length;
     const cols = 2; 
     const rows = Math.ceil(totalItems / cols);
@@ -61,12 +58,11 @@ export default function TechStack() {
         scrollTrigger: {
           trigger: "#tech-stack",
           start: "top 90%",
-          toggleActions: "play none none reverse" // Animate out when scrolling away
+          toggleActions: "play none none reverse"
         }
       }
     );
 
-    // Animation for tech icons with reverse on scroll away
     gsap.fromTo(".tech-icon-container",
       {
         scale: 0.1,
@@ -87,7 +83,7 @@ export default function TechStack() {
         scrollTrigger: {
           trigger: "#tech-stack",
           start: "top 70%",
-          toggleActions: "play none none reverse" // Animate out when scrolling away
+          toggleActions: "play none none reverse" 
         }
       }
     );
@@ -97,7 +93,6 @@ export default function TechStack() {
     };
   }, []);
 
-  // Handle icon hover - using native tooltip
   const handleIconHover = (e, enter) => {
     const target = e.currentTarget;
     
@@ -140,7 +135,7 @@ export default function TechStack() {
             key={tool.name}
             className="tech-icon-container"
             data-color={tool.color}
-            title={tool.name} // Add tooltip using HTML title attribute
+            title={tool.name} 
             onMouseEnter={(e) => handleIconHover(e, true)}
             onMouseLeave={(e) => handleIconHover(e, false)}
           >

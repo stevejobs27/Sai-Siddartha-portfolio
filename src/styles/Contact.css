@@ -48,26 +48,6 @@
     linear-gradient(#fff 0 0);
   mask-composite: exclude;
   pointer-events: none;
-  animation: borderRotate 8s linear infinite;
-}
-
-/* Rotating border animation */
-@keyframes borderRotate {
-  0% {
-    background-position: 0% 0%;
-  }
-  25% {
-    background-position: 100% 0%;
-  }
-  50% {
-    background-position: 100% 100%;
-  }
-  75% {
-    background-position: 0% 100%;
-  }
-  100% {
-    background-position: 0% 0%;
-  }
 }
 
 .contact-bg-elements {
@@ -103,7 +83,6 @@
   filter: blur(40px);
 }
 
-/* Rest of your existing contact CSS styles remain unchanged */
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -184,7 +163,6 @@
   font-size: 18px;
 }
 
-/* Contact Info */
 .contact-info {
   padding-top: 20px;
   border-top: 1px solid rgba(100, 217, 138, 0.1);
@@ -275,9 +253,17 @@
   .contact-send-btn {
     justify-content: center;
   }
+
+  .contact-circle {
+    display: none;
+  }
+
+  .contact-square {
+    display: none;
+  }
 }
 
-@media (max-width: 480px) {  
+@media (max-width: 600px) {  
   #contact .section-header {
     justify-content: center !important;
   } 
@@ -302,12 +288,7 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  /* Override the autofill background color */
   -webkit-box-shadow: 0 0 0 30px var(--color-hover) inset !important;
-  
-  /* Override the autofill text color */
   -webkit-text-fill-color: var(--lightest-slate) !important;
-  
-  /* Make the transition delay very long so color doesn't revert */
   transition: background-color 5000s ease-in-out 0s;
 }

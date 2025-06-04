@@ -58,6 +58,6 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
     max-width: 800px;
     height: auto;
     transform: scale(0.8);
-    margin-top: -40px; /* Adjust overlap with text on mobile */
+    margin-top: -40px;
   }
 }

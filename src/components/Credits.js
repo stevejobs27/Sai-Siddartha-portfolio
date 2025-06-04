@@ -4,14 +4,12 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "../styles/Credits.css";
 import SideNavBar from "./SideNavBar";
 
-// Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
 
 const Credits = () => {
   const creditsRef = useRef(null);
   
   useEffect(() => {
-    // Animation for credits section
     gsap.fromTo(
       creditsRef.current,
       {
@@ -32,7 +30,6 @@ const Credits = () => {
       }
     );
     
-    // Cleanup function
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };

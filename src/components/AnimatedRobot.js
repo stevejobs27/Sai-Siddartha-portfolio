@@ -387,7 +387,6 @@ export default function AnimatedRobot() {
       svgRef.current.appendChild(clone2);
     }
 
-    // Animation for floating notes - removed repeatRefresh which was causing issues
     const notesAnimation = gsap.to(".notes", {
       y: gsap.utils.random(-50, -100, 10, true),
       x: gsap.utils.random(-50, 50, 25, true),
@@ -399,7 +398,6 @@ export default function AnimatedRobot() {
         repeat: -1
       },
       onRepeat: function() {
-        // This forces new positions on each repeat
         gsap.set(".notes", {
           y: 40,
           x: gsap.utils.random(-10, 10, 5, true),

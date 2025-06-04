@@ -12,18 +12,15 @@ import {
 import { SiMysql, SiPython } from "react-icons/si";
 import { FaDatabase } from "react-icons/fa";
 
-// Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger, Flip);
 
 const projectsData = ProjectList;
 
-// Helper functions for directory tree
 function getFileIcon(file) {
   const iconStyle = { marginRight: 6, fontSize: 15, flexShrink: 0 };
   if (file.name.endsWith(".md")) return <VscMarkdown style={{ ...iconStyle, color: "#519975" }} />;
   if (file.name.endsWith(".sql")) return <SiMysql style={{ ...iconStyle, color: "#00758f" }} />;
   if (file.name.endsWith(".ipynb")) return <SiPython style={{ ...iconStyle, color: "#3572A5" }} />;
-  // Default icon if no match
   return <VscMarkdown style={{ ...iconStyle, color: "#8da1b9" }} />;
 }
 
@@ -42,31 +39,25 @@ export default function Projects() {
     }, {})
   );
   
-  // Directory tree state
   const [openFolders, setOpenFolders] = useState({});
   const [activeFolders, setActiveFolders] = useState({});
   
-  // Refs for animations
   const projectsRef = useRef(null);
   const sectionsRef = useRef([]);
   const contentRefs = useRef({});
   const foldersRef = useRef({});
   const filesListRef = useRef({});
   
-  // Initialize refs
   useEffect(() => {
-    // Initialize content refs
     contentRefs.current = sectionKeys.reduce((acc, section) => {
       acc[section] = React.createRef();
       return acc;
     }, {});
     
-    // Initialize directory tree refs and state
     sectionKeys.forEach(section => {
       foldersRef.current[section] = {};
       filesListRef.current[section] = {};
       
-      // Set initial open state
       const initialOpenState = getInitialOpenFolders(projectsData[section]);
       
       setOpenFolders(prev => ({
@@ -76,21 +67,17 @@ export default function Projects() {
       
       setActiveFolders(prev => ({
         ...prev,
-        [section]: 0 // Default first folder active
+        [section]: 0 
       }));
     });
     
-    // Debug log
     console.log("Projects data:", projectsData);
     console.log("Section keys:", sectionKeys);
   }, []);
 
-  // Page load animations - using the animation style from the prompt
   useEffect(() => {
-    // Create a timeline for initial section animations
     const tl = gsap.timeline();
     
-    // Animate section headers
     gsap.fromTo("#projects .section-title",
       {
         y: 30,
@@ -109,11 +96,9 @@ export default function Projects() {
       }
     );
     
-    // Create scroll triggers for each project section
     sectionsRef.current.forEach((section, index) => {
       if (!section) return;
       
-      // Create scroll animation for each project section
       gsap.fromTo(section,
         { 
           y: 100, 
@@ -134,12 +119,10 @@ export default function Projects() {
     });
     
     return () => {
-      // Clean up scroll triggers
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);
 
-  // Animate folder opening/closing
   const animateFolderToggle = (section, idx, isOpen) => {
     const folderEl = foldersRef.current?.[section]?.[idx];
     const filesEl = filesListRef.current?.[section]?.[idx];
@@ -150,38 +133,32 @@ export default function Projects() {
     const chevron = folderEl.querySelector('.chevron-icon');
     
     if (isOpen) {
-      // Open animation - Experience style
       filesEl.style.display = 'block';
       filesEl.style.height = 'auto';
       
-      // Hide files initially
       gsap.set(fileItems, { 
         opacity: 0,
-        y: 30 // Starting from below, like Experience
+        y: 30 
       });
       
-      // Animate in files one by one with Experience-style animation
       gsap.to(fileItems, { 
         opacity: 1,
         y: 0,
         duration: 0.8,
-        stagger: 0.08, // Stagger each file animation
-        ease: "power2.out" // Same easing as Experience
+        stagger: 0.08, 
+        ease: "power2.out" 
       });
       
-      // Animate folder icon
       gsap.to(folderEl.querySelector('.folder-icon'), {
         color: "var(--green-bright)",
         duration: 0.3
       });
       
-      // Animate chevron rotation
       gsap.to(chevron, {
         rotate: 90,
         duration: 0.3
       });
     } else {
-      // Close animation
       gsap.to(fileItems, {
         opacity: 0,
         y: 20,
@@ -193,7 +170,6 @@ export default function Projects() {
         }
       });
       
-      // Animate folder icon and chevron back
       gsap.to(folderEl.querySelector('.folder-icon'), {
         color: "#8da1b9",
         duration: 0.3
@@ -206,13 +182,10 @@ export default function Projects() {
     }
   };
 
-  // Handle folder click - toggle open/closed state with smooth transitions
   const handleFolderToggle = (section, idx) => {
-    // Capture the state before changes for smooth animation
     const state = contentRefs.current[section]?.current && 
                  Flip.getState(contentRefs.current[section].current);
     
-    // Set this folder as active
     setActiveFolders(prev => ({
       ...prev,
       [section]: idx
@@ -221,7 +194,6 @@ export default function Projects() {
     const isCurrentlyOpen = openFolders[section]?.[idx];
     
     if (!isCurrentlyOpen) {
-      // If closed, open it with smooth animation
       gsap.to(foldersRef.current[section][idx], {
         backgroundColor: "rgba(100, 217, 138, 0.1)",
         duration: 0.3,
@@ -236,14 +208,11 @@ export default function Projects() {
         }
       }));
       
-      // Select the README or first file
       const readmeIdx = getReadmeIdx(projectsData[section][idx].files);
       handleFileSelect(section, idx, readmeIdx);
       
-      // Run animation with a slight delay for better visual flow
       setTimeout(() => animateFolderToggle(section, idx, true), 50);
     } else if (selected[section].projectIdx === idx) {
-      // If open and already selected, close it with animation
       animateFolderToggle(section, idx, false);
       
       gsap.to(foldersRef.current[section][idx], {
@@ -252,7 +221,6 @@ export default function Projects() {
         ease: "power2.in"
       });
       
-      // Delay state update until animation completes
       setTimeout(() => {
         setOpenFolders(prev => ({
           ...prev,
@@ -263,10 +231,8 @@ export default function Projects() {
         }));
       }, 300);
     } else {
-      // If open but not selected, just select the README with smooth transition
       const readmeIdx = getReadmeIdx(projectsData[section][idx].files);
       
-      // Animate the selection change
       gsap.to(foldersRef.current[section][activeFolders[section]], {
         backgroundColor: "transparent",
         duration: 0.3,
@@ -282,7 +248,6 @@ export default function Projects() {
       handleFileSelect(section, idx, readmeIdx);
     }
     
-    // Apply FLIP animation for smooth content transition
     if (state) {
       setTimeout(() => {
         Flip.from(state, {
@@ -303,9 +268,7 @@ export default function Projects() {
     }
   };
 
-  // Handle file selection
   const handleFileSelect = (section, projectIdx, fileIdx) => {
-    // Make sure folder is open
     setOpenFolders(prev => ({
       ...prev,
       [section]: {
@@ -314,32 +277,26 @@ export default function Projects() {
       }
     }));
 
-    // Set folder as active
     setActiveFolders(prev => ({
       ...prev,
       [section]: projectIdx
     }));
 
-    // Save the current state for animation
     const contentElement = contentRefs.current[section]?.current;
 
     if (contentElement) {
-      // First, fade out current content
       gsap.to(contentElement.children, {
         opacity: 0,
         y: -20,
         duration: 0.3,
         ease: "power2.in",
         onComplete: () => {
-          // Update the selection after fade out
           setSelected(prev => ({
             ...prev,
             [section]: { projectIdx, fileIdx }
           }));
           
-          // Short delay before fading in new content
           setTimeout(() => {
-            // Now animate the new content in with Experience-style animation
             gsap.fromTo(contentElement.children,
               {
                 y: 30,
@@ -350,14 +307,13 @@ export default function Projects() {
                 opacity: 1,
                 duration: 0.8,
                 ease: "power2.out",
-                stagger: 0.05 // Stagger for more polished feel
+                stagger: 0.05 
               }
             );
           }, 50);
         }
       });
     } else {
-      // Fallback if ref isn't available
       setSelected(prev => ({
         ...prev,
         [section]: { projectIdx, fileIdx }
@@ -365,7 +321,6 @@ export default function Projects() {
     }
     };
 
-  // File hover animation
   const handleFileHover = (enter, element) => {
     if (!element.classList.contains('active')) {
       gsap.to(element, {
@@ -376,7 +331,6 @@ export default function Projects() {
     }
   };
 
-  // Animate code highlighting when file type changes
   useEffect(() => {
     sectionKeys.forEach(section => {
       const { projectIdx, fileIdx } = selected[section];
@@ -401,7 +355,6 @@ export default function Projects() {
     });
   }, [selected]);
 
-  // Store folder reference safely
   const saveFolderRef = (section, idx, el) => {
     if (!foldersRef.current[section]) {
       foldersRef.current[section] = {};
@@ -409,7 +362,6 @@ export default function Projects() {
     foldersRef.current[section][idx] = el;
   };
 
-  // Store files list reference safely
   const saveFilesListRef = (section, idx, el) => {
     if (!filesListRef.current[section]) {
       filesListRef.current[section] = {};

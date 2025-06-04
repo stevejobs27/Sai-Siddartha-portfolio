@@ -4,7 +4,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import JobList from "./JobList";
 import "../styles/Experience.css";
 
-// Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
 
 const Experience = () => {
@@ -12,7 +11,6 @@ const Experience = () => {
   const experienceRef = useRef(null);
   const contentRef = useRef(null);
   
-  // Handle job selection
   const handleSelect = (eventKey) => {
     setActiveKey(eventKey);
   };
@@ -20,7 +18,6 @@ const Experience = () => {
   useEffect(() => {
     console.log("Experience component mounted");
     
-    // Animation for section title
     gsap.fromTo(".experience-title",
       {
         y: 30,
@@ -39,7 +36,6 @@ const Experience = () => {
       }
     );
     
-    // Animation for job list content
     gsap.fromTo(contentRef.current,
       {
         y: 30,
@@ -58,7 +54,6 @@ const Experience = () => {
       }
     );
     
-    // Cleanup
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };

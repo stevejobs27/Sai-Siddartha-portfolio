@@ -12,7 +12,7 @@
   --drop-shadow: drop-shadow(0 0 3px cyan); /* Drop Shadow */
   --transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1); /* Transition */ 
   --bottom-gradient: linear-gradient(120deg,rgba(100, 217, 138, 0.8),rgba(100, 217, 138, 0.3),rgba(65, 199, 199, 0.6),rgba(100, 217, 138, 0.3), rgba(100, 217, 138, 0.8)); /* Bottom Border Gradient */
-  --gradient-border: linear-gradient(120deg,rgba(100, 217, 138, 0.8),rgba(100, 217, 138, 0.1),rgba(65, 199, 199, 0.6),rgba(100, 217, 138, 0.2));
+  --gradient-border: linear-gradient(120deg,rgba(100, 217, 137, 0.4),rgba(100, 217, 138, 0.1),rgba(65, 199, 199, 0.6),rgba(100, 217, 138, 0.2)); /* Gradient Border */
 
   .btn-effect {
     position: relative;
@@ -35,7 +35,7 @@
     transform: translate(0, 0) scale(1); 
     transition: var(--transition);
     z-index: -1;
-    border-radius: inherit; /* Takes border radius from parent */
+    border-radius: inherit;
   }
 
   .btn-effect:hover::after {
