@@ -79,7 +79,7 @@ const ProjectList = {
         {
           name: "correlation.ipynb",
           type: "notebook",
-          content: "https://nbviewer.org/github/rafsanahmed28/Movie-Correlation---Pandas-NumPy-SNS/blob/main/Finding%20Movie%20Correlation.ipynb",
+          content: "https://nbviewer.org/github/rafsanahmed28/Movie-Correlation---Pandas-NumPy-SNS/blob/main/Finding%20Movie%20Correlation.ipynb?flush_cache=true",
           language: "python",
         },
       ],
@@ -88,7 +88,7 @@ const ProjectList = {
     {
       name: "Automating Crypto Data using CoinGecko API",
       image: "/assets/crypto.png",
-      github: "https://github.com/rafsanahmed28/Automating-Crypto-Data-using-CoinGecko-API?flush_cache=true",
+      github: "https://github.com/rafsanahmed28/Automating-Crypto-Data-using-CoinGecko-API",
       tags: ["Pandas", "Seaborn", "Matplotlib"],
       files: [
         {
@@ -99,7 +99,7 @@ const ProjectList = {
         {
           name: "crypto.ipynb",
           type: "notebook",
-          content: "https://nbviewer.org/github/rafsanahmed28/Automating-Crypto-Data-using-CoinGecko-API/blob/main/Automating%20Crypto%20-%20CoinGecko%20API.ipynb",
+          content: "https://nbviewer.org/github/rafsanahmed28/Automating-Crypto-Data-using-CoinGecko-API/blob/main/Automating%20Crypto%20-%20CoinGecko%20API.ipynb?flush_cache=true",
           language: "python",
         },
       ],
@@ -119,7 +119,7 @@ const ProjectList = {
         {
           name: "amazon.ipynb",
           type: "notebook",
-          content: "https://nbviewer.org/github/rafsanahmed28/Amazon-Web-Scraping/blob/main/Amazon%20Web%20Scraping%20-%20Data%20Project.ipynb",
+          content: "https://nbviewer.org/github/rafsanahmed28/Amazon-Web-Scraping/blob/main/Amazon%20Web%20Scraping%20-%20Data%20Project.ipynb?flush_cache=true",
           language: "python",
         },
       ],
