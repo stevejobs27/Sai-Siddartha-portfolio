@@ -4,7 +4,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Icon from "./Icons";
 import "../styles/Contact.css";
 
-// Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Contact() {
@@ -28,7 +27,7 @@ export default function Contact() {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: "#contact",
-        start: "top 80%",
+        start: "top 75%",
         toggleActions: "play none none reverse"
       }
     });
@@ -45,6 +44,21 @@ export default function Contact() {
         duration: 0.6,
         ease: "power2.out"
       }
+    );
+
+    tl.fromTo(
+      ".contact-intro",
+      {
+        y: 30,
+        opacity: 0
+      },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.6,
+        ease: "power2.out"
+      },
+      "-=0.3"
     );
     
     tl.fromTo(

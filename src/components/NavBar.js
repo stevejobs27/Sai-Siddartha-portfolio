@@ -28,6 +28,8 @@ class NavBar extends React.Component {
     this.addToMobileNavRefs = this.addToMobileNavRefs.bind(this);
     this.logoRef = React.createRef();
     this.initialRenderComplete = false;
+    this.starButtonRef = React.createRef();
+    this.logoRef = React.createRef();
 
   }
 
@@ -98,9 +100,11 @@ class NavBar extends React.Component {
     
     gsap.fromTo(
       this.logoRef.current,
-      { autoAlpha: 0 },
+      { autoAlpha: 0, y: -10, x: -5 },
       { 
         autoAlpha: 1,
+        x: 0,
+        y: 0,
         duration: 0.2,
         stagger: 0.08,
         ease: "back.out(1.2)",
@@ -135,6 +139,36 @@ class NavBar extends React.Component {
       ease: "back.out(1.2)",
       delay: 0.6
     });
+
+    gsap.fromTo(this.starButtonRef.current,
+      { 
+        autoAlpha: 0, 
+        y: -15,
+      },
+      { 
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.5,
+        stagger: 0.15, 
+        ease: "back.out(1.7)", 
+        delay: 1 
+      }
+    );
+
+    gsap.fromTo(this.hamburgerRef.current,
+      { 
+        autoAlpha: 0, 
+        y: -15,
+      },
+      { 
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.5,
+        stagger: 0.15,
+        ease: "back.out(1.7)",
+        delay: 2
+      }
+    );
   }
 
   componentWillUnmount() {
@@ -166,7 +200,7 @@ class NavBar extends React.Component {
         style={{ zIndex: 1000 }}
       >
         <Container fluid style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <Navbar.Brand href="Home">
+          <Navbar.Brand href="Home" style={{ marginRight: "auto" }}>
             <div className="logo-container btn-effect" ref={this.logoRef}>
               <img 
                 className="logo"
@@ -191,19 +225,20 @@ class NavBar extends React.Component {
           </div>
           
           <div className="mobile-controls">
-            <button
-              className={`star-btn navbar-star-btn${showStars ? " star-active" : ""}`}
-              onClick={this.toggleStars}
-              title={showStars ? "Disable Background" : "Enable Background"}
-              type="button"
-            >
-              <Icon name="Star" />
-            </button>
+              <button
+                className={`star-btn navbar-star-btn${showStars ? " star-active" : ""}`}
+                onClick={this.toggleStars}
+                ref={this.starButtonRef}
+                title={showStars ? "Disable Background" : "Enable Background"}
+                type="button"
+              >
+                <Icon name="Star" />
+              </button>
             
             <div className="navbar-mobile-divider"></div>
             
             <button 
-              className="hamburger-menu" 
+              className={`hamburger-menu ${mobileMenuOpen ? "active" : ""}`}
               ref={this.hamburgerRef}
               onClick={this.toggleMobileMenu}
             >

@@ -27,11 +27,6 @@
   transform: translateY(0);
 }
 
-.navbar-brand {
-  color: var(--lightest-slate) !important;
-  width: 100%;
-}
-
 .navbar-nav .nav-link {
   color: var(--lightest-slate) !important;
   margin-right: 30px;
@@ -76,11 +71,10 @@
   background: transparent;
   border: none;
   color: var(--lightest-slate);
-  padding: 8px;
+  margin: 5px;
   cursor: pointer;
   transition: var(--transition);
-  border-radius: 50%;
-  font-size: 27px;
+  font-size: 30px;
   align-items: center;
   justify-content: center;
 }
@@ -89,10 +83,7 @@
 .navbar-star-btn:focus {
   color: var(--green-bright);
   transform: scale(1.1);
-}
-
-.navbar-star-btn.star-active {
-  color: var(--green-bright);
+  filter: var(--drop-shadow);
 }
 
 .navbar-mobile-divider {
@@ -127,6 +118,11 @@
   cursor: pointer;
   padding: 0;
   z-index: 2001;
+}
+
+.hamburger-menu.active .line {
+  background-color: var(--green-bright);
+  filter: var(--drop-shadow);
 }
 
 .mobile-menu-overlay {

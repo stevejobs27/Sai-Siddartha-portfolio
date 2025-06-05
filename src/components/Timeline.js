@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FcGraduationCap, FcIdea, FcBriefcase, FcGoogle, FcAcceptDatabase, FcStatistics } from "react-icons/fc";
@@ -54,50 +54,24 @@ const milestones = [
 export default function Timeline() {
   const timelineWrapRef = useRef(null);
   const timelineItemsRef = useRef([]);
-  const [visibleItems, setVisibleItems] = useState([]);
   
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const itemIndex = parseInt(entry.target.dataset.index);
-          if (!visibleItems.includes(itemIndex)) {
-            setVisibleItems(prev => [...prev, itemIndex]);
-          }
-        }
-      });
-    }, { threshold: 0.2 });
-    
-    timelineItemsRef.current.forEach((item, index) => {
-      if (item) {
-        item.dataset.index = index;
-        observer.observe(item);
-      }
-    });
-    
-    return () => {
-      timelineItemsRef.current.forEach(item => {
-        if (item) observer.unobserve(item);
-      });
-    };
-  }, [visibleItems]);
-  
-  useEffect(() => {
-    timelineItemsRef.current = [];
+    timelineItemsRef.current = timelineItemsRef.current.filter(Boolean);
     
     const ctx = gsap.context(() => {
-      const mainTimeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: timelineWrapRef.current,
-          start: "top 95%",
-          end: "bottom 20%",
-          toggleActions: "play none none reverse"
-        }
-      });
-      
-      mainTimeline.fromTo("#timeline .section-title", 
+      gsap.fromTo("#timeline .section-title", 
         { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" }
+        { 
+          y: 0, 
+          opacity: 1, 
+          duration: 0.6, 
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: "#timeline .section-title",
+            start: "top 90%",
+            toggleActions: "restart none none reverse" 
+          }
+        }
       );
       
       gsap.fromTo("#timeline-progress-line", 
@@ -107,64 +81,70 @@ export default function Timeline() {
           ease: "none",
           scrollTrigger: {
             trigger: timelineWrapRef.current,
-            start: "top 80%",
+            start: "top 70%",
             end: "bottom 20%",
             scrub: 1
           }
         }
       );
       
-      return () => {
-        ctx.revert();
-      };
+      timelineItemsRef.current.forEach((item, index) => {
+        const direction = index % 2 === 0 ? -1 : 1;
+        const content = item.querySelector('.timeline-content');
+        const dot = item.querySelector('.timeline-dot');
+        const date = item.querySelector('.timeline-date');
+        
+        const itemTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: item,
+            start: "top 80%",
+            end: "bottom 20%", 
+            toggleActions: "restart none none reverse"
+          }
+        });
+        
+        itemTl.fromTo(content,
+          { x: direction * 100, opacity: 0 },
+          { 
+            x: 0, 
+            opacity: 1, 
+            duration: 0.5, 
+            ease: "power2.out" 
+          }
+        ).fromTo(dot,
+          { scale: 0, opacity: 0 },
+          { 
+            scale: 1, 
+            opacity: 1, 
+            duration: 0.3,
+            ease: "back.out(1.7)" 
+          },
+          "-=0.3" 
+        ).fromTo(date,
+          { opacity: 0, y: 10 },
+          { 
+            opacity: 1, 
+            y: 0, 
+            duration: 0.3,
+            ease: "power2.out" 
+          },
+          "-=0.2"
+        );
+      });
     });
+    
+    return () => ctx.revert();
   }, []);
-  
-  useEffect(() => {
-    visibleItems.forEach(index => {
-      const item = timelineItemsRef.current[index];
-      
-      if (!item || item.isAnimated) return;
-      
-      item.isAnimated = true;
-      
-      const direction = index % 2 === 0 ? -1 : 1;
-      const content = item.querySelector('.timeline-content');
-      const dot = item.querySelector('.timeline-dot');
-      
-      const itemTimeline = gsap.timeline();
-
-      itemTimeline.fromTo(content,
-        { 
-          x: direction * 100, 
-          opacity: 0 
-        },
-        { 
-          x: 0, 
-          opacity: 1, 
-          duration: 0.5, 
-          ease: "power2.out" 
-        }
-      );
-    });
-  }, [visibleItems]);
 
   const renderIcon = (type) => {
     switch (type) {
-      case 'education':
-        return <FcGraduationCap className="timeline-icon" />;
-      case 'startup':
-        return <FcIdea className="timeline-icon" />;
-      case 'career':
-        return <FcBriefcase className="timeline-icon" />;
-      case 'google':
-        return <FcGoogle className="timeline-icon" />;
-      case 'project':
-        return <FcAcceptDatabase className="timeline-icon" />;
-      case 'statistics':
-        return <FcStatistics className="timeline-icon" />;
-      default:
-        return null;
+      case 'education': return <FcGraduationCap className="timeline-icon" />;
+      case 'startup': return <FcIdea className="timeline-icon" />;
+      case 'career': return <FcBriefcase className="timeline-icon" />;
+      case 'google': return <FcGoogle className="timeline-icon" />;
+      case 'project': return <FcAcceptDatabase className="timeline-icon" />;
+      case 'statistics': return <FcStatistics className="timeline-icon" />;
+      default: return null;
     }
   };
 
@@ -196,26 +176,19 @@ export default function Timeline() {
                 
                 <div className="timeline-actions">
                   {item.certificateUrl && (
-                    <a 
-                      href={item.certificateUrl} 
-                      className="timeline-link"
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                    >
+                    <a href={item.certificateUrl} className="timeline-link" target="_blank" rel="noopener noreferrer">
                       View Certificate
                     </a>
                   )}
                   
                   {item.learnMoreLink && (
-                    <a 
-                      href={item.learnMoreLink} 
-                      className="timeline-link"
-                    >
+                    <a href={item.learnMoreLink} className="timeline-link">
                       {item.learnMoreText}
                     </a>
                   )}
                 </div>
-              </div> <span className="timeline-date">{item.year}</span>
+              </div>
+              <span className="timeline-date">{item.year}</span>
             </div>
           ))}
         </div>
