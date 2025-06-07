@@ -15,19 +15,16 @@ import "./styles/Global.css";
 
 function App() {
   const [showStars, setShowStars] = useState(true);
-  const [typingDone, setTypingDone] = useState(false);
-
   return (
     <div className="App">
       {showStars && <StarsCanvas />}
-      {typingDone && (
         <>
           <NavBar showStars={showStars} setShowStars={setShowStars} />
           <SideNavBar showStars={showStars} setShowStars={setShowStars} />
         </>
-      )}
+      
       <div id="content">
-        <Intro onTypingDone={() => setTypingDone(true)} />
+        <Intro />
         <About />
         <Projects />
         <Timeline />

@@ -4,7 +4,7 @@ import AnimatedRobot from "./AnimatedRobot";
 import { FiMail } from "react-icons/fi"; 
 import { gsap } from "gsap";
 
-const Intro = ({ onTypingDone }) => {
+const Intro = () => {
   const cursorRef = useRef(null);
   const subtitleRef = useRef(null);
   const descRef = useRef(null);
@@ -18,10 +18,6 @@ const Intro = ({ onTypingDone }) => {
     if (hasRunRef.current) return;
     hasRunRef.current = true;
     
-    const mainTl = gsap.timeline({
-      onComplete: () => onTypingDone?.()
-    });
-    
     gsap.set([subtitleRef.current, descRef.current, buttonsRef.current], {
       opacity: 0,
       y: 20
@@ -30,6 +26,23 @@ const Intro = ({ onTypingDone }) => {
     gsap.set(animationRef.current, {
       opacity: 0,
       scale: 0.95
+    });
+
+    gsap.to([subtitleRef.current, descRef.current, buttonsRef.current], {
+      opacity: 1,
+      y: 0,
+      duration: 0.4,
+      stagger: 0.6,
+      ease: "power2.out",
+      delay: 0.6
+    });
+    
+    gsap.to(animationRef.current, {
+      opacity: 1,
+      scale: 1,
+      duration: 0.6,
+      ease: "power2.out",
+      delay: 0.6
     });
 
     const introText = textRef.current.textContent;
@@ -107,35 +120,7 @@ const Intro = ({ onTypingDone }) => {
       });
     });
     
-    mainTl.add(typingTl);
-    mainTl.to(animationRef.current, {
-      opacity: 1, 
-      scale: 1, 
-      duration: 0.8, 
-      ease: "power2.out"
-    });
-    
-    mainTl.to(subtitleRef.current, {
-      opacity: 1, 
-      y: 0, 
-      duration: 0.2, 
-      ease: "power2.out"
-    });
-    
-    mainTl.to(descRef.current, {
-      opacity: 1, 
-      y: 0, 
-      duration: 0.2, 
-      ease: "power2.out"
-    });
-    
-    mainTl.to(buttonsRef.current, {
-      opacity: 1, 
-      y: 0, 
-      duration: 0.2, 
-      ease: "power2.out"
-    });
-  }, [onTypingDone]);
+  }, []);
 
   return (
     <div className="intro-section">

@@ -148,10 +148,10 @@ class NavBar extends React.Component {
       { 
         autoAlpha: 1,
         y: 0,
-        duration: 0.5,
-        stagger: 0.15, 
+        duration: 0.3,
+        stagger: 0.07, 
         ease: "back.out(1.7)", 
-        delay: 1 
+        delay: 0.8
       }
     );
 
@@ -163,10 +163,10 @@ class NavBar extends React.Component {
       { 
         autoAlpha: 1,
         y: 0,
-        duration: 0.5,
-        stagger: 0.15,
+        duration: 0.3,
+        stagger: 0.07,
         ease: "back.out(1.7)",
-        delay: 2
+        delay: 1.4
       }
     );
   }
@@ -200,7 +200,7 @@ class NavBar extends React.Component {
         style={{ zIndex: 1000 }}
       >
         <Container fluid style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <Navbar.Brand href="Home" style={{ marginRight: "auto" }}>
+          <Navbar.Brand href="home" style={{ marginRight: "auto" }}>
             <div className="logo-container btn-effect" ref={this.logoRef}>
               <img 
                 className="logo"
