@@ -12,7 +12,8 @@ const Intro = () => {
   const animationRef = useRef(null);
   const textRef = useRef(null);
   const nameRef = useRef(null);
-  const hasRunRef = useRef(false); 
+  const hasRunRef = useRef(false);
+  const animationStartedRef = useRef(false);
 
   useEffect(() => {
     if (hasRunRef.current) return;
@@ -45,81 +46,108 @@ const Intro = () => {
       delay: 0.6
     });
 
-    const introText = textRef.current.textContent;
-    const nameText = nameRef.current.textContent;
-    
-    textRef.current.textContent = "";
-    nameRef.current.textContent = "";
-    
-    const introChars = introText.split("").map(char => {
-      const span = document.createElement("span");
-      span.textContent = char;
-      span.style.opacity = "0";
-      textRef.current.appendChild(span);
-      return span;
-    });
-    
-    const nameChars = nameText.split("").map(char => {
-      const span = document.createElement("span");
-      span.textContent = char;
-      span.style.opacity = "0";
-      nameRef.current.appendChild(span);
-      return span;
-    });
-    
-    const allChars = [...introChars, ...nameChars];
-    const windmill = cursorRef.current.querySelector('svg');
-    
-    gsap.set(cursorRef.current, {
-      opacity: 1,
-      left: -10, 
-      top: "50%",
-      xPercent: 0,
-      yPercent: -50
-    });
-    
-    const typingTl = gsap.timeline();
-    
-    gsap.to(windmill, {
-      rotation: 360 * 7.5,
-      duration: 3,
-      ease: "linear",
-      repeat: -1,
-      transformOrigin: "center center"
-    });
-    
-    allChars.forEach((char, index) => {
-      const charWidth = char.offsetWidth || 10;
-      
-      typingTl.to(cursorRef.current, {
-        left: `+=${charWidth}`,
-        duration: 0.08, 
-        ease: "none",
-        onStart: () => {
-          gsap.to(char, {
-            opacity: 1,
-            duration: 0.1
-          });
+    if (document.fonts) {
+      document.fonts.ready.then(() => {
+        if (!animationStartedRef.current) {
+          animationStartedRef.current = true;
+          startTextAnimation();
         }
       });
-    });
+      
+      setTimeout(() => {
+        if (!animationStartedRef.current) {
+          animationStartedRef.current = true;
+          startTextAnimation();
+        }
+      }, 1000);
+    } else {
+      setTimeout(() => {
+        startTextAnimation();
+      }, 500);
+    }
     
-    typingTl.to(cursorRef.current, {
-      left: "+=20",
-      duration: 0.1,
-      ease: "power1.out"
-    });
-    
-    typingTl.add(() => {
-      gsap.killTweensOf(windmill);
+    function startTextAnimation() {
+      const introText = textRef.current.textContent;
+      const nameText = nameRef.current.textContent;
+      
+      textRef.current.textContent = "";
+      nameRef.current.textContent = "";
+      
+      const introChars = introText.split("").map(char => {
+        const span = document.createElement("span");
+        span.textContent = char;
+        span.style.opacity = "0";
+        textRef.current.appendChild(span);
+        return span;
+      });
+      
+      const nameChars = nameText.split("").map(char => {
+        const span = document.createElement("span");
+        span.textContent = char;
+        span.style.opacity = "0";
+        nameRef.current.appendChild(span);
+        return span;
+      });
+      
+      const allChars = [...introChars, ...nameChars];
+      const windmill = cursorRef.current.querySelector('svg');
+      
+      gsap.set(cursorRef.current, {
+        opacity: 1,
+        left: -10, 
+        top: "50%",
+        xPercent: 0,
+        yPercent: -50
+      });
+      
+      const typingTl = gsap.timeline();
+      
       gsap.to(windmill, {
-        rotation: "+=385", 
-        duration: .9,
-        ease: "power2.Out",
+        rotation: 360 * 7.5,
+        duration: 3,
+        ease: "linear",
+        repeat: -1,
         transformOrigin: "center center"
       });
-    });
+      
+      document.body.offsetHeight;
+      
+      allChars.forEach((char, index) => {
+        const charWidth = char.getBoundingClientRect().width || 10;
+        
+        typingTl.to(cursorRef.current, {
+          left: `+=${charWidth}`,
+          duration: 0.08, 
+          ease: "none",
+          onStart: () => {
+            gsap.to(char, {
+              opacity: 1,
+              duration: 0.1
+            });
+          }
+        });
+      });
+      
+      typingTl.to(cursorRef.current, {
+        left: "+=20",
+        duration: 0.1,
+        ease: "power1.out"
+      });
+      
+      typingTl.add(() => {
+        gsap.killTweensOf(windmill);
+        gsap.to(windmill, {
+          rotation: "+=385", 
+          duration: .9,
+          ease: "power2.Out",
+          transformOrigin: "center center"
+        });
+      });
+    }
     
+    return () => {
+      gsap.killTweensOf([subtitleRef.current, descRef.current, buttonsRef.current, animationRef.current]);
+    };
   }, []);
 
   return (

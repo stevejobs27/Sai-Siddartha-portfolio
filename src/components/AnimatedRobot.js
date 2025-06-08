@@ -3,7 +3,7 @@
 // to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
 // and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 // The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
 // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
 // WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. //
@@ -15,19 +15,14 @@ import "../styles/AnimatedRobot.css";
 import { MorphSVGPlugin, DrawSVGPlugin } from "gsap/all";
 
 export default function AnimatedRobot() {
-  const webglRef = useRef();
-  const webgl2Ref = useRef();
   const svgRef = useRef();
-  const [isPaused, setIsPaused] = useState(false);
   const robotTlRef = useRef(null);
 
   useEffect(() => {
     gsap.registerPlugin(MorphSVGPlugin, DrawSVGPlugin);
     
-    // SVG ANIMATION
     let isLeft = false;
 
-    // Robot
     gsap.set("#left-hand", {
       x: 30,
       transformOrigin: "right center"
@@ -512,175 +507,7 @@ export default function AnimatedRobot() {
       });
     }
 
-    // Stars background
-    let scene, camera, renderer, stars, startGeometry;
-    const count = 0;
-
-    function initStars() {
-      scene = new THREE.Scene();
-      startGeometry = new THREE.BufferGeometry();
-      const positions = new Float32Array(count * 3);
-      
-      for (let i = 0; i < count; i++) {
-        positions[i] = Math.random() * 600 - 300;
-      }
-      
-      startGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-      
-      let sprite = new THREE.TextureLoader().load("https://i.postimg.cc/T25jx3S9/circle-05.png");
-      let starMaterial = new THREE.PointsMaterial({
-        size: 2,
-        sizeAttenuation: true,
-        transparent: true,
-        alphaMap: sprite
-      });
-
-      stars = new THREE.Points(startGeometry, starMaterial);
-      scene.add(stars);
-
-      camera = new THREE.PerspectiveCamera(60, 800 / 600, 1, 1000);
-      camera.position.z = 1;
-      camera.rotation.x = Math.PI / 2;
-
-      renderer = new THREE.WebGLRenderer();
-      renderer.setSize(800, 600);
-      renderer.setClearColor("#282e39", 0);
-      
-      if (webglRef.current) {
-        webglRef.current.innerHTML = "";
-        webglRef.current.appendChild(renderer.domElement);
-      }
-
-      function animate() {
-        for (let i = 0; i < count; i++) {
-          const i3 = i * 3;
-          startGeometry.attributes.position.array[i3 + 1] -= 3;
-          if (startGeometry.attributes.position.array[i3 + 1] < -100) {
-            startGeometry.attributes.position.array[i3 + 1] = 300;
-          }
-        }
-        
-        startGeometry.attributes.position.needsUpdate = true;
-        stars.rotation.y += 0.002;
-        renderer.render(scene, camera);
-        requestAnimationFrame(animate);
-      }
-      
-      animate();
-    }
-
-    // Initialize 3D objects
-    function initObjects() {
-      // Only proceed if webgl2Ref is available
-      if (!webgl2Ref.current) return;
-
-      const scene2 = new THREE.Scene();
-      const objects = [];
-      
-      const objectGeometry = new THREE.IcosahedronGeometry(1, 0);
-      const objectMaterial = new THREE.MeshStandardMaterial({
-        color: 0x6699ff,
-        metalness: 0,
-        roughness: 0
-      });
-      
-      for (let i = 0; i < 3; i++) {
-        const object = new THREE.Mesh(objectGeometry, objectMaterial);
-        object.scale.set(0.4, 0.4, 0.4);
-        scene2.add(object);
-        objects.push(object);
-      }
-      
-      objects[0].position.set(3, 0.5, 0);
-      objects[1].position.set(-3.5, 2, 0);
-      objects[2].position.set(1, 3, 0);
-
-      objects.forEach((object) => {
-        gsap.to(object.rotation, {
-          x: Math.PI * 2,
-          z: Math.PI * 2,
-          repeat: -1,
-          ease: "none",
-          duration: 8 + Math.random() * 5,
-          delay: Math.random() * 50
-        }).seek(100);
-
-        gsap.to(object.position, {
-          y: 1.5,
-          z: -1,
-          repeat: -1,
-          yoyo: true,
-          ease: "sine.inOut",
-          duration: 4 + Math.random() * 5
-        }).seek(100);
-      });
-
-      // Lights
-      const light = new THREE.AmbientLight(0xffffff, 1.0);
-      scene2.add(light);
-
-      const directionalLight = new THREE.DirectionalLight(0xff0000, 0.8);
-      directionalLight.position.set(5, 10, 0);
-      scene2.add(directionalLight);
-
-      const directionalLight2 = new THREE.DirectionalLight(0xff0000, 0.7);
-      directionalLight2.position.set(-5, -5, 2);
-      scene2.add(directionalLight2);
-
-      // Responsive sizing
-      const sizes = {
-        width: window.innerWidth,
-        height: window.innerHeight
-      };
-
-      // Camera
-      const camera2 = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100);
-      camera2.position.z = 5;
-      scene2.add(camera2);
-
-      // Renderer
-      const renderer2 = new THREE.WebGLRenderer({
-        canvas: webgl2Ref.current,
-        alpha: true
-      });
-      
-      renderer2.setSize(sizes.width, sizes.height);
-      renderer2.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      renderer2.setClearColor(0xffffff, 0);
-
-      // Window resize handler
-      window.addEventListener("resize", () => {
-        // Update sizes
-        sizes.width = window.innerWidth;
-        sizes.height = window.innerHeight;
-
-        // Update camera
-        camera2.aspect = sizes.width / sizes.height;
-        camera2.updateProjectionMatrix();
-
-        // Update renderer
-        renderer2.setSize(sizes.width, sizes.height);
-        renderer2.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      });
-
-      // Animation loop
-      const clock = new THREE.Clock();
-      
-      const tick = () => {
-        renderer2.render(scene2, camera2);
-        window.requestAnimationFrame(tick);
-      };
-      
-      tick();
-    }
-
-    // Initialize all animations
-    initStars();
-    initObjects();
-
-    // Cleanup function
     return () => {
-      if (renderer) renderer.dispose();
       window.removeEventListener("mousemove", () => {});
       document.getElementById("robot")?.removeEventListener("click", () => {});
     };
@@ -688,16 +515,6 @@ export default function AnimatedRobot() {
 
   return (
     <div className="animated-robot-container">
-      {/* Star background */}
-      <div id="webgl" ref={webglRef} style={{ width: 800, height: 600, position: "absolute", zIndex: -1 }} />
-      
-      {/* Background SVG */}
-      <div id="bg-box" style={{ width: 802, height: 602, position: "absolute", zIndex: -1 }}>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
-          <path fill="#07f00000" d="M0 0v600h800V0zm405.6 458.4C217 458.4 64.1 360.6 64.1 240S217 21.5 405.6 21.5 747.3 119.3 747.3 240s-153 218.4-341.6 218.4z" />
-        </svg>
-      </div>
-      
       {/* Robot SVG */}
       <div className="svg-box" style={{ width: 800, height: 600, position: "absolute", zIndex: 10 }}>
         <svg ref={svgRef} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">

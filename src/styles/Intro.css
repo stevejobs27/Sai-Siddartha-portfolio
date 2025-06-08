@@ -248,9 +248,8 @@
   }
 
   .windmill-cursor {
-    position: absolute !important;
     top: 50% !important;
-    transform: translate(-100%, -50%) !important;
+    transform: translate(-0%, -60%) !important;
     margin-left: 0 !important;
   }
   
