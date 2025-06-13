@@ -68,13 +68,13 @@ const About = () => {
           </p>
           
           <p ref={el => textRefs.current[3] = el}>
-            Outside of work, I love playing video games. I'm also an aesthetic interior design enthusiast and I hoard cool tech products.
+            Outside of work, I love playing video games. I'm also into aesthetic interior designs and I love hoarding cool tech products.
           </p>
           
         </div>
         <p className="about-timeline-link" ref={el => textRefs.current[5] = el}>
           <a href="#timeline">
-            <span role="img" aria-label="timeline">🗺️</span> 
+            <span role="img" aria-label="timeline">🗺️ </span> 
             View my <span className="about-timeline-highlight">timeline</span> to learn more about my unique journey into data &rarr;
           </a>
         </p>     

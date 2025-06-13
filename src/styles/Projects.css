@@ -47,7 +47,7 @@
   overflow: hidden;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
   position: relative;
-  height: 600px; /* Fixed height */
+  height: 600px;
   width: 100%;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   z-index: 5;
@@ -63,7 +63,7 @@
   position: absolute;
   inset: 0;
   border-radius: 12px; 
-  padding: 2px; 
+  padding: 1.5px; 
   background: var(--gradient-border);
   background-size: 300% 300%;
   -webkit-mask: 
@@ -362,7 +362,6 @@
   justify-content: center;
   width: 30px;
   height: 30px;
-  border-radius: 50%;
   color: var(--green-bright);
   transition: var(--transition);
   position: relative;
@@ -370,8 +369,8 @@
 }
 
 .icon-link:hover {
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
   color: var(--lightest-slate);
+  transition: var(--transition);
 }
 
 .icon-link svg {
@@ -416,7 +415,6 @@
   color: var(--green-bright);
 }
 
-/* Code area scrollable */
 .code-viewer-container pre {
   flex: 1;
   overflow: auto;

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Flip } from "gsap/Flip";
+import ProjectBlogs from "./ProjectBlogs";
 import ProjectList from "./ProjectList";
 import CodeViewer from "./CodeViewer";
 import Icon from "./Icons";
@@ -10,7 +11,7 @@ import {
   VscFolder, VscFolderOpened, VscMarkdown, VscChevronRight
 } from "react-icons/vsc";
 import { SiMysql, SiPython } from "react-icons/si";
-import { FaDatabase } from "react-icons/fa";
+import { BsDatabase } from "react-icons/bs";
 
 gsap.registerPlugin(ScrollTrigger, Flip);
 
@@ -374,7 +375,9 @@ export default function Projects() {
       <div className="section-header">
         <span className="section-title">Projects</span>
       </div>
-      
+      <div className="project-blogs-container">
+            <ProjectBlogs/>
+      </div>
       {sectionKeys.map((section, sectionIndex) => {
         const projects = projectsData[section];
         const { projectIdx, fileIdx } = selected[section];
@@ -392,7 +395,6 @@ export default function Projects() {
               <h2 className="project-section-title">
                 <span className="gradient-text">{section}</span> Projects
               </h2>
-              
               <div className="project-section">
                 <div className="directory-box gradient-border">
                   <div className="directory-sidebar">
@@ -528,36 +530,58 @@ export default function Projects() {
                         <h3 className="project-title">{selectedProject.name}</h3>
                         
                         <p className="project-description">{selectedFile.content}</p>
-                        {selectedProject.dataset && (
-                          <a href={selectedProject.dataset} className="project-link" target="_blank" rel="noopener noreferrer">
-                            <FaDatabase /> Dataset
-                          </a>
-                        )}
+                        
                         <ul className="project-tags">
                           {selectedProject.tags && selectedProject.tags.map((tag, i) => (
                             <li key={i} className="tag-pill">{tag}</li>
                           ))}
                         </ul>
                         
-                        <div className="project-links">
+                          <div className="project-links">
+                          {selectedProject.dataset && (
+                            <a
+                              href={selectedProject.dataset}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              title="View Dataset"
+                              className="icon-link dataset-link"
+                              onMouseEnter={e => {
+                                gsap.to(e.currentTarget, {
+                                  scale: 1.15,
+                                  duration: 0.15,
+                                  ease: "power2.out",
+                                });
+                              }}
+                              onMouseLeave={e => {
+                                gsap.to(e.currentTarget, {
+                                  scale: 1,
+                                  duration: 0.15,
+                                  ease: "power2.in"
+                                });
+                              }}
+                            >
+                              <BsDatabase />
+                            </a>
+                          )}
                           {selectedProject.medium && (
                             <a
                               href={selectedProject.medium}
                               target="_blank"
                               rel="noopener noreferrer"
                               title="View Article"
-                              className="icon-link medium-link"
+                              className="icon-link"
                               onMouseEnter={e => {
                                 gsap.to(e.currentTarget, {
                                   scale: 1.15,
-                                  duration: 0.3,
-                                  ease: "back.out(1.7)"
+                                  duration: 0.15,
+                                  ease: "power2.out",
                                 });
                               }}
                               onMouseLeave={e => {
                                 gsap.to(e.currentTarget, {
                                   scale: 1,
-                                  duration: 0.3
+                                  duration: 0.15,
+                                  ease: "power2.in"
                                 });
                               }}
                             >
@@ -575,14 +599,15 @@ export default function Projects() {
                               onMouseEnter={e => {
                                 gsap.to(e.currentTarget, {
                                   scale: 1.15,
-                                  duration: 0.3,
-                                  ease: "back.out(1.7)"
+                                  duration: 0.15,
+                                  ease: "power2.out",
                                 });
                               }}
                               onMouseLeave={e => {
                                 gsap.to(e.currentTarget, {
                                   scale: 1,
-                                  duration: 0.3
+                                  duration: 0.15,
+                                  ease: "power2.in"
                                 });
                               }}
                             >
@@ -600,14 +625,15 @@ export default function Projects() {
                               onMouseEnter={e => {
                                 gsap.to(e.currentTarget, {
                                   scale: 1.15,
-                                  duration: 0.3,
-                                  ease: "back.out(1.7)"
+                                  duration: 0.15,
+                                  ease: "power2.out",
                                 });
                               }}
                               onMouseLeave={e => {
                                 gsap.to(e.currentTarget, {
                                   scale: 1,
-                                  duration: 0.3
+                                  duration: 0.15,
+                                  ease: "power2.in"
                                 });
                               }}
                             >

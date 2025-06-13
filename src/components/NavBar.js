@@ -200,7 +200,7 @@ class NavBar extends React.Component {
         style={{ zIndex: 1000 }}
       >
         <Container fluid style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <Navbar.Brand href="home" style={{ marginRight: "auto" }}>
+          <Navbar.Brand href="Home" style={{ marginRight: "auto" }}>
             <div className="logo-container btn-effect" ref={this.logoRef}>
               <img 
                 className="logo"

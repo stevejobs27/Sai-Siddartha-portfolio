@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import "../styles/Intro.css";
 import AnimatedRobot from "./AnimatedRobot";
-import { FiMail } from "react-icons/fi"; 
+import Icon from "./Icons"; 
 import { gsap } from "gsap";
 
 const Intro = () => {
@@ -186,7 +186,7 @@ const Intro = () => {
         </div>
         
         <div className="intro-buttons" ref={buttonsRef}>
-          <a href="#contact" className="outline-button btn-effect">Get In Touch <FiMail className="button-icon" /></a>
+          <a href="#contact" className="outline-button btn-effect">Get In Touch <Icon name="Mail" className="button-icon" /></a>
         </div>
       </div>
       
