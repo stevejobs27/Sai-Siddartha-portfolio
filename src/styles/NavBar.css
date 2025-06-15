@@ -63,7 +63,6 @@
   color: var(--green-bright) !important;
   scale: 1.1;
   transition: var(--transition);
-  filter: var(--drop-shadow);
 }
 
 .navbar-star-btn {
@@ -83,7 +82,6 @@
 .navbar-star-btn:focus {
   color: var(--green-bright);
   transform: scale(1.1);
-  filter: var(--drop-shadow);
 }
 
 .navbar-mobile-divider {
@@ -92,7 +90,7 @@
   width: 2px;
   background-color: var(--green-bright);
   border-radius: 10px;
-  filter: drop-shadow(0 3px 4px rgb(0, 255, 85));
+  filter: var(--drop-shadow);
   margin-right: 25px;
   margin-left: 10px;
 }
@@ -122,7 +120,6 @@
 
 .hamburger-menu.active .line {
   background-color: var(--green-bright);
-  filter: var(--drop-shadow);
 }
 
 .mobile-menu-overlay {

@@ -198,15 +198,6 @@
   right: auto;
 }
 
-@keyframes gradientMove {
-  0% {
-    background-position: 0% center;
-  }
-  100% {
-    background-position: 200% center;
-  }
-}
-
 .timeline-item-placeholder {
   height: 150px;
   width: 100%;
@@ -237,25 +228,7 @@
   }
 }
 
-@media only screen and (max-width: 1020px) {
-  .timeline-content {
-    width: 42%;
-    padding: 20px;
-  }
-  
-  .timeline-content h2 {
-    font-size: 20px;
-  }
-  .timeline-item.left .timeline-date {
-    right: 200px;
-  }
-
-  .timeline-item.right .timeline-date {
-    left: 200px;
-  }
-}
-
-@media only screen and (max-width: 824px) {
+@media only screen and (max-width: 1024px) {
   .timeline-progress {
     left: 30px;
   }

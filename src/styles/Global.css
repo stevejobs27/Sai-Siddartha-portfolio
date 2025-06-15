@@ -1,5 +1,5 @@
 :root {
-  --bg-gradient: linear-gradient(to bottom,#03141a 0%,#030817 20%, #060a17 40%, #030817 60%); /* Page Background Color */
+  --bg-gradient: linear-gradient(to bottom,#030f1a 0%,#030817 20%, #060a17 40%, #030817 60%); /* Page Background Color */
   --lightest-slate: #e2e8fd; /* Headings, Text */
   --nav-color: #03141a10; /* NavBar */
   --mobile-nav: #03141ad5; /* NavBar */

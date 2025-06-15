@@ -16,7 +16,7 @@ export default function CodeViewer({ code, language, type }) {
         <iframe
           src={code}
           width="100%"
-          height="450"
+          height="600"
           style={{ border: "none" }}
           title="Notebook"
         />

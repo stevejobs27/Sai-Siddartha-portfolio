@@ -55,24 +55,13 @@
 
 .directory-square {
   position: absolute;
-  width: 600px;
-  height: 600px;
+  width: 400px;
+  height: 400px;
   background: linear-gradient(135deg, rgba(100, 217, 137, 0.3), rgba(100, 217, 138, 0.02));
-  left: -150px;
-  bottom: 0px;
+  left: -250px;
+  bottom: 250px;
   transform: rotate(45deg);
   filter: blur(40px);
-}
-
-.directory-circle {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, rgba(100, 217, 137, 0.1), rgba(100, 217, 138, 0.05));
-  left: -100px;
-  top: 400px;
-  filter: blur(50px);
 }
 
 .directory-sidebar {
@@ -357,7 +346,6 @@
   display: flex;
   flex-direction: column;
   background-color: rgba(5, 14, 27, 0.822);
-  border-radius: 8px;
   overflow: auto;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
@@ -421,8 +409,8 @@
     background: linear-gradient(
       to top,
       rgba(10, 25, 47, 0.95) 0%,
-      rgba(10, 25, 47, 0.8) 50%,
-      rgba(10, 25, 47, 0.6) 100%
+      rgba(10, 25, 47, 0.9) 50%,
+      rgba(10, 25, 47, 0.8) 100%
     );
   }
 

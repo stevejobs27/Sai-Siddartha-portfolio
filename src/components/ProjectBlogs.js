@@ -119,7 +119,54 @@ const ProjectBlogs = () => {
     };
   }, []);
 
-  // Standard slide transition
+  useEffect(() => {
+    if (!slideshowRef.current) return;
+    
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let isSwiping = false;
+    
+    const handleTouchStart = (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      isSwiping = true;
+    };
+    
+    const handleTouchMove = (e) => {
+      if (!isSwiping) return;
+      e.preventDefault(); // Prevent page scrolling while swiping
+    };
+    
+    const handleTouchEnd = (e) => {
+      if (!isSwiping) return;
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+      isSwiping = false;
+    };
+    
+    const handleSwipe = () => {
+      if (isAnimating) return;
+      
+      const swipeThreshold = 50; // Minimum distance for a swipe
+      
+      if (touchEndX < touchStartX - swipeThreshold) {
+        goToNextSlide();
+      } else if (touchEndX > touchStartX + swipeThreshold) {
+        goToPrevSlide();
+      }
+    };
+    
+    const container = slideshowRef.current;
+    container.addEventListener('touchstart', handleTouchStart, { passive: true });
+    container.addEventListener('touchmove', handleTouchMove, { passive: false });
+    container.addEventListener('touchend', handleTouchEnd, { passive: true });
+    
+    return () => {
+      container.removeEventListener('touchstart', handleTouchStart);
+      container.removeEventListener('touchmove', handleTouchMove);
+      container.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [isAnimating]);
+
   const changeSlide = (newIndex) => {
     if (isAnimating || newIndex === currentSlide) return;
     setIsAnimating(true);
@@ -239,11 +286,6 @@ const ProjectBlogs = () => {
           style={{ backgroundImage: `url(${article.image})` }}
         >
           <div className="slide-overlay">
-            <div className="article-links">
-              <a href={article.mediumUrl} target="_blank" rel="noopener noreferrer" className="medium-link btn-effect">
-                <SiMedium /> Read on Medium
-              </a>
-            </div>
           </div>
           <div 
             ref={el => slideTextRefs.current[index] = el}
@@ -252,8 +294,11 @@ const ProjectBlogs = () => {
             <span className="article-date">{article.date}</span>
             <h3 className="article-title">{article.title}</h3>
             <p className="article-description">{article.description}</p>
-            
-
+          </div>
+          <div className="article-links">
+              <a href={article.mediumUrl} target="_blank" rel="noopener noreferrer" className="medium-link btn-effect">
+                <SiMedium /> Read on Medium
+              </a>
           </div>
         </div>
       ))}
