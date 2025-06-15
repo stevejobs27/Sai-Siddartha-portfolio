@@ -53,53 +53,47 @@
   z-index: 5;
 }
 
-.gradient-border {
-  position: relative;
-  z-index: 1;
+.directory-square {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: linear-gradient(135deg, rgba(100, 217, 137, 0.3), rgba(100, 217, 138, 0.02));
+  left: -150px;
+  bottom: 0px;
+  transform: rotate(45deg);
+  filter: blur(40px);
 }
 
-.gradient-border::before {
-  content: "";
+.directory-circle {
   position: absolute;
-  inset: 0;
-  border-radius: 12px; 
-  padding: 1.5px; 
-  background: var(--gradient-border);
-  background-size: 300% 300%;
-  -webkit-mask: 
-    linear-gradient(#fff 0 0) content-box, 
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  
-  mask: 
-    linear-gradient(#fff 0 0) content-box, 
-    linear-gradient(#fff 0 0);
-  mask-composite: exclude;
-  pointer-events: none;
-  z-index: 0;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(100, 217, 137, 0.1), rgba(100, 217, 138, 0.05));
+  left: -100px;
+  top: 400px;
+  filter: blur(50px);
 }
 
 .directory-sidebar {
   width: 260px;
+  min-width: 260px;
   height: 100%;
   padding: 20px 15px;
   overflow-y: auto;
-  border-right: 1px solid rgba(156, 182, 164, 0.1);
   transition: var(--transition);
   z-index: 2;
   scrollbar-width: thin;
   scrollbar-color: rgba(100, 217, 138, 0.3) rgba(13, 25, 45, 0.5);
+  background-color: var(--box-color);
 }
 
 .directory-content {
   flex: 1;
   height: 100%;
-  padding: 30px;
-  overflow-y: auto;
+  overflow: hidden;
   position: relative;
-  z-index: 2;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(100, 217, 138, 0.3) rgba(13, 25, 45, 0.1);
+  z-index: 1;
 }
 
 /* =============================================
@@ -231,89 +225,67 @@
 }
 
 /* =============================================
-   Project Info Styling
+   Project Info Styling - UPDATED
    ============================================= */
 .project-info-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  overflow-y: auto;
+  color: var(--lightest-slate);
+  background-size: cover;
+  background-position: center;
 }
 
-.project-image-container {
-  position: relative;
-  border-radius: 8px;
-  overflow: hidden;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  background-color: rgba(255, 255, 255, 0.02);
-  height: 250px; 
-  width: 100%;
-}
-
-.image-wrapper, .image-link {
-  display: block;
-  width: 100%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-  border-radius: 8px;
-}
-
-.image-wrapper img, .image-link img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  transition: transform 0.5s ease;
-}
-
-.hover-effect:hover img {
-  transform: scale(1.05);
-}
-
-.image-overlay {
+/* Project overlay for text visibility */
+.project-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(10, 25, 47, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 25, 47, 0) 0%,        /* Transparent at top */
+    rgba(10, 25, 47, 0.1) 15%,     /* Very subtle fade begins */
+    rgba(10, 25, 47, 0.6) 40%,     /* Medium opacity where text starts */
+    rgba(10, 25, 47, 0.9) 70%,     /* Strong opacity for main text */
+    rgba(10, 25, 47, 0.95) 100%    /* Nearly opaque at bottom */
+  );
   z-index: 1;
 }
 
-.image-overlay span {
-  color: var(--lightest-slate);
-  font-weight: 600;
-  padding: 8px 16px;
-  border: 2px solid var(--lightest-slate);
-  border-radius: 4px;
-  background-color: rgba(0, 0, 0, 0.2);
+.project-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  padding: 2.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
 }
 
-.hover-effect:hover .image-overlay {
-  opacity: 1;
-}
-
+/* Project title - make it stand out */
 .project-title {
   font-size: 30px;
-  color: var(--green-bright);
-  margin: 0 0 15px 0;
   font-weight: 700;
+  margin: 0px 0 15px 0;
+
+  color: var(--green-bright);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+/* Project description */
 .project-description {
-  flex: 1;
-  margin-bottom: 20px;
   font-size: 18px;
   color: var(--lightest-slate);
   line-height: 1.6;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 /* =============================================
@@ -323,7 +295,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin: 15px 0;
+  margin: 10px 0;
   padding: 0;
   list-style: none;
 }
@@ -336,6 +308,7 @@
   color: var(--green-bright);
   border: 1px solid rgba(100, 217, 138, 0.3);
   transition: all 0.3s ease;
+  background-color: rgba(10, 25, 47, 0.7);
 }
 
 .tag-pill:hover {
@@ -346,13 +319,11 @@
 /* =============================================
    Project Links
    ============================================= */
+
 .project-links {
   display: flex;
   gap: 15px;
-  margin-top: 20px;
   justify-content: flex-end;
-  padding-right: 5px;
-  padding-bottom: 5px;
   overflow: visible;
 }
 
@@ -363,14 +334,14 @@
   width: 30px;
   height: 30px;
   color: var(--green-bright);
-  transition: var(--transition);
+  transition: transform 0.15s ease, color 0.2s ease;
   position: relative;
   overflow: hidden;
 }
 
 .icon-link:hover {
   color: var(--lightest-slate);
-  transition: var(--transition);
+  transform: scale(1.15);
 }
 
 .icon-link svg {
@@ -428,6 +399,9 @@
   line-height: 1.5;
 }
 
+/* =============================================
+   Media Queries
+   ============================================= */
 @media (max-width: 992px) {
   .directory-box {
     flex-direction: column;
@@ -437,10 +411,23 @@
   
   .directory-sidebar {
     width: 100%;
-    max-height: 200px;
+    max-height: 250px;
     overflow: auto;
     border-right: none;
     border-bottom: 1px solid rgba(100, 217, 138, 0.1);
+  }
+
+  .project-overlay {
+    background: linear-gradient(
+      to top,
+      rgba(10, 25, 47, 0.95) 0%,
+      rgba(10, 25, 47, 0.8) 50%,
+      rgba(10, 25, 47, 0.6) 100%
+    );
+  }
+
+  .project-title {
+    margin: 20px 0 15px 0;
   }
   
   .project-links {
@@ -452,21 +439,42 @@
     font-size: 10px;
     line-height: 1.5;
   }
+
+  .project-content {
+    padding: 1.5rem;
+  }
 }
 
 @media (max-width: 768px) {
-  
+  .directory-box {
+    height: 540px;
+  }
+
+  .directory-sidebar {
+    max-height: 200px;
+  }
+
+  .directory-square {
+    display: none;
+    }
+
+  .directory-circle {
+    display: none; 
+  }
+
   .project-section-title {
     font-size: 24px;
   }
   
   .project-title {
+    margin: 10px 0 15px 0;
     font-size: 20px;
   }
   
   .project-description {
     font-size: 16px;
   }
+  
   .tag-pill {
     font-size: 12px;
   }
@@ -479,6 +487,15 @@
   .directory-files {
     padding-left: 1.2rem;
   }
+
+  .project-content {
+    padding: 1.2rem;
+  }
+
+  .icon-link svg {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 @media (max-width: 600px) {
@@ -486,12 +503,20 @@
     margin-top: 150px;
   }
   
-  .project-image-container {
-    height: 200px;
-    overflow: visible;
-  }
-  
   .tag-pill {
     padding: 4px 10px;
+  }
+
+  .project-content {
+    padding: 1rem;
+  }
+  
+  .project-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .project-description {
+    font-size: 14px;
   }
 }

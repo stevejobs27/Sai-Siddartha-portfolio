@@ -396,7 +396,11 @@ export default function Projects() {
                 <span className="gradient-text">{section}</span> Projects
               </h2>
               <div className="project-section">
-                <div className="directory-box gradient-border">
+                <div className="directory-box">
+                  <div className="directory-bg-elements">
+                    <div className="directory-circle"></div>
+                    <div className="directory-square"></div>
+                  </div>
                   <div className="directory-sidebar">
                     <ul className="directory-tree">
                       {projects.map((project, idx) => {
@@ -505,39 +509,29 @@ export default function Projects() {
                     ref={contentRefs.current[section]}
                   >
                     {selectedFile.type === "info" ? (
-                      <div className="project-info-container">
-                        <div className="project-image-container">
-                          {selectedProject.tableau ? (
-                            <a
-                              href={selectedProject.tableau}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              title="View Tableau Dashboard"
-                              className="image-link hover-effect"
-                            >
-                              <div className="image-overlay">
-                                <span>View Dashboard</span>
-                              </div>
-                              <img src={selectedProject.image} alt={selectedProject.name} />
-                            </a>
-                          ) : (
-                            <div className="image-wrapper">
-                              <img src={selectedProject.image} alt={selectedProject.name} />
-                            </div>
-                          )}
-                        </div>
-                        
+                  <div 
+                    className="project-info-container"
+                    style={{ 
+                      backgroundImage: `url(${selectedProject.image})`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                      position: 'relative'
+                    }}
+                  >
+                    {/* Overlay gradient */}
+                    <div className="project-overlay">
+                      <div className="project-content">
                         <h3 className="project-title">{selectedProject.name}</h3>
                         
                         <p className="project-description">{selectedFile.content}</p>
-                        
+                        <div className="project-meta">
                         <ul className="project-tags">
                           {selectedProject.tags && selectedProject.tags.map((tag, i) => (
                             <li key={i} className="tag-pill">{tag}</li>
                           ))}
                         </ul>
                         
-                          <div className="project-links">
+                        <div className="project-links">
                           {selectedProject.dataset && (
                             <a
                               href={selectedProject.dataset}
@@ -545,20 +539,6 @@ export default function Projects() {
                               rel="noopener noreferrer"
                               title="View Dataset"
                               className="icon-link dataset-link"
-                              onMouseEnter={e => {
-                                gsap.to(e.currentTarget, {
-                                  scale: 1.15,
-                                  duration: 0.15,
-                                  ease: "power2.out",
-                                });
-                              }}
-                              onMouseLeave={e => {
-                                gsap.to(e.currentTarget, {
-                                  scale: 1,
-                                  duration: 0.15,
-                                  ease: "power2.in"
-                                });
-                              }}
                             >
                               <BsDatabase />
                             </a>
@@ -570,20 +550,6 @@ export default function Projects() {
                               rel="noopener noreferrer"
                               title="View Article"
                               className="icon-link"
-                              onMouseEnter={e => {
-                                gsap.to(e.currentTarget, {
-                                  scale: 1.15,
-                                  duration: 0.15,
-                                  ease: "power2.out",
-                                });
-                              }}
-                              onMouseLeave={e => {
-                                gsap.to(e.currentTarget, {
-                                  scale: 1,
-                                  duration: 0.15,
-                                  ease: "power2.in"
-                                });
-                              }}
                             >
                               <Icon name="Medium" />
                             </a>
@@ -596,20 +562,6 @@ export default function Projects() {
                               rel="noopener noreferrer"
                               title="GitHub"
                               className="icon-link github-link"
-                              onMouseEnter={e => {
-                                gsap.to(e.currentTarget, {
-                                  scale: 1.15,
-                                  duration: 0.15,
-                                  ease: "power2.out",
-                                });
-                              }}
-                              onMouseLeave={e => {
-                                gsap.to(e.currentTarget, {
-                                  scale: 1,
-                                  duration: 0.15,
-                                  ease: "power2.in"
-                                });
-                              }}
                             >
                               <Icon name="GitHub" />
                             </a>
@@ -622,41 +574,31 @@ export default function Projects() {
                               rel="noopener noreferrer"
                               title="View Dashboard"
                               className="icon-link tableau-link"
-                              onMouseEnter={e => {
-                                gsap.to(e.currentTarget, {
-                                  scale: 1.15,
-                                  duration: 0.15,
-                                  ease: "power2.out",
-                                });
-                              }}
-                              onMouseLeave={e => {
-                                gsap.to(e.currentTarget, {
-                                  scale: 1,
-                                  duration: 0.15,
-                                  ease: "power2.in"
-                                });
-                              }}
                             >
                               <Icon name="Tableau" />
                             </a>
                           )}
                         </div>
-                      </div>
-                    ) : (
-                      <div className="code-viewer-container">
-                        <div className="code-header">
-                          <span className="file-name">{selectedFile.name}</span>
-                          <div className="code-language-badge">
-                            {selectedFile.language}
-                          </div>
                         </div>
-                        <CodeViewer
-                          code={selectedFile.content}
-                          language={selectedFile.language}
-                          type={selectedFile.type}
-                        />
                       </div>
-                    )}
+                    </div>
+                  </div>
+                ) : (
+                  <div className="code-viewer-container">
+                    {/* Code viewer remains unchanged */}
+                    <div className="code-header">
+                      <span className="file-name">{selectedFile.name}</span>
+                      <div className="code-language-badge">
+                        {selectedFile.language}
+                      </div>
+                    </div>
+                    <CodeViewer
+                      code={selectedFile.content}
+                      language={selectedFile.language}
+                      type={selectedFile.type}
+                    />
+                  </div>
+                )}
                   </div>
                 </div>
               </div>

@@ -31,25 +31,6 @@
   z-index: 1;
 }
 
-.contact-container::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 16px; 
-  padding: 2px; 
-  background: var(--gradient-border);
-  background-size: 300% 300%;
-  -webkit-mask: 
-    linear-gradient(#fff 0 0) content-box, 
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask: 
-    linear-gradient(#fff 0 0) content-box, 
-    linear-gradient(#fff 0 0);
-  mask-composite: exclude;
-  pointer-events: none;
-}
-
 .contact-bg-elements {
   position: absolute;
   top: 0;
