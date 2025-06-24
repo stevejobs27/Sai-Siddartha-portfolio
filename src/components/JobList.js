@@ -7,29 +7,29 @@ const experienceItems = {
     jobTitle: "Project Lead @",
     duration: "JAN 2023 - APR 2024",
     desc: [
-      "Conducted 20+ customer interviews to understand user needs and pain points, translating insights into actionable business requirements and aligning product development with customer demands",
-      "Successfully secured $13,000 in grant funding by winning both Stage 1 and Stage 2 of the Norman Esch Awards, validating the venture's impact and potential"
+      "Conducted 20+ qualitative interviews to understand user needs and extract user pain points, translated insights into prioritized features and aligned product development with real market demand",
+      "Secured $13K in grant funding by winning both Stage 1 and Stage 2 of the Norman Esch Awards (1 of 11 teams selected from 300 applicants in 2023), validating the venture’s market potential and business model"
     ]
   },
   "ShieldMate INC.": {
     jobTitle: "Research Analyst @",
     duration: "MAR 2023 - DEC 2023",
     desc: [
-      "Utilized analytical skills to conduct in-depth market research, identify key market needs and trends to inform the development process for the innovative startup",
-      "Led the conceptualization and wireframing for the envisioned platform using Figma to guide app development and ensure maximum user satisfaction",
-      "Collaborated with various stakeholders and firms to forge strategic partnerships to amplify the app's reach and impact"
+      "Conducted comprehensive market research and competitive analysis for an addressable market of 6.3M people to identify market trends and target customer needs; findings shaped the platform’s product roadmap and strategic focus",
+      "Led UX design and prototyping in Figma, translating research findings into intuitive wireframes and user journeys designed around privacy, ensuring user safety and trust",
+      "Collaborated with various stakeholders and firms to expand market reach and forge strategic partnerships to amplify the app's reach and impact"
     ]
   },
   HealthMate: {
     jobTitle: "Technical Lead @",
     duration: "SEP 2022 - FEB 2023",
     desc: [
-      "Led prototyping and product development, using Bubble.io for a no-code platform and guiding the team through technical decisions",
-      "Designed UI/UX assets in Figma and Adobe Illustrator to deliver a functional and user-friendly health tech interface"
+      "Developed a no-code MVP website on Bubble.io to promote the HealthMate platform and brand, establishing a professional digital presence, enabling early stakeholder engagement and securing Esch Stage 1 funding",
+      "Designed UI/UX components and full website layouts in Figma and Adobe Illustrator to showcase centralized health data and streamline appointment scheduling; prototype testing achieved a 90% user satisfaction rate"
     ]
   },
   "Doctor's": {
-    jobTitle: "Executive Manager @",
+    jobTitle: "Executive Project Manager @",
     duration: "JAN 2022 - AUG 2022",
     desc: [
       "Spearheaded the implementation of ERP solutions to streamline inventory and warehouse management processes, optimizing efficiency and ensuring smooth operations within the company",
