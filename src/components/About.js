@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Icon from "./Icons";
 import "../styles/About.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -79,8 +80,8 @@ const About = () => {
           </a>
         </p>     
         <div className="about-actions" ref={el => textRefs.current[6] = el}>
-          <a href="/assets/resume.pdf" className="resume-button btn-effect" target="_blank" rel="noopener noreferrer">
-            View Resume
+          <a href="#contact" className="resume-button btn-effect">
+            Get in Touch <Icon name="Mail" className="button-icon" />
           </a>
         </div>
       </div>

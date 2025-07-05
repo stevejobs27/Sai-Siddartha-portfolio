@@ -11,6 +11,7 @@ import {
 import { FaMediumM } from 'react-icons/fa';
 import { RiStarSLine } from "react-icons/ri";
 import { SiTableau } from 'react-icons/si';
+import { IoDocumentAttachOutline } from "react-icons/io5";
 
 const Icon = ({ name, className }) => {
   const iconStyle = {
@@ -39,6 +40,8 @@ const Icon = ({ name, className }) => {
       return <FiSend {...iconStyle} />;
     case 'CheckCircle':
       return <FiCheckCircle {...iconStyle} />;
+    case 'Document':
+      return <IoDocumentAttachOutline {...iconStyle} />;
     default:
       return null;
   }

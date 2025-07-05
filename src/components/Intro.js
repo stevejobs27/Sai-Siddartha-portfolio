@@ -185,8 +185,8 @@ const Intro = () => {
           creating powerful and insightful visualizations.
         </div>
         
-        <div className="intro-buttons" ref={buttonsRef}>
-          <a href="#contact" className="outline-button btn-effect">Get In Touch <Icon name="Mail" className="button-icon" /></a>
+        <div className="intro-buttons" ref={buttonsRef} >
+          <a href="/assets/resume.pdf" className="outline-button btn-effect" target="_blank" rel="noopener noreferrer">View Resume<Icon name="Document" className="button-icon"/></a>
         </div>
       </div>
       
