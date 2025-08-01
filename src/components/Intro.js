@@ -185,7 +185,7 @@ const Intro = () => {
         </div>
         
         <div className="intro-buttons" ref={buttonsRef} >
-          <a href="/assets/siddartha_new_resume_1.pdf" className="outline-button btn-effect" target="_blank" rel="noopener noreferrer">View Resume<Icon name="Document" className="button-icon"/></a>
+          <a href="/assets/public/assets/siddu resume _new - Copy.pdf" className="outline-button btn-effect" target="_blank" rel="noopener noreferrer">View Resume<Icon name="Document" className="button-icon"/></a>
         </div>
       </div>
       
