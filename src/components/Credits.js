@@ -40,11 +40,11 @@ const Credits = () => {
       <div className="ending-credits">
         <SideNavBar />
         <a 
-          href="https://github.com/rafsanahmed28/rafsan"
+          href="https://github.com/stevejobs27"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Designed & Built by Rafsan Ahmed © 2025
+          Designed & Built by Sai Siddartha © 2025
         </a>
       </div>
     </div>

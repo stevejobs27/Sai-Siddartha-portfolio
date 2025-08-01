@@ -156,7 +156,7 @@ const Intro = () => {
         <div className="typist-content">
           <div className="text-typing-container" style={{ position: "relative" }}>
             <span className="intro-title" ref={textRef}>Hi there! I'm </span>
-            <span className="intro-name" ref={nameRef}>Rafsan.</span>
+            <span className="intro-name" ref={nameRef}>Sai Siddartha.</span>
             
             <div 
               ref={cursorRef} 
@@ -177,16 +177,15 @@ const Intro = () => {
         </div>
         
         <div className="intro-subtitle" ref={subtitleRef}>
-          A <span className="intro-subtitle-name">Data Analyst</span> with a love for design.
+          A <span className="intro-subtitle-name">Data Analyst</span> with a love for data.
         </div>
         
         <div className="intro-desc" ref={descRef}>
-          I'm a techie who loves working with numbers and graphics. I thrive on solving problems using analytical skills and
-          creating powerful and insightful visualizations.
+          I'm a data enthusiast who loves transforming raw numbers into meaningful stories. With strong analytical thinking and a flair for clean, impactful visualizations, I thrive on solving complex problems and bringing clarity to data
         </div>
         
         <div className="intro-buttons" ref={buttonsRef} >
-          <a href="/assets/resume.pdf" className="outline-button btn-effect" target="_blank" rel="noopener noreferrer">View Resume<Icon name="Document" className="button-icon"/></a>
+          <a href="/assets/siddartha_new_resume_1.pdf" className="outline-button btn-effect" target="_blank" rel="noopener noreferrer">View Resume<Icon name="Document" className="button-icon"/></a>
         </div>
       </div>
       

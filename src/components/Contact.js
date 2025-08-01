@@ -14,7 +14,7 @@ export default function Contact() {
   const formRef = useRef(null);
   const successRef = useRef(null);
   const contactSectionRef = useRef(null);
-  const yourEmail = "rafsanahmed2828@gmail.com";
+  const yourEmail = "mulikinati.siddu876@gmail.com";
 
   useEffect(() => {
       gsap.set(".contact-container", {

@@ -3,46 +3,15 @@ import { gsap } from "gsap";
 import "../styles/Experience.css";
 
 const experienceItems = {
-  Reflect: {
-    jobTitle: "Project Lead @",
-    duration: "JAN 2023 - APR 2024",
+  "Teachnook": {
+    jobTitle: "Intern @",
+    duration: "MAR 2023 - APR 2023",
     desc: [
-      "Conducted 20+ qualitative interviews to understand user needs and extract user pain points, translated insights into prioritized features and aligned product development with real market demand",
-      "Secured $13K in grant funding by winning both Stage 1 and Stage 2 of the Norman Esch Awards (1 of 11 teams selected from 300 applicants in 2023), validating the venture’s market potential and business model"
-    ]
-  },
-  "ShieldMate INC.": {
-    jobTitle: "Research Analyst @",
-    duration: "MAR 2023 - DEC 2023",
-    desc: [
-      "Conducted comprehensive market research and competitive analysis for an addressable market of 6.3M people to identify market trends and target customer needs; findings shaped the platform’s product roadmap and strategic focus",
-      "Led UX design and prototyping in Figma, translating research findings into intuitive wireframes and user journeys designed around privacy, ensuring user safety and trust",
-      "Collaborated with various stakeholders and firms to expand market reach and forge strategic partnerships to amplify the app's reach and impact"
-    ]
-  },
-  HealthMate: {
-    jobTitle: "Technical Lead @",
-    duration: "SEP 2022 - FEB 2023",
-    desc: [
-      "Developed a no-code MVP website on Bubble.io to promote the HealthMate platform and brand, establishing a professional digital presence, enabling early stakeholder engagement and securing Esch Stage 1 funding",
-      "Designed UI/UX components and full website layouts in Figma and Adobe Illustrator to showcase centralized health data and streamline appointment scheduling; prototype testing achieved a 90% user satisfaction rate"
-    ]
-  },
-  "Doctor's": {
-    jobTitle: "Executive Project Manager @",
-    duration: "JAN 2022 - AUG 2022",
-    desc: [
-      "Spearheaded the implementation of ERP solutions to streamline inventory and warehouse management processes, optimizing efficiency and ensuring smooth operations within the company",
-      "Acted as a technical expert, advising management on best practices and technologies to support business growth and scalability, demonstrating adaptability and a wide range of skills"
-    ]
-  },
-  Fiverr: {
-    jobTitle: "Graphic Designer @",
-    duration: "MAY 2020 - OCT 2021",
-    desc: [
-      "Collaborated with clients to understand their target audience and develop designs that effectively conveyed the desired sentiment, resulting in increased product sales and customer satisfaction",
-      "Leveraged graphic design skills and creativity to produce unique and compelling designs for global clients that stood out in the competitive Print-on-Demand market",
-      "Effectively managed client expectations, deadlines, and project requirements, demonstrating strong communication and time management skills"
+      "Performed Exploratory Data Analysis (EDA) on datasets, applying suitable classifiers or regressors (Logistic Regression on insurance data, Linear Regression on a challenge dataset).",
+      "Achieved 92.86% accuracy for both Logistic Regression and K-Nearest Neighbors Classifier models.",
+      "During the two-month program , I  worked on understanding Python basics and machine learning concepts, implementing practical models using Jupyter Notebook.", 
+      " Key activities included manipulating Pandas DataFrames, data visualization with Matplotlib, handling missing values, encoding categorical data, scaling data, and working with mileage datasets. I was  trained in supervised machine learning essentials  specifically Logistic Regression, Linear Regression, and K-Nearest Neighbors (KNN)."
+      
     ]
   }
 };
@@ -51,29 +20,29 @@ const JobList = () => {
   const [value, setValue] = useState(0);
   const [isHorizontal, setIsHorizontal] = useState(window.innerWidth < 600);
   const keys = Object.keys(experienceItems);
-  
+
   const contentRef = useRef(null);
   const listsRef = useRef({});
   const oldValueRef = useRef(value);
-  
+
   useEffect(() => {
     const handleResize = () => {
       setIsHorizontal(window.innerWidth < 600);
     };
-    
+
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-  
+
   const handleTabChange = (index) => {
     const oldIndex = oldValueRef.current;
-    
+
     if (oldIndex === index) return;
-    
+
     oldValueRef.current = index;
-    
+
     const currentPanel = document.querySelector('.joblist-panel');
-    
+
     if (currentPanel) {
       gsap.to(currentPanel, {
         opacity: 0,
@@ -81,7 +50,7 @@ const JobList = () => {
         onComplete: () => {
           setValue(index);
           animateJobDetails();
-          
+
           const newPanel = contentRef.current.querySelector(`.joblist-panel:nth-child(${index + 1})`);
           if (newPanel) {
             gsap.fromTo(newPanel, { opacity: 0 }, { opacity: 1, duration: 0.3 });
@@ -93,13 +62,13 @@ const JobList = () => {
       animateJobDetails();
     }
   };
-  
+
   const animateJobDetails = () => {
     const listItems = contentRef.current?.querySelectorAll('.job-description li');
-    
+
     if (listItems?.length) {
       gsap.set(listItems, { opacity: 0, x: 20 });
-      
+
       gsap.to(listItems, {
         opacity: 1,
         x: 0,
@@ -109,11 +78,11 @@ const JobList = () => {
       });
     }
   };
-  
+
   useEffect(() => {
     animateJobDetails();
   }, []);
-  
+
   return (
     <div className={`joblist-root ${isHorizontal ? "horizontal" : "vertical"}`}>
       <div className={`joblist-tabs ${isHorizontal ? "horizontal" : "vertical"}`}>
@@ -127,7 +96,7 @@ const JobList = () => {
           </button>
         ))}
       </div>
-      
+
       <div className="joblist-content" ref={contentRef}>
         {keys.map((key, i) =>
           value === i ? (

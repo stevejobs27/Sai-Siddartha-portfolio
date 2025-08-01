@@ -8,15 +8,15 @@ gsap.registerPlugin(ScrollTrigger);
 
 const milestones = [
   {
-    title: "Masters at TMU",
-    description: "Enrolled in an Innovation and Entrepreneurship degree in an attempt to explore new fields and gain a broader perspective on business and technology.",
-    year: "Sep 2022 - Dec 2023",
+    title: "B.Tech in New Horizon College Of Engineering",
+    description: "Pursued a Bachelor of Technology degree focused on Information Science and Engineering, gaining comprehensive knowledge and practical skills in areas such as , algorithms, database management, software development, and Machine Learning.",
+    year: "July 2019 - july 2023",
     type: "education" 
   },
   {
-    title: "Exposure to Data in Startup Environments",
-    description: "During my time at TMU, I worked at 3 different startups where I gained initial exposure to huge amounts of data during market research, which introduced me to the power of data analytics in decision making.",
-    year: "Sep 2022 - Jan 2024",
+    title: "Exposure to Data during my Internship",
+    description: "During my time at NHCE, I worked at an Ed Tech company called Teachnook where I gained initial exposure to  data during market research, which introduced me to the power of data analytics in decision making.",
+    year: "March 2023 - April 2023",
     type: "startup",
     learnMoreLink: "#experience", 
     learnMoreText: "View Experience"
@@ -24,28 +24,28 @@ const milestones = [
   {
     title: "Decision to Pivot to Data Analytics",
     description: "Realized my passion for data analytics and decided to pivot my career towards becoming a Data Analyst, focusing on data-driven decision making.",
-    year: "Jan 2024 - Feb 2024",
+    year: "April 2024 - May 2024",
     type: "career",
   },
   {
-    title: "Google Data Analytics Professional Certificate",
-    description: "Completed Google's Data Analytics Professional Certificate, establishing core competencies in data preparation, analysis, and visualization.",
-    certificateUrl: "https://www.coursera.org/account/accomplishments/professional-cert/23OIJ3BGH8FJ",
-    year: "Mar 2024 - Sep 2024",
-    type: "google",
+    title: "Data Analyst Bootcamp ",
+    description: "Completed Data Analytics Bootcamp by Alex the Analyst, establishing core competencies in data preparation, analysis, and visualization.",
+    certificateUrl: "assets/Data Analytics Bootcamp Certification of Completion .png",
+    year: "May 2024 - Dec 2024",
+    type: "Training",
 
   },
   {
     title: "First Data Projects",
-    description: "Built my first portfolio projects (Covid-19 and Cyclistic), analyzing real-world datasets using Excel, MySQL and creating visualizations with Tableau.",
-    year: "Sep 2024 - Dec 2024",
+    description: "Developed my first data projects, applying skills in SQL, Power BI, and Python to analyze datasets and create visualizations.",
+    year: "Nov 2024 - Dec 2024",
     type: "project"
   },
   {
     title: "Advanced Data Analysis & Storytelling",
     description: "Deepened my skills in advanced data analysis techniques, delving deeper into advanced SQL queries,  and diving into Python to unlock even more powerful ways to explore, manipulate, and tell stories with data.",
     year: "Jan 2025 - Present",
-    type: "statistics",
+    type: "Projects",
     learnMoreLink: "#projects",
     learnMoreText: "View Projects"
   }

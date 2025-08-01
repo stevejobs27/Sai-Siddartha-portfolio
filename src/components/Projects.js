@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Flip } from "gsap/Flip";
-import ProjectBlogs from "./ProjectBlogs";
+
 import ProjectList from "./ProjectList";
 import CodeViewer from "./CodeViewer";
 import Icon from "./Icons";
@@ -375,9 +375,6 @@ export default function Projects() {
       <div className="section-header">
         <span className="section-title">Projects</span>
       </div>
-      <div className="project-blogs-container">
-            <ProjectBlogs/>
-      </div>
       {sectionKeys.map((section, sectionIndex) => {
         const projects = projectsData[section];
         const { projectIdx, fileIdx } = selected[section];
@@ -567,15 +564,15 @@ export default function Projects() {
                             </a>
                           )}
                           
-                          {selectedProject.tableau && (
+                          {selectedProject.powerbi && (
                             <a
-                              href={selectedProject.tableau}
+                              href={selectedProject.powerbi}
                               target="_blank"
                               rel="noopener noreferrer"
-                              title="View Dashboard"
-                              className="icon-link tableau-link"
+                              title="View Power BI Dashboard"
+                              className="icon-link powerbi-link"
                             >
-                              <Icon name="Tableau" />
+                              <Icon name="PowerBI" />
                             </a>
                           )}
                         </div>

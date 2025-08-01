@@ -56,20 +56,20 @@ const About = () => {
       <div className="about-content">
         <div className="about-description">
           <p ref={el => textRefs.current[0] = el}>
-              Hi, my name is Rafsan and I enjoy fiddling with numbers and solving problems. My interest in data started back in 2022 when I was working on a market research report for a startup.
+              Hi, my name is Sai Siddartha and I enjoy fiddling with numbers and solving problems. My interest in data started back in 2024.
               The subtle realization of the power of data was all it took to get me hooked on the field of data analytics. 
           </p>
           
           <p ref={el => textRefs.current[1] = el}>
-            Since then, I’ve earned a <a href= "https://www.credly.com/badges/76531ad7-80dc-4eea-8523-983d8b70f941/public_url" target="_blank">Google Data Analytics Certificate</a> and built a strong foundation in <span className="highlight">SQL, Tableau, and Python</span>.   For me, data analysis feels like playing detective—piecing together clues from numbers to reveal the bigger picture.
+            Since then, I’ve earned a <a href= "assets/Data Analytics Bootcamp Certification of Completion .png" target="_blank"> Data Analytics Certificate</a> and built a strong foundation in <span className="highlight">SQL, Power BI, Excel and Python</span>.   For me, data analysis feels like playing detective—piecing together clues from numbers to reveal the bigger picture.
           </p>
           
           <p ref={el => textRefs.current[2] = el}>
-            I have a strong appetite for learning and I'm always eager to explore new technologies. This website is a testament to my journey where I picked up <span className="highlight">HTML, CSS & JavaScript</span> along the way. I also have a background in <span className="highlight"> Graphic Design. </span>
+            I have a strong appetite for learning and I'm always eager to explore new technologies.
           </p>
           
           <p ref={el => textRefs.current[3] = el}>
-            Outside of work, I love playing video games. I'm also into aesthetic interior designs and I love hoarding cool tech products.
+            Outside of work, I love walking. I'm also into reading books and solo trips.
           </p>
           
         </div>
